@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "لیست کاربران";
+    ViewData["RouteMap"] = "داشبورد - " + ViewData["Title"];
+    ViewBag.searchUser = "";
+}
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <div id="User_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 form-element">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="UserTable_filter" class="dataTables_filter" style="float:right">
+                                        <a asp-action="Add" title="ایجاد" class="btn btn-primary btn-outline"><i class="fa fa-user-plus"></i><label></label></a>
+                                        <label>
+                                            <input type="search" id="searchUser" class="form-control form-control-sm" placeholder="جستجو" aria-controls="UserTable">
+                                        </label>
+                                        <button type="button" class="btn btn-primary btn-outline" onclick="ShowUser(1,$('#displayLengthGrid').val())"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_length" id="UserTable_length" style="float:left">
+                                        <label>
+                                            نمایش
+                                            <select name="displayLength" id="displayLengthGrid" aria-controls="UserTable" class="form-control form-control-sm">
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="500">500</option>
+                                                <option value="1000">1000</option>
+                                            </select> تعداد ردیف
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="UserTable"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @*<div class="col-sm-12">
+                                    <div class="dataTables_paginate paging_simple_numbers col-sm-12" id="UserTable_paginate">
+                                        <div class="pagination row"></div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+     $(function () {
+        $("#displayLengthGrid").change(function () {
+            ShowUser(1,$("#displayLengthGrid").val());
+            paging(true);
+        });
+        $("#searchUser").on('keypress', function (e) {
+            if (e.which == 13) {
+                ShowUser(1,$("#displayLengthGrid").val());
+                paging(true);
+            }
+        });
+    })
+    function ShowUser(pageIndex,pageSize) {
+        $.ajax({
+            url: '@Url.Action("UserList","User")',
+            data: {
+                filterName: $("#searchUser").val(),
+                pageNumber: pageIndex,
+                pageSize:  pageSize,
+                refresh: true
+            },
+            type: 'post',
+            async: false,
+            dataType: 'html',
+            success: function (dataRes) {
+                $("#UserTable").empty().html(dataRes);
+            }
+        });
+    }
+
+    ShowUser(1,$("#displayLengthGrid").val());
+</script>

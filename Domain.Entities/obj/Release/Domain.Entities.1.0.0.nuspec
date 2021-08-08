@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Domain.Entities</id>
+    <version>1.0.0</version>
+    <authors>Domain.Entities</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Dapper.Contrib" version="2.0.30" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNet.Mvc" version="5.2.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.ViewFeatures" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Spatial" version="7.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="4.6.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\fanus\FleetManagementSystem\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.dll" target="lib\netstandard2.0\Domain.Entities.dll" />
+  </files>
+</package>

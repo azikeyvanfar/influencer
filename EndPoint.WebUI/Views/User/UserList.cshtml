@@ -1,0 +1,93 @@
+﻿@model List<Domain.Entities.FORG.User>
+@{
+    var totalCnt = 0;
+    if (Model != null && Model.Count() > 0)
+    {
+        totalCnt = Model.FirstOrDefault().TotalCount;
+    }
+}
+<table id="UserGrid" class="table table-bordered table-striped table-hover" role="grid" aria-describedby="UserTable_info">
+    <thead class="thead-light">
+        <tr>
+            <th>ردیف</th>
+            <th>نام و نام خانوادگی</th>
+            <th>نام کاربری</th>
+            <th>توضیحات</th>
+            <th width="10%">عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Row</td>
+                <td>@item.DisplayName</td>
+                <td>@item.UserName</td>
+                <td>@item.Description</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId" title="ویرایش" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i></a>
+                    <a title="حذف" onclick="sureDelete('@item.UserId','@item.DisplayName');" class="btn btn-primary btn-outline"><i class="fa fa-trash"></i></a>
+                    @if (@item.HasToken)
+                    {
+                        <a  UserId="@item.UserId" DisplayName="@item.DisplayName" onclick="RemoveToken(this)" title="خروج کاربر" class="btn btn-primary btn-outline"><i class="fa fa-sign-out"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+
+    function RemoveToken(user) {
+        _this = $(user)
+
+        swal({
+            title: "آیا از خروج این کاربر مطمئن هستید؟",
+            text: "باانجام تایید '" + _this.attr('DisplayName') + "' به طور کامل از سیستم خارج می گردد",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "تایید!",
+            cancelButtonText: "انصراف"
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url: '@Url.Action("SignOut","User")',
+                    data: {
+                        UserId: _this.attr('UserId')
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (dataRes) {
+                        if (dataRes.success) {
+                            document.location.reload();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function callBack() {
+        ShowUser(1, $("#displayLengthGrid").val());
+        paging(true);
+    }
+    function sureDelete(id, firstName) {
+        $.sureDeleteById(id, firstName,'@Url.Action("Delete","User")', callBack);
+    }
+    paging(false);
+    function paging(refresh) {
+        $('.pagination').pagination({
+            tableId: 'UserTable',
+            refresh: refresh,
+            numberPerPage: $("#displayLengthGrid").val(),
+            numberOfDisplayedPage: 5,
+            numberOfRecords: @totalCnt,
+            onClick: function (pageIndex, pageSize, evt) {
+                if (pageIndex != null) {
+                    ShowUser(pageIndex,pageSize);
+                }
+            }
+        });
+    }
+</script>

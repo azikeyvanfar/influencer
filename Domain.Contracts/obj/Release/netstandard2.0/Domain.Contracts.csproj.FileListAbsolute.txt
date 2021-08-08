@@ -1,0 +1,12 @@
+D:\fanus\FleetManagementSystem\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.deps.json
+D:\fanus\FleetManagementSystem\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.dll
+D:\fanus\FleetManagementSystem\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.pdb
+D:\fanus\FleetManagementSystem\Domain.Contracts\bin\Release\netstandard2.0\Domain.Entities.dll
+D:\fanus\FleetManagementSystem\Domain.Contracts\bin\Release\netstandard2.0\Domain.Entities.pdb
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csprojAssemblyReference.cache
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.AssemblyInfoInputs.cache
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.AssemblyInfo.cs
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csproj.CoreCompileInputs.cache
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csproj.CopyComplete
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.dll
+D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.pdb

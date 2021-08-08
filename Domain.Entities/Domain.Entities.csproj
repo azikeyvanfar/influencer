@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Companys\**" />
+    <Compile Remove="Drivers\**" />
+    <Compile Remove="Events\**" />
+    <Compile Remove="Messages\**" />
+    <Compile Remove="Modules\**" />
+    <Compile Remove="Persons\**" />
+    <EmbeddedResource Remove="Companys\**" />
+    <EmbeddedResource Remove="Drivers\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <EmbeddedResource Remove="Messages\**" />
+    <EmbeddedResource Remove="Modules\**" />
+    <EmbeddedResource Remove="Persons\**" />
+    <None Remove="Companys\**" />
+    <None Remove="Drivers\**" />
+    <None Remove="Events\**" />
+    <None Remove="Messages\**" />
+    <None Remove="Modules\**" />
+    <None Remove="Persons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Spatial" Version="7.6.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
+  </ItemGroup>
+
+</Project>

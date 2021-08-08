@@ -3,3 +3,5 @@
 ################################################################################
 
 /EndPoint.WebUI/wwwroot/lib
+/EndPoint.WebUI/wwwroot/js
+/EndPoint.WebUI/wwwroot/css

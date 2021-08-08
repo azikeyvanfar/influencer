@@ -1,0 +1,90 @@
+﻿@model List<Domain.Entities.FSYS.MenuGroup>
+<section class="sidebar"  style="height: auto;">
+    <!-- sidebar menu-->
+    <ul class="sidebar-menu tree" data-widget="tree" id="menuUl">
+        <li class="user-profile treeview">
+            <a href="index.html">
+                <img src="~/images/user.jpg" alt="user">
+                <span>
+                    <span class="d-block font-weight-600 font-size-16">@ViewBag.displayName</span>
+                    <span class="email-id">@ViewBag.Roles</span>
+                </span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a asp-controller="User" asp-action="UserProfile"><i class="fa fa-user mr-5"></i>پروفایل من</a></li>
+                <li><a href="#"><i class="fa fa-money mr-5"></i>تعادل من</a></li>
+                <li><a href="#"><i class="fa fa-envelope-open mr-5"></i>صندوق</a></li>
+                <li><a href="#"><i class="fa fa-cog mr-5"></i>تنظیمات حساب</a></li>
+                <li><a asp-action="Logout" asp-controller="Account"><i class="fa fa-power-off mr-5"></i>خروج</a></li>
+            </ul>
+        </li>
+        @foreach (var item in Model)
+        {
+            <li class="treeview">
+                <a href="#">
+                    <i class="@item.Icon"></i>
+                    <span id="@item.MenuId">@item.Text</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @foreach (var child in item.Children)
+                    {
+                        if (child.children.Count == 0)
+                        {
+                            var link = child.Link.Split('/');
+                            if (link.Length > 1)
+                            {
+                                var controller = link[0];
+                                var action = link[1];
+                                <li>
+                                    <a asp-controller="@controller" asp-action="@action">
+                                        <i class="@child.Icon"></i>@child.Text
+                                    </a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="mdi mdi-notification-clear-all"></i>
+                                    @child.Text
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-right pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    @foreach (var minichild in child.children)
+                                    {
+                                        var link2 = minichild.Link.Split('/');
+                                        if (link2.Length > 1)
+                                        {
+                                            var controller2 = link2[0];
+                                            var action2 = link2[1];
+                                            if (link2.Length > 2)
+                                            {
+                                            <li><a asp-controller="@controller2" asp-action="@action2" asp-route-GroupKey="@link2[2].Split('=')[1]"><i class="@minichild.Icon"></i>@minichild.Text</a></li>
+                                            }
+                                            else
+                                            {
+                                            <li><a asp-controller="@controller2" asp-action="@action2"><i class="@minichild.Icon"></i>@minichild.Text</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                     }
+                </ul>
+            </li>
+         }
+        <li>
+            <a asp-action="Logout" asp-controller="Account"><i class="mdi mdi-directions"></i><span>خروج</span></a>
+        </li>
+    </ul>
+</section>

@@ -1,0 +1,1841 @@
+﻿@{
+    ViewData["Title"] = "صفحه اصلی";
+    //ViewData["RouteMap"] = ViewData["Title"];
+    ViewBag.searchModule = "";
+}
+<link rel="stylesheet" type="text/css" href="~/css/siteMain.css" />
+<link rel="stylesheet" type="text/css" href="~/css/Leaflet/leaflet.css" />
+<link rel="stylesheet" type="text/css" href="~/css/Leaflet/leaflet-ruler.css">
+<script type="text/javascript" src="~/js/Leaflet/leaflet.js"></script>
+<script type="text/javascript" src="~/js/Leaflet/leaflet-ruler.js"></script>
+<script type="text/javascript" src="~/js/Leaflet/leaflet-image.js"></script>
+
+<script type="text/javascript" src="~/js/CreateMap.js"></script>
+<script type="text/javascript" src="~/js/FmsMain.js"></script>
+<script type="text/javascript" src="~/js/utmconv.js"></script>
+
+<style>
+    .right11 {
+        right: 12px;
+    }
+
+    .mobilePan {
+        left: 0px !important;
+        top: 119px !important;
+        position: fixed !important;
+        right: unset !important;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+</style>
+<script>
+    var map;
+    $(document).ready(function () {
+        if ($("#divRightPanel").width()     +30 > $("#divRightPanel").parent().width()) {
+            $("#pan").addClass("mobilePan");
+            $("#divRightPanel").css("padding-right","8px");
+        }
+        $("#pan").click(function () {
+            if ($("#pan").hasClass("mobilePan")) {
+                $("#divVehicles").toggleClass("d-none").toggleClass("d-sm-block");
+                $('#divVehilceList').height($('#divVehicles').height() - $('#divVehicleHeader').height()-22);
+            } else {
+                $("#divVehicles").toggleClass("hidden");
+            }
+            $(this).toggleClass("fa-caret-left").toggleClass("fa-caret-right").toggleClass("right11");
+            $("#divRightPanel").animate({ width: '100%' }, 400).toggleClass('col-xl-12').toggleClass('col-xl-8').toggleClass("col-sm-6").toggleClass("col-sm-12");
+            map._onResize();
+        });
+        changePageMode('vehicle');
+        map = $('#divMap').createMap({
+                center: [32.398515580533285, 51.237748518586166],
+                defaultMap: 2,
+                onClick: function (e) {
+                    //console.log(e.latlng);
+                },
+                layers: [markerOverlay,routeOverlay,vehicleOverlay]
+            });
+        //var h = $(document).height();
+        //$('#divMap').height(h - 110);
+        //$('#divVehicles').height(h - 110);
+
+        setInitialVehicles("general");
+
+        refreshLastPointsInterval_s = ($('#hdnCurrentVehicleIds').val()) ? Math.max(Math.min(parseInt($('#hdnCurrentVehicleIds').val().split(',').length / 50), 5), 1) * 60 : "";
+
+        $('#eventCount').text($('#hdnEventCount').val())
+
+        if (!isNaN(parseInt($('#hdnDisconnected').val()))) {
+            disconnectedDuration = parseInt($('#hdnDisconnected').val()) * 1000 * 60;
+        }
+        if (!isNaN(parseInt($('#hdnTempDisconnected').val()))) {
+            tempoararyDisconnectedDuration = parseInt($('#hdnTempDisconnected').val()) * 1000 * 60;
+        }
+
+        $('.driverInfo').click(function (event) {
+            $(this).parents('.driver,.driverList').find('.extraInfo').toggle();
+            event.stopPropagation();
+        });
+
+
+        setTimeout(
+            function () {
+                refreshLastPoints(true);
+                // refreshLastEvents();
+                $('.driver,.driverList').on('click',function () {
+                    vehicleRowClick($(this), true);
+                });
+            }
+        , 800);
+//        $('.timePicker').each(function () {
+            //$(this).TickTack({
+            //    initialTime: $(this).val(),
+            //    minHour: 0,
+            //    minMinute: 0,
+            //    maxHour: 23,
+            //    maxMinute: 59
+            //});
+  //      });
+
+        $('input[type=radio][name=view]').change(function () {
+            if ($(this).attr('id') == 'viewPoints') {
+                $('#divPointList').show();
+                $('#divStopList').hide();
+            }
+            else {
+                $('#divPointList').hide();
+                $('#divStopList').show();
+            }
+        });
+
+        markerOverlay = L.layerGroup();
+        map.addLayer(markerOverlay);
+        routeOverlay = L.layerGroup();
+        map.addLayer(routeOverlay);
+        vehicleOverlay = L.layerGroup();
+        map.addLayer(vehicleOverlay);
+
+        //addToggleToMap();
+
+        getAdvancedOptions();
+    });
+
+    var infoWindowContent = '<table id="centerInfowindow" border="1" style="font-family: IRANSans, tahoma; font-size: 13px; height: 100; width: 100%; margin: 0px; border-collapse: collapse;border:lightgray"><tr><td colspan="3"><i class="fa fa-car"></i> {0}</td></tr><tr><td colspan="3"><i class="fa fa-clock-o"></i> {1}</td></tr><tr><td style="width: 45%">℃ {1}</td><td style="width: 45%"><i class="fa fa-road"></i> {2}</td><td style="cursor: pointer; height: 3px; background-color: lightgray;" onclick="return toggleLatLngUtm(this);"><i class="fa fa-angle-down"></i></td></tr><tr id="trLatLngUtm" style="display: none"><td colspan="4" dir="ltr">Latitude: {3}<br />Longitude: {4}<br />UTM: <span style="font-size: 8pt">{5}</span></td></tr><tr><td style="background-color: aliceblue; padding: 5px;" colspan="3" id="geo"><img src="../images/loading.gif" style="width: 16px; vertical-align: middle" /><span></span></td></tr></table>';
+    var refreshLastPointsInterval_s = 60;
+    var lastPointTimer = setInterval(function () {
+            refreshLastPoints(false);
+           // refreshLastEvents();
+        }, refreshLastPointsInterval_s * 1000);
+
+        var disconnectedDuration = 1440 * 60 * 1000; /*in seconds*/
+        var tempoararyDisconnectedDuration = 15 * 60 * 1000; /*in seconds*/
+        var currentDateTime = $.now();
+        function refreshLastPoints(groupVehicles) {
+            $('.refLoading').show();
+            $('.refLoading+span').hide();
+            if ($('#hdnCurrentVehicleIds').val() != null) {
+                $.ajax({
+                    url: '@Url.Action("LastPoints","Main")',
+                    data: { VehicleIds: $('#hdnCurrentVehicleIds').val() },
+                    type: "POST",
+                    global: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        var responseResult = JSON.parse(response);
+                        var lastPoints = responseResult.table;
+                        currentDateTime = new Date(responseResult.currentDateTime);
+                        var dtNow = currentDateTime;
+                        lastPoints.forEach(function (item) {
+                            var tmpDiv = $('#div_' + item.VehicleId);
+                            var tdDatetime = tmpDiv.find('.datetime')
+                            if (item.DateTime != tdDatetime.find('span:first').text()) {
+                                tdDatetime.attr('DateTime', item.DateTime);
+                                tdDatetime.attr('ison', item.IsOn);
+                                tdDatetime.attr('Latitude', item.Latitude);
+                                tdDatetime.attr('Longitude', item.Longitude);
+                                tdDatetime.attr('Altitude', item.Altitude);
+                                tdDatetime.attr('Speed', item.Speed);
+                                tdDatetime.attr('Temperature', item.Temperature);
+                                //tdDatetime.attr('isConnected', dtNow - new Date(item.DT) < disconnectedDuration);
+
+                                //tdDatetime.find('span:first').text(item.PDT);
+                                tdDatetime.find('span:first').text(item.DateTime);
+
+                                var img = tmpDiv.find('.carImg');
+                                if (item.IsOn) {
+                                    img.removeClass('grayed');
+                                    $(img.parent()).attr('data-balloon', 'روشن');
+                                }
+                                else {
+                                    img.addClass('grayed');
+                                    $(img.parent()).attr('data-balloon', 'خاموش');
+                                }
+                                tmpDiv.find('.fa.fa-dashboard').next().text(item.Speed + ' km/h');
+                                tdDatetime.addClass('new');
+                                tmpDiv.find('.temperature').next().text('℃ ' + item.Temperature);
+
+                                //if (item.CD == '-' || item.CD >= 0) {
+                                //    tmpDiv.find('.fa.fa-hourglass-2').next().text(item.CD);
+                                //} else {
+                                //    tmpDiv.find('.fa.fa-hourglass-2').next().text('منقضی');
+                                //    tmpDiv.addClass('expired');
+                                //}
+                            }
+                            tdDatetime.attr('isConnected', dtNow - new Date(item.DateTime) < disconnectedDuration);
+                            var dIcon = tmpDiv.find('.fa.fa-user');
+                            if (dtNow - new Date(item.DateTime) < tempoararyDisconnectedDuration) {
+                                dIcon.css('color', 'green');
+                                dIcon.attr('title', 'دارای ارتباط');
+                            }
+                            else {
+                                tmpDiv.find('.fa.fa-user').css('color', 'orange');
+                                dIcon.attr('title', 'قطع موقت');
+
+                                if (dtNow - new Date(item.DateTime) > disconnectedDuration) {
+                                    tmpDiv.find('.fa.fa-user').css('color', 'red');
+                                    dIcon.attr('title', 'فاقد ارتباط');
+                                }
+                            }
+                        });
+
+                        sortDrivers();
+                        driverSearch();
+                        setTimeout(function () {
+                            $('.datetime.new').removeClass('new');
+                        }, 5000);
+
+                        //$('.refLoading').hide();
+                        //$('.refLoading+span').show();
+
+                        // refreshVehiclesOnMap(groupVehicles);
+                    },
+                    error: function (e) {
+                        console.log(e.responseText);
+                    }
+                });
+            }
+            $('.refLoading').hide();
+            $('.refLoading+span').show();
+            refreshVehiclesOnMap(groupVehicles);
+    }
+    function setInitialVehicles(type) {
+        $("#iconList").toggleClass("fa-th-large").toggleClass("fa-list-alt");
+        if ($("#iconList").hasClass("fa-list-alt")) {
+            type = "general";
+        }
+        $.ajax({
+            url: '@Url.Action("InitialVehicles","Main")',
+            type: 'post',
+            async: false,
+            dataType: 'html',
+            data: { type:type},
+            success: function (dataRes) {
+                if (type == "list") {
+                    var listStr = "<table style='min-width:100%;width:900px;overflow:auto;margin:5px 0px 5px 5px;border:1px solid #999;font-size:13px' id='listTbl'><tr style='background:#eee'><td>راننده</td><td>شماره پلاک</td><td>نوع وسیله</td><td>سرعت</td><td>کد</td><td>دما</td><td>تاریخ</td><td>شماره</td><td>زمان باقیمانده</td><td>همراه</td><td>عملیات</td></tr>" + dataRes + "</table>"
+                     $('.driverList').on('click',function () {
+                        vehicleRowClick($(this), true);
+                    });
+                }
+                else {
+                    listStr = dataRes;
+                }
+                $("#divVehicleContent").empty().html(listStr);
+            }
+        });
+    }
+     function requestModel(dtFrom, dtTo, refId) {
+            this.dtFrom = dtFrom;
+            this.dtTo = dtTo;
+            this.refId = refId;
+            this.finished = false;
+        }
+    var h = 0;
+    function changePageMode(mode) {
+        switch (mode) {
+            case 'vehicle':
+                $('#divVehicleHeader').fadeIn();
+                $('#divVehilceList').fadeIn();
+                $('#divPointHeader').fadeOut();
+                $('#divPointList').fadeOut();
+                $("#divCalculatedInfo").hide();
+                if(markerOverlay)
+                    markerOverlay.clearLayers();
+                if(routeOverlay)
+                    routeOverlay.clearLayers();
+                clearAnimation();
+                pointClickedMarker = null;
+                $('#divSelectedDriver').hide();
+                $('#divRouteExtraInfo').hide();
+                refreshVehiclesOnMap(true);
+                refreshLastPoints(true);
+                lastPointTimer = setInterval(function () {
+                    refreshLastPoints(false);
+                   // refreshLastEvents();
+                }, refreshLastPointsInterval_s * 1000);
+                clearCalculations();
+                break;
+            case 'point':
+                $('#divPointList').empty();
+                $('#divStopList').empty();
+                $('#divVehicleHeader').fadeOut();
+                $('#divVehilceList').fadeOut();
+                $('#divPointHeader').fadeIn();
+                $('#divPointList').fadeIn();
+                $("#divCalculatedInfo").hide();
+                clearInterval(lastPointTimer);
+                break;
+            default:
+        }
+    }
+
+    var lstKeyValue = [];
+    function sortDrivers() {
+        var mode = $('#drpSort').val();
+        lstKeyValue = [];
+        switch (mode.toLowerCase()) {
+            case 'pdatetime':
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('.datetime > span').text().replace(' ', '') });
+                });
+                lstKeyValue.sort(SortDesc);
+                break;
+            case 'date':
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('.datetime > span').text().substring(0, 10) });
+                });
+                lstKeyValue.sort(SortDesc);
+                break;
+            case 'code':
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('span.code').text().replace(' ', '') })
+                });
+                lstKeyValue.sort(SortAsc);
+                break;
+            case 'connect':
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('.datetime').attr('isconnected') })
+                });
+                lstKeyValue.sort(SortDesc);
+                break;
+            case 'disconnect':
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('.datetime').attr('isconnected') })
+                });
+                lstKeyValue.sort(SortAsc);
+                break;
+            case 'driver':
+            default:
+                $('.driver,.driverList').each(function () {
+                    lstKeyValue.push({ key: $(this).attr('id'), value: $(this).find('span[name = driverTag]').text().replace(' ', '') })
+                });
+                lstKeyValue.sort(SortAsc);
+                break;
+        }
+
+        var lastObj = null;
+        var obj = null;
+        lstKeyValue.forEach(function (item) {
+            obj = $('#' + item.key);
+            if (lastObj != null) {
+                obj.insertAfter(lastObj);
+            }
+            lastObj = obj;
+        });
+    }
+    var currentDateTime = $.now();
+    function driverSearch() {
+        var filter = $('#txtDriverSearch').val().trim();
+        var cntAll = 0;
+        var cntConnected = 0;
+        var cntDisonnected = 0;
+        //var dtNow = $.now();
+        var dtNow = currentDateTime;
+        //alert(dtNow);
+        var status = $('#drpVehicleState').val().toString().toLowerCase();
+
+        $('.driver,.driverList').each(function (index, item) {
+            var spd = parseFloat($(this).find('.fa.fa-dashboard').next().text().replace(' km/h', ''));
+            var dSpan = $(this).find('span[name=driverTag]');
+            var maxSpeed = parseFloat(dSpan.attr('maxspd'));
+            var isOn = $(this).find('.datetime').attr('ison');
+            var isconnected = $(this).find('.datetime').attr('isconnected');
+            var vehicleType = $(this).find('.vt').text();
+            var code = $(this).find('.code').text();
+            //var dt = $(item).find('.fa.fa-clock-o').prev().attr('dt');
+
+            ////console.log('1' + dSpan);
+            if (
+                (filter == '' || dSpan.text().indexOf(filter) >= 0 || dSpan.attr('plaqueNumber').indexOf(filter) >= 0 || vehicleType.indexOf(filter) >= 0 || code.indexOf(filter) >= 0) &&
+                (
+                    status == 'all' ||
+                    (status == 'off' && isOn == 'false') ||
+                    (status == 'stop' && spd == 0) ||
+                    (status == 'speed' && !isNaN(maxSpeed) && spd > maxSpeed) ||
+                    (status == 'disconnected' && isconnected == 'false') ||
+                    (status == 'connected' && isconnected == 'true')
+                )
+            ) {
+                $(item).show();
+                cntAll++;
+                if (isconnected == 'true') {
+                    cntConnected++;
+                }
+                else {
+                    cntDisonnected++;
+                }
+            }
+            else {
+                $(item).hide();
+            }
+        });
+
+        $('#lblCount').text(cntAll);
+        $('#lblConnect').text(cntConnected);
+        $('#lblDisconnect').text(cntDisonnected);
+
+        refreshVehiclesOnMap(false);
+    }
+    function showCompanySettings() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetCompanySettings","Main")',
+            dataType: 'json',
+            //contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                cs = response;
+                if (cs.TemporaryDisconnectedThreshold == undefined) {
+                    $('#txtTempDisconnectedThreshold').val(15);
+                    $('#txtDisconnectedThreshold').val(60);
+                }
+                else {
+                    $('#txtTempDisconnectedThreshold').val(cs.TemporaryDisconnectedThreshold);
+                    $('#txtDisconnectedThreshold').val(cs.DisconnectedThreshold);
+                    $('#drpDisplay').val(cs.DisplayItem);
+
+                }
+                $('#divCompanySettings').show();
+            },
+            error: function () {
+            }
+        });
+    }
+    function ChangeDisplayItem(th) {
+        var that = $(th).val();
+    }
+    function saveCompanySettings(sender) {
+        if (isNaN(parseInt($('#txtTempDisconnectedThreshold').val())) || isNaN(parseInt($('#txtDisconnectedThreshold').val()))) {
+            alert('مقدار نا معتبر');
+            return false;
+        }
+        company = {
+            TemporaryDisconnectedThreshold: parseInt($('#txtTempDisconnectedThreshold').val()),
+            DisconnectedThreshold: parseInt($('#txtDisconnectedThreshold').val()),
+            DisplayItem: $('#drpDisplay').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SaveCompanySettings","Main")',
+            data: {companySettings: company },
+            //contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (response) {
+                if (response) {
+                    $('#divCompanySettings').hide();
+                    disconnectedDuration = parseInt($('#txtDisconnectedThreshold').val()) * 1000 * 60;
+                    tempoararyDisconnectedDuration = parseInt($('#txtTempDisconnectedThreshold').val()) * 1000 * 60;
+                    return false;
+                }
+            },
+            error: function () {
+            }
+        });
+        //$(sender).closest('div').hide();
+        return false;
+    }
+    var colorList =
+        [
+            "Blue", "#FF9800", "Brown", "#d64a4a", "Red", "#00C853", "#E91E63", "#9C27B0", "#006064", "#827717",
+            "#FF5722", "#5D4037", "#37474F", "#00ffde", "#67de20", "#642698", "#ec0970", "#353334", "#0f84ea"
+        ];
+
+
+    //var lstLatLngPoints;
+    var lstStopPoints;
+    var totalStopsCount = 0;
+    var totalStopsDuration = 0;
+
+    var requestList = [];
+    var totalPointsCount = 0;
+    var markerOverlay;
+    var markerLayers;
+    var vehicleOverlay;
+    var routeOverlay;
+    var routeLayers;
+
+    var routeMaxSpeed = 0;
+    var routeSumSpeed = 0;
+    var routeCntSpeed = 0;
+    var routeSumDistance = 0;
+
+    var firstPoint, lastPoint;
+    var topRightPoint, bottomLeftPoint;
+    function getPoints() {
+        clearAnimation();
+        firstPoint = null, lastPoint = null;
+        topRightPoint = null, bottomLeftPoint = null;
+        markerOverlay.clearLayers();
+        routeOverlay.clearLayers();
+        vehicleOverlay.clearLayers();
+
+        $('#pointsCount').hide();
+        $('#pointsCount+img').show();
+        $('#stopsCount').hide();
+        $('#stopsCount+img').show();
+
+        var txtDateFrom = fixNumbers($('#txtDateFrom').val());
+        var txtDateTo = fixNumbers($('#txtDateTo').val());
+        if (txtDateFrom.split(' ')[1] > txtDateTo.split(' ')[1]) {
+            $.noty("مقدار از تاریخ را کمتر از تا تاریخ وارد نمایید.", "error",2000);
+            return false;
+        }
+        var dateFrom = JalaliDate.parseToDateTime(txtDateFrom.split(' ')[1]);
+        var timeFrom = txtDateFrom.split(' ')[0];//$('#txtTimeFrom').val()
+        var dateTo = JalaliDate.parseToDateTime(txtDateTo.split(' ')[1]);
+        var timeTo = '23:59:59'
+
+        requestList = [];
+        totalPointsCount = 0;
+        totalStopsCount = 0;
+        totalStopsDuration = 0;
+        while (dateFrom <= dateTo) {
+            try {
+                if (new Date(dateFrom.getTime() - (dateFrom.getTimezoneOffset() * 60000)).toISOString().substring(0, 10) == new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 60000)).toISOString().substring(0, 10)) {
+                    timeTo = txtDateTo.split(' ')[0];//$('#txtTimeTo').val() + ':59';
+                }
+                //var id = String.format('{0}_{1}', dIndex, dtTmp.toJSON().substring(0, 10).replace(/\-/g, ''));
+                requestList.push(new requestModel
+                    (
+                        String.format('{0} {1}', new Date(dateFrom.getTime() - (dateFrom.getTimezoneOffset() * 60000)).toISOString().substring(0, 10), timeFrom),
+                        String.format('{0} {1}', new Date(dateFrom.getTime() - (dateFrom.getTimezoneOffset() * 60000)).toISOString().substring(0, 10), timeTo),
+                        new Date(dateFrom.getTime() - (dateFrom.getTimezoneOffset() * 60000)).toISOString().substring(0, 10)
+                    ));
+
+                dateFrom.setDate(dateFrom.getDate() + 1);
+                timeFrom = '00:00';
+            } catch (e) {
+                console.log(e.message);
+                //alert(e.message);
+            }
+        }
+
+        $('#divPointList').empty();
+        $('#divStopList').empty();
+
+        //$('#divRouteExtraInfo').css('width', $('#divSelectedDriver').width());
+        $('#divRouteExtraInfo .extraValue').text('0');
+        $('#divRouteExtraInfo').show();
+        routeMaxSpeed = routeSumSpeed = routeCntSpeed = routeSumDistance = 0;
+
+        requestList.forEach(function (reqItem, index) {
+            $('#divPointList').append(String.format('<div class="dayRow" id="{0}" colorIdx="{1}"><img width="12px" src="../images/loading.gif" /></div>', reqItem.refId, index % colorList.length));
+            $('#divStopList').append(String.format('<div class="dayRow" refId="{0}" colorIdx="{1}"><img width="12px" src="../images/loading.gif" /></div>', reqItem.refId, index % colorList.length));
+            $.ajax({
+                url: '@Url.Action("GetParallel","Main")',
+                data: {vehicleId: $('#divSelectedDriver').attr('selId').replace('div_', ''), dateFrom: reqItem.dtFrom, dateTo: reqItem.dtTo, refId: reqItem.refId },
+                type: "POST",
+                dataType: 'json',
+                success: function (response) {
+                    refId = response.substring(0, 10);
+                    var finishedFlag = true;
+                    requestList.forEach(function (resItem) {
+                        if (resItem.refId == refId) {
+                            resItem.finished = true;
+                        }
+                        else if (!resItem.finished) {
+                            finishedFlag = false;
+                        }
+                    });
+
+                    var destDiv = $('#' + refId);//.find('img').hide();
+                    var destStopDiv = $('#divStopList').find(String.format('div[refId="{0}"]', refId));
+
+                    if (response.length < 12 /*No points found*/) {
+                        destDiv.remove();
+                        destStopDiv.remove();
+                    }
+                    else /*Points found*/ {
+                        var lstPoints = JSON.parse(response.substring(11));
+                        totalPointsCount += lstPoints.length;
+
+                        if (firstPoint == null || firstPoint.refId > refId) {
+                            firstPoint = {
+                                refId: refId,
+                                point: lstPoints[0]
+                            };
+                        }
+                        if (lastPoint == null || lastPoint.refId < refId) {
+                            lastPoint = {
+                                refId: refId,
+                                point: lstPoints[lstPoints.length - 1]
+                            };
+                        }
+
+                        var color = colorList[destDiv.attr('colorIdx')];
+
+                        destDiv.empty();
+                        destDiv.append(
+                            String.format('<table style="color: {2};width:90%" align="center"><tr><td><i class="fa fa-plus-square-o pToggle" aria-hidden="true" onclick="togglePoints(this)"></i></td><td><span class="dayHeader">{0} [{1}]</span></td><td align="left"><i onclick="toggleRoute(this, \'{3}\');" class="fa fa-check-circle-o""></i></td></tr></table>',
+                                JalaliDate.toPersian(new Date(refId)), lstPoints.length, color, refId));
+                        var ul = '<div class="pList"><table style="width: 100%; border-spacing: 0" dir="ltr">'
+                        var pIndex = 0;
+                        var lstLatLngPoints = [];
+                        lstStopPoints = [];
+
+                        //----Stop Calculation Parameters------\\
+                        destStopDiv.empty();
+                        destStopDiv.append(
+                            String.format('<table style="color: {0}"><tr><td><i class="fa fa-plus-square-o pToggle" aria-hidden="true" onclick="toggleStops(this)"></i></td><td><span class="dayHeader"></span></td></tr></table>',
+                                color));
+
+                        var lastStopDatTime = null;
+                        var lastStopPoint = null;
+                        var stopSpeedThreshold = parseInt($('#numStopSpeedThreshold').val());
+                        var stopDurationThreshold = parseInt($('#numStopDurationThreshold').val()) * 60;
+                        var divStops = '<div class="sList">';
+                        var stopIndex = 0;
+                        var curDayStops = 0;
+                        var curDayStopsDuration = 0;
+                        var lPoint = null;
+                        //-------------------------------------\\
+                        //----Direction Markers----------------\\
+                        var lastDirectionPoint = null;
+                        var showDirection = $('#chkDirection').is(':checked');
+                        var showStops = $('#chkStops').is(':checked');
+                        //----Route Extran Info----------------\\
+                        var tmpRouteSumDistance = 0;
+                        var tmpRouteSumSpeed = 0;
+                        var tmpRouteMaxSpeed = 0;
+
+                        lstPoints.forEach(function (pItem) {
+                            //----Stop Calculation ------\\
+                            var spd = parseFloat(pItem.Speed);
+                            var curDateTime = new Date(pItem.DateTime);
+                            if (spd <= stopSpeedThreshold) {
+                                if (lastStopDatTime == null) {
+                                    lastStopDatTime = curDateTime;
+                                    lastStopPoint = { lng: pItem.Longitude, lat: pItem.Latitude };
+                                }
+                            }
+                            else {
+                                if (lastStopDatTime != null) {
+                                    var diff = (curDateTime - lastStopDatTime) / 1000;
+                                    if (diff >= stopDurationThreshold) {
+                                        var addressIndex = refId + "_" + stopIndex++;
+                                        var sPoint = new stopPoint(lastStopPoint, lastStopDatTime, curDateTime);
+                                        lstStopPoints.push(sPoint);
+                                        curDayStops++;
+                                        curDayStopsDuration += Math.round(diff / 60);
+                                        totalStopsCount++;
+                                        totalStopsDuration += Math.round(diff / 60);
+                                        divStops += String.format(
+                                            '<div idx="{4}" lat="{5}" lng="{6}"><table><tr><td width="100x">شروع: {0}</td><td width="100x">پایان: {1}</td><td>مدت توقف: {2} دقیقه</td><td style="width: 20px">{4}</td></tr><tr><td colspan="4" id="{3}"><img src="../images/loading.gif" style="width: 12px" alt="" /></td></tr></table></div>',
+                                            timeFormat(lastStopDatTime), timeFormat(curDateTime), Math.round(diff / 60), addressIndex, stopIndex, lastStopPoint.lat, lastStopPoint.lng);
+                                        getStopAddress(lastStopPoint.lat, lastStopPoint.lng, addressIndex);
+                                    }
+                                }
+                                lastStopDatTime = null;
+                            }
+
+                            if (lPoint != null) {
+                                tmpRouteSumDistance += L.latLng(lPoint.lat, lPoint.lng).distanceTo(L.latLng(pItem.Latitude, pItem.Longitude));
+                            }
+                            tmpRouteSumSpeed += pItem.Speed;
+                            if (pItem.Speed > tmpRouteMaxSpeed) {
+                                tmpRouteMaxSpeed = pItem.Speed;
+                            }
+                            lastDateTime = curDateTime;
+
+                            //---------------------------\\
+                            if (showDirection) {
+                                if (pIndex > 0 && (lastDirectionPoint == null || lastDirectionPoint.distanceTo(L.latLng(pItem.Latitude, pItem.Longitude)) > 1000)) {
+                                    //if (lastDirectionPoint != null) {
+                                    //    console.log(String.format('DIR: {3} - {0} - {1} - {2}', pItem.Latitude, pItem.Longitude, lastDirectionPoint.distanceTo(L.latLng(pItem.Latitude, pItem.Longitude)), pIndex));
+                                    //}
+                                    var tmpAngle = (angle(new L.latLng(lPoint.lat, lPoint.lng), new L.latLng(pItem.Latitude, pItem.Longitude)) + 360) % 360;
+                                    var dIcon = L.divIcon({
+                                        className: 'divIconDirection', html: String.format('<i class="fa fa-chevron-{2}" style="color: {0}; transform: rotate({1}deg); transform-origin: center; font-size: 10pt;"></i>', color,
+                                            (tmpAngle < 270 && tmpAngle > 90) ? (tmpAngle - 180) : tmpAngle, (tmpAngle < 270 && tmpAngle > 90) ? 'left' : 'right')
+                                    });
+                                    var dMarker = L.marker([(pItem.Latitude + lPoint.lat) / 2, (pItem.Longitude + lPoint.lng) / 2], { icon: dIcon });
+                                    dMarker.refId = refId;
+                                    //dMarker.bindTooltip(String.format("<span style='font-family: IRANSans; font-size: 13px;'>نقطه شروع {0}</span>", JalaliDate.toPersian(new Date(refId))));
+                                    markerOverlay.addLayer(dMarker);
+                                    lastDirectionPoint = L.latLng(pItem.Latitude, pItem.Longitude);
+                                }
+                            }
+                            lstLatLngPoints.push(L.latLng(pItem.Latitude, pItem.Longitude));
+                            ul += String.format(
+                                pIndex++ == 0 ?
+                                    '<tr lat="{0}" lng="{1}"><td width="25%;" align="left"><i class="fa fa-clock-o {2}" style="font-size:12px;margin-right:1px;"></i><span dir="ltr">{3}</span></td><td align="center" width="19%"><span>{4} km/h</span></td><td align="center" width="40%"><span class="latLng">{0},{1}</span></td><td align="right" width="15%"><span>{5} °C</span></td></tr>'
+                                    : '<tr lat="{0}" lng="{1}"><td  align="left"><i class="fa fa-clock-o {2}" style="font-size:12px;margin-right:1px;"></i><span dir="ltr">{3}</span></td><td align="center" width="19%"><span>{4} km/h</span></td></td><td align="center"><span class="latLng">{0},{1}</span></td><td align="right"><span>{5} °C</span></td></tr>',
+                                pItem.Latitude, pItem.Longitude, pItem.IsOn, pItem.DateTime.substring(11), pItem.Speed, pItem.Temperature);
+
+                            lPoint = { lng: pItem.Longitude, lat: pItem.Latitude };
+
+                            if (topRightPoint == null) {
+                                topRightPoint = { lng: pItem.Longitude, lat: pItem.Latitude };
+                            }
+                            else {
+                                if (lPoint.lat > topRightPoint.lat) {
+                                    topRightPoint.lat = lPoint.lat;
+                                }
+                                if (lPoint.lng > topRightPoint.lng) {
+                                    topRightPoint.lng = lPoint.lng;
+                                }
+                            }
+                            if (bottomLeftPoint == null) {
+                                bottomLeftPoint = { lng: pItem.Longitude, lat: pItem.Latitude };
+                            }
+                            else {
+                                if (lPoint.lat < bottomLeftPoint.lat) {
+                                    bottomLeftPoint.lat = lPoint.lat;
+                                }
+                                if (lPoint.lng < bottomLeftPoint.lng) {
+                                    bottomLeftPoint.lng = lPoint.lng;
+                                }
+                            }
+                        });
+                        //----Route Extran Info----------------\\
+                        routeSumDistance += tmpRouteSumDistance;
+                        routeSumSpeed += tmpRouteSumSpeed;
+                        routeCntSpeed += lstPoints.length;
+                        if (tmpRouteMaxSpeed > routeMaxSpeed) {
+                            routeMaxSpeed = tmpRouteMaxSpeed;
+                        }
+                        $('#extraValueD').text(Math.round(routeSumDistance / 1000));
+                        $('#extraValueAS').text(Math.round(routeSumSpeed / routeCntSpeed));
+                        $('#extraValueMS').text(Math.round(routeMaxSpeed));
+                        ul += '</table></div>';
+                        destDiv.append(ul);
+
+                        destStopDiv.find('.dayHeader').text(String.format('{0} [{1} توقف به میزان {2} دقیقه]', JalaliDate.toPersian(new Date(refId)), curDayStops, curDayStopsDuration));
+                        divStops += '</div>';
+                        destStopDiv.append(divStops);
+
+                        var polylineOptions = {
+                            color: color,
+                            strokeOpacity: 0.8,
+                            strokeWeight: 3
+                        };
+                        var vehicleRoute =  new L.polyline(lstLatLngPoints, polylineOptions)
+                        vehicleRoute.on('click', function (e) {
+                            var clickPoint = e.latlng;
+                            var minDis = Number.MAX_VALUE;
+                            var goalPointIndex = -1;
+                            $(this)[0]._latlngs.forEach(function (item, index) {
+                                var dis = clickPoint.distanceTo(L.latLng(item.lat, item.lng));
+                                if (dis < minDis) {
+                                    minDis = dis;
+                                    goalPoint = item;
+                                    goalPointIndex = index;
+                                }
+                            });
+                            var refId = $(this)[0].refId;
+                            var selRow = $('#' + refId).find('div.pList>table>tbody tr')[goalPointIndex];
+                            //selRow.scrollIntoView();
+                            pointClick(selRow, true);
+                            L.DomEvent.stopPropagation(e);
+                        });
+                        vehicleRoute.refId = refId;
+                        routeOverlay.addLayer(vehicleRoute);
+
+                        if (lstPoints.length > 1) {
+                            if (requestList.length > 1) {
+                                var sIcon = L.divIcon({ className: 'divIconStart', html: String.format('<i class="fa fa-circle" style="color: {0};"></i>', color) });
+                                var sItem = lstPoints[0];
+                                var sMarker = L.marker([sItem.Latitude, sItem.Longitude], { icon: sIcon });
+                                sMarker.refId = refId;
+                                markerOverlay.addLayer(sMarker);
+                                sMarker.bindPopup(String.format("<span style='font-family: IRANSans; font-size: 13px;'>نقطه شروع {0}</span>", JalaliDate.toPersian(new Date(refId))));
+
+                                var fIcon = L.divIcon({ className: 'divIconStart', html: String.format('<i class="fa fa-stop" style="color: {0};"></i>', color) });
+                                var fItem = lstPoints[lstPoints.length - 1];
+                                var fMarker = L.marker([fItem.Latitude, fItem.Longitude], { icon: fIcon });
+                                fMarker.refId = refId;
+                                markerOverlay.addLayer(fMarker);
+                                fMarker.bindPopup(String.format("<span style='font-family: IRANSans; font-size: 13px;'>نقطه پایان {0}</span>", JalaliDate.toPersian(new Date(refId))));
+                            }
+                        }
+
+                        if (showStops) {
+                            lstStopPoints.forEach(function (sItem, sIndex) {
+                                //var stopIcon = L.divIcon({
+                                //    className: 'divIconStop'
+                                //});
+
+                                var stopIcon = L.icon({
+                                    iconUrl: '../images/StopSign__.png',
+                                    iconSize: [24, 24], // size of the icon
+                                    iconAnchor: [12, 24], // point of the icon which will correspond to marker's location
+                                })
+                                var stopMarker = L.marker([sItem.point.lat, sItem.point.lng], { icon: stopIcon });
+                                stopMarker.bindPopup('<div></div>');
+                                stopMarker.on('click', function () {
+                                    clickedStopMarker = $(this);
+                                    var sIdx = clickedStopMarker[0].stopIndex;
+                                    var refId = clickedStopMarker[0].refId;
+                                    $($('.dayRow[refId=' + refId + '] .sList>div')[sIdx]).click();
+                                    $(this).unbind('click');
+                                });
+                                stopMarker.refId = refId;
+                                stopMarker.markerType = 'stop';
+                                stopMarker.stopIndex = sIndex;
+                                markerOverlay.addLayer(stopMarker);
+                            });
+                        }
+                    }
+                    if (finishedFlag) {
+                        $('#pointsCount').text(numberWithCommas(totalPointsCount));
+                        $('#pointsCount').show();
+                        $('#pointsCount+img').hide();
+
+                        $('#stopsCount').text(String.format('{0} [{1}\']', numberWithCommas(totalStopsCount), numberWithCommas(totalStopsDuration)));
+                        $('#stopsCount').show();
+                        $('#stopsCount+img').hide();
+
+                        if (firstPoint != null) {
+                            $.ajax({
+                                url: '@Url.Action("GetLocationFromOpenStreet","Main")',
+                                type: "POST",
+                                data: { latitude: firstPoint.point.Latitude, longitude: firstPoint.point.Longitude, refId: 'firstPoint' },
+                                dataType: 'json',
+                                success: function (response) {
+                                    if (!$('#divVehilceList').is(':visible')) {
+                                        var add = response;
+                                        sIcon = L.icon({
+                                            iconUrl: '../images/Ico_Origin_64.png',
+                                            iconSize: [48, 48], // size of the icon
+                                            iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+                                            //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                        });
+                                        sMarker = L.marker([firstPoint.point.Latitude, firstPoint.point.Longitude], { icon: sIcon });
+                                        markerOverlay.addLayer(sMarker);
+                                       // console.log(firstPoint.point);
+                                        sMarker.bindPopup(String.format("<div style='font-family: IRANSans; font-size: 13px;'><span>نقطه شروع {0}</span><div>{1}</div></div>", firstPoint.point.DateTime, add.address));
+                                        //$('#' + add.refId).text(add.address);
+                                    }
+                                },
+                                error: function () {
+                                    sIcon = L.icon({
+                                        iconUrl: '../images/Ico_Origin_64.png',
+                                        iconSize: [48, 48], // size of the icon
+                                        iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+                                        //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                    });
+                                    sMarker = L.marker([firstPoint.point.Latitude, firstPoint.point.Longitude], { icon: sIcon });
+                                    markerOverlay.addLayer(sMarker);
+                                   // console.log(firstPoint.point);
+                                    sMarker.bindPopup(String.format("<div style='font-family: IRANSans; font-size: 13px;'><span>نقطه شروع {0}</span></div>", firstPoint.point.DateTime));
+                                }
+                            });
+                        }
+
+                        if (lastPoint != null) {
+                            $.ajax({
+                                url: '@Url.Action("GetLocationFromOpenStreet","Main")',
+                                data: { latitude: lastPoint.point.Latitude, longitude: lastPoint.point.Longitude, refId: 'lastPoint' },
+                                type: "POST",
+                                dataType: 'json',
+                                success: function (response) {
+                                    if (!$('#divVehilceList').is(':visible')) {
+                                        var add = response;
+                                        fIcon = L.icon({
+                                            iconUrl: '../images/Ico_Dest_64.png',
+                                            iconSize: [48, 48], // size of the icon
+                                            iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+                                            //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                        });
+                                        fMarker = L.marker([lastPoint.point.Latitude, lastPoint.point.Longitude], { icon: fIcon });
+                                        markerOverlay.addLayer(fMarker);
+                                        console.log(firstPoint.point);
+                                        fMarker.bindPopup(String.format("<div style='font-family: IRANSans; font-size: 13px;'><span>نقطه پایان {0}</span><div>{1}</div></div>", lastPoint.point.DateTime, add.address));
+                                    }
+                                },
+                                error: function () {
+                                    fIcon = L.icon({
+                                        iconUrl: '../images/Ico_Dest_64.png',
+                                        iconSize: [48, 48], // size of the icon
+                                        iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+                                        //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                    });
+                                    fMarker = L.marker([lastPoint.point.Latitude, lastPoint.point.Longitude], { icon: fIcon });
+                                    markerOverlay.addLayer(fMarker);
+                                    console.log(firstPoint.point);
+                                    fMarker.bindPopup(String.format("<div style='font-family: IRANSans; font-size: 13px;'><span>نقطه پایان {0}</span></div>", lastPoint.point.DateTime));
+                                }
+                            });
+                        }
+
+                        routeLayers = routeOverlay.getLayers();
+                        markerLayers = markerOverlay.getLayers();
+                        var bounds = new L.LatLngBounds([[topRightPoint.lat, topRightPoint.lng], [bottomLeftPoint.lat, bottomLeftPoint.lng]]);
+                         map.fitBounds(bounds)
+                        if (requestList.length == 1) {
+                            $('.pList').addClass('fullPage');
+                            $('.fa.pToggle').click();
+                        }
+                        else {
+                            $('.pList').removeClass('fullPage');
+                        }
+
+                        $('.sList > div').click(function () {
+                            sListDiv = $(this);
+                            var refId = $(this).closest('div.dayRow').attr('refId');
+                            var idx = $(this).attr('idx')
+                            var sMarkers = markerOverlay.getLayers();
+                            var mIdx = 0;
+                            sMarkers.forEach(function (item) {
+                                if (item.markerType == 'stop' && item.refId == refId) {
+                                    if (++mIdx == idx) {
+                                        map.panTo(item._latlng);
+                                        item.bindPopup(sListDiv.html().replace('<table', '<table width="100%"').replace('width="100x">شروع: ', '>از: ').replace('width="100x">پایان: ', '>تا: ').replace('مدت توقف: ', '').replace('width: 20px', 'background-color: #ff00004f; padding: 0 5px'));
+                                        item.openPopup();
+                                        return;
+                                    }
+                                }
+                            });
+                        });
+                        $('.pList tr').click(function () {
+                            pointClick(this, true);
+                        });
+                        $('.pList tr td i.fa.fa-clock-o').parent().css('position', 'relative');
+                        $('.pList tr td i.fa.fa-clock-o').click(function (event) {
+                            pointTimeActions(this, event);
+                        });
+                    }
+                },
+                error: function () {
+                }
+            });
+        });
+
+        if (requestList.length == 1) {
+            $('#divRouteActions').show();
+        }
+        else {
+            $('#divRouteActions').hide();
+        }
+    }
+    function saveAdvancedOptions(sender) {
+        localStorage.setItem("stopSpeedThreshold", $('#numStopSpeedThreshold').val());
+        localStorage.setItem("numStopDurationThreshold", $('#numStopDurationThreshold').val());
+        localStorage.setItem("direction", $('#chkDirection').is(':checked'));
+        localStorage.setItem("stops", $('#chkStops').is(':checked'));
+        $(sender).closest('div').hide();
+        return false;
+    }
+    var arVehicleRoute;
+    var arPointIndexMain = 0;
+    var arPointIndexShow = 0;
+    var arMainRoutePoints;
+    var arLstPointsShow = [];
+    var arTimer;
+    var arMarker;
+    var arTimerInterval = 60;
+    function showRouteAnimation() {
+        if (arMainRoutePoints != null) {
+            if (arTimer == null) {
+                $('#ppRoute>img').attr('src', '../images/Pause.png');
+                arTimer = setInterval(arTimerTick, arTimerInterval);
+            }
+            else {
+                $('#ppRoute>img').attr('src', '../lib/SuperieurThem/vendor_components/Ionicons/png/512/play.png');
+                clearInterval(arTimer);
+                arTimer = null;
+            }
+            return;
+        }
+
+        var polylineOptions = {
+            color: colorList[0],
+            strokeOpacity: 1,
+            strokeWeight: 3
+        };
+
+        arMainRoutePoints = routeOverlay.getLayers()[0]._latlngs;
+        arLstPointsShow.push(arMainRoutePoints[0]);
+        arPointIndexShow = 1;
+
+        routeOverlay.clearLayers();
+        markerOverlay.clearLayers();
+
+        arVehicleRoute = new L.polyline([arMainRoutePoints[0]], polylineOptions)
+        routeOverlay.addLayer(arVehicleRoute);
+        if (arTimer != null) {
+            clearInterval(arTimer);
+        }
+        $('#ppRoute>img').attr('src', '../images/Pause.png');
+        //---- Route Extra Info
+        routeMaxSpeed = routeSumSpeed = routeCntSpeed = routeSumDistance = 0;
+
+        arTimer = setInterval(arTimerTick, arTimerInterval);
+        arMarker = L.marker([arMainRoutePoints[0].lat, arMainRoutePoints[0].lng]);
+        markerOverlay.addLayer(arMarker);
+    }
+    function timerIntervalChanged(value) {
+        arTimerInterval = (20 - parseInt(value) + 1) * 5;
+        clearInterval(arTimer);
+        arTimer = null;
+        arTimer = setInterval(arTimerTick, arTimerInterval);
+    }
+    function toggleVehicleMarker(e, sender) {
+        var id = $(sender).closest('div.driver,tr.driverList').attr('id');
+        pointList.forEach(function (item) {
+            if (item.id == id) {
+                if ($(sender).hasClass('fa-check-square-o')) {
+                    map.removeLayer(item.marker);
+                    e.stopPropagation();
+                }
+                else {
+                    map.addLayer(item.marker);
+                    if (item.isOn == 'false')
+                        $(item.marker._icon).css('filter', 'grayscale(100%)');
+                }
+                $(sender).toggleClass('fa-square-o');
+                $(sender).toggleClass('fa-check-square-o');
+                return;
+            }
+        });
+    }
+
+    function showOnline(e, sender, driver) {
+        e.stopPropagation();
+
+        if ($(sender).closest('.driver,.driverList').hasClass('expired')) {
+            $.noty('اعتبار خودرو به پایان رسیده است.', 'warning');
+            e.stopPropagation()
+            return false;
+        }
+
+       // var moduleId = $(sender).closest('div.driver').attr('id').replace('div_', '');
+        window.location = '@Url.Action("VehicleIndex","vehicle")';//'../Fms/VehicleOnline?mid=' + moduleId + '&vname=' + driver;
+    }
+    function showRouteClick(e, sender) {
+        if ($(sender).closest('.driver,.driverList').hasClass('expired')) {
+            $.noty('اعتبار خودرو به پایان رسیده است.', 'warning');
+            e.stopPropagation()
+            return false;
+        }
+        changePageMode('point');
+    }
+    function vehicleRowClick(sender, panTo) {
+        var code = $(sender).find('span.code').text().trim();
+        $('.driver.selected,.driverList.selected').removeClass('selected');
+        $(sender).addClass('selected');
+        var driverName = $(sender).find('[name=driverTag]').text().trim();
+
+        var displayItem = ($('#hdnDisplayItem').val() == 'Driver') ? driverName : code;
+
+        $('#divSelectedDriver>div').html(displayItem + ' - ');
+        $('#divSelectedDriver').attr('selId', $(sender).attr('id'));
+        $(sender).find('.fa-car').prev().clone().appendTo('#divSelectedDriver>div');
+        $('#divSelectedDriver').css('background-color', '#ffe0e1');
+        setTimeout(function () {
+            $('#divSelectedDriver').css('background-color', 'whitesmoke');
+        }, 2000);
+        $('#divSelectedDriver').hide();
+        $('#divSelectedDriver').fadeIn(2000);
+        var tdDatetime = $(sender).find('.datetime')
+        //var dateTime = tdDatetime.attr('DateTime');
+        var pdateTime = tdDatetime.text();
+        var lat = parseFloat(tdDatetime.attr('Latitude'));
+        var lng = parseFloat(tdDatetime.attr('Longitude'));
+        var spd = parseFloat($(sender).find('.fa.fa-dashboard').next().text().replace(' km/h', ''));
+      //  var moduleId = $(sender).attr('id');
+
+        var utm = '';
+        var mapDatum = 0;
+        if (isNaN(lat) || lat > 90 || lat < -90) {
+            $.noty("Latitude must be between -90 and 90","warning");
+        }
+        else {
+            if (isNaN(lng) || lng > 180 || lng < -180) {
+                $.noty("Longitude must be between -180 and 180","warning");
+            }
+            else {
+                var latStr = toDMS(lat, "dms", 4);
+                var lonStr = toDMS(lng, "dms", 4);
+
+                utmconv.setDatum(mapDatum);
+                var coords = utmconv.latLngToUtm(lat, lng);
+                utm = String.format('E {0} , N {1} , Z: {2}', coords.global.easting, coords.global.northing, coords.global.zone);
+            }
+        }
+
+        try {
+            for (var i = 0; i < pointList.length; i++) {
+                if (pointList[i].id == $(sender).attr('id')) {
+                    if (panTo) {
+                        var latlng = L.latLng(pointList[i].latitude, pointList[i].longitude);
+                        //map.setView(latlng, map.getZoom());
+                        map.flyTo(latlng, 12);
+                    }
+
+                    var geo = "";
+                    var content = String.format(infoWindowContent, numbers.check(driverName.toString(), "fa"),numbers.check( pdateTime.toString(), "fa"), numbers.check(spd.toString(), "fa") + ' km/h', numbers.check(lat.toString(), "fa"), numbers.check(lng.toString(), "fa"), numbers.check(utm.toString(), "fa"), numbers.check(geo.toString(), "fa"));
+                    pointList[i].marker.bindPopup(content);
+                    pointList[i].marker.openPopup();
+
+                    $.ajax({
+                        url: '@Url.Action("GetLocationFromOpenStreet")',
+                        data: { latitude: pointList[i].latitude, longitude: pointList[i].longitude, refId: '' },
+                        type: "POST",
+                        dataType: "json",
+                        //async: false,
+                        success: function (result) {
+                            geo = result.address;
+                            $('#geo>span').text(geo);
+                            $('#geo>img').hide();
+                        },
+                        failure: function (ee) {
+                            console.log(e.message);
+                        }
+                    });
+                }
+                else {
+                      //pointList[i].marker.setAnimation(null);
+                }
+            }
+        } catch (e) {
+            console.log(e.message);
+        }
+       // showVehiclesOnMap(pointList);
+        return false;
+    }
+      function getAdvancedOptions() {
+            var tmp = localStorage.getItem("stopSpeedThreshold");
+            $('#numStopSpeedThreshold').val(tmp == null ? "10" : tmp);
+            var tmp = localStorage.getItem("numStopDurationThreshold");
+            $('#numStopDurationThreshold').val(tmp == null ? "10" : tmp);
+            var tmp = localStorage.getItem("direction");
+            $('#chkDirection').attr('checked', (tmp == null ? "true" : tmp) == "true");
+            var tmp = localStorage.getItem("stops");
+            $('#chkStops').attr('checked', (tmp == null ? "true" : tmp) == "true");
+    }
+     function clearAnimation() {
+            clearInterval(arTimer);
+            arTimer = null;
+            arVehicleRoute = null;
+            arPointIndexMain = 0;
+            arPointIndexShow = 0;
+            arMainRoutePoints = null;
+            arLstPointsShow = [];
+            arMarker = null;
+            pointClickedMarker = null;
+
+            $('#ppRoute>img').attr('src', '../lib/SuperieurThem/vendor_components/Ionicons/png/512/play.png');
+            $('#divRouteActions').hide();
+
+            //---- Route Extra Info
+            routeMaxSpeed = routeSumSpeed = routeCntSpeed = routeSumDistance = 0;
+    }
+     var calcRouteStartIndex, calcRouteFinishIndex;
+        var calcRouteStartMarker = null, calcRouteFinishMarker = null;
+        var calculatedRouteLayer = null;
+
+        var pointClickedMarker = null;
+        function pointClick(sender, panTo) {
+
+            $("#divEE").remove();
+
+            $('.pointRowSelected').removeClass('pointRowSelected');
+            $(sender).addClass('pointRowSelected');
+
+            var dateId = $(sender).closest('.dayRow').attr('id');
+            var dayText = $('#' + dateId + ' .dayHeader').text().substring(0, 10);
+
+            var lat = $(sender).attr('lat');
+            var lng = $(sender).attr('lng');
+            if (pointClickedMarker == null) {
+                var icon = L.icon({
+                    iconUrl: '../images/yes.png',
+                    iconSize: [16, 16], // size of the icon
+                    iconAnchor: [8, 8], // point of the icon which will correspond to marker's location
+                    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                });
+
+                pointClickedMarker = L.marker([lat, lng], { icon: icon });
+                markerOverlay.addLayer(pointClickedMarker);
+            }
+            else {
+                pointClickedMarker._latlng = { lat: lat, lng: lng };
+            }
+            pointClickedMarker.update();
+
+            var refId = Math.ceil(Math.random() * 1000000);
+            var popup = String.format(
+                '<table width="100%" border="1" style="border-collapse: collapse;font-family:\'IRANSansWeb\', sans-serif">' +
+                    '<tr><td colspan="2" dir="rtl" dayId="{5}">{0} {6}</td></tr>' +
+                    '<tr><td dir="ltr" width="50%">{1}</td><td dir="ltr">{3}</td></tr>' +
+                    '<tr><td colspan="2" dir="ltr">{2}</td></tr>' +
+                    '<tr><td colspan="2" style="background-color: aliceblue; padding: 5px;"><img id="imgPopup" src="../images/loading.gif" refId="{4}" alt="" /></td></tr>' +
+                    '<tr class="routeCalculationAction"><td colspan="3"><div id="divCalculationActions"><button class="btn" tag="start">شروع مسیر</button><button class="btn" tag="finish">پایان مسیر</button></div></td></tr>' +
+                '</table>',
+        /*0*/ $($(sender).find('td')[0]).html(),
+        /*1*/ $($(sender).find('td')[1]).html(),
+        /*2*/ $($(sender).find('td')[2]).html(),
+        /*3*/ $($(sender).find('td')[3]).html(),
+        /*4*/ refId,
+        /*5*/ dateId,
+        /*6*/ dayText);
+            pointClickedMarker.bindPopup(popup).openPopup();
+
+            if (panTo) {
+                map.panTo(pointClickedMarker._latlng);
+            }
+
+            $('#divCalculationActions button').click(function (event) {
+                var pRow = $($('.pList .pointRowSelected')[0]);//$('#divEE').closest('tr');
+                var lat = pRow.attr('lat');
+                var lng = pRow.attr('lng');
+
+                $('.routeCalculationAction').hide();
+
+                var tag = $(this).attr('tag');
+                if (tag == 'start') {
+                    calcRouteStartIndex = $('div.pList tr').index(pRow);
+                    if (calcRouteStartMarker == null) {
+                        var icon = L.icon({
+                            iconUrl: '../images/yes.png',
+                            iconSize: [16, 16], // size of the icon
+                            iconAnchor: [8, 8], // point of the icon which will correspond to marker's location
+                        });
+
+                        calcRouteStartMarker = L.marker([lat, lng], { icon: icon });
+                        markerOverlay.addLayer(calcRouteStartMarker);
+                    }
+                    else {
+                        calcRouteStartMarker._latlng = { lat: lat, lng: lng };
+                        calcRouteStartMarker.update();
+                    }
+                }
+                else if (tag == 'finish') {
+                    calcRouteFinishIndex = $('div.pList tr').index(pRow);
+                    if (calcRouteFinishMarker == null) {
+                        var icon = L.icon({
+                            iconUrl: '../images/yes.png',
+                            iconSize: [16, 16], // size of the icon
+                            iconAnchor: [8, 8], // point of the icon which will correspond to marker's location
+                        });
+
+                        calcRouteFinishMarker = L.marker([lat, lng], { icon: icon });
+                        markerOverlay.addLayer(calcRouteFinishMarker);
+                    }
+                    else {
+                        calcRouteFinishMarker._latlng = { lat: lat, lng: lng };
+                        calcRouteFinishMarker.update();
+                    }
+                }
+
+                if (this != $("#divEE")[0]) {
+                    $("#divEE").remove();
+                }
+
+                $('.pontRowCalculted').removeClass('pontRowCalculted');
+                if (tag == 'start')
+                    pRow.addClass('pontRowCalculted');
+                if (calcRouteStartIndex >= 0 && calcRouteFinishIndex > calcRouteStartIndex) {
+
+                    //----Route Calculated----------------\\
+                    var tmpRouteSumDistance = 0;
+                    var tmpRouteSumSpeed = 0;
+                    var tmpRouteMaxSpeed = 0;
+                    var tmpRouteCntSpeed = 0;
+                    var lPoint = null;
+                    var pItem = null;
+                    var lstLatLngPoints = [];
+                    $('div.pList tr').each(function (index) {
+                        if (index <= calcRouteFinishIndex && index >= calcRouteStartIndex) {
+                            $(this).addClass('pontRowCalculted');
+
+                            var tmpSpeed = parseFloat($(this).find("td:eq(1)").text().replace(' km/h', ''));
+                            tmpRouteCntSpeed++;
+                            tmpRouteSumSpeed += tmpSpeed;
+                            if (tmpSpeed > tmpRouteMaxSpeed) {
+                                tmpRouteMaxSpeed = tmpSpeed;
+                            }
+
+                            pItem = { lat: parseFloat($(this).attr('Lat')), lng: parseFloat($(this).attr('Lng')), speed: $(this).find("td:eq(1)").text().replace(' km/h', '') };
+                            if (lPoint != null) {
+                                tmpRouteSumDistance += L.latLng(lPoint.lat, lPoint.lng).distanceTo(L.latLng(pItem.lat, pItem.lng));
+                            }
+
+                            lstLatLngPoints.push(L.latLng(pItem.lat, pItem.lng));
+
+                            lPoint = pItem;
+                        }
+                    });
+
+
+                    var polylineOptions = {
+                        color: 'brown',
+                        strokeOpacity: .5,
+                        strokeWeight: 5
+                    };
+                    calculatedRouteLayer =new L.polyline(lstLatLngPoints, polylineOptions);
+                    calculatedRouteLayer.refId = 'calculated';
+                    routeOverlay.addLayer(calculatedRouteLayer);
+
+                    $('#extraValueCD').text(Math.round(tmpRouteSumDistance / 1000));
+                    $('#extraValueCAS').text(Math.round(tmpRouteSumSpeed / routeCntSpeed));
+                    $('#extraValueCMS').text(Math.round(tmpRouteMaxSpeed));
+
+                    $('#divCalculatedInfo').show();
+                }
+
+                return false;
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetLocationFromOpenStreet","Main")',
+                data: { latitude: lat, longitude: lng, refId: refId },
+                type: "POST",
+                dataType: "json",
+                success: function (result) {
+                    geo = result;
+                    if ($('#imgPopup').length > 0 && $('#imgPopup').attr('refId') == geo.refId) {
+                        var td = $('#imgPopup').closest('td');
+                        td.empty();
+                        td.text(geo.address);
+                    }
+                },
+                failure: function (ee) {
+                    console.log(e.message);
+                    //alert(e.message);
+                }
+            });
+
+        }
+
+    function clearCalculations() {
+        $('#divCalculatedInfo').hide();
+        if (calculatedRouteLayer != null) {
+            routeOverlay.removeLayer(calculatedRouteLayer);
+
+            $('.pontRowCalculted').removeClass('pontRowCalculted');
+            markerOverlay.removeLayer(calcRouteStartMarker);
+            markerOverlay.removeLayer(calcRouteFinishMarker);
+        }
+        calcRouteStartIndex = 0;
+        calcRouteFinishIndex = 0;
+        calcRouteStartMarker = null;
+        calcRouteFinishMarker = null;
+    }
+     function toggleLatLngUtm(sender) {
+        $('#trLatLngUtm').toggle();
+        $(sender).children(0).toggleClass('fa-angle-down');
+        $(sender).children(0).toggleClass('fa-angle-up');
+    }
+     function numberWithCommas(number) {
+        var parts = number.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
+    }
+
+    function angle(p1, p2) {
+        var pt = new L.latLng(p1.lat, p2.lng);
+        var dy = pt.distanceTo(p2) * (p2.lat < pt.lat ? -1 : 1);
+        var dx = pt.distanceTo(p1) * (pt.lng < p1.lng ? -1 : 1);
+        var m = dy / dx;
+        return -((p2.lng < p1.lng ? 180 : 0) + Math.atan(m) / Math.PI * 180);
+    }
+    function toggleRoute(sender, refId) {
+            var show = false;
+            if ($(sender).hasClass('fa-check-circle-o')) {
+                $(sender).addClass('fa-circle-o');
+                $(sender).removeClass('fa-check-circle-o');
+            }
+            else {
+                $(sender).addClass('fa-check-circle-o');
+                $(sender).removeClass('fa-circle-o');
+                show = true;
+            }
+
+            routeLayers.forEach(function (layerItem) {
+                if (layerItem.refId == refId) {
+                    if (show)
+                        routeOverlay.addLayer(layerItem);
+                    else
+                        routeOverlay.removeLayer(layerItem);
+                }
+            });
+
+            markerLayers.forEach(function (layerItem) {
+                if (layerItem.refId == refId) {
+                    if (show)
+                        markerOverlay.addLayer(layerItem);
+                    else
+                        markerOverlay.removeLayer(layerItem);
+                }
+            });
+    }
+     function togglePoints(sender) {
+            if ($(sender).hasClass('fa-plus-square-o')) {
+                $(sender).removeClass('fa-plus-square-o');
+                $(sender).addClass('fa-minus-square-o');
+                $(sender).closest('div').find('.pList').show();
+                //$("#ulPointsId_" + detectorNum + "_" + dayIndex).css("display", "block");
+            }
+            else if ($(sender).hasClass('fa-minus-square-o')) {
+                $(sender).removeClass('fa-minus-square-o');
+                $(sender).addClass('fa-plus-square-o');
+                $(sender).closest('div').find('.pList').hide();
+                //$("#ulPointsId_" + detectorNum + "_" + dayIndex).css("display", "none");
+            }
+        }
+
+    function toggleStops(sender) {
+        if ($(sender).hasClass('fa-plus-square-o')) {
+            $(sender).removeClass('fa-plus-square-o');
+            $(sender).addClass('fa-minus-square-o');
+            $(sender).closest('div').find('.sList').show();
+            //$("#ulPointsId_" + detectorNum + "_" + dayIndex).css("display", "block");
+        }
+        else if ($(sender).hasClass('fa-minus-square-o')) {
+            $(sender).removeClass('fa-minus-square-o');
+            $(sender).addClass('fa-plus-square-o');
+            $(sender).closest('div').find('.sList').hide();
+            //$("#ulPointsId_" + detectorNum + "_" + dayIndex).css("display", "none");
+        }
+    }
+    function excelOutput() {
+        //window.open('https://www.google.com');
+        var txtDateFrom = fixNumbers($('#txtDateFrom').val());
+        var txtDateTo = fixNumbers($('#txtDateTo').val());
+        var dateFrom = JalaliDate.parseToDateTime(txtDateFrom.split(' ')[1]);
+        var timeFrom = txtDateFrom.split(' ')[0]
+        var dateTo = JalaliDate.parseToDateTime(txtDateTo.split(' ')[1]);
+        var timeTo = txtDateTo.split(' ')[0];// + ':59';
+
+        dateFrom = String.format('{0} {1}', new Date(dateFrom.getTime() - (dateFrom.getTimezoneOffset() * 60000)).toISOString().substring(0, 10), timeFrom);
+        dateTo = String.format('{0} {1}', new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 60000)).toISOString().substring(0, 10), timeTo);
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ExcelOutput","Main")',
+            data: { vehicleId: $('#divSelectedDriver').attr('selId').replace('div_', ''), dateFrom: dateFrom, dateTo: dateTo },
+            success: function (response) {
+                window.open(response);
+            },
+            error: function () {
+            }
+        });
+
+    }
+    function timeFormat(datetime) {
+            return String.format('{0}:{1}:{2}', pad(datetime.getHours(), 2), pad(datetime.getMinutes(), 2), pad(datetime.getSeconds(), 2))
+    }
+    function getStopAddress(lat, lng, elementId) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetLocationFromOpenStreet","Main")',
+            data:{ latitude: lat, longitude: lng, refId: elementId },
+            success: function (response) {
+                var add = JSON.parse(response);
+                $('#' + add.refId).find('img').hide();
+                $('#' + add.refId).text(add.address);
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function arTimerTick() {
+        var len = arLstPointsShow.length;
+        var last = arLstPointsShow[len - 1];
+        if (arPointIndexShow >= len) {
+            if (arPointIndexMain >= arMainRoutePoints.length) {
+                clearAnimation();
+                return;
+            }
+            $('.routeOver').removeClass('routeOver');
+            var arRow = $('.pList tr')[arPointIndexMain];
+            $(arRow).addClass('routeOver');
+            //arRow.scrollIntoView();
+            var destination = arMainRoutePoints[arPointIndexMain++]
+            var dis = last.distanceTo(destination);
+
+            //---- Route Extra Info
+
+            routeSumDistance += dis;
+            var spd = parseInt($(arRow).find('td:nth-child(2)').text());
+            routeCntSpeed++;
+            routeSumSpeed += spd;
+            if (spd > routeMaxSpeed) {
+                routeMaxSpeed = spd;
+            }
+
+            //console.log(Math.round(routeSumDistance / 1000) + ' - ' + Math.round(routeSumSpeed / routeCntSpeed));
+            $('#extraValueD').text(Math.round(routeSumDistance / 1000));
+            $('#extraValueAS').text(Math.round(routeSumSpeed / routeCntSpeed));
+            $('#extraValueMS').text(Math.round(routeMaxSpeed));
+
+            //$('#extraValueAS').text(Math.round(routeSumSpeed / routeCnt));
+            //$('#extraValueMS').text(Math.round(routeMaxSpeed));
+
+
+            var steps = Math.ceil(dis / 10);
+            var dLat = (destination.lat - last.lat) / steps;
+            var dLng = (destination.lng - last.lng) / steps;
+            for (var i = 1; i < steps; i++) {
+                arLstPointsShow.push(new L.latLng(last.lat + dLat * i, last.lng + dLng * i));
+            }
+            arLstPointsShow.push(destination.clone());
+
+            var tmpAngle = (angle(last, destination) + 360) % 360;
+            var arIcon = L.divIcon({
+                className: 'divIconDirection', html: String.format('<i class="fa fa-chevron-{2}" style="color: {0}; transform: rotate({1}deg); transform-origin: center; font-size: 10pt;"></i>', colorList[0],
+                    (tmpAngle < 270 && tmpAngle > 90) ? (tmpAngle - 180) : tmpAngle, (tmpAngle < 270 && tmpAngle > 90) ? 'left' : 'right')
+            });
+            arMarker.setIcon(arIcon);
+        }
+
+        var cur = arLstPointsShow[arPointIndexShow++];
+        arMarker._latlng = { lat: cur.lat, lng: cur.lng };
+        arMarker.update();
+        arVehicleRoute._latlngs.push(cur);
+        arVehicleRoute.redraw();
+        if (!map.getBounds().contains(cur)) {
+            map.panTo(cur);
+        }
+    }
+</script>
+<section class="content">
+    <div class="row" style="background:#fff">
+        <div class="col-12">
+            <div class="box-body">
+                <div class="table-responsive" style="overflow:hidden">
+                    <div id="divMainContainer" class="row">
+                        <div id="divVehicles" class="col-xl-4 col-sm-7 d-none d-sm-block" style="height: 100%;">
+                            <div id="divVehicleHeader">
+                                <input type="hidden" runat="server" clientidmode="Static" id="hdnEventCount" />
+                                <input type="hidden" value="Driver" id="hdnDisplayItem" />
+
+                                <table width="100%" class="form-element">
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="form_row" style="position: relative">
+                                                <input type="text" class="form-control" style="width: 100%;" id="txtDriverSearch" onkeyup="return driverSearch();" placeholder="جستجو" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" id="drpSort" style="width: 97%" onchange="sortDrivers();">
+                                                <option value="Driver">▼ راننده</option>
+                                                <option value="PDateTime">▼ تاریخ و زمان</option>
+                                                <option value="Date">▼ تاریخ </option>
+                                                <option value="Code">▼ کد</option>
+                                                <option value="Connect">▼ ارتباط </option>
+                                                <option value="Disconnect">▼ فاقد ارتباط </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="drpVehicleState" style="width: 100%" onchange="return driverSearch();">
+                                                <option value="All">▼ همه</option>
+                                                <option value="Off">▼ خاموش</option>
+                                                <option value="Stop">▼ توقف</option>
+                                                <option value="Speed">▼ بیش از سرعت مجاز</option>
+                                                <option value="Connected">▼ دارای ارتباط</option>
+                                                <option value="Disconnected">▼ فاقد ارتباط</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table style="width: 100%; margin-top: 5px;">
+                                                <tr>
+                                                    <td style="text-align: right; width: 16%">
+                                                        <a title="تغییر نمایش" onclick="setInitialVehicles('list');"><i id="iconList" class="fa fa-th-large" style="margin: 0px 0px 0 7px; font-size: 14pt; color: gray; cursor: pointer"></i></a>
+                                                        <a title="تنظیمات" onclick="showCompanySettings();"><i class="fa fa-gear left" style="margin: 0px 0px 0 7px; font-size: 14pt; color: gray; cursor: pointer"></i></a>
+                                                        <div id="divCompanySettings" style="position: absolute; padding: 10px; right: 40px; background-color: #fff; border-radius: 5px; width: 280px; border: 1px lightgray solid; display: none; font-size: 10pt; z-index: 200;">
+                                                            <i class="fa fa-close left btn" title="بستن" style="color:#999" onclick="$('#divCompanySettings').hide()"></i>
+                                                            <div style="background: #ddd; border-radius: 4px; margin-bottom: 5px; height: 30px; line-height: 30px; text-align: center;">تنظیمات</div>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td align="right">آستانه قطع موقت (دقیقه):</td>
+                                                                    <td>
+                                                                        <input type="text" value="15" class="form-control" style="width: 60px; font-family: inherit; height: 25px; text-align: center" id="txtTempDisconnectedThreshold" />
+                                                                        <i class="fa fa-circle" style="color: orange"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="right">آستانه قطع ارتباط (دقیقه):</td>
+                                                                    <td>
+                                                                        <input type="text" value="60" class="form-control" style="width: 60px; font-family: inherit; height: 25px; text-align: center" id="txtDisconnectedThreshold" />
+                                                                        <i class="fa fa-circle" style="color: red"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="right">عنوان نمایشی:</td>
+                                                                    <td>
+                                                                        <select class="form-control" id="drpDisplay" style="width: 60px;height: 30px;" onchange="ChangeDisplayItem(this);">
+                                                                            <option value="Driver">▼ راننده</option>
+                                                                            <option value="Code"> کد</option>
+                                                                        </select>
+                                                                        <i class="fa fa-circle" style="color: red"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" align="center">
+                                                                        <input type="button" class="btn" style="margin-top: 5px; padding: 5px 20px;" value="ثبت و بازگشت" onclick="return saveCompanySettings(this);" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" align="center">
+                                                                        <span style="font-size: 8pt"><i class="fa fa-info-circle" style="font-size: 8pt"></i>تنظیمات بر روی جستجوهای بعدی اعمال میشود.</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                    <td style="text-align: right; width: 25%">
+                                                        تعداد:
+                                                        <img src="~/images/loading.gif" class="refLoading" alt="" />
+                                                        <span id="lblCount"></span>
+                                                    </td>
+                                                    <td style="text-align: center; width: 33%; color: #007500;">
+                                                        دارای ارتباط:
+                                                        <img src="~/images/loading.gif" class="refLoading" alt="" />
+                                                        <span id="lblConnect"></span>
+                                                    </td>
+                                                    <td style="text-align: left; width: 33%; color: red;">
+                                                        فاقد ارتباط:
+                                                        <img src="~/images/loading.gif" class="refLoading" alt="" />
+                                                        <span id="lblDisconnect"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="divVehilceList" style="overflow-y: auto;">
+                                <div id="divVehicleContent" runat="server" clientidmode="Static"></div>
+                            </div>
+                            <div id="divPointHeader" class="row form-element">
+                                <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <label style="float: right;padding: 10px 2px 0px 2px;">از:</label>
+                                    <div class="input-group" style="width:90%">
+                                        <input type="text" id="txtDateFrom" class="form-control" tabindex="1" autocomplete="off">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text cursor-pointer" id="date4"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <label style="float: right;padding: 10px 2px 0px 2px;">تا:</label>
+                                    <div class="input-group" style="width:90%">
+                                        <input type="text" id="txtDateTo" class="form-control" tabindex="2" autocomplete="off">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text cursor-pointer" id="date5"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="width: 50px">
+                                                <input type="button" class="btn" style="margin-top: 5px; padding: 5px 10px; height: 29px" value="نمایش" onclick="getPoints();" />
+                                            </td>
+                                            <td style="width: 50px">
+                                                <input type="button" class="btn btn-outline" style="margin-top: 5px; padding: 5px 10px; height: 29px" value="بازگشت" onclick="changePageMode('vehicle');" />
+                                            </td>
+                                            <td style="width: 50px" align="left">
+                                                <span>نقاط: </span>
+                                            </td>
+                                            <td style="width: 50px" align="right">
+                                                <span id="pointsCount" style="display: none;"></span>
+                                                <img src="~/images/loading.gif" style="width: 16px; vertical-align: middle; display: none" alt="" />
+                                            </td>
+                                            <td style="width: 50px" align="left">
+                                                <span>توقفات: </span>
+                                            </td>
+                                            <td style="width: 100px" align="right">
+                                                <span id="stopsCount" dir="ltr" style="display: none;"></span>
+                                                <img src="~/images/loading.gif" style="width: 16px; vertical-align: middle; display: none" alt="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td style="width: 45%">
+                                                <input type="radio" name="view" id='viewPoints' value="viewPoints" style="margin: 5px;" checked="checked" /><label for='viewPoints' style="width:40%">نقاط</label>
+                                                <input type="radio" name="view" id='viewStops' value="viewStops" style="margin: 5px;" /><label for='viewStops' style="width:40%">توقفات</label>
+                                            </td>
+                                            <td align="center" style="width: 40%">
+                                                <div id="divRouteActions" dir="ltr" style="display: none;float:left">
+                                                    <span class="routeAction" id="ppRoute" onclick="showRouteAnimation();" style="margin-right:0px">
+                                                        <img src="/lib/SuperieurThem/vendor_components/Ionicons/png/512/play.png" alt="" />
+                                                    </span>
+                                                    <span style="font-weight: bold; font-size: 7pt; color: gray;">Min</span>
+                                                    <input type="range" name="points" min="0" max="20" value="10" class="custom-range" style="width: 31%;" onchange="timerIntervalChanged($(this).val());" />
+                                                    <span style="font-weight: bold; font-size: 7pt; color: gray;">Max</span>
+                                                </div>
+                                            </td>
+                                            <td style="position: relative">
+                                                <a title="تنظیمات توقف" onclick="$('#divAdvancedOptions').toggle();"><i class="fa fa-gear left" style="margin: 0px 0px 0 0px; font-size: 14pt; color: gray; cursor: pointer"></i></a>
+                                                <div id="divAdvancedOptions" style="position: absolute; padding: 10px; right: 16px; background-color: #fff; border-radius: 5px; width: 280px; border: 1px lightgray solid; display: none; font-size: 10pt; z-index: 200;">
+                                                    <i class="fa fa-close left btn" title="بستن" style="color:#999" onclick="$('#divAdvancedOptions').hide()"></i>
+                                                    <div style="background: #ddd; border-radius: 4px; margin-bottom: 5px; height: 30px; line-height: 30px;text-align:center">تنظیمات توقف</div>
+                                                    <table width="100%" class="form-element">
+                                                        <tr>
+                                                            <td align="right">آستانه سرعت توقف (km/h):</td>
+                                                            <td>
+                                                                <input type="number" class="form-control" min="0" max="20" value="5" style="font-family: inherit; height: 25px; text-align: center" id="numStopSpeedThreshold" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">آستانه زمان توقف (دقیقه):</td>
+                                                            <td>
+                                                                <input type="number" class="form-control" min="0" max="60" value="5" style="font-family: inherit; height: 25px; text-align: center" id="numStopDurationThreshold" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="right">
+                                                                <input id="chkDirection" type="checkbox" style="font-family: inherit;" checked="checked" />
+                                                                <label for="chkDirection">نمایش جهت حرکت</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="right">
+                                                                <input id="chkStops" type="checkbox" style="font-family: inherit;" />
+                                                                <label for="chkStops">نمایش توقفات</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="center">
+                                                                <input type="button" class="btn" style="margin-top: 5px; padding: 5px 20px" value="ثبت و بازگشت" onclick="return saveAdvancedOptions(this);" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="center">
+                                                                <span style="font-size: 8pt"><i class="fa fa-info-circle" style="font-size: 8pt"></i>تنظیمات بر روی جستجوهای بعدی اعمال میشود.</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td style="position: relative" align="center">
+                                                <a title="خروجی اکسل" onclick="excelOutput();"><i class="fa fa-file-excel-o left" style="margin: 0px 2px 2px 0px; font-size: 12pt; color: gray; cursor: pointer"></i></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="divPointList" style="overflow-y: auto; height:max-content" class="row">
+                            </div>
+                            <div id="divStopList" style="overflow-y: auto; height:max-content; display: none">
+                            </div>
+                        </div>
+                        <div id="divRightPanel" class="col-xl-8 col-sm-5 col-xs-12" style="padding-right:0px" @*style="position: relative; top: 0; left: 0; right: 0; bottom: 0; height: 100%; overflow: hidden;"*@>
+                            @*<input type="hidden" id="hdnLat" value="@this.CurrentCompanySetting.lat" />
+                                <input type="hidden" id="hdnLng" value="@this.CurrentCompanySetting.lng" />*@
+                            <table id="divCalculatedInfo" style="z-index: 1000; position: absolute; right: 29px; bottom: 157px; opacity: .8; height: 42px; display: none; width: 183px; border-radius: 5px; border: 1px solid #a27f7f;background:rgb(234, 204, 204);opacity:0.8">
+                                <tr>
+                                    <td style="width: 50%"></td>
+                                    <td>
+                                        <div style="border-color: red #999 #999 #999;" data-toggle="tooltip" title="حداکثر سرعت">
+                                            <span class="extraValue" id="extraValueCMS"></span>
+                                            <span class="extraUnit">km/h</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="divCalculatedInfoAvgSpeed" style="border-color: red #999 green #999;" data-toggle="tooltip" title="میانگین سرعت">
+                                            <span class="extraValue" id="extraValueCAS"></span>
+                                            <span class="extraUnit">km/h</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="divCalculatedInfoDistance" style="border-color: #999 #999 #999 #999;" data-toggle="tooltip" title="کیلومتر کارکرد">
+                                            <span class="extraValue" id="extraValueCD"></span>
+                                            <span class="extraUnit">km</span>
+                                        </div>
+                                    </td>
+                                    <td><i class="fa fa-close" style="cursor: pointer" onclick="clearCalculations();"></i></td>
+                                    <td style="width: 50%"></td>
+                                </tr>
+                            </table>
+                            <table id="divRouteExtraInfo" style="z-index: 200; position: absolute; right: 30px; bottom:100px; opacity: .8; height: 42px; display: none; width: 169px;">
+                                <tr>
+                                    <td style="width: 50%"></td>
+                                    <td>
+                                        <div style="border-color: red #999 #999 #999;" data-toggle="tooltip" title="حداکثر سرعت">
+                                            <span class="extraValue" id="extraValueMS"></span>
+                                            <span class="extraUnit">km/h</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="divExtraInfoAvgSpeed" style="border-color: red #999 green #999;" data-toggle="tooltip" title="میانگین سرعت">
+                                            <span class="extraValue" id="extraValueAS"></span>
+                                            <span class="extraUnit">km/h</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="divExtraInfoDistance" style="border-color: #999 #999 #999 #999;" data-toggle="tooltip" title="کیلومتر کارکرد">
+                                            <span class="extraValue" id="extraValueD"></span>
+                                            <span class="extraUnit">km</span>
+                                        </div>
+                                    </td>
+                                    <td style="width: 50%"></td>
+                                </tr>
+                            </table>
+                            <div id="divSelectedDriver">
+                                <img src="~/lib/SuperieurThem/vendor_components/Ionicons/png/512/driver48.png" alt="" class="right" />
+                                <div class="left"></div>
+                            </div>
+                            <div id="divMap" style="height: 700px; border-width:1px; border-style: solid; border-color: lightgray; z-index: 100; background-color: #EEEEEE; "></div>
+                            <i id="pan" class="fa fa-caret-right fa-2x" style="position: absolute;top:50px;background: #f2f3f8;z-index: 1000;padding:12px 2px 12px 5px;border-radius: 2px 0px 0px 2px;cursor:pointer;border:#d9dadb solid 1px"></i>
+                        </div>
+                        <div class="eventGrid" runat="server" id="divEvent" clientidmode="Static">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+        $('#date4,#txtDateFrom').MdPersianDateTimePicker({
+            targetTextSelector: '#txtDateFrom',
+            enableTimePicker: true,
+            dateFormat: 'HH:mm:ss yyyy/MM/dd',
+            textFormat: 'HH:mm:ss yyyy/MM/dd',
+        });
+        $("#date5,#txtDateTo").MdPersianDateTimePicker({
+            targetTextSelector: '#txtDateTo',
+            enableTimePicker: true,
+            dateFormat: 'HH:mm:ss yyyy/MM/dd',
+            textFormat: 'HH:mm:ss yyyy/MM/dd',
+        });
+        var now = new Date();
+        var persianDate = JalaliDate.toPersian(now).split('/');
+        $('#date4').MdPersianDateTimePicker('setDatePersian', { year: parseInt(persianDate[0]), month: parseInt(persianDate[1]), day: parseInt(persianDate[2]), hour: 0, minute: 0, second: 0 });
+        $('#date5').MdPersianDateTimePicker('setDatePersian', { year: parseInt(persianDate[0]), month: parseInt(persianDate[1]), day: parseInt(persianDate[2]), hour: 23, minute: 59, second: 59 });
+        
+        $('#txtDateFrom,#txtDateTo').on('blur', function () {
+            $(this).MdPersianDateTimePicker('hide');
+        });
+        $(document).keydown(function(e) {
+            if (e.keyCode == 27) {
+                $('#txtDateFrom,#txtDateTo,#date4,#date5').MdPersianDateTimePicker('hide');
+            }
+        });
+    });
+</script>

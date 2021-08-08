@@ -1,0 +1,220 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>ورود به مدیریت ناوگان - شرکت فانوس رادار سپاهان </title>
+    <!-- Bootstrap 4.0-->
+    <link rel="stylesheet" href="~/lib/SuperieurThem/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap extend-->
+    <link rel="stylesheet" href="~/css/SuperieurThem/bootstrap-extend.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/css/SuperieurThem/master_style.css">
+    <!-- Superieur Admin skins -->
+    <link rel="stylesheet" href="~/css/SuperieurThem/skins/_all-skins.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        ::-webkit-input-placeholder { /* Edge */
+            color: #fff;
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #fff;
+        }
+
+        ::placeholder {
+            color: #fff;
+        }
+
+        input.form-control:-webkit-autofill,
+        input.form-control:-webkit-autofill:hover,
+        input.form-control:-webkit-autofill:focus,
+        input.form-control:-webkit-autofill:active {
+            border-bottom: #fff 1px solid;
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: #fff !important;
+        }
+    </style>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            if (slides.length > 0)
+                slides[slideIndex - 1].style.display = "block";
+
+            if (dots.length > 0)
+                dots[slideIndex - 1].className += " active";
+        }
+
+    </script>
+</head>
+<body class="hold-transition bg-img" data-overlay="4">
+    <div class="btn" id="showNoty" style="display:none;height:60px;padding:19px 10px;width:100%;position:fixed;z-index:10000"></div>
+    <div class="auth-2-outer row align-items-center h-p100 m-0" style="direction:rtl">
+        <div class="container-fluid px-0" style="height:100%">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height:100%">
+                <div class="carousel-inner" role="listbox" style="height:100%">
+                    <div class="carousel-item active">
+                        <div class="d-flex align-items-center justify-content-center min-vh-100 bg-img">
+                            <img src="~/images/background/route-map-and-toy-car-on-brick.jpg" width="100%" />
+                            <h1 style="position:absolute;top:20%;text-shadow:3px 3px 3px #fff">مدیریت ناوگان</h1>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex align-items-center justify-content-center min-vh-100 bg-img">
+                            <img src="~/images/background/map-with-route.jpg" width="100%" />
+                            <h1 style="position:absolute;top:6%;text-shadow:3px 3px 3px #fff">نمایش نقشه</h1>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex align-items-center justify-content-center min-vh-100 bg-img">
+                            <img src="~/images/background/esf.png" width="100%" />
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="auth-2" style="position:absolute;top:0px">
+            <div class="auth-logo font-size-30">
+                <img src="~/images/logo_fanus.png" width="180" />
+                <br />
+                <a href="AccountIndex" class="text-white"><b>مدیریت ناوگان</b></a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="auth-body" style="border: 1px solid;border-radius: 4px;margin-top:20px;padding:30px;">
+                <p class="auth-msg">ورود به سامانه</p>
+
+                <form asp-action="Login" id="FrmLogin" method="post" class="form-element">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" name="UserName" tabindex="1" placeholder="نام کاربری" style="color:#ffffff">
+                        <span class="fa fa-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <span class="fa fa-eye" onclick="togglePass('Password')" style="position: absolute;bottom: 8px;float: left;left: 10px;"></span>
+                        <input type="password" class="form-control" name="Password" id="Password" placeholder="رمز عبور" style="color:#ffffff" tabindex="2">
+                        <input type="hidden" class="form-control" name="ConfirmPassword" placeholder="رمز عبور" style="color:#ffffff">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <span class="fa fa-building-o form-control-feedback"></span>
+                        <input type="text" class="form-control" name="Description" placeholder="کد شرکت" style="color:#ffffff" tabindex="3">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="checkbox" align="right">
+                                <input type="checkbox" id="basic_checkbox_1" tabindex="4">
+                                <label for="basic_checkbox_1">یادآوری</label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-6">
+                            <div class="fog-pwd"> 
+                                <a href="javascript:void(0)" class="text-white"><i class="ion ion-locked"></i> فراموشی رمز عبور؟</a><br>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-block mt-10 btn-success" tabindex="5">ورود</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery 3 -->
+    <script src="~/lib/SuperieurThem/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <!-- popper -->
+    <script src="~/lib/SuperieurThem/vendor_components/popper/dist/popper.min.js"></script>
+    <!-- Bootstrap 4.0-->
+    <script src="~/lib/SuperieurThem/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/messages_fa.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results != null)
+                return results[1] || 0;
+            else
+                return 0;
+        }
+        $("#FrmLogin").validate({
+            rules: {
+                // simple rule, converted to {required:true}
+                UserName: "required",
+                // compound rule
+                Password: {
+                    required: true
+                },
+                Description: {
+                    required: true
+                }
+            },
+            submitHandler: function (form) {
+                $("[name=ConfirmPassword]").val($("[name=Password]").val());
+                $.ajax({
+                    url: '@Url.Action("Login","Account")',
+                    data: $(form).serialize(),
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.success) {
+                            if ($.urlParam('returnUrl') != '') {
+                                window.location.href = decodeURIComponent($.urlParam('returnUrl'))
+                            } else {
+                                window.location.href = '@Url.Action("Index","Main")';
+                            }
+                        } else {
+                            $.noty("اطلاعات وارد شده صحیح نمی باشد","btn-danger",2000);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>

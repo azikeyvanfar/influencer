@@ -1,0 +1,9 @@
+D:\fanus\FleetManagementSystem\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.deps.json
+D:\fanus\FleetManagementSystem\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.dll
+D:\fanus\FleetManagementSystem\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.pdb
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.csprojAssemblyReference.cache
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.AssemblyInfoInputs.cache
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.AssemblyInfo.cs
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.dll
+D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.pdb

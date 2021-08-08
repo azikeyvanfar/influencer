@@ -1,0 +1,14 @@
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Data.Dapper.deps.json
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Data.Dapper.dll
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Data.Dapper.pdb
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Domain.Contracts.dll
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Domain.Entities.dll
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Domain.Contracts.pdb
+D:\fanus\FleetManagementSystem\Data.Dapper\bin\Release\netstandard2.0\Domain.Entities.pdb
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.csprojAssemblyReference.cache
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.AssemblyInfoInputs.cache
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.AssemblyInfo.cs
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.csproj.CoreCompileInputs.cache
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.csproj.CopyComplete
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.dll
+D:\fanus\FleetManagementSystem\Data.Dapper\obj\Release\netstandard2.0\Data.Dapper.pdb

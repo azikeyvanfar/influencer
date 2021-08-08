@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="FFMS\**" />
+    <Compile Remove="FSYS\ActionLog\**" />
+    <Compile Remove="FSYS\EventCondition\**" />
+    <Compile Remove="FSYS\GroupItem\**" />
+    <Compile Remove="FSYS\Group\**" />
+    <Compile Remove="FSYS\Interrupt\**" />
+    <Compile Remove="FSYS\Key\**" />
+    <Compile Remove="FSYS\LockCategory\**" />
+    <Compile Remove="FSYS\LockGroupLock\**" />
+    <Compile Remove="FSYS\LockGroup\**" />
+    <Compile Remove="FSYS\LockNew\**" />
+    <Compile Remove="FSYS\Lock\**" />
+    <Compile Remove="FSYS\LoginHistory\**" />
+    <Compile Remove="FSYS\Log\**" />
+    <Compile Remove="FSYS\RolePermission\**" />
+    <Compile Remove="FSYS\TextMessage\**" />
+    <Compile Remove="FSYS\Update\**" />
+    <EmbeddedResource Remove="FFMS\**" />
+    <EmbeddedResource Remove="FSYS\ActionLog\**" />
+    <EmbeddedResource Remove="FSYS\EventCondition\**" />
+    <EmbeddedResource Remove="FSYS\GroupItem\**" />
+    <EmbeddedResource Remove="FSYS\Group\**" />
+    <EmbeddedResource Remove="FSYS\Interrupt\**" />
+    <EmbeddedResource Remove="FSYS\Key\**" />
+    <EmbeddedResource Remove="FSYS\LockCategory\**" />
+    <EmbeddedResource Remove="FSYS\LockGroupLock\**" />
+    <EmbeddedResource Remove="FSYS\LockGroup\**" />
+    <EmbeddedResource Remove="FSYS\LockNew\**" />
+    <EmbeddedResource Remove="FSYS\Lock\**" />
+    <EmbeddedResource Remove="FSYS\LoginHistory\**" />
+    <EmbeddedResource Remove="FSYS\Log\**" />
+    <EmbeddedResource Remove="FSYS\RolePermission\**" />
+    <EmbeddedResource Remove="FSYS\TextMessage\**" />
+    <EmbeddedResource Remove="FSYS\Update\**" />
+    <None Remove="FFMS\**" />
+    <None Remove="FSYS\ActionLog\**" />
+    <None Remove="FSYS\EventCondition\**" />
+    <None Remove="FSYS\GroupItem\**" />
+    <None Remove="FSYS\Group\**" />
+    <None Remove="FSYS\Interrupt\**" />
+    <None Remove="FSYS\Key\**" />
+    <None Remove="FSYS\LockCategory\**" />
+    <None Remove="FSYS\LockGroupLock\**" />
+    <None Remove="FSYS\LockGroup\**" />
+    <None Remove="FSYS\LockNew\**" />
+    <None Remove="FSYS\Lock\**" />
+    <None Remove="FSYS\LoginHistory\**" />
+    <None Remove="FSYS\Log\**" />
+    <None Remove="FSYS\RolePermission\**" />
+    <None Remove="FSYS\TextMessage\**" />
+    <None Remove="FSYS\Update\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Contracts\Domain.Contracts.csproj" />
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>bin\Dapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>

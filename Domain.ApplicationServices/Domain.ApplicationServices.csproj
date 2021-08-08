@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="FFMS\**" />
+    <EmbeddedResource Remove="FFMS\**" />
+    <None Remove="FFMS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Contracts\Domain.Contracts.csproj" />
+    <ProjectReference Include="..\Domain.Services\Domain.Services.csproj" />
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commons\" />
+    <Folder Include="FORG\Company\" />
+    <Folder Include="FORG\Department\" />
+    <Folder Include="FORG\PersonRole\" />
+    <Folder Include="FORG\Person\" />
+    <Folder Include="FORG\User\" />
+    <Folder Include="FSYS\ActionLog\" />
+    <Folder Include="FSYS\BasicData\" />
+    <Folder Include="FSYS\EventCondition\" />
+    <Folder Include="FSYS\GroupItem\" />
+    <Folder Include="FSYS\Group\" />
+    <Folder Include="FSYS\Interrupt\" />
+    <Folder Include="FSYS\Key\" />
+    <Folder Include="FSYS\LockCategory\" />
+    <Folder Include="FSYS\LockGroupLock\" />
+    <Folder Include="FSYS\LockGroup\" />
+    <Folder Include="FSYS\LockNew\" />
+    <Folder Include="FSYS\Lock\" />
+    <Folder Include="FSYS\LoginHistory\" />
+    <Folder Include="FSYS\Log\" />
+    <Folder Include="FSYS\Menu\" />
+    <Folder Include="FSYS\Permission\" />
+    <Folder Include="FSYS\RolePermission\" />
+    <Folder Include="FSYS\Role\" />
+    <Folder Include="FSYS\Setting\" />
+    <Folder Include="FSYS\Tag\" />
+    <Folder Include="FSYS\TextMessage\" />
+    <Folder Include="FSYS\Update\" />
+  </ItemGroup>
+
+</Project>
