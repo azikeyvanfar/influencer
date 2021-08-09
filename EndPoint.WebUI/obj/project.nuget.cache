@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AfqzsPy1kWCtCKOVD1G+CAr8vcDQ4AEDz4edz9ktMUqN0Akb9RC4EC7Pj6ndRK4PCtCliqjTfRgkfrzDBFmasw==",
+  "dgSpecHash": "UXpztCMIZW3EEwDnKf10e9ESK7gQCwkQHzF8yt8lolxotYRvoPMCIhZh+i/3xN6wShOmBNFdWrFI7R+3KjaNQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj",
+  "projectFilePath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper\\2.0.30\\dapper.2.0.30.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper.contrib\\2.0.30\\dapper.contrib.2.0.30.nupkg.sha512",
