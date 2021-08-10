@@ -4,20 +4,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.FORG
 {
-    [Table("FORG.[User]")]
+    //[Table("FORG.[User]")]
     public class User
     {
-        [ExplicitKey]
+       // [ExplicitKey]
         public Guid UserId { get; set; }
-        [Required]
-        [Display(Name = "کد پرسنل")]
-        public Guid PersonId { get; set; }
+       
         [Computed]
         [Display(Name = "نام و نام خانوادگی")]
         public string DisplayName { get; set; }
-        //[Computed]
-        //[Display(Name = "مجری نشت یابی")]
-        //public string LeakDetector { get; set; }
         [Required]
 
         [Display(Name = "نام کاربری")]
@@ -49,10 +44,7 @@ namespace Domain.Entities.FORG
         public int Row { get; set; }
         [Computed]
         public int TotalCount { get; set; }
-        [Computed]
-        public string PersonName { get; set; }
-        [Computed]
-        public string CompanyName { get; set; }
+        
         [Computed]
         public DateTime LoginDateTime { get; set; }
 

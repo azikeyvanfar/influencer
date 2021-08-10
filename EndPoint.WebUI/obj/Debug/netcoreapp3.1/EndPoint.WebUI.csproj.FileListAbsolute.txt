@@ -166,7 +166,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\ne
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.TagHelpers.input.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.TagHelpers.output.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.RazorCoreGenerate.cache
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccountIndex.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -192,3 +191,4 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\ne
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.genruntimeconfig.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\login.cshtml.g.cs

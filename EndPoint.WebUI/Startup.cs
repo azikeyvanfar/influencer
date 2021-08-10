@@ -37,10 +37,13 @@ namespace EndPoint.WebUI
             services.AddScoped<IBasicDataRepository, BasicDataRepository>();
             services.AddScoped<ISettingRepository, SettingRepository>();
             services.AddScoped<IUserExtentionRepository, UserExtentionRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-    
+            
+
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;

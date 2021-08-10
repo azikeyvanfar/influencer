@@ -1,0 +1,102 @@
+﻿@model Domain.Entities.FORG.User
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="tab-pane active" id="Personality" role="tabpanel">
+                            <form id="frmPersonality" method="post" class="form-element">
+                                <div class="pad box-body row">
+                                    <div class="col-xl-4 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label asp-for="UserName" class="control-label"></label>:
+                                            <span class="text-danger">*</span>
+                                            <input asp-for="UserName" class="form-control" required />
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pad box-body row">
+                                    <div class="col-xl-4 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label asp-for="Password" class="control-label"></label>:
+                                            <span class="text-danger">*</span>
+                                            <input asp-for="Password" class="form-control" required />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+
+        $("[href='#UserInfo']").click(function () {
+            if (urlSave == "EditToDb") {
+                $("#ConfirmPassword").val($("#Password").val());
+            }
+            $("#SubmitPerson").click();
+        })
+        $("[href='#CoInfo']").click(function (e) {
+           // $("#SubmitUserInfo").click();
+        })
+        $('#SignatureFile').on('change', function () {
+
+            $("#Person_Signature").val($("#SignatureFile").val());
+        });
+        $("#Person_FirstName").on('change', function () {
+            $("#DisplayNamePerson").val($("#Person_FirstName").val());
+        });
+        $("#Person_LastName").on('change', function () {
+            $("#DisplayNamePerson").val($("#Person_FirstName").val() + " " + $("#Person_LastName").val());
+        });
+        $("#frmPersonality").validate({
+             rules:  {
+                 // simple rule, converted to {required:true}
+                FirstName: "required",
+                LastName: "required",
+                DisplayName: "required"
+
+            },
+            submitHandler: function (form) { // for demo
+                $("[href='#UserInfo']").attr("data-toggle", "tab");
+                $("[href='#UserInfo']").click();
+                $("#DisplayNameUser").val($("#Person_FirstName").val() +" "+ $("#Person_LastName").val());
+            }
+        });
+        
+
+    });
+
+     function apply() {
+         var selectedRoleIds = '';
+         $("[name=RoleId]").each(function () {
+             if ($(this).is(':checked'))
+                 selectedRoleIds += ',' + $(this).val();
+         });
+         $('#hdnRoleIds').val(selectedRoleIds.substring(1));
+     }
+
+     function previewFile() {
+         const preview = document.querySelector('#SignatureImg');
+         const file = document.querySelector('input[type=file]').files[0];
+         const reader = new FileReader();
+
+         reader.addEventListener("load", function () {
+             // convert image file to base64 string
+             preview.src = reader.result;
+             $("#Person_Signature").val(reader.result.split(',')[1]);
+         }, false);
+
+         if (file) {
+             reader.readAsDataURL(file);
+         }
+     }
+</script>

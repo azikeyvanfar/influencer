@@ -24,3 +24,4 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\n
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.csprojAssemblyReference.cache

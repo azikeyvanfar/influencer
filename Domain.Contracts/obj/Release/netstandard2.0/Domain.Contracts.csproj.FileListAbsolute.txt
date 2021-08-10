@@ -10,3 +10,15 @@ D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domai
 D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csproj.CopyComplete
 D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.dll
 D:\fanus\FleetManagementSystem\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.deps.json
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\bin\Release\netstandard2.0\Domain.Contracts.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\bin\Release\netstandard2.0\Domain.Entities.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\bin\Release\netstandard2.0\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csprojAssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.AssemblyInfoInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.AssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.csproj.CopyComplete
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Release\netstandard2.0\Domain.Contracts.pdb

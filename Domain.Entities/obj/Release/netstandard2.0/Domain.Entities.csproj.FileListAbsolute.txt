@@ -7,3 +7,12 @@ D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain
 D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
 D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.dll
 D:\fanus\FleetManagementSystem\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.deps.json
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.0\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.csprojAssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.AssemblyInfoInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.AssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.0\Domain.Entities.pdb

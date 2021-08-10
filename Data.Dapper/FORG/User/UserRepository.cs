@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Data.Dapper.FORG
 {
-    public class UserRepository : BaseRepository<User>//, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(IConfiguration config) : base(config)
         {
