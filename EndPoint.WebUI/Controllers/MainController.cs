@@ -8,12 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using static EndPoint.WebUI.App_Class.ExtensionMethods;
 
 namespace EndPoint.WebUI.Controllers
 {
