@@ -62,7 +62,7 @@
         <input asp-for="PersonId" class="form-control" type="hidden" value="@gidPerson" />
                                 <input asp-for="User.PersonId" class="form-control" type="hidden" value="@gidPerson" />*@
                                 <input asp-for="HasPerson" class="form-control" type="hidden" value="@HasPerson" />
-                                <input asp-for="User.LastOnline" class="form-control" type="hidden" />
+                                @*<input asp-for="User.LastOnline" class="form-control" type="hidden" />*@
                                 <input asp-for="RoleIds" id="hdnRoleIds" class="form-control" type="hidden" />
                                 <div class="pad box-body row">
                                     <div class="col-xl-4 col-sm-6 col-xs-12">
@@ -214,7 +214,7 @@
                                             <span asp-validation-for="User.ConfirmPassword" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-sm-6 col-xs-12">
+                                    @*<div class="col-xl-4 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <label asp-for="User.Description" class="control-label"></label>:
                                             <input asp-for="User.Description" class="form-control" />
@@ -227,7 +227,7 @@
                                             <label asp-for="User.IsActive" class="control-label"></label>
                                             <span asp-validation-for="User.IsActive" class="text-danger"></span>
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
                                 <div class="box-footer">
                                     <button type="Submit" id="SubmitUserInfo" class="btn btn-primary btn-outline">

@@ -4,22 +4,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.FORG
 {
-    //[Table("FORG.[User]")]
+    [Table("[Users]")]
     public class User
     {
        // [ExplicitKey]
         public Guid UserId { get; set; }
        
-        [Computed]
-        [Display(Name = "نام و نام خانوادگی")]
-        public string DisplayName { get; set; }
+        //[Computed]
+        //[Display(Name = "نام و نام خانوادگی")]
+        //public string DisplayName { get; set; }
         [Required]
 
         [Display(Name = "نام کاربری")]
         public string UserName { get; set; }
 
-        [Display(Name = "فعال")]
-        public bool IsActive { get; set; }
+        //[Display(Name = "فعال")]
+        //public bool IsActive { get; set; }
 
 
 
@@ -29,11 +29,11 @@ namespace Domain.Entities.FORG
         public string Password { get; set; }
 
 
-        [Display(Name = "توضیحات")]
-        public string Description { get; set; }
-        public bool IsOnline { get; set; }
-        public bool HasToken { get; set; }
-        public DateTime? LastOnline { get; set; }
+        //[Display(Name = "توضیحات")]
+        //public string Description { get; set; }
+        //public bool IsOnline { get; set; }
+        //public bool HasToken { get; set; }
+        //public DateTime? LastOnline { get; set; }
         [Required]
         [Computed]
         [DataType(DataType.Password)]
@@ -45,8 +45,8 @@ namespace Domain.Entities.FORG
         [Computed]
         public int TotalCount { get; set; }
         
-        [Computed]
-        public DateTime LoginDateTime { get; set; }
+        //[Computed]
+        //public DateTime LoginDateTime { get; set; }
 
     }
 }

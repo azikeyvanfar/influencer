@@ -21,17 +21,17 @@
         {
             <tr>
                 <td>@item.Row</td>
-                <td>@item.DisplayName</td>
+                @*<td>@item.DisplayName</td>*@
                 <td>@item.UserName</td>
-                <td>@item.Description</td>
-                <td>
+                @*<td>@item.Description</td>*@
+                @*<td>
                     <a asp-action="Edit" asp-route-id="@item.UserId" title="ویرایش" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i></a>
                     <a title="حذف" onclick="sureDelete('@item.UserId','@item.DisplayName');" class="btn btn-primary btn-outline"><i class="fa fa-trash"></i></a>
                     @if (@item.HasToken)
                     {
                         <a  UserId="@item.UserId" DisplayName="@item.DisplayName" onclick="RemoveToken(this)" title="خروج کاربر" class="btn btn-primary btn-outline"><i class="fa fa-sign-out"></i></a>
                     }
-                </td>
+                </td>*@
             </tr>
         }
     </tbody>

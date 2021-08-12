@@ -27,8 +27,10 @@
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -39,9 +41,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0-preview1-19509-03" />
-    <PackageReference Include="Stimulsoft.Dashboards.Web.NetCore" Version="2020.2.2.1" />
-    <PackageReference Include="Stimulsoft.Reports.Web.NetCore" Version="2020.2.2.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Vereyon.Web.FlashMessage" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,9 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Stimulsoft.Base">
-      <HintPath>bin\Debug\Stimulsoft.Base.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.SqlClient">
       <HintPath>..\Domain.Services\bin\System.Data.SqlClient.dll</HintPath>
     </Reference>

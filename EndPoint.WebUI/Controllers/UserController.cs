@@ -61,32 +61,32 @@ namespace EndPoint.WebUI.Controllers
             return View("User");
 
         }
-        [HttpPost]
-        public IActionResult AddToDb(UserPerson UserPerson)
-        {
-            if (ModelState.IsValid)
-            {
-                string password = ManageAccount.CalculateMD5Hash(UserPerson.User.Password);
-                UserPerson.User.Password = password;
-                bool resBool = true;
-                return Json(new { success = resBool });
-            }
-            return RedirectToAction("Add");
-        }
-        public IActionResult Edit(Guid id)
-        {
-            User User = _UserRepo.Fetch(id);
+        //[HttpPost]
+        //public IActionResult AddToDb(UserPerson UserPerson)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        string password = ManageAccount.CalculateMD5Hash(UserPerson.User.Password);
+        //        UserPerson.User.Password = password;
+        //        bool resBool = true;
+        //        return Json(new { success = resBool });
+        //    }
+        //    return RedirectToAction("Add");
+        //}
+        //public IActionResult Edit(Guid id)
+        //{
+        //    User User = _UserRepo.Fetch(id);
 
-            UserPerson userPerson = new UserPerson();
-            userPerson.User = User;
-            userPerson.User.ConfirmPassword = userPerson.User.Password;
-            bool HasPerson = false;
-            ViewBag.HasPerson = HasPerson;
-            List<BasicData> listBd = _BasicDataRepo.GetBasicDataByGroupKey("LeakDetector");
-            SelectList LeakDetectorList = new SelectList(listBd, "Text", "Value");
-            ViewBag.LeakDetectorList = LeakDetectorList;
-            return View("User", userPerson);
-        }
+        //    UserPerson userPerson = new UserPerson();
+        //    userPerson.User = User;
+        //    userPerson.User.ConfirmPassword = userPerson.User.Password;
+        //    bool HasPerson = false;
+        //    ViewBag.HasPerson = HasPerson;
+        //    List<BasicData> listBd = _BasicDataRepo.GetBasicDataByGroupKey("LeakDetector");
+        //    SelectList LeakDetectorList = new SelectList(listBd, "Text", "Value");
+        //    ViewBag.LeakDetectorList = LeakDetectorList;
+        //    return View("User", userPerson);
+        //}
 
 
         [HttpGet]

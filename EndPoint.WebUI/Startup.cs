@@ -27,6 +27,8 @@ namespace EndPoint.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             //services.AddRazorPages();
             // .AddRazorRuntimeCompilation();
             services.AddMemoryCache();
@@ -41,9 +43,8 @@ namespace EndPoint.WebUI
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             
-
-
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;

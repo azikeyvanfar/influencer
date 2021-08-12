@@ -1,102 +1,119 @@
-﻿@model Domain.Entities.FORG.User
-<section class="content">
+﻿@page
+
+@model Domain.Entities.FORG.User
+
+@{
+    //ViewData["Title"] = "Log in";
+    //Layout = "~/Areas/Identity/Pages/_IdentityLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-10 offset-md-1">
+    <section>
+        @*<div class="login-form-icon">
+                <i class="fas fa-user-circle fa-5x text-secondary"></i>
+            </div>*@
+        @*fas fa-user-circle fa-9x text-secondary*@
+        <form id="account" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+        </form>
+
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@*@page
+
+    @model Domain.Entities.FORG.User*@
+@{
+    //ViewData["Title"] = "Register";
+    //Layout = "~/Areas/Identity/Pages/_IdentityLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>@ViewData["Title"]</h1>*@
+
+
+<form asp-route-returnUrl="@*@Model.ReturnUrl*@" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row">
-        <div class="col-12">
-            <div class="box">
-                <div class="box-body">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="tab-pane active" id="Personality" role="tabpanel">
-                            <form id="frmPersonality" method="post" class="form-element">
-                                <div class="pad box-body row">
-                                    <div class="col-xl-4 col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label asp-for="UserName" class="control-label"></label>:
-                                            <span class="text-danger">*</span>
-                                            <input asp-for="UserName" class="form-control" required />
-                                            <span asp-validation-for="UserName" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pad box-body row">
-                                    <div class="col-xl-4 col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label asp-for="Password" class="control-label"></label>:
-                                            <span class="text-danger">*</span>
-                                            <input asp-for="Password" class="form-control" required />
-                                            <span asp-validation-for="Password" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+        @*<div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>*@
+        @*<div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
         </div>
     </div>
-</section>
-<script>
-    $(document).ready(function () {
 
-        $("[href='#UserInfo']").click(function () {
-            if (urlSave == "EditToDb") {
-                $("#ConfirmPassword").val($("#Password").val());
-            }
-            $("#SubmitPerson").click();
-        })
-        $("[href='#CoInfo']").click(function (e) {
-           // $("#SubmitUserInfo").click();
-        })
-        $('#SignatureFile').on('change', function () {
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
 
-            $("#Person_Signature").val($("#SignatureFile").val());
-        });
-        $("#Person_FirstName").on('change', function () {
-            $("#DisplayNamePerson").val($("#Person_FirstName").val());
-        });
-        $("#Person_LastName").on('change', function () {
-            $("#DisplayNamePerson").val($("#Person_FirstName").val() + " " + $("#Person_LastName").val());
-        });
-        $("#frmPersonality").validate({
-             rules:  {
-                 // simple rule, converted to {required:true}
-                FirstName: "required",
-                LastName: "required",
-                DisplayName: "required"
-
-            },
-            submitHandler: function (form) { // for demo
-                $("[href='#UserInfo']").attr("data-toggle", "tab");
-                $("[href='#UserInfo']").click();
-                $("#DisplayNameUser").val($("#Person_FirstName").val() +" "+ $("#Person_LastName").val());
-            }
-        });
-        
-
-    });
-
-     function apply() {
-         var selectedRoleIds = '';
-         $("[name=RoleId]").each(function () {
-             if ($(this).is(':checked'))
-                 selectedRoleIds += ',' + $(this).val();
-         });
-         $('#hdnRoleIds').val(selectedRoleIds.substring(1));
-     }
-
-     function previewFile() {
-         const preview = document.querySelector('#SignatureImg');
-         const file = document.querySelector('input[type=file]').files[0];
-         const reader = new FileReader();
-
-         reader.addEventListener("load", function () {
-             // convert image file to base64 string
-             preview.src = reader.result;
-             $("#Person_Signature").val(reader.result.split(',')[1]);
-         }, false);
-
-         if (file) {
-             reader.readAsDataURL(file);
-         }
-     }
-</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -39,7 +39,7 @@ namespace EndPoint.WebUI.App_Class
 
             if (CurrentUser == null)
             {
-                string cookie = _httpContextAccessor.HttpContext.Request.Cookies["Fanus_FMS_Cooki"];
+                string cookie = _httpContextAccessor.HttpContext.Request.Cookies["influ_Cooki"];
                 CurrentUser = Authentication.CurrentUser(cookie);
             }
         }
