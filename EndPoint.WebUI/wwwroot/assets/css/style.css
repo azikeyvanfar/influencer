@@ -2156,7 +2156,8 @@ div.login-logout-tab a.nav-link {
 }
 .login-card {
     border: 0px;
-    border-radius: 27px;
+    /* border-radius: 27px;*/
     box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
-    overflow:hidden;
+    overflow: hidden;
+    margin: 93px 90px 10px 90px;
 }

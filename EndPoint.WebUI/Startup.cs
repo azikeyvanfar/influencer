@@ -46,10 +46,20 @@ namespace EndPoint.WebUI
             
             services.ConfigureApplicationCookie(options =>
             {
+                //options.Cookie.HttpOnly = true;
+                //options.Cookie.Expiration = TimeSpan.FromDays(5);
+                //options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
+                //options.LoginPath = "/Account/Login";
+                //options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.Cookie.Name = "YourAppCookieName";
                 options.Cookie.HttpOnly = true;
-                options.Cookie.Expiration = TimeSpan.FromDays(5);
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.LoginPath = "/Identity/Account/Login";
+                // ReturnUrlParameter requires 
+                //using Microsoft.AspNetCore.Authentication.Cookies;
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+                options.SlidingExpiration = true;
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
             //.AddCookie(options =>
