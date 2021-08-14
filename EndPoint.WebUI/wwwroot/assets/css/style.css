@@ -2136,4 +2136,27 @@ div.login-logout-tab a.nav-link {
     font-size: 25px;
     color: #495057;
     text-align: center;
-}  
+}
+.btn-block{
+    width:100%;
+    display:block;
+}
+.no-gutters > .col, .no-gutters > [class*=col-]{
+    margin-left:0px;
+    margin-right:0px;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-clip:border-box;
+}
+.login-card {
+    border: 0px;
+    border-radius: 27px;
+    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
+    overflow:hidden;
+}

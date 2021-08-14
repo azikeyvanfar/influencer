@@ -28,9 +28,8 @@ namespace EndPoint.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddRazorPages();
-            //services.AddRazorPages();
-            // .AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
             services.AddMemoryCache();
             services.AddSession();
             services.AddMvc();//.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
