@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Dapper", "Data.Dapper\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndPoint.WebUI", "EndPoint.WebUI\EndPoint.WebUI.csproj", "{6D35EBD7-F0F9-4E49-99F7-FD052E26FCD6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Identity.Dapper", "..\..\..\..\Downloads\Daarto-master\src\AspNetCore.Identity.Dapper\AspNetCore.Identity.Dapper.csproj", "{0B145E1E-F614-4847-A24C-95F7A08725A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,35 +47,15 @@ Global
 		{6D35EBD7-F0F9-4E49-99F7-FD052E26FCD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D35EBD7-F0F9-4E49-99F7-FD052E26FCD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D35EBD7-F0F9-4E49-99F7-FD052E26FCD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B145E1E-F614-4847-A24C-95F7A08725A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B145E1E-F614-4847-A24C-95F7A08725A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B145E1E-F614-4847-A24C-95F7A08725A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B145E1E-F614-4847-A24C-95F7A08725A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15CD7A06-19FC-4322-9D3C-846085337F69}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://192.168.1.30:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Data.Dapper\\Data.Dapper.csproj
-		SccProjectName1 = Data.Dapper
-		SccLocalPath1 = Data.Dapper
-		SccProjectUniqueName2 = Domain.ApplicationServices\\Domain.ApplicationServices.csproj
-		SccProjectName2 = Domain.ApplicationServices
-		SccLocalPath2 = Domain.ApplicationServices
-		SccProjectUniqueName3 = Domain.Contracts\\Domain.Contracts.csproj
-		SccProjectName3 = Domain.Contracts
-		SccLocalPath3 = Domain.Contracts
-		SccProjectUniqueName4 = Domain.Entities\\Domain.Entities.csproj
-		SccProjectName4 = Domain.Entities
-		SccLocalPath4 = Domain.Entities
-		SccProjectUniqueName5 = Domain.Services\\Domain.Services.csproj
-		SccProjectName5 = Domain.Services
-		SccLocalPath5 = Domain.Services
-		SccProjectUniqueName6 = EndPoint.WebUI\\EndPoint.WebUI.csproj
-		SccProjectName6 = EndPoint.WebUI
-		SccLocalPath6 = EndPoint.WebUI
 	EndGlobalSection
 EndGlobal

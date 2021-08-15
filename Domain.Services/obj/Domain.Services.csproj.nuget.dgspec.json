@@ -1,17 +1,130 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj": {}
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj": {
+    "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\AspNetCore.Identity.Dapper.csproj": {
+      "version": "3.1.1",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\AspNetCore.Identity.Dapper.csproj",
+        "projectName": "AspNetCore.Identity.DapperOrm",
+        "projectPath": "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\AspNetCore.Identity.Dapper.csproj",
+        "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1",
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          },
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.SourceLink.GitHub": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        },
+        "netstandard2.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.SourceLink.GitHub": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
         "projectName": "Data.Dapper",
-        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,11 +140,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
               },
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
               }
             }
           }
@@ -78,14 +191,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
         "projectName": "Domain.Contracts",
-        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,8 +214,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              },
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj"
               }
             }
           }
@@ -137,14 +253,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
         "projectName": "Domain.Entities",
-        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -212,14 +328,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj": {
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj",
         "projectName": "Domain.Services",
-        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Services\\Domain.Services.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Services\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -235,14 +351,14 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj"
               },
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
               },
-              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
               }
             }
           }
@@ -277,6 +393,85 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj",
+        "projectName": "EndPoint.WebUI",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\EndPoint.WebUI.csproj",
+        "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\EndPoint.WebUI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\AspNetCore.Identity.Dapper.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Downloads\\Daarto-master\\src\\AspNetCore.Identity.Dapper\\AspNetCore.Identity.Dapper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.15, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }

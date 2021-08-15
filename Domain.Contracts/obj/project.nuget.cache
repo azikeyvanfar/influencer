@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2W1h9+oXoovbtq8QU5JEPkCAwheocXSMHcolyDj8e+IXAr9YEohc1UptI3j7swJYJW4nM4Q03oBiFM6VkaosaA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+  "dgSpecHash": "1zmtuDSXKm4jOVt8AdLyrbtT6rc3frzdNPJbXmYAAbM5ZUciNkbyM9ZsEauU6zMHbyZ/2MnIqeH/eaq4DzoUhA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper\\2.0.30\\dapper.2.0.30.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper.contrib\\2.0.30\\dapper.contrib.2.0.30.nupkg.sha512",
@@ -139,6 +139,15 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project EndPoint.WebUI is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project EndPoint.WebUI supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "EndPoint.WebUI",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
       ]

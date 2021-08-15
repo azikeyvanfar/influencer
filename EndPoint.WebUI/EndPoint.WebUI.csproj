@@ -17,48 +17,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\SetTag\**" />
-    <Content Remove="Views\SetTag\**" />
-    <EmbeddedResource Remove="Views\SetTag\**" />
-    <None Remove="Views\SetTag\**" />
-    <TypeScriptCompile Remove="Views\SetTag\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
-    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Spatial" Version="7.6.3" />
-    <PackageReference Include="Microsoft.SqlServer.Types" Version="14.0.1016.290" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-    <PackageReference Include="Vereyon.Web.FlashMessage" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Data.Dapper\Data.Dapper.csproj" />
-    <ProjectReference Include="..\Domain.Contracts\Domain.Contracts.csproj" />
-    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Data.SqlClient">
-      <HintPath>..\Domain.Services\bin\System.Data.SqlClient.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <HintPath>bin\Debug\System.Windows.Forms.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -106,6 +71,10 @@
     <None Include="wwwroot\assets\vendor\remixicon\remixicon.symbol.svg" />
     <None Include="wwwroot\assets\vendor\remixicon\remixicon.woff2" />
     <None Include="wwwroot\assets\vendor\swiper\swiper-bundle.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Downloads\Daarto-master\src\AspNetCore.Identity.Dapper\AspNetCore.Identity.Dapper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

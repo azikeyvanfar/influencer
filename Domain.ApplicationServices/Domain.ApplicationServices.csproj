@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <Compile Remove="FFMS\**" />
+    <Compile Remove="FSYS\LoginHistory\**" />
     <EmbeddedResource Remove="FFMS\**" />
+    <EmbeddedResource Remove="FSYS\LoginHistory\**" />
     <None Remove="FFMS\**" />
+    <None Remove="FSYS\LoginHistory\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +45,6 @@
     <Folder Include="FSYS\LockGroup\" />
     <Folder Include="FSYS\LockNew\" />
     <Folder Include="FSYS\Lock\" />
-    <Folder Include="FSYS\LoginHistory\" />
     <Folder Include="FSYS\Log\" />
     <Folder Include="FSYS\Menu\" />
     <Folder Include="FSYS\Permission\" />

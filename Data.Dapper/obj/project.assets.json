@@ -1377,7 +1377,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Domain.Entities": "1.0.0"
+          "Domain.Entities": "1.0.0",
+          "EndPoint.WebUI": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Domain.Contracts.dll": {}
@@ -1401,6 +1402,16 @@
         },
         "runtime": {
           "bin/placeholder/Domain.Entities.dll": {}
+        }
+      },
+      "EndPoint.WebUI/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/EndPoint.WebUI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EndPoint.WebUI.dll": {}
         }
       }
     }
@@ -4826,6 +4837,11 @@
       "type": "project",
       "path": "../Domain.Entities/Domain.Entities.csproj",
       "msbuildProject": "../Domain.Entities/Domain.Entities.csproj"
+    },
+    "EndPoint.WebUI/1.0.0": {
+      "type": "project",
+      "path": "../EndPoint.WebUI/EndPoint.WebUI.csproj",
+      "msbuildProject": "../EndPoint.WebUI/EndPoint.WebUI.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4844,11 +4860,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
+      "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
       "projectName": "Data.Dapper",
-      "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
+      "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\Data.Dapper.csproj",
       "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.Dapper\\obj\\",
+      "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.Dapper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4864,11 +4880,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
-              "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
+            "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+              "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
             },
-            "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-              "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+            "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+              "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
             }
           }
         }
@@ -4952,6 +4968,15 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project EndPoint.WebUI is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project EndPoint.WebUI supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "EndPoint.WebUI",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
       ]
