@@ -46,38 +46,43 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a>-->
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">WHO WE ARE</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>WHAT WE DO</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">STRATEGY</a></li>
-                            <li><a href="#">DATA</a></li>
-                            <li><a href="#">TECNOLOGY</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="nav-link scrollto" href="#about">OUR WORK</a></li>
-                    <li><a class="nav-link scrollto" href="#services">CREATOR</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>RESOURCES</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">ARTICLE</a></li>
+            <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
+                <div class="container">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li><a class="nav-link scrollto active" href="#hero">WHO WE ARE</a></li>
                             <li class="dropdown">
-                                <a href="#"><span>REPORTS</span> <i class="bi bi-chevron-right"></i></a>
+                                <a href="#"><span>WHAT WE DO</span> <i class="bi bi-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="#">UNSOCIAL MEDIA</a></li>
-                                    <li><a href="#">THE AGE OF INFLUENCE</a></li>
+                                    <li><a href="#">STRATEGY</a></li>
+                                    <li><a href="#">DATA</a></li>
+                                    <li><a href="#">TECNOLOGY</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">VERTICAL PLAY BOOKS</a></li>
-                        </ul>
-                    </li>
+                            <li><a class="nav-link scrollto" href="#about">OUR WORK</a></li>
+                            <li><a class="nav-link scrollto" href="#services">CREATOR</a></li>
+                            <li class="dropdown">
+                                <a href="#"><span>RESOURCES</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="#">ARTICLE</a></li>
+                                    <li class="dropdown">
+                                        <a href="#"><span>REPORTS</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="#">UNSOCIAL MEDIA</a></li>
+                                            <li><a href="#">THE AGE OF INFLUENCE</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">VERTICAL PLAY BOOKS</a></li>
+                                </ul>
+                            </li>
 
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
+                        </ul>
+
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </div>
+                </div>
             </nav><!-- .navbar -->
-            <partial name="_LoginPartial" />
             @*<a href="/Identity/Account/Login" class="get-started-btn scrollto">LOGIN</a>*@
         </div>
     </header><!-- End Header -->

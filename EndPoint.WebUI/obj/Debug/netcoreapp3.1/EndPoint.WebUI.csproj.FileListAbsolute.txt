@@ -3,9 +3,6 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\ne
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.csproj.GenerateResource.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.AssemblyInfoInputs.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.AssemblyInfo.cs
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.csproj.CoreCompileInputs.cache
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.RazorAssemblyInfo.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.RazorAssemblyInfo.cs
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -173,3 +170,11 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\ne
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.pdb
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.genruntimeconfig.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Error.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAccount.cshtml.g.cs
