@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bo1FEiPaCgWgh8hDfVWNnkRoujtq+NFrcEgU+0zxRan0/ZUKXLJmLhtxFSFmEEyl3sbG7/vabDndCxDm/ZYUjg==",
+  "dgSpecHash": "+gIPRykBQJVJPsw1uu5cV8P66pXSbsro+fRjpGl9tpFtYArQp5nDOgVDVPLtDoOKW9XN3mKjfdh/3yX93KlreQ==",
   "success": false,
-  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.ApplicationServices\\Domain.ApplicationServices.csproj",
+  "projectFilePath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.ApplicationServices\\Domain.ApplicationServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper\\2.0.30\\dapper.2.0.30.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\dapper.contrib\\2.0.30\\dapper.contrib.2.0.30.nupkg.sha512",
