@@ -67,6 +67,8 @@ namespace EndPoint.WebUI.Controllers
             if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
 
+            ViewData["returnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(
@@ -98,6 +100,18 @@ namespace EndPoint.WebUI.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return Json(true);
+            return Json("This Email Is Existed");
+        }
 
+        public async Task<IActionResult> IsUserNameInUse(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null) return Json(true);
+            return Json("This UserName Is Existed");
+        }
     }
 }

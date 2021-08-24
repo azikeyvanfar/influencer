@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace EndPoint.WebUI
 {
@@ -21,14 +22,18 @@ namespace EndPoint.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<IdentityUser, ExtendedIdentityRole>()
-                    .AddDapperStores(options => {
-                        options.AddRolesTable<ExtendedRolesTable, ExtendedIdentityRole>();
-                    })
-                    .AddDefaultUI()
-                    .AddDefaultTokenProviders();
-            //services.AddDefaultIdentity<IdentityUser>()
-            //        .AddDapperStores();
+            services.AddIdentity<IdentityUser, ExtendedIdentityRole>(options =>
+            {
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+                options.Password.RequiredUniqueChars = 0;
+                options.User.RequireUniqueEmail = true;
+            })
+            .AddDapperStores(options =>
+            {
+                options.AddRolesTable<ExtendedRolesTable, ExtendedIdentityRole>();
+            })
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
@@ -51,7 +56,8 @@ namespace EndPoint.WebUI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });

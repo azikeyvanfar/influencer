@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.FORG
 {
@@ -7,10 +8,12 @@ namespace Domain.Entities.FORG
     {
         [Required]
         //[Display(Name = "نام کاربری")]
+        [Remote("IsUserNameInUse", "Account")]
         public string UserName { get; set; }
 
         [Required]
         //[Display(Name = "ایمیل")]
+        [Remote("IsEmailInUse", "Account")]
         [EmailAddress]
         public string Email { get; set; }
 
