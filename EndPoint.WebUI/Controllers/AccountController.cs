@@ -79,7 +79,7 @@ namespace EndPoint.WebUI.Controllers
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Manage", "Home");
                 }
 
                 if (result.IsLockedOut)
@@ -100,6 +100,8 @@ namespace EndPoint.WebUI.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> IsEmailInUse(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -107,11 +109,14 @@ namespace EndPoint.WebUI.Controllers
             return Json("This Email Is Existed");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> IsUserNameInUse(string userName)
         {
             var user = await _userManager.FindByNameAsync(userName);
             if (user == null) return Json(true);
             return Json("This UserName Is Existed");
         }
+
     }
 }

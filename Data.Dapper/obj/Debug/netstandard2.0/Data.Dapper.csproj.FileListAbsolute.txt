@@ -26,3 +26,17 @@ E:\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.csproj.CoreCompil
 E:\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.csproj.CopyComplete
 E:\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.dll
 E:\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.csprojAssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.AssemblyInfoInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.AssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Data.Dapper.deps.json
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Data.Dapper.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Data.Dapper.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Domain.Contracts.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Domain.Entities.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Domain.Contracts.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\bin\Debug\netstandard2.0\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.csproj.CopyComplete
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.Dapper\obj\Debug\netstandard2.0\Data.Dapper.pdb

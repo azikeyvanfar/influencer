@@ -8,12 +8,12 @@ namespace Domain.Entities.FORG
     {
         [Required]
         //[Display(Name = "نام کاربری")]
-        [Remote("IsUserNameInUse", "Account")]
+        [Remote("IsUserNameInUse", "Account",HttpMethod ="POST", AdditionalFields = "__RequestVerificationToken")]
         public string UserName { get; set; }
 
         [Required]
         //[Display(Name = "ایمیل")]
-        [Remote("IsEmailInUse", "Account")]
+        [Remote("IsEmailInUse", "Account", HttpMethod = "POST", AdditionalFields = "__RequestVerificationToken")]
         [EmailAddress]
         public string Email { get; set; }
 

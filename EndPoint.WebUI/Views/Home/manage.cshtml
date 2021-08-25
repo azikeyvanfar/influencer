@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Manage";
+}
+<main id="main">
+    <div id="editor"></div>
+</main><!-- End #main -->
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
+}
