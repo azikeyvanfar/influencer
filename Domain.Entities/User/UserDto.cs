@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Entities.FORG
+namespace Domain.Entities
 {
     public class UserDto
     {

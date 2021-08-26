@@ -5,9 +5,9 @@ namespace Domain.Contracts.Commons
 {
     public interface IBaseRepository<T>
     {
-        void Delete(T model);
+        void Remove(T model);
         bool Update(T model);
-        long Insert(T model);
+        long Add(T model);
         T Fetch(Guid modelId);
         List<T> GetAll();
     }

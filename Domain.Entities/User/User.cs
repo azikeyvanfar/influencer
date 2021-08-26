@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.FORG
+namespace Domain.Entities
 {
     //[Table("[Users]")]
     public class User

@@ -13,11 +13,14 @@
 
   <ItemGroup>
     <Compile Remove="FFMS\**" />
-    <Compile Remove="FSYS\LoginHistory\**" />
+    <Compile Remove="FORG\**" />
+    <Compile Remove="FSYS\**" />
     <EmbeddedResource Remove="FFMS\**" />
-    <EmbeddedResource Remove="FSYS\LoginHistory\**" />
+    <EmbeddedResource Remove="FORG\**" />
+    <EmbeddedResource Remove="FSYS\**" />
     <None Remove="FFMS\**" />
-    <None Remove="FSYS\LoginHistory\**" />
+    <None Remove="FORG\**" />
+    <None Remove="FSYS\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,32 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Commons\" />
-    <Folder Include="FORG\Company\" />
-    <Folder Include="FORG\Department\" />
-    <Folder Include="FORG\PersonRole\" />
-    <Folder Include="FORG\Person\" />
-    <Folder Include="FORG\User\" />
-    <Folder Include="FSYS\ActionLog\" />
-    <Folder Include="FSYS\BasicData\" />
-    <Folder Include="FSYS\EventCondition\" />
-    <Folder Include="FSYS\GroupItem\" />
-    <Folder Include="FSYS\Group\" />
-    <Folder Include="FSYS\Interrupt\" />
-    <Folder Include="FSYS\Key\" />
-    <Folder Include="FSYS\LockCategory\" />
-    <Folder Include="FSYS\LockGroupLock\" />
-    <Folder Include="FSYS\LockGroup\" />
-    <Folder Include="FSYS\LockNew\" />
-    <Folder Include="FSYS\Lock\" />
-    <Folder Include="FSYS\Log\" />
-    <Folder Include="FSYS\Menu\" />
-    <Folder Include="FSYS\Permission\" />
-    <Folder Include="FSYS\RolePermission\" />
-    <Folder Include="FSYS\Role\" />
-    <Folder Include="FSYS\Setting\" />
-    <Folder Include="FSYS\Tag\" />
-    <Folder Include="FSYS\TextMessage\" />
-    <Folder Include="FSYS\Update\" />
   </ItemGroup>
 
 </Project>

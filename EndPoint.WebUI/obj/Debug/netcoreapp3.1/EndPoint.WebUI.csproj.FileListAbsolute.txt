@@ -456,3 +456,9 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\ne
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\netcoreapp3.1\Domain.Contracts.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\netcoreapp3.1\Data.Dapper.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\EndPoint.WebUI\bin\Debug\netcoreapp3.1\Domain.Contracts.pdb
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\EndPoint.WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Create.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Delete.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Details.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Edit.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs

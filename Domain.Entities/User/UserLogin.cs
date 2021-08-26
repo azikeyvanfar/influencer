@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.FORG
+namespace Domain.Entities
 {
     public class UserLogin
     {

@@ -25,7 +25,7 @@ namespace Data.Dapper.Commons
             }
         }
 
-        public void Delete(T model)
+        public void Remove(T model)
         {
             using (IDbConnection _cnn = Connection)
             {
@@ -41,7 +41,7 @@ namespace Data.Dapper.Commons
                 return _cnn.Update(model);
             }
         }
-        public long Insert(T model)
+        public long Add(T model)
         {
             using (IDbConnection _cnn = Connection)
             {

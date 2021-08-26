@@ -1,3 +1,5 @@
+using Data.Dapper;
+using Domain.Contracts;
 using EndPoint.WebUI.Data;
 using EndPoint.WebUI.Data.Tables;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +38,7 @@ namespace EndPoint.WebUI
             .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
