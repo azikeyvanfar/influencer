@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using EndPoint.WebUI.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -24,7 +24,7 @@ namespace EndPoint.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(User model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace EndPoint.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(UserLogin model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");

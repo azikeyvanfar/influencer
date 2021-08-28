@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Domain.Contracts.FORG.MessageSender
+namespace Domain.Contracts
 {
     public interface IMessageSender
     {

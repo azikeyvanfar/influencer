@@ -24,7 +24,7 @@ namespace EndPoint.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<IdentityUser, ExtendedIdentityRole>(options =>
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
                 options.Password.RequiredUniqueChars = 0;
@@ -39,6 +39,7 @@ namespace EndPoint.WebUI
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IMessageSender, MessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System;
 
 namespace Domain.Entities
 {
+    [Table("dbo.Employee")]
     public class Employee
     {
         [Key]

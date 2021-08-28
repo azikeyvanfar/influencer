@@ -462,3 +462,10 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\ne
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Details.cshtml.g.cs
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Edit.cshtml.g.cs
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageRole\AddRole.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageRole\EditRole.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageRole\Index.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageUser\AddUserToRole.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageUser\EditUser.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageUser\Index.cshtml.g.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\ManageUser\RemoveUserFromRole.cshtml.g.cs

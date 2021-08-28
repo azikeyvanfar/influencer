@@ -1,9 +1,9 @@
-﻿using Domain.Contracts.FORG.MessageSender;
+﻿using Domain.Contracts;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Data.Dapper.FORG.MessageSender
+namespace Data.Dapper
 {
     public class MessageSender : IMessageSender
     {

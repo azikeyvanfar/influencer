@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities
+namespace EndPoint.WebUI.ViewModels.Account
 {
-    //[Table("[Users]")]
-    public class User
+    public class RegisterViewModel
     {
         [Required]
         //[Display(Name = "نام کاربری")]
-        [Remote("IsUserNameInUse", "Account",HttpMethod ="POST", AdditionalFields = "__RequestVerificationToken")]
+        [Remote("IsUserNameInUse", "Account", HttpMethod = "POST",
+        AdditionalFields = "__RequestVerificationToken")]
         public string UserName { get; set; }
 
         [Required]
         //[Display(Name = "ایمیل")]
-        [Remote("IsEmailInUse", "Account", HttpMethod = "POST", AdditionalFields = "__RequestVerificationToken")]
         [EmailAddress]
+        [Remote("IsEmailInUse", "Account", HttpMethod = "POST",
+          AdditionalFields = "__RequestVerificationToken")]
         public string Email { get; set; }
 
         [Required]
@@ -27,6 +28,5 @@ namespace Domain.Entities
         [Compare(nameof(Password))]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-
     }
 }

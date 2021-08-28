@@ -33,8 +33,22 @@ using Domain.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\Views\_ViewImports.cshtml"
+using EndPoint.WebUI.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\azadeh\source\repos\azikeyvanfar\influencer\EndPoint.WebUI\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a5db7d8d328c1cf7a3391eeb9f050a0ba8cd4732", @"/Views/Home/manage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"55a2d087fb0c6e737dc88b192317fb17abe3fea4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d5022e50669142f800cca6383f1ece4061390c8b", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_manage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
