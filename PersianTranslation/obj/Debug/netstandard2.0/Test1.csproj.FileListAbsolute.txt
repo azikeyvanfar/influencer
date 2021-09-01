@@ -1,0 +1,5 @@
+C:\Users\Arman PC gg\source\repos\Test1\bin\Debug\netstandard2.0\Test1.deps.json
+C:\Users\Arman PC gg\source\repos\Test1\bin\Debug\netstandard2.0\Test1.dll
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\Test1.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\Test1.AssemblyInfo.cs
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\Test1.csprojAssemblyReference.cache

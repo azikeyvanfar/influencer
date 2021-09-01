@@ -1,0 +1,39 @@
+﻿@model influencer.ViewModels.ManageUser.AddUserToRoleViewModel
+@{
+    ViewData["Title"] = "DeleteUserToRole";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1>DeleteUserToRole</h1>
+
+                <form asp-controller="ManageUser" asp-action="RemoveUserFromRole" method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    @if (!Model.UserRoles.Any())
+                    {
+                        <h1>هیچ مقامی یافت نشد</h1>
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.UserRoles.Count; i++)
+                        {
+                            <div class="form-group">
+                                <input asp-for="@Model.UserRoles[i].IsSelected" />
+                                <label>@Model.UserRoles[i].RoleName</label>
+
+                                <input type="hidden" asp-for="@Model.UserRoles[i].RoleName" />
+                            </div>
+                        }
+                    }
+
+                    <input type="hidden" asp-for="@Model.UserId" />
+                    <button class="btn btn-danger" type="submit">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+</div>

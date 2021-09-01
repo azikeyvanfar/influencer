@@ -1,0 +1,62 @@
+C:\Users\Arman PC gg\source\repos\Test1\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+C:\Users\Arman PC gg\source\repos\Test1\bin\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\Test1\bin\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\Test1\obj\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+C:\Users\Arman PC gg\Desktop\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+E:\Programming\000000- My Tutorial\TopLearn.com\Identity 3.1\Videos\10\Files\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\Desktop\new\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+E:\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+E:\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+E:\IdentitySample\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+E:\IdentitySample\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb

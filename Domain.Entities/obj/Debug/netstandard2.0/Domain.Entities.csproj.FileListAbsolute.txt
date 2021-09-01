@@ -25,3 +25,11 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\n
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.pdb
+E:\IdentitySample\Domain.Entities\bin\Debug\netstandard2.0\Domain.Entities.deps.json
+E:\IdentitySample\Domain.Entities\bin\Debug\netstandard2.0\Domain.Entities.dll
+E:\IdentitySample\Domain.Entities\bin\Debug\netstandard2.0\Domain.Entities.pdb
+E:\IdentitySample\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.AssemblyInfoInputs.cache
+E:\IdentitySample\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.AssemblyInfo.cs
+E:\IdentitySample\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.csproj.CoreCompileInputs.cache
+E:\IdentitySample\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.dll
+E:\IdentitySample\Domain.Entities\obj\Debug\netstandard2.0\Domain.Entities.pdb

@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\azadeh\\.nuget\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,10 +39,6 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
-            "Dapper.Contrib": {
-              "target": "Package",
-              "version": "[2.0.30, )"
-            },
             "Microsoft.AspNetCore.Mvc.ViewFeatures": {
               "target": "Package",
               "version": "[2.2.0, )"

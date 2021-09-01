@@ -1,0 +1,67 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Register</h1>
+
+                <div>
+                    <form asp-controller="Account" asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <label asp-for="UserCategory" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("UserCategory", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="Company", Value = "1" },
+                                new SelectListItem{ Text="Bloger", Value = "2" }
+                            }, new { @class = "form-control alert-danger" })
+                        </div>
+
+                        <label asp-for="UserName" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="Email" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="Password" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="City" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="City" class="form-control" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

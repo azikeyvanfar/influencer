@@ -34,3 +34,15 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Debug\
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.csproj.CopyComplete
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.pdb
+E:\IdentitySample\Domain.Contracts\bin\Debug\netstandard2.0\Domain.Contracts.deps.json
+E:\IdentitySample\Domain.Contracts\bin\Debug\netstandard2.0\Domain.Contracts.dll
+E:\IdentitySample\Domain.Contracts\bin\Debug\netstandard2.0\Domain.Contracts.pdb
+E:\IdentitySample\Domain.Contracts\bin\Debug\netstandard2.0\Domain.Entities.dll
+E:\IdentitySample\Domain.Contracts\bin\Debug\netstandard2.0\Domain.Entities.pdb
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.csprojAssemblyReference.cache
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.AssemblyInfoInputs.cache
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.AssemblyInfo.cs
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.csproj.CoreCompileInputs.cache
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.csproj.CopyComplete
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.dll
+E:\IdentitySample\Domain.Contracts\obj\Debug\netstandard2.0\Domain.Contracts.pdb

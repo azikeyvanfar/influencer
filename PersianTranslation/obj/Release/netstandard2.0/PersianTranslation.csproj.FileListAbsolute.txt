@@ -1,0 +1,8 @@
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.deps.json
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.pdb
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.dll
+C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.pdb

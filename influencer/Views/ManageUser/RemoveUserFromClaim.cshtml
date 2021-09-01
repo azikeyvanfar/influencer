@@ -1,0 +1,41 @@
+﻿@model influencer.ViewModels.ManageUser.AddOrRemoveClaimViewModel
+
+@{
+    ViewData["Title"] = "RemoveUserFromClaim";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1>RemoveUserFromClaim</h1>
+
+                @if (!Model.UserClaims.Any())
+                {
+                    <h1>یافت نشد "Claim" هیج</h1>
+                }
+                else
+                {
+                    <form asp-controller="ManageUser" asp-action="RemoveUserFromClaim" method="post">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        @for (int i = 0; i < Model.UserClaims.Count; i++)
+                        {
+                            <div class="form-group">
+                                <input asp-for="@Model.UserClaims[i].IsSelected" />
+                                <label>@Model.UserClaims[i].ClaimType</label>
+
+                                <input type="hidden" asp-for="@Model.UserClaims[i].ClaimType" />
+                            </div>
+                        }
+
+                        <input type="hidden" asp-for="@Model.UserId" />
+                        <button class="btn btn-danger" type="submit">Submit</button>
+                    </form>
+                }
+
+            </div>
+        </div>
+    </main>
+
+</div>
