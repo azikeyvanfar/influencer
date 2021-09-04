@@ -601,10 +601,8 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcor
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Buffers.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Collections.Concurrent.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Collections.dll
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Collections.Immutable.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Collections.NonGeneric.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Collections.Specialized.dll
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.ComponentModel.Annotations.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.ComponentModel.DataAnnotations.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.ComponentModel.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.ComponentModel.EventBasedAsync.dll
@@ -618,7 +616,6 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcor
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Data.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Contracts.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Debug.dll
-C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.DiagnosticSource.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.EventLog.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.FileVersionInfo.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Process.dll
@@ -950,3 +947,12 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.genruntimeconfig.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
