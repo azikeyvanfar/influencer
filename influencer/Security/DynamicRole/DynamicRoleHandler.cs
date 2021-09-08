@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using influencer.Models;
-using influencer.Models.Context;
-using influencer.Repositories;
+﻿using Data.EF.Common;
+using Domain.Contracts;
+using Domain.Entities.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace influencer.Security.DynamicRole
 {
     public class DynamicRoleHandler : AuthorizationHandler<DynamicRoleRequirement>
     {
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly IUtilities _utilities;
+        private readonly IUtilitiesRepository _utilities;
         private readonly IMemoryCache _memoryCache;
         private readonly IDataProtector _protectorToken;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly AppDbContext _dbContext;
+        private readonly InfluencerDbContext _dbContext;
 
-        public DynamicRoleHandler(IHttpContextAccessor contextAccessor, IUtilities utilities, IMemoryCache memoryCache, IDataProtectionProvider dataProtectionProvider, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, AppDbContext appDbContext)
+        public DynamicRoleHandler(IHttpContextAccessor contextAccessor, IUtilitiesRepository utilities, IMemoryCache memoryCache, IDataProtectionProvider dataProtectionProvider, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, InfluencerDbContext appDbContext)
         {
             _contextAccessor = contextAccessor;
             _utilities = utilities;

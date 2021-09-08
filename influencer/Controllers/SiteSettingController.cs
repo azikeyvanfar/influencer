@@ -1,28 +1,29 @@
-﻿using Domain.Entities;
-using influencer.Models.Context;
+﻿using Domain.Contracts;
+using Domain.Entities;
 using influencer.ViewModels.SiteSetting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace influencer.Controllers
 {
     public class SiteSettingController : Controller
     {
-        private readonly AppDbContext _dbContext;
+        private readonly ISiteSettingRepository _siteSettingRepository;
         private readonly IMemoryCache _memoryCache;
 
-        public SiteSettingController(AppDbContext dbContext, IMemoryCache memoryCache)
+        public SiteSettingController(ISiteSettingRepository siteSettingRepository, IMemoryCache memoryCache)
         {
-            _dbContext = dbContext;
+            _siteSettingRepository = siteSettingRepository;
             _memoryCache = memoryCache;
         }
 
 
         public IActionResult Index()
         {
-            var model = _dbContext.SiteSettings.ToList();
+            List<SiteSetting> model = _siteSettingRepository.FindAll().ToList();
             return View(model);
         }
 
@@ -30,7 +31,7 @@ namespace influencer.Controllers
         public IActionResult RoleValidationGuid()
         {
             var roleValidationGuidSiteSetting =
-                _dbContext.SiteSettings.FirstOrDefault(t => t.Key == "RoleValidationGuid");
+                _siteSettingRepository.FindByCondition(t => t.Key == "RoleValidationGuid").FirstOrDefault();
 
             var model = new RoleValidationGuidViewModel()
             {
@@ -45,11 +46,11 @@ namespace influencer.Controllers
         public IActionResult RoleValidationGuid(RoleValidationGuidViewModel model)
         {
             var roleValidationGuidSiteSetting =
-                _dbContext.SiteSettings.FirstOrDefault(t => t.Key == "RoleValidationGuid");
+                _siteSettingRepository.FindByCondition(t => t.Key == "RoleValidationGuid").FirstOrDefault();
 
             if (roleValidationGuidSiteSetting == null)
             {
-                _dbContext.SiteSettings.Add(new SiteSetting()
+                _siteSettingRepository.Create(new SiteSetting()
                 {
                     Key = "RoleValidationGuid",
                     Value = Guid.NewGuid().ToString(),
@@ -60,9 +61,8 @@ namespace influencer.Controllers
             {
                 roleValidationGuidSiteSetting.Value = Guid.NewGuid().ToString();
                 roleValidationGuidSiteSetting.LastTimeChanged = DateTime.Now;
-                _dbContext.Update(roleValidationGuidSiteSetting);
+                _siteSettingRepository.Update(roleValidationGuidSiteSetting);
             }
-            _dbContext.SaveChanges();
             _memoryCache.Remove("RoleValidationGuid");
 
             return RedirectToAction("Index");

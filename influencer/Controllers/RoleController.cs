@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using influencer.Repositories;
+﻿using Domain.Contracts;
 using influencer.ViewModels.Role;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace influencer.Controllers
 {
     public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IUtilities _utilities;
+        private readonly IUtilitiesRepository _utilities;
         private readonly IMemoryCache _memoryCache;
 
-        public RoleController(RoleManager<IdentityRole> roleManager, IUtilities utilities, IMemoryCache memoryCache)
+        public RoleController(RoleManager<IdentityRole> roleManager, IUtilitiesRepository utilities, IMemoryCache memoryCache)
         {
             _roleManager = roleManager;
             _utilities = utilities;
@@ -83,7 +83,7 @@ namespace influencer.Controllers
 
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("",error.Description);
+                    ModelState.AddModelError("", error.Description);
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Domain.Entities.UserArticle>
+@{
     ViewData["Title"] = "Home Page";
 }
 <!-- ======= Hero Section ======= -->
@@ -672,7 +673,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
+                <h2>Title</h2>
             </div>
 
             <ul class="faq-list accordion" data-aos="fade-up">
@@ -890,5 +891,25 @@
 
         </div>
     </section><!-- End Contact Section -->
+    <!-- ======= Article Asked Questions Section ======= -->
+    <section id="Article" class="faq">
+        <div class="container" data-aos="fade-up">
+            @if (Model.Any())
+            {
+
+                @foreach (var article in Model)
+                {
+                    <div class="section-title">
+                        <h2>@article.Title</h2>
+                    </div>
+                    <div class="row">
+                       @Html.Raw(@article.Contents)
+                    </div>
+                }
+
+            }
+
+        </div>
+    </section><!-- End Frequently Asked Questions Section -->
 
 </main><!-- End #main -->

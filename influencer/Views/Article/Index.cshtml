@@ -1,0 +1,71 @@
+﻿@model List<Domain.Entities.UserArticle>
+@{ ViewData["Title"] = "All Articles"; }
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="row">
+            <h1 class="col-10">@ViewData["Title"]</h1>
+            <div class="col-2">
+                <a asp-controller="Article" asp-action="WriteArticle" class="btn btn-danger">Write Article</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="col-md-12">
+                            <div style="padding-top:50px">
+                                <div>
+                                    @if (!Model.Any())
+                                    {
+                                <h1>No Data</h1> }
+                            else
+                            {
+                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>DateTime</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var article in Model)
+                                        {
+                                    <tr>
+                                        <td><a asp-controller="Article" asp-action="SingleArticle" asp-route-id="@article.Id">
+                                            <h3>
+                                                @article.Title
+                                            </h3>
+                                            </a>
+                                        </td>
+                                        <td>@article.DateTime</td>
+                                        <td><a button type="button" class="btn btn-outline-primary" asp-controller="Article" asp-action="WriteArticle" asp-route-id="@article.Id">
+                                                Edit Article
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a button type="button" class="btn btn-outline-primary" asp-controller="Article" asp-action="RemoveArticle" asp-route-id="@article.Id">
+                                                Delete Article
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    }
+                                    </tbody>
+                                        </table>
+                                        }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>

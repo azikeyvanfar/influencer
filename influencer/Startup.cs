@@ -1,8 +1,7 @@
-using System;
 using Data.EF;
+using Data.EF.Common;
 using Domain.Contracts;
-using influencer.Models;
-using influencer.Models.Context;
+using Domain.Entities.Context;
 using influencer.Repositories;
 using influencer.Security.Default;
 using influencer.Security.DynamicRole;
@@ -16,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersianTranslation.Identity;
+using System;
 
 namespace influencer
 {
@@ -34,7 +34,7 @@ namespace influencer
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 
-            services.AddDbContextPool<AppDbContext>(options =>
+            services.AddDbContextPool<InfluencerDbContext>(options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
                 });
@@ -56,7 +56,7 @@ namespace influencer
 
                     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
                 })
-                .AddEntityFrameworkStores<AppDbContext>()
+                .AddEntityFrameworkStores<InfluencerDbContext>()
                 .AddDefaultTokenProviders()
                 .AddErrorDescriber<PersianIdentityErrorDescriber>();
 
@@ -90,10 +90,14 @@ namespace influencer
 
             services.AddMemoryCache();
             services.AddHttpContextAccessor();
-            services.AddTransient<IUtilities, Utilities>();
+            services.AddTransient<IUtilitiesRepository, UtilitiesRepository>();
             services.AddScoped<IMessageSender, MessageSender>();
             services.AddScoped<IAuthorizationHandler, DynamicRoleHandler>();
             services.AddSingleton<IAuthorizationHandler, ClaimHandler>();
+            services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
+            services.AddScoped<IUserArticleRepository, UserArticleRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

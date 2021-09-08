@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using influencer.Models.Context;
+﻿using Domain.Contracts;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +14,11 @@ namespace influencer.Controllers
     [Authorize(Policy = "DynamicRole")]
     public class EmployeeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeController(AppDbContext context)
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
-            _context = context;
+            _employeeRepository = employeeRepository;
         }
 
         // GET: Employee
@@ -29,7 +29,7 @@ namespace influencer.Controllers
         //[Authorize(Policy = "ClaimRequirement")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View(await _employeeRepository.FindAll().ToListAsync());
         }
 
         // GET: Employee/Details/5
@@ -40,8 +40,7 @@ namespace influencer.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _employeeRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
             if (employee == null)
             {
                 return NotFound();
@@ -65,22 +64,21 @@ namespace influencer.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
+                await _employeeRepository.Create(employee);
                 return RedirectToAction(nameof(Index));
             }
             return View(employee);
         }
 
         // GET: Employee/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _employeeRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
             if (employee == null)
             {
                 return NotFound();
@@ -104,8 +102,7 @@ namespace influencer.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
+                    await _employeeRepository.Update(employee);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -131,8 +128,7 @@ namespace influencer.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _employeeRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
             if (employee == null)
             {
                 return NotFound();
@@ -146,15 +142,14 @@ namespace influencer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
+            var employee = await _employeeRepository.FindByCondition(m=>m.Id == id).FirstOrDefaultAsync();
+            await _employeeRepository.Delete(employee);
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeeExists(Guid id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _employeeRepository.FindByCondition(e => e.Id == id).Any();
         }
     }
 }

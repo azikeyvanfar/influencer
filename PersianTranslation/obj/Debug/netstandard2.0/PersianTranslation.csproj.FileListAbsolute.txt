@@ -60,3 +60,12 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debu
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb
+E:\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.deps.json
+E:\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.dll
+E:\influencer\PersianTranslation\bin\Debug\netstandard2.0\PersianTranslation.pdb
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.dll
+E:\influencer\PersianTranslation\obj\Debug\netstandard2.0\PersianTranslation.pdb

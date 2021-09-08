@@ -26,3 +26,17 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstanda
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.csproj.CopyComplete
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.pdb
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Data.EF.deps.json
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Data.EF.dll
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Data.EF.pdb
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Domain.Contracts.dll
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Domain.Entities.dll
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Domain.Contracts.pdb
+E:\influencer\Data.EF\bin\Debug\netstandard2.0\Domain.Entities.pdb
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.csprojAssemblyReference.cache
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.AssemblyInfoInputs.cache
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.AssemblyInfo.cs
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.csproj.CoreCompileInputs.cache
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.csproj.CopyComplete
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.dll
+E:\influencer\Data.EF\obj\Debug\netstandard2.0\Data.EF.pdb

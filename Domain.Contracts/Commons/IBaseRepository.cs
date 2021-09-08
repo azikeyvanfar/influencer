@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Domain.Contracts.Commons
 {
     public interface IBaseRepository<T>
     {
-        void Remove(T model);
-        bool Update(T model);
-        long Add(T model);
-        T Fetch(Guid modelId);
-        List<T> GetAll();
+        IQueryable<T> FindAll();
+        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
+        Task<T> Create(T entity);
+        Task<T> Update(T entity);
+        Task<T> Delete(T entity);
     }
 }

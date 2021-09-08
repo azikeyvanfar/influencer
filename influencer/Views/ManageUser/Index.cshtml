@@ -27,16 +27,16 @@
                                 <form asp-controller="ManageUser" asp-action="DeleteUser" asp-route-id="@Model[i].Id" method="post">
 
                                     <a asp-controller="ManageUser" asp-action="EditUser" asp-route-id="@Model[i].Id"
-                                       class="btn btn-danger">Edit Username</a>
+                                       class="btn btn-info">Edit Username</a>
 
                                     <a asp-controller="ManageUser" asp-action="AddUserToRole" asp-route-id="@Model[i].Id"
-                                       class="btn btn-danger">Add to role</a>
+                                       class="btn btn-info">Add to role</a>
                                     <a asp-controller="ManageUser" asp-action="RemoveUserFromRole" asp-route-id="@Model[i].Id"
                                        class="btn btn-danger">Remove From role</a>
                                     <br />
                                     <br />
                                     <a asp-controller="ManageUser" asp-action="AddUserToClaim" asp-route-id="@Model[i].Id"
-                                       class="btn btn-danger">Add to Claim</a>
+                                       class="btn btn-info">Add to Claim</a>
                                     <a asp-controller="ManageUser" asp-action="RemoveUserFromClaim" asp-route-id="@Model[i].Id"
                                        class="btn btn-danger">Remove From Claim</a>
 

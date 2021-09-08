@@ -1,5 +1,5 @@
 ﻿using Domain.Contracts;
-using influencer.Models;
+using Domain.Entities.Context;
 using influencer.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

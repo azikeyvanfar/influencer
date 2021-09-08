@@ -1,69 +1,45 @@
-﻿using Dapper.Contrib.Extensions;
-using Microsoft.Extensions.Configuration;
+﻿using Domain.Contracts.Commons;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
-namespace Data.EF.Commons
+namespace Data.EF.Common
 {
-    public class BaseRepository<T> where T : class
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly IConfiguration _config;
-
-        public BaseRepository(IConfiguration config)
+        protected InfluencerDbContext _ctx { get; set; }
+        public BaseRepository(InfluencerDbContext ctx)
         {
-            _config = config;
+            _ctx = ctx;
         }
-
-        public IDbConnection Connection
+        public IQueryable<T> FindAll()
         {
-            get
-            {
-                return new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            }
+            return _ctx.Set<T>().AsNoTracking();
         }
-
-        public void Remove(T model)
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            using (IDbConnection _cnn = Connection)
-            {
-                _cnn.Open();
-                _cnn.Delete(model);
-            }
+            return _ctx.Set<T>().Where(expression).AsNoTracking();
         }
-        public bool Update(T model)
+        public async Task<T> Create(T entity)
         {
-            using (IDbConnection _cnn = Connection)
-            {
-                _cnn.Open();
-                return _cnn.Update(model);
-            }
+            _ctx.Set<T>().Add(entity);
+            await _ctx.SaveChangesAsync();
+            return entity;
         }
-        public long Add(T model)
+        public async Task<T> Update(T entity)
         {
-            using (IDbConnection _cnn = Connection)
-            {
-                _cnn.Open();
-                return _cnn.Insert(model);
-            }
+            _ctx.Set<T>().Update(entity);
+            await _ctx.SaveChangesAsync();
+            return entity;
         }
-        public T Fetch(Guid id)
+        public async Task<T> Delete(T entity)
         {
-            using (IDbConnection _cnn = Connection)
-            {
-                _cnn.Open();
-                return _cnn.Get<T>(id);
-            }
-        }
-        public List<T> GetAll()
-        {
-            using (IDbConnection _cnn = Connection)
-            {
-                _cnn.Open();
-                return _cnn.GetAll<T>().ToList();
-            }
+            _ctx.Set<T>().Remove(entity);
+            await _ctx.SaveChangesAsync();
+            return entity;
         }
     }
 }

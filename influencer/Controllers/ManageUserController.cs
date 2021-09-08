@@ -1,4 +1,4 @@
-﻿using influencer.Models;
+﻿using Domain.Entities.Context;
 using influencer.Repositories;
 using influencer.ViewModels.ManageUser;
 using Microsoft.AspNetCore.Identity;

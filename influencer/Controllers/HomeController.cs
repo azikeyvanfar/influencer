@@ -1,22 +1,28 @@
-﻿using influencer.Models;
+﻿using Domain.Contracts;
+using Domain.Entities;
+using influencer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace influencer.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUserArticleRepository _userArticleRepository;
+        public HomeController(ILogger<HomeController> logger, IUserArticleRepository userArticleRepository)
         {
             _logger = logger;
+            _userArticleRepository = userArticleRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<UserArticle> article = _userArticleRepository.FindAll().ToList();
+            return View(article);
         }
 
         public IActionResult Privacy()

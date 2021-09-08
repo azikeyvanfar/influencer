@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Entities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace influencer.ViewModels.Role
@@ -16,11 +17,5 @@ namespace influencer.ViewModels.Role
         public IList<ActionAndControllerName> ActionAndControllerNames { get; set; }
     }
 
-    public class ActionAndControllerName
-    {
-        public string AreaName { get; set; }
-        public string ActionName { get; set; }
-        public string ControllerName { get; set; }
-        public bool IsSelected { get; set; }
-    }
+   
 }

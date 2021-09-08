@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {}
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\Domain.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\Domain.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\Domain.Contracts.csproj",
         "projectName": "Domain.Contracts",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\Domain.Contracts.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -26,10 +26,10 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\Domain.Entities.csproj"
               }
             }
           }
@@ -41,15 +41,7 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
+        "netstandard2.1": {
           "imports": [
             "net461",
             "net462",
@@ -60,25 +52,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\Domain.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\Domain.Entities.csproj",
         "projectName": "Domain.Entities",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\Domain.Entities.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -86,7 +83,7 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -97,7 +94,7 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "Microsoft.AspNetCore.Mvc.ViewFeatures": {
               "target": "Package",
@@ -107,15 +104,13 @@
               "target": "Package",
               "version": "[3.1.18, )"
             },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.18, )"
+            },
             "Microsoft.Spatial": {
               "target": "Package",
               "version": "[7.6.3, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
             },
             "System.ComponentModel.Annotations": {
               "target": "Package",
@@ -132,6 +127,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }

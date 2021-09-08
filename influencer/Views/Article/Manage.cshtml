@@ -1,0 +1,63 @@
+﻿@model influencer.ViewModels.UserArticle.UserArticleViewModel
+@{
+    ViewData["Title"] = "Article";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <form asp-controller="Article" asp-action="WriteArticle" method="post" name="FrmArticle">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1>Index</h1>
+                </div>
+                <div class="col-md-5">
+                    <input type="submit" name="saveToArticle" class="btn btn-danger" style="float:right" title="Submit" />
+                </div>
+                <div class="row">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            <input asp-for="Title" class="form-control" required>
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Categories" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            @Html.DropDownList("Categories", new List<SelectListItem>
+                               {
+                                   new SelectListItem{ Text="Strategy", Value = "1" },
+                                   new SelectListItem{ Text="Technology", Value = "2" },
+                                   new SelectListItem{ Text="Test", Value = "3" }
+                               }, new { @class = "form-control" })
+                            <span asp-validation-for="Categories" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="Contents" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            <textarea id="Contents" name="Contents"></textarea>
+                            <span asp-validation-for="Contents" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </main>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#Contents'))
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
+}
