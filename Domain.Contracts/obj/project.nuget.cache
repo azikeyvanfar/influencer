@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8D6C65cluqlTJkHLcNOKxty8weGr5BS5m9dD8NJ8NPIqk2lyBpcQUYOWtETCBYD8wiv+rRuwGW+v+ACgjuphUQ==",
+  "dgSpecHash": "mE6E3GhdPlwNai0A0gjHgdfoklMdo07RbrogwqUZrQnGbvK2ROSEvgiqEF456enXOJab9T2OTpeai9epfUskXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\Domain.Contracts\\Domain.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

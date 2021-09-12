@@ -26,7 +26,7 @@ namespace Data.EF
                 using var emailMessage = new MailMessage()
                 {
                     To = { new MailAddress(toEmail) },
-                    From = new MailAddress("azadeh.keyvanfar"), // with @gmail.com
+                    From = new MailAddress("azadeh.keyvanfar@gmail.com"), // with @gmail.com
                     Subject = subject,
                     Body = message,
                     IsBodyHtml = isMessageHtml

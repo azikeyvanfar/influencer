@@ -45,15 +45,13 @@ namespace influencer.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
-                bool OkAdmin = true;
-                if(model.UserCategory == 3)
+                if (result.Succeeded)
                 {
-                    List<string> requestRoles = new List<string>() { "Admin" };
-                    var resultAddRole = await _userManager.AddToRolesAsync(user, requestRoles);
-                    OkAdmin = resultAddRole.Succeeded;
-                }
-                if (result.Succeeded && OkAdmin)
-                {
+                    if (model.UserCategory == 3)
+                    {
+                        List<string> requestRoles = new List<string>() { "Admin" };
+                        await _userManager.AddToRolesAsync(user, requestRoles);                        
+                    }
                     var emailConfirmationToken =
                         await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var emailMessage =
@@ -64,7 +62,7 @@ namespace influencer.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-
+        
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
@@ -117,11 +115,11 @@ namespace influencer.Controllers
 
                 if (result.IsLockedOut)
                 {
-                    ViewData["ErrorMessage"] = "اکانت شما به دلیل پنج بار ورود ناموفق به مدت پنج دقیقه قفل شده است";
+                    ViewData["ErrorMessage"] = "Your account has been locked for five minutes due to five failed logins";
                     return View(model);
                 }
 
-                ModelState.AddModelError("", "رمزعبور یا نام کاربری اشتباه است");
+                ModelState.AddModelError("", "UserName Or Password Is Not Correct!");
             }
             return View(model);
         }
@@ -141,7 +139,7 @@ namespace influencer.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null) return Json(true);
-            return Json("ایمیل وارد شده از قبل موجود است");
+            return Json("The entered email is already exist");
         }
 
         [HttpPost]
@@ -150,7 +148,7 @@ namespace influencer.Controllers
         {
             var user = await _userManager.FindByNameAsync(userName);
             if (user == null) return Json(true);
-            return Json("نام کاربری وارد شده از قبل موجود است");
+            return Json("The entered username is already exist");
         }
 
 
@@ -196,7 +194,7 @@ namespace influencer.Controllers
             var externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync();
             if (externalLoginInfo == null)
             {
-                ModelState.AddModelError("ErrorLoadingExternalLoginInfo", $"مشکلی پیش آمد");
+                ModelState.AddModelError("ErrorLoadingExternalLoginInfo", $"Problem!");
                 return View("Login", loginViewModel);
             }
 
@@ -233,8 +231,8 @@ namespace influencer.Controllers
                 return Redirect(returnUrl);
             }
 
-            ViewBag.ErrorTitle = "لطفا با بخش پشتیبانی تماس بگیرید";
-            ViewBag.ErrorMessage = $"دریافت کرد {externalLoginInfo.LoginProvider} نمیتوان اطلاعاتی از";
+            ViewBag.ErrorTitle = "Please contact support";
+            ViewBag.ErrorMessage = $"{externalLoginInfo.LoginProvider} Can not get information from";
             return View();
         }
 

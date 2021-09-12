@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QtvKPaW4moJnBug9aRi5U/zv8U/Zuak2WXNVwMQxsGDWi+dpWJWF7nS7/qbSfsd61+FmDsWLtwq7KxEQ13QaAw==",
+  "dgSpecHash": "P4OkaBJXszICuwlcwYaJuKSYOkJm3f9SIOyt4A3sASsnYsmbAWRSBnvrKvTewFBX0dJ6+E3yGFEjmJZfyP6NqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer_OLD\\influencer\\influencer.csproj",
+  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
