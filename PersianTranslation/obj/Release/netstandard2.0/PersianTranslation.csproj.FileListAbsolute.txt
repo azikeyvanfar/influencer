@@ -6,3 +6,12 @@ C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\
 C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.AssemblyInfo.cs
 C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.dll
 C:\Users\Arman PC gg\source\repos\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.deps.json
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\bin\Release\netstandard2.0\PersianTranslation.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.csprojAssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.AssemblyInfoInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.AssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\PersianTranslation\obj\Release\netstandard2.0\PersianTranslation.pdb

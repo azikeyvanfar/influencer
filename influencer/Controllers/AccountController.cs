@@ -3,6 +3,7 @@ using Domain.Entities.Context;
 using influencer.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -44,8 +45,14 @@ namespace influencer.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
+                bool OkAdmin = true;
+                if(model.UserCategory == 3)
+                {
+                    List<string> requestRoles = new List<string>() { "Admin" };
+                    var resultAddRole = await _userManager.AddToRolesAsync(user, requestRoles);
+                    OkAdmin = resultAddRole.Succeeded;
+                }
+                if (result.Succeeded && OkAdmin)
                 {
                     var emailConfirmationToken =
                         await _userManager.GenerateEmailConfirmationTokenAsync(user);
