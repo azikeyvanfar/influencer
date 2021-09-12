@@ -14,7 +14,7 @@ namespace Data.EF
 
                 var credentials = new NetworkCredential()
                 {
-                    UserName = "azadeh.keyvanfar", // without @gmail.com
+                    UserName = "azi.keyvanfar", // without @gmail.com
                     Password = "Elegance1_"
                 };
 
@@ -26,7 +26,7 @@ namespace Data.EF
                 using var emailMessage = new MailMessage()
                 {
                     To = { new MailAddress(toEmail) },
-                    From = new MailAddress("azadeh.keyvanfar@gmail.com"), // with @gmail.com
+                    From = new MailAddress("azi.keyvanfar@gmail.com"), // with @gmail.com
                     Subject = subject,
                     Body = message,
                     IsBodyHtml = isMessageHtml
