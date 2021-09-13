@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {}
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
         "projectName": "PersianTranslation",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",

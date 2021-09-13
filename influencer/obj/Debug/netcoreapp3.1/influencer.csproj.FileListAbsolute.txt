@@ -1908,3 +1908,4 @@ C:\Users\azadeh\source\repos\azikeyvanfar\influencer_OLD\influencer\obj\Debug\ne
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer_OLD\influencer\obj\Debug\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer_OLD\influencer\obj\Debug\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\source\repos\azikeyvanfar\influencer_OLD\influencer\obj\Debug\netcoreapp3.1\influencer.genruntimeconfig.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index - Copy.cshtml.g.cs

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ClrgON9OVLUGux2tZJzLHMfq73E9Ru+f8JR67tAfz3NZsGdnHcV1kuUSqA7qiHKR+4Kq71yNwN7UY9o8+GYbag==",
+  "dgSpecHash": "8Ud2FTxmtiWlfDNR/w0GDoE4P1vTg2KzgsT3U0ktGqjPvPkLZJl2ba/D4g0RpuJkIdyQCHyLySv37oVINl1qPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
+  "projectFilePath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\azadeh\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

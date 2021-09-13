@@ -2170,3 +2170,18 @@ div.login-logout-tab a.nav-link {
     .navbar.second-navbar.top-nav-collapse {
         margin-top: 45px;
     }
+
+.SaveAll {
+    position: fixed;
+    opacity: 1;
+    right: 15px;
+    top : 110px;
+    z-index: 996;
+    background: #e03a3c;
+    color:#ffffff;
+    width: 70px;
+    padding:5px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}

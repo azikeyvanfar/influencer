@@ -21,7 +21,7 @@ namespace influencer.Controllers
 
         public IActionResult Index()
         {
-            List<UserArticle> article = _userArticleRepository.FindAll().ToList();
+            List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m=>m.OrderArticle).ToList();
             return View(article);
         }
 

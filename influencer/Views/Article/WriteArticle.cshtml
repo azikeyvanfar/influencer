@@ -3,56 +3,79 @@
 <div class="container">
     <main role="main" class="pb-3">
         <form asp-controller="Article" asp-action="WriteArticle" method="post">
-                @Html.AntiForgeryToken()
-                <input asp-for="Id" type="hidden" />
-                <input asp-for="UserId" type="hidden" />
+            @Html.AntiForgeryToken()
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="UserId" type="hidden" />
+            <div class="row">
+                <div class="col-md-5">
+                    <h1>Write your Article Here</h1>
+                </div>
+                <div class="col-md-5">
+                    <input type="submit" name="saveToArticle" class="btn btn-danger" style="float:right" title="Submit" />
+                </div>
                 <div class="row">
+                    <div asp-validation-summary="ModelOnly"></div>
                     <div class="col-md-5">
-                        <h1>Write your Article Here</h1>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="submit" name="saveToArticle" class="btn btn-danger" style="float:right" title="Submit" />
-                    </div>
-                    <div class="row">
-                        <div asp-validation-summary="ModelOnly"></div>
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label asp-for="Title" class="control-label"></label>:
-                                <span class="text-danger">*</span>
-                                <input asp-for="Title" class="form-control" required>
-                                <span asp-validation-for="Title" class="text-danger"></span>
-                            </div>
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            <input asp-for="Title" class="form-control" required>
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label asp-for="Categories" class="control-label"></label>:
-                                <span class="text-danger">*</span>
-                                @Html.DropDownList("Categories", new List<SelectListItem>
-                                                                                   {
-                                   new SelectListItem{ Text="Strategy", Value = "1" },
-                                   new SelectListItem{ Text="Technology", Value = "2" },
-                                   new SelectListItem{ Text="Test", Value = "3" }
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Categories" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            @Html.DropDownList("Categories", new List<SelectListItem>
+                                                                                                                                                                                                                                                                                                                                                           {
+                                   new SelectListItem{ Text="Clients", Value = "1" },
+                                   new SelectListItem{ Text="Services", Value = "2" },
+                                   new SelectListItem{ Text="Portfolio", Value = "3" },
+                                   new SelectListItem{ Text="Tabs", Value = "4" },
+                                   new SelectListItem{ Text="Testimonials", Value = "5" },
+                                   new SelectListItem{ Text="Pricing", Value = "6" },
+                                   new SelectListItem{ Text="Counts", Value = "7" },
+                                   new SelectListItem{ Text="About", Value = "8" },
+                                   new SelectListItem{ Text="Frequently", Value = "9" },
+                                   new SelectListItem{ Text="Team", Value = "10" },
+                                   new SelectListItem{ Text="Contact", Value = "11" }
                                }, new { @class = "form-control" })
-                                <span asp-validation-for="Categories" class="text-danger"></span>
-                            </div>
+                            <span asp-validation-for="Categories" class="text-danger"></span>
                         </div>
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <label asp-for="Contents" class="control-label"></label>:
-                                <span class="text-danger">*</span>
-                                <textarea id="Contents" name="Contents" rows="10" asp-for="Contents"></textarea>
-                                <span asp-validation-for="Contents" class="text-danger"></span>
-                            </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label asp-for="OrderArticle" class="control-label"></label>:
+                            <input asp-for="OrderArticle" class="form-control" value="@ViewBag.order">
+                            <span asp-validation-for="OrderArticle" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="Contents" class="control-label"></label>:
+                            <span class="text-danger">*</span>
+                            <textarea id="Contents" name="Contents" rows="10" asp-for="Contents"></textarea>
+                            <span asp-validation-for="Contents" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
-            </form>
-
+            </div>
+        </form>
+        
     </main>
 </div>
-
 @section Scripts{
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+        @*<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/balloon/ckeditor.js"></script>
+        <script>
+            BalloonEditor
+                .create(document.querySelector('#Contents'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>*@
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor.create(document.querySelector('#Contents'))
             .catch(error => {

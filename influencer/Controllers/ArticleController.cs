@@ -27,7 +27,7 @@ namespace influencer.Controllers
 
         public IActionResult Index()
         {
-            List<UserArticle> article = _userArticleRepository.FindAll().ToList();
+            List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m => m.OrderArticle).ToList();
             return View(article);
         }
         /************************************************************************************/
@@ -37,6 +37,7 @@ namespace influencer.Controllers
             string loggedInUserId = _userManager.GetUserId(User);
             article.UserId = loggedInUserId;
             UserArticle userArticle;
+            ViewBag.order = _userArticleRepository.FindAll().OrderByDescending(m => m.OrderArticle).Select(m => m.OrderArticle).FirstOrDefault();
             if (!article.Id.Equals(Guid.Empty))
                 userArticle = await _userArticleRepository.Update(article);
             else

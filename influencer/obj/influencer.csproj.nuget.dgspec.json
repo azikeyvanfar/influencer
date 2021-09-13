@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj": {}
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj",
         "projectName": "Data.EF",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
               },
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
         "projectName": "Domain.Contracts",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,8 +108,8 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
               }
             }
           }
@@ -141,14 +141,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
         "projectName": "Domain.Entities",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -216,14 +216,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj",
         "projectName": "influencer",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\influencer\\influencer.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\influencer\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\influencer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -240,17 +240,17 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Data.EF\\Data.EF.csproj"
               },
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
               },
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Entities\\Domain.Entities.csproj"
               },
-              "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
-                "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj"
+              "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
+                "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj"
               }
             }
           }
@@ -307,14 +307,14 @@
         }
       }
     },
-    "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
+    "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
+        "projectUniqueName": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
         "projectName": "PersianTranslation",
-        "projectPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
+        "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\PersianTranslation.csproj",
         "packagesPath": "C:\\Users\\azadeh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azadeh\\source\\repos\\azikeyvanfar\\influencer\\PersianTranslation\\obj\\",
+        "outputPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\PersianTranslation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azadeh\\AppData\\Roaming\\NuGet\\NuGet.Config",

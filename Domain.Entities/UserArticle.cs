@@ -13,6 +13,7 @@ namespace Domain.Entities
         [Required]
         public string Title { get; set; }
         public string Contents { get; set; }
+        public Int16 OrderArticle { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateTime
