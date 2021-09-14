@@ -107,7 +107,7 @@
                 $.each(@j, function (k, v) {
                     var text = $.trim($('[art_id="' + v.id + '"]').html()).replace(/ lang="en" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" contenteditable="true"/g, "");
                     text = text.replace(/ aos-init aos-animate/g, "").replace(/ ck-blurred/g, "").replace(/ck-blurred /g, "").replace(/ class="ck-link_selected"/g, "");
-                    text = text.replace(/ ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline/g, "").replace(/<p>(.*)<\/p>/g, "");
+                    text = text.replace(/ ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline/g, "");//.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "")
                     text = JSON.stringify(text);
                     $.ajax({
                         type: 'post',
