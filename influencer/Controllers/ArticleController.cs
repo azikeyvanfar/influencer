@@ -4,6 +4,7 @@ using Domain.Entities.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,8 +83,24 @@ namespace influencer.Controllers
             await _userArticleRepository.Delete(article);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public async Task<IActionResult> Update(string content,Guid id)
+        {
+            if (!content.Equals(null)) {
+                var result = JsonConvert.DeserializeObject(content);
+                UserArticle article = _userArticleRepository.FindByCondition(m => m.Id == id).FirstOrDefault();
+                article.Contents = result.ToString();
+                await _userArticleRepository.Update(article);
+                //IEnumerable<UserArticle> articles= JsonConvert.DeserializeObject<IEnumerable<UserArticle>>(data);
+                //foreach (UserArticle art in articles)
+                //{
+                //    _userArticleRepository.Update(art);
+                //}
+                return Json(true);
+            }
+            return Json(false);
+        }
 
-       
         //[HttpPost]
         //public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor,
         //   string langCode)

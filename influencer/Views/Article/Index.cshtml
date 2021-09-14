@@ -1,6 +1,7 @@
 ﻿@model List<Domain.Entities.UserArticle>
 @{
     ViewData["Title"] = "Home Page";
+    var j = Json.Serialize(Model);
 }
 <!-- ======= Hero Section ======= -->
 <div id="carouselExampleCaptions" class="carousel" data-bs-ride="carousel">
@@ -66,20 +67,20 @@
         <button id="saveAll" class="SaveAll btn btn-danger">Save All</button>
         <!-- ======= Article Asked Questions Section ======= -->
         <div id="Article">
-        @if (Model.Any())
-        {
-
-            @foreach (var article in Model)
+            @if (Model.Any())
             {
-                @*<div class="section-title">
-                        <h2>@article.Title</h2>
-                    </div>*@
-                <div class="row" art_title="@article.Title">
-                    @Html.Raw(@article.Contents)
-                </div>
-            }
 
-        }
+                @foreach (var article in Model)
+                {
+                    @*<div class="section-title">
+                            <h2>@article.Title</h2>
+                        </div>*@
+                    <div class="row" art_title="@article.Title" art_id="@article.Id" art_categories="@article.Categories" art_order="@article.OrderArticle">
+                        @Html.Raw(@article.Contents)
+                    </div>
+                }
+
+            }
         </div><!-- End Frequently Asked Questions Section -->
     </main><!-- End #main -->
     <div class="col-12 pb-5">
@@ -98,15 +99,39 @@
                 });
         }
 
-         $(function () {
+
+
+        $(function () {
             $("#saveAll").click(function () {
-                console.log(222222222);
-                //console.log($("#Article").text());
-                var m = '@Model';
-                $.each(m , function (k, v) {
-                    console.log(v.Title);
-                    console.log($('[art_title="' + v.Title + '"]').text());
+                var res = true;
+                $.each(@j, function (k, v) {
+                    var text = $.trim($('[art_id="' + v.id + '"]').html()).replace(/ lang="en" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" contenteditable="true"/g, "");
+                    text = text.replace(/ aos-init aos-animate/g, "").replace(/ ck-blurred/g, "").replace(/ck-blurred /g, "").replace(/ class="ck-link_selected"/g, "");
+                    text = text.replace(/ ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline/g, "").replace(/<p>(.*)<\/p>/g, "");
+                    text = JSON.stringify(text);
+                    $.ajax({
+                        type: 'post',
+                        url: '@Url.Action("Update","Article")',
+                        data: {
+                            content: text,
+                            id : $('[art_id="' + v.id + '"]').attr("art_id")
+                        },
+                        success: function (e) {
+                            if (e) {
+                                res = res && true;
+                            }
+                            else {
+                                res = res && false;
+                            }
+                        }
+                    });
                 });
+                if (res) {
+                    alert("success save");
+                }
+                else {
+                    alert("fail save");
+                }
             });
         });
     </script>
