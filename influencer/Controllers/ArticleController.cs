@@ -38,7 +38,6 @@ namespace influencer.Controllers
             string loggedInUserId = _userManager.GetUserId(User);
             article.UserId = loggedInUserId;
             UserArticle userArticle;
-            ViewBag.order = _userArticleRepository.FindAll().OrderByDescending(m => m.OrderArticle).Select(m => m.OrderArticle).FirstOrDefault();
             if (!article.Id.Equals(Guid.Empty))
                 userArticle = await _userArticleRepository.Update(article);
             else
@@ -50,10 +49,18 @@ namespace influencer.Controllers
                 return View(article);
         }
         [HttpGet]
-        public ActionResult<UserArticle> WriteArticle(Guid? id)
+        public ActionResult<UserArticle> WriteArticle(Int16? order,Guid? id)
         {
             if (id == null)
             {
+                if (order == null)
+                {
+                    ViewBag.order = _userArticleRepository.FindAll().OrderByDescending(m => m.OrderArticle).Select(m => m.OrderArticle).FirstOrDefault();
+                }
+                else
+                {
+                    ViewBag.order = order;
+                }
                 return View(new UserArticle());
             }
             else
