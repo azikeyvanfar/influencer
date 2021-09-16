@@ -64,7 +64,7 @@
 
 <div class="container">
     <main role="main" class="pb-3">
-        <button id="saveAll" class="SaveAll btn btn-danger">Save All</button>
+        <button id="saveAll" class="save-all btn btn-danger">Save All</button>
         <!-- ======= Article Asked Questions Section ======= -->
         <div id="Article">
             @if (Model.Any())
@@ -75,13 +75,15 @@
                     @*<div class="section-title">
                             <h2>@article.Title</h2>
                         </div>*@
+                    <div class="row" del-id="@article.Id">
+                        <button data-id="@article.Id" data-name="@article.Title" title="Delete @article.Title" class="btn btn-outline-danger delete-article" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i>Delete @article.Title</button>
+                    </div>
                     <div class="row" art_title="@article.Title" art_id="@article.Id" art_categories="@article.Categories" art_order="@article.OrderArticle">
-                        <button delid="@article.Id" title="Delete @article.Title" class="btn btn-outline-danger delete-art" data-toggle="modal" data-target=".DelModal" style="float:right;position: relative;width:150px;left:4px;z-index:200"><i class="bi-trash"></i>Delete @article.Title</button>
                         @Html.Raw(@article.Contents)
                     </div>
-                    <div class="row">
+                    <div class="row" add-id="@article.Id">
                         <hr />
-                        <a asp-controller="Article" asp-action="WriteArticle" asp-route-order="@article.OrderArticle" class="btn link-success" style="width:100%"><i class="bi-plus-circle"></i>&nbsp;_____________  Write Article _____________</a>
+                        <a asp-controller="Article" asp-action="WriteArticle" asp-route-order="@article.OrderArticle" class="btn link-success" style="width:100%"><i class="bi-plus-circle"></i>&nbsp;_____________  Add Article _____________</a>
                     </div>
                 }
 
@@ -89,21 +91,24 @@
         </div><!-- End Frequently Asked Questions Section -->
     </main><!-- End #main -->
     <!-- Modal -->
-    <div class="modal fade DelModal" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="DelModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="DelModalLabel">Delete</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Are You Sure Delete
+                    <b><span id="articleName"></span></b>
+                    ?
+                    <input id="articleId" name="articleId" type="hidden" />
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="delete-to-server">Delete</button>
                 </div>
             </div>
         </div>
@@ -122,7 +127,7 @@
                 config.enterMode = CKEDITOR.ENTER_BR;
             };
         }
-
+        
         $(function () {
             $("#saveAll").click(function () {
                 var res = true;
@@ -155,21 +160,39 @@
                     alert("fail save");
                 }
             });
-            $('button.delete-art').on('click', function (e) {
-                e.preventDefault();
-                $('#confirm').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                })
-                    .on('click', '#delete', function (e) {
-                        $form.trigger('submit');
+
+            /**set data to dialog**/
+            $(document).on("click", ".delete-article", function () {
+                var myArticleId = $(this).data('id');
+                $(".modal-body #articleId").val(myArticleId);
+                var myArticleName = $(this).data('name');
+                $(".modal-body #articleName").text(myArticleName);
+
+                // As pointed out in comments,
+                // it is unnecessary to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+            });
+            $("#delete-to-server").click(function () {
+                 $.ajax({
+                        type: 'post',
+                        url: '@Url.Action("RemoveArticle", "Article")',
+                        data: {
+                            id: $('#articleId').val()
+                        },
+                         success: function (e) {
+                             if (e == true) {
+                                 alert('Delete Success');
+                                 id = $('#articleId').val();
+                                 $('[art_id="' + id + '"],[add-id="' + id + '"],[del-id="' + id + '"]').remove();
+                                 $('[data-bs-dismiss="modal"]').click();
+                            }
+                            else {
+                             alert('Do Not Delete');
+                            }
+                        }
                     });
-                $("#cancel").on('click', function (e) {
-                    e.preventDefault();
-                    $('#confirm').modal.model('hide');
-                });
             });
         });
-       
+
     </script>
 }

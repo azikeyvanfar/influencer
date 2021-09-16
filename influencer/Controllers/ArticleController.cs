@@ -35,18 +35,25 @@ namespace influencer.Controllers
         [HttpPost]
         public async Task<IActionResult> WriteArticle(UserArticle article)
         {
-            string loggedInUserId = _userManager.GetUserId(User);
-            article.UserId = loggedInUserId;
-            UserArticle userArticle;
-            if (!article.Id.Equals(Guid.Empty))
-                userArticle = await _userArticleRepository.Update(article);
-            else
-                userArticle = await _userArticleRepository.Create(article);
+            if (ModelState.IsValid)
+            {
 
-            if (userArticle.Id.Equals(Guid.Empty))
-                return RedirectToAction("Index");
-            else
-                return View(article);
+                string loggedInUserId = _userManager.GetUserId(User);
+                article.UserId = loggedInUserId;
+                UserArticle userArticle;
+                if (!article.Id.Equals(Guid.Empty))
+                    userArticle = await _userArticleRepository.Update(article);
+                else
+                {
+                    article.Contents = "<div class=\"editable\">" + article.Contents + "</div>";
+                    userArticle = await _userArticleRepository.Create(article);
+                }
+                //if (userArticle.Id.Equals(Guid.Empty))
+                    return RedirectToAction("Index");
+                //else
+                //    return View(article);
+            }
+            return View(article);
         }
         [HttpGet]
         public ActionResult<UserArticle> WriteArticle(Int16? order,Guid? id)
@@ -88,7 +95,7 @@ namespace influencer.Controllers
         {
             UserArticle article = _userArticleRepository.FindByCondition(m => m.Id == id).FirstOrDefault();
             await _userArticleRepository.Delete(article);
-            return RedirectToAction("Index");
+            return Json(true);
         }
         [HttpPost]
         public async Task<IActionResult> Update(string content,Guid id)

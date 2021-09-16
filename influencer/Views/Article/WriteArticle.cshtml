@@ -7,13 +7,14 @@
             <input asp-for="Id" type="hidden" />
             <input asp-for="UserId" type="hidden" />
             <div class="row">
-                <div class="col-md-5">
-                    <h1>Write your Article Here</h1>
-                </div>
-                <div class="col-md-5">
-                    <input type="submit" name="saveToArticle" class="btn btn-danger" style="float:right" title="Submit" />
-                    <input type="button" name="CancleArticle" class="btn btn-outline-danger" style="float:right" title="Cancle" asp-action="Index" asp-controller="Article"/>
-                </div>
+                
+                    <div class="col-md-5">
+                        <h1>Write your Article Here</h1>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="submit" name="saveToArticle" class="btn btn-danger" style="float:right" title="Submit" />
+                        <a id="CancleArticle" class="btn btn-secondary" style="float:right" title="Cancle" href="@Url.Action("Index","Article")">Cancle</a>
+                    </div>
                 <div class="row">
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="col-md-5">
