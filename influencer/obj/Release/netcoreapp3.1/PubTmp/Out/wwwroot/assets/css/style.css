@@ -2171,7 +2171,7 @@ div.login-logout-tab a.nav-link {
         margin-top: 45px;
     }
 
-.SaveAll {
+.save-all {
     position: fixed;
     opacity: 1;
     right: 15px;
@@ -2184,4 +2184,11 @@ div.login-logout-tab a.nav-link {
     height: 40px;
     border-radius: 4px;
     transition: all 0.4s;
+}
+.delete-article {
+    float: left;
+    position: relative;
+    width: 300px;
+    left: 4px;
+    z-index: 200;
 }
