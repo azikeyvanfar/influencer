@@ -10,6 +10,7 @@ namespace Data.EF.Common
         public DbSet<Employee> employees { get; set; }
         public DbSet<UserArticle> userArticles { get; set; }
         public DbSet<SiteSetting> siteSettings { get; set; }
+        public DbSet<Advertise> advertises { get; set; }
 
         public InfluencerDbContext(DbContextOptions dbContextOptions): base(dbContextOptions)
         {

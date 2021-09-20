@@ -2192,3 +2192,7 @@ div.login-logout-tab a.nav-link {
     left: 4px;
     z-index: 200;
 }
+.editable img{
+    max-width : 100%;
+    height:auto;
+}

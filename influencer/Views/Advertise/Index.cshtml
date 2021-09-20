@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Domain.Entities.Advertise>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+        <h1>All Advertise</h1>
+        <p>
+            <a asp-action="Create" class="btn btn-danger"><i class="bi-plus"></i>Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CntFollowers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CntViewers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fame)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderAdvertise)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdvPicture)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CntFollowers)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CntViewers)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fame)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderAdvertise)
+                    </td>
+                    <td>
+                        <img src="~/images/@item.AdvPicture"
+                             class="rounded-circle"
+                             height="40" width="40"
+                             asp-append-version="true" />
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </main>
+</div>

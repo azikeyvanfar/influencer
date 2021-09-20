@@ -1,0 +1,91 @@
+﻿@model influencer.ViewModels.Advertise.AdvertiseViewModel
+
+@{
+    ViewData["Title"] = "Create Advertis";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+        <h1>Create Advertis</h1>
+        <hr />
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Contents" class="control-label"></label>
+                        <textarea asp-for="Contents" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="Contents" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Categories" class="control-label"></label>
+                        <input asp-for="Categories" class="form-control" />
+                        <span asp-validation-for="Categories" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AdvPicture" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile"></label>
+                        </div>
+                        <span asp-validation-for="AdvPicture" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="OrderAdvertise" class="control-label"></label>
+                        <input asp-for="OrderAdvertise" class="form-control" />
+                        <span asp-validation-for="OrderAdvertise" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CntFollowers" class="control-label"></label>
+                        <input asp-for="CntFollowers" class="form-control" />
+                        <span asp-validation-for="CntFollowers" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CntViewers" class="control-label"></label>
+                        <input asp-for="CntViewers" class="form-control" />
+                        <span asp-validation-for="CntViewers" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Fame" class="control-label"></label>
+                        <input asp-for="Fame" class="form-control" />
+                        <span asp-validation-for="Fame" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

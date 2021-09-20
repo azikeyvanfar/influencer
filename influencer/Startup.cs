@@ -96,6 +96,7 @@ namespace influencer
             services.AddSingleton<IAuthorizationHandler, ClaimHandler>();
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
             services.AddScoped<IUserArticleRepository, UserArticleRepository>();
+            services.AddScoped<IAdvertiseRepository, AdvertiseRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
         }
