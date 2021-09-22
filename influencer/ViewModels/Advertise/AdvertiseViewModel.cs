@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using influencer.Common;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace influencer.ViewModels.Advertise
 {
-    public class AdvertiseViewModel
+    public class AdvertiseViewModel : EditImageViewModel
     {
         public Guid Id { get; set; }
         [Required]
@@ -18,13 +19,27 @@ namespace influencer.ViewModels.Advertise
         [StringLength(500)]
         public string Contents { get; set; }
         [Required]
-        public IFormFile AdvPicture { get; set; }
+        
+        [Display(Name = "Order")]
         public Int16 OrderAdvertise { get; set; }
+        [Display(Name = "Followers Count")]
         public int CntFollowers { get; set; }
+        [Display(Name = "Viewers Count")]
         public int CntViewers { get; set; }
         public Int16 Fame { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
+    }
+    public class UploadImageViewModel
+    {
+        [Display(Name = "Picture")]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
+        public IFormFile AdvPicture { get; set; }
+    }
+    public class EditImageViewModel : UploadImageViewModel
+    {
+        public int Id { get; set; }
+        public string ExistingImage { get; set; }
     }
 }

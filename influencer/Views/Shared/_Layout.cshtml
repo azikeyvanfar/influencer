@@ -49,11 +49,9 @@
             <h1 class="logo me-auto"><a href="@Url.Action("Index","Home")">influencer<span>.</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a>-->
-
             <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
                 <div class="container">
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
                         <ul class="navbar-nav flex-grow-1">
                             <li><a class="nav-link scrollto active" href="#hero">WHO WE ARE</a></li>
                             <li class="dropdown">
@@ -87,6 +85,7 @@
                     </div>
                 </div>
             </nav><!-- .navbar -->
+            <partial name="_LoginPartial" />
             @if (User.IsInRole("Blogger"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
             {
                 <nav class="navbar second-navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
@@ -98,11 +97,11 @@
                     <div class="breadcrumb-dn mr-auto text-white">
                         <b>Blogger Menu</b>
                     </div>
-                    <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                        <li class="nav-item">
+                    <ul class="nav navbar-nav nav-flex-icons ml-auto list-inline" style="display:block">
+                        <li class="list-inline-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Advertise" asp-action="Index">Advertise</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="list-inline-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
                         </li>
                     </ul>
@@ -156,28 +155,28 @@
                             <a class="nav-link waves-effect waves-light" asp-controller="Article" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">Manage</span></a>
                         </li>
                         @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") || User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
-                                </li>
-                            }*@
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+                        </li>
+                    }*@
                         @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                                </div>
-                            </li>*@
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                        </div>
+                    </li>*@
                     </ul>
                 </nav>
             }
             @*<a href="/Identity/Account/Login" class="get-started-btn scrollto">LOGIN</a>*@
         </div>
     </header><!-- End Header -->
-    <div style="margin-top:105px;">
+    <div style="margin-top:102px;">
         @RenderBody()
     </div>
     <!-- ======= Footer ======= -->

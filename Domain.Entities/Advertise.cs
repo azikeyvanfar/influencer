@@ -21,10 +21,11 @@ namespace Domain.Entities
         public int CntFollowers { get; set; }
         public int CntViewers { get; set; }
         public Int16 Fame { get; set; }
-
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
+        [Required]
+        public bool AdvConfirm { get; set; }
 
-}
+    }
 }

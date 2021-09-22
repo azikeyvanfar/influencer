@@ -14,7 +14,7 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Title" class="control-label"></label>
-                        <input asp-for="Title" class="form-control" />
+                        <input asp-for="Title" class="form-control" required/>
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>
@@ -30,7 +30,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="Categories" class="control-label"></label>
-                        <input asp-for="Categories" class="form-control" />
+                        @*<input asp-for="Categories" class="form-control" />*@
+                        @Html.DropDownList("Categories", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="APP", Value = "1" },
+                                new SelectListItem{ Text="CARD", Value = "2" },
+                                new SelectListItem{ Text="WEB", Value = "3" }
+                            }, new { @class = "form-control" })
                         <span asp-validation-for="Categories" class="text-danger"></span>
                     </div>
                 </div>
@@ -38,7 +44,7 @@
                     <div class="form-group">
                         <label asp-for="AdvPicture" class="control-label"></label>
                         <div class="custom-file">
-                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile">
+                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile" required>
                             <label class="custom-file-label" for="customFile"></label>
                         </div>
                         <span asp-validation-for="AdvPicture" class="text-danger"></span>
@@ -70,7 +76,16 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="Fame" class="control-label"></label>
-                        <input asp-for="Fame" class="form-control" />
+                        @*<input asp-for="Fame" class="form-control" />*@
+                        @Html.DropDownList("Fame", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="⭐", Value = "1" },
+                                new SelectListItem{ Text="⭐⭐", Value = "2" },
+                                new SelectListItem{ Text="⭐⭐⭐", Value = "3" },
+                                new SelectListItem{ Text="⭐⭐⭐⭐", Value = "4" },
+                                new SelectListItem{ Text="⭐⭐⭐⭐⭐", Value = "5" }
+                            }, new { @class = "form-control" })
+
                         <span asp-validation-for="Fame" class="text-danger"></span>
                     </div>
                 </div>

@@ -5,10 +5,16 @@
 }
 <div class="container">
     <main role="main" class="pb-3">
-        <h1>All Advertise</h1>
-        <p>
-            <a asp-action="Create" class="btn btn-danger"><i class="bi-plus"></i>Create New</a>
-        </p>
+        <div class="row">
+            <div class="col-md-10 col-sm-8 col-7">
+                <h1>All Advertise</h1>
+            </div>
+            <div class="col-md-2 col-sm-4 col-5">
+                <p>
+                    <a asp-action="Create" class="btn btn-danger"><i class="bi-plus"></i>Create New</a>
+                </p>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +31,7 @@
                         @Html.DisplayNameFor(model => model.Fame)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DateTime)
+                        @Html.DisplayNameFor(model => model.Categories)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.OrderAdvertise)
@@ -41,40 +47,165 @@
                 {
                     @foreach (var item in Model)
                     {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CntFollowers)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CntViewers)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fame)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderAdvertise)
-                    </td>
-                    <td>
-                        <img src="~/images/@item.AdvPicture"
-                             class="rounded-circle"
-                             height="40" width="40"
-                             asp-append-version="true" />
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CntFollowers)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CntViewers)
+                            </td>
+                            <td>
+                                @switch (@item.Fame)
+                                {
+                                    case 1:
+                                        {
+                                            <p>⭐</p>
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            <p>⭐⭐</p>
+
+                                            break;
+                                        }
+                                    case 3:
+                                        {
+                                            <p>⭐⭐⭐</p>
+                                            break;
+                                        }
+                                    case 4:
+                                        {
+                                            <p>⭐⭐⭐⭐</p>
+
+                                            break;
+                                        }
+                                    case 5:
+                                        {
+                                            <p>⭐⭐⭐⭐⭐</p>
+                                            break;
+                                        }
+                                }
+                            </td>
+                            <td>
+                                @switch (@item.Categories)
+                                {
+                                    case 1:
+                                        {
+                                            <p>APP</p>
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            <p>CARD</p>
+
+                                            break;
+                                        }
+                                    case 3:
+                                        {
+                                            <p>WEB</p>
+                                            break;
+                                        }
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderAdvertise)
+                            </td>
+                            <td>
+                                <a href="#" class="pop">
+                                    <img src="~/Uploads/@item.AdvPicture" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-danger" title="@item.Title Edit"><i class="bi-pencil"></i></a> |
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-danger" title="@item.Title Details"><i class="bi-list-task"></i></a> |
+                                <a data-id="@item.Id" data-name="@item.Title" title="@item.Title Delete" class="btn btn-outline-danger delete-adv" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i></a>
+                            </td>
+                        </tr>
                     }
                 }
             </tbody>
         </table>
     </main>
 </div>
+<!-- Creates the bootstrap modal where the image will appear -->
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close btn" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>*@
+                <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <img src="" id="imagepreview" style="width: 400px; height: 264px;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="DelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DelModalLabel">Delete</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are You Sure Delete
+                <b><span id="advName"></span></b>
+                ?
+                <input id="advId" name="advId" type="hidden" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="delete-to-server">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(".pop").on("click", function () {
+            var img = $(this).find('img.rounded-circle');
+            $('#imagepreview').attr('src', img.attr('src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+         $(document).on("click", ".delete-adv", function () {
+                var myadvId = $(this).data('id');
+                $(".modal-body #advId").val(myadvId);
+                var myadvName = $(this).data('name');
+                $(".modal-body #advName").text(myadvName);
+
+                // As pointed out in comments,
+                // it is unnecessary to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+            });
+            $("#delete-to-server").click(function () {
+                 $.ajax({
+                        type: 'post',
+                        url: '@Url.Action("DeleteConfirmed", "Advertise")',
+                        data: {
+                            id: $('#advId').val()
+                        },
+                         success: function (e) {
+                             if (e == true) {
+                                 id = $('#advId').val();
+                                 $('[data-id="' + id + '"]').parents("tr").remove();
+                                 $('[data-bs-dismiss="modal"]').click();
+                                 alert('Delete Success');
+                            }
+                            else {
+                             alert('Do Not Delete');
+                            }
+                        }
+                    });
+            });
+    </script>
+}

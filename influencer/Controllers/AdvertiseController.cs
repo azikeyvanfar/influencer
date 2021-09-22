@@ -91,111 +91,118 @@ namespace influencer.Controllers
                     CntViewers = advertise.CntViewers,
                     Fame = advertise.Fame,
                     OrderAdvertise = advertise.OrderAdvertise
-                };            
+                };
                 await _advertiseRepository.Create(advertise1);
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
 
-    private string UploadedFile(AdvertiseViewModel advertise)
-    {
-        string uniqueFileName = null;
-
-        if (advertise.AdvPicture != null)
+        private string UploadedFile(AdvertiseViewModel advertise)
         {
-            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-            uniqueFileName = Guid.NewGuid().ToString() + "_" + advertise.AdvPicture.FileName;
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            string uniqueFileName = null;
+
+            if (advertise.AdvPicture != null)
             {
-                advertise.AdvPicture.CopyTo(fileStream);
-            }
-        }
-        return uniqueFileName;
-    }
-
-    // GET: advertise/Edit/5
-    public async Task<IActionResult> Edit(Guid? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var advertise = await _advertiseRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
-        if (advertise == null)
-        {
-            return NotFound();
-        }
-        return View(advertise);
-    }
-
-    // POST: advertise/Edit/5
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //[ValidateAntiForgeryToken]
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, Advertise advertise)
-    {
-        if (id != advertise.Id)
-        {
-            return NotFound();
-        }
-
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                await _advertiseRepository.Update(advertise);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!advertiseExists(advertise.Id))
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + advertise.AdvPicture.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    advertise.AdvPicture.CopyTo(fileStream);
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return uniqueFileName;
         }
-        return View(advertise);
-    }
 
-    // GET: advertise/Delete/5
-    public async Task<IActionResult> Delete(Guid? id)
-    {
-        if (id == null)
+        // GET: advertise/Edit/5
+        public async Task<IActionResult> Edit(Guid? id)
         {
-            return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var advertise = await _advertiseRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
+            var advertiseViewModel = new AdvertiseViewModel()
+            {
+                Id = advertise.Id,
+                Title = advertise.Title,
+                Contents = advertise.Contents,
+                Categories = advertise.Categories,
+                CntFollowers = advertise.CntFollowers,
+                CntViewers = advertise.CntViewers,
+                DateTime = advertise.DateTime,
+                Fame = advertise.Fame,
+                OrderAdvertise = advertise.OrderAdvertise,
+                ExistingImage = advertise.AdvPicture
+            };
+            
+            if (advertise == null)
+            {
+                return NotFound();
+            }
+            return View(advertiseViewModel);
         }
 
-        var advertise = await _advertiseRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
-        if (advertise == null)
+        // POST: advertise/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, AdvertiseViewModel advertise)
         {
-            return NotFound();
+            if (id != advertise.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var adv = await _advertiseRepository.FindByCondition(m=>m.Id == advertise.Id).FirstOrDefaultAsync();
+                adv.Title = advertise.Title;
+                adv.Contents = advertise.Contents;
+                adv.Categories = advertise.Categories;
+                adv.CntFollowers = advertise.CntFollowers;
+                adv.CntViewers = advertise.CntViewers;
+                //adv.DateTime = advertise.DateTime;
+                adv.Fame = advertise.Fame;
+                adv.OrderAdvertise = advertise.OrderAdvertise;
+                if (advertise.AdvPicture != null)
+                {
+                    if (advertise.ExistingImage != null)
+                    {
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", advertise.ExistingImage);
+                        System.IO.File.Delete(filePath);
+                    }
+
+                    adv.AdvPicture = UploadedFile(advertise);
+                }
+                await _advertiseRepository.Update(adv);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(advertise);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var advertise = await _advertiseRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
+            var CurrentImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Uploads", advertise.AdvPicture);
+            Advertise DelAdv = await _advertiseRepository.Delete(advertise);
+            //if (DelAdv.Equals==null)
+            //{
+                if (System.IO.File.Exists(CurrentImage))
+                {
+                    System.IO.File.Delete(CurrentImage);
+                }
+            //}
+            return Json(true);
         }
 
-        return View(advertise);
+        private bool advertiseExists(Guid id)
+        {
+            return _advertiseRepository.FindByCondition(e => e.Id == id).Any();
+        }
     }
-
-    // POST: advertise/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
-    {
-        var advertise = await _advertiseRepository.FindByCondition(m => m.Id == id).FirstOrDefaultAsync();
-        await _advertiseRepository.Delete(advertise);
-        return RedirectToAction(nameof(Index));
-    }
-
-    private bool advertiseExists(Guid id)
-    {
-        return _advertiseRepository.FindByCondition(e => e.Id == id).Any();
-    }
-}
 }

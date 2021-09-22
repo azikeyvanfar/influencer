@@ -51,7 +51,7 @@
                     @Html.DisplayNameFor(model => model.AdvPicture)
                 </dt>
                 <dd class="col-sm-10">
-                    <img src="~/images/@Model.AdvPicture" width="200" asp-append-version="true" />
+                    <img id="imageresource" src="~/Uploads/@Model.AdvPicture" width="200" asp-append-version="true" />
                 </dd>
             </dl>
             <form asp-action="Delete">
