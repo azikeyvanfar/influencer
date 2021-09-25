@@ -29,6 +29,9 @@ namespace influencer.Controllers
         public IActionResult Index()
         {
             List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m => m.OrderArticle).ToList();
+            List<short> ord = article.Select(m => m.OrderArticle).ToList();
+            ViewBag.minOrd = ord.Min();
+            ViewBag.maxOrd = ord.Max();
             return View(article);
         }
         /************************************************************************************/
@@ -114,7 +117,27 @@ namespace influencer.Controllers
             }
             return Json(false);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> UpOrder(Guid id) {
+            UserArticle article = _userArticleRepository.FindByCondition(m => m.Id == id).FirstOrDefault();
+            article.OrderArticle = Convert.ToInt16(article.OrderArticle-1);
+            UserArticle article1 = _userArticleRepository.FindByCondition(m => m.OrderArticle == article.OrderArticle).FirstOrDefault();
+            await _userArticleRepository.Update(article);
+            article1.OrderArticle = Convert.ToInt16(article1.OrderArticle+1);
+            await _userArticleRepository.Update(article1);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> DownOrder(Guid id)
+        {
+            UserArticle article = _userArticleRepository.FindByCondition(m => m.Id == id).FirstOrDefault();
+            article.OrderArticle = Convert.ToInt16(article.OrderArticle + 1);
+            UserArticle article1 = _userArticleRepository.FindByCondition(m => m.OrderArticle == article.OrderArticle).FirstOrDefault();
+            await _userArticleRepository.Update(article);
+            article1.OrderArticle = Convert.ToInt16(article1.OrderArticle - 1);
+            await _userArticleRepository.Update(article1);
+            return RedirectToAction(nameof(Index));
+        }
         //[HttpPost]
         //public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor,
         //   string langCode)
