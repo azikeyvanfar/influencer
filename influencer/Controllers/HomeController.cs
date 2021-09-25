@@ -13,15 +13,18 @@ namespace influencer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserArticleRepository _userArticleRepository;
-        public HomeController(ILogger<HomeController> logger, IUserArticleRepository userArticleRepository)
+        private readonly IAdvertiseRepository _advertiseRepository;
+        public HomeController(ILogger<HomeController> logger, IUserArticleRepository userArticleRepository, IAdvertiseRepository advertiseRepository)
         {
             _logger = logger;
             _userArticleRepository = userArticleRepository;
+            _advertiseRepository = advertiseRepository;
         }
 
         public IActionResult Index()
         {
             List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m=>m.OrderArticle).ToList();
+            ViewBag.ListAdv = _advertiseRepository.FindAll().OrderBy(m => m.OrderAdvertise).ToList();
             return View(article);
         }
 

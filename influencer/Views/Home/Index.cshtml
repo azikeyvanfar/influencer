@@ -1,4 +1,5 @@
-﻿@model List<Domain.Entities.UserArticle>
+﻿@using Domain.Entities;
+@model List<Domain.Entities.UserArticle>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -12,11 +13,14 @@
     <div class="carousel-inner">
         <section id="hero" class="align-items-center carousel-item active">
 
-            <div class="container padtop-100" data-aos="zoom-out" data-aos-delay="100">
+            <div class="container padtop-60" data-aos="zoom-out" data-aos-delay="100">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <h1>Bettter digital experience with influencer</h1>
-                        <h2>We are team of talented designers making websites with Bootstrap</h2>
+                    <div class="col-xl-7">
+                        <h1>Creative influencer marketplace to meet your brand's content needs</h1>
+                        <h2>
+                            Brands need to bridge the gap between themselves and customers
+                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                        </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
@@ -25,11 +29,14 @@
         </section>
         <section id="hero2" class="carousel-item">
 
-            <div class="container padtop-100" data-aos="fade-right" data-aos-delay="200">
+            <div class="container padtop-60" data-aos="fade-right" data-aos-delay="200">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <h1>Bettter digital experience with influencer</h1>
-                        <h2>We are team of talented designers making websites with Bootstrap</h2>
+                    <div class="col-xl-7">
+                        <h1>Creative influencer marketplace to meet your brand's content needs</h1>
+                        <h2>
+                            Brands need to bridge the gap between themselves and customers
+                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                        </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
@@ -37,11 +44,14 @@
 
         </section>
         <section id="hero3" class="align-items-center carousel-item">
-            <div class="container padtop-100" data-aos="fade-right" data-aos-delay="200">
+            <div class="container padtop-60" data-aos="fade-right" data-aos-delay="200">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <h1>Bettter digital experience with influencer</h1>
-                        <h2>We are team of talented designers making websites with Bootstrap</h2>
+                    <div class="col-xl-7">
+                        <h1>Creative influencer marketplace to meet your brand's content needs</h1>
+                        <h2>
+                            Brands need to bridge the gap between themselves and customers
+                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                        </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
@@ -65,12 +75,67 @@
             {
                 @foreach (var article in Model)
                 {
-                    @*<div class="section-title">
-                        <h2>@article.Title</h2>
-                    </div>*@
-                    <div class="row">
-                       @Html.Raw(@article.Contents)
-                    </div>
+                    if (article.Categories == 3)
+                    {
+                        <div class="row">
+                            <section id="portfolio" class="portfolio">
+                                <div class="container" data-aos="fade-up">
+                                    @Html.Raw(@article.Contents)
+                                    <div class="row portfolio-container" data-aos="fade-right" data-aos-delay="200" style="position: relative; height: 855px;">
+                                        @foreach (Advertise advertise in ViewBag.ListAdv)
+                                        {
+                                        var cat = "";
+                                        @switch (advertise.Categories)
+                                        {
+                                            case 1:
+                                                {
+                                                    cat = "app";
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    cat = "card";
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    cat = "web";
+                                                    break;
+                                                }
+                                        }
+                                        <div class="col-lg-4 col-md-6 portfolio-item filter-@cat">
+                                            <div class="portfolio-wrap">
+                                                <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
+                                                <div class="portfolio-info">
+                                                    <h4>@advertise.Title</h4>
+                                                    <p>
+                                                        @cat
+                                                    </p>
+                                                    <div class="portfolio-links">
+                                                        <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
+                                                            <i class="bx bx-plus"></i>
+                                                        </a><a href="portfolio-details.html" title="More Details">
+                                                            <i class="bx bx-link"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    }
+                    else
+                    {
+                        @*<div class="section-title">
+                                <h2>@article.Title</h2>
+                            </div>*@
+                        <div class="row">
+                            @Html.Raw(@article.Contents)
+                        </div>
+                    }
                 }
             }
         </div>

@@ -478,3 +478,8 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.genruntimeconfig.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\Index - Copy.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Create.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Delete.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Details.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Edit.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Index.cshtml.g.cs

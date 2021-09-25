@@ -2116,6 +2116,9 @@ section {
 .padtop-100{
     padding-top:100px;
 }
+.padtop-60 {
+    padding-top: 60px;
+}
 
 
 
@@ -2191,8 +2194,4 @@ div.login-logout-tab a.nav-link {
     width: 300px;
     left: 4px;
     z-index: 200;
-}
-.editable img{
-    max-width : 100%;
-    height:auto;
 }
