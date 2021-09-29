@@ -1,7 +1,8 @@
 ﻿@using Domain.Entities;
+@inject IViewLocalizer Localizer
 @model List<Domain.Entities.UserArticle>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["HomePage"];
 }
 <!-- ======= Hero Section ======= -->
 <div id="carouselExampleCaptions" class="carousel" data-bs-ride="carousel">
@@ -19,7 +20,7 @@
                         <h1>Creative influencer marketplace to meet your brand's content needs</h1>
                         <h2>
                             Brands need to bridge the gap between themselves and customers
-                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                            We are that bridge linking Brands
                         </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
@@ -35,7 +36,7 @@
                         <h1>Creative influencer marketplace to meet your brand's content needs</h1>
                         <h2>
                             Brands need to bridge the gap between themselves and customers
-                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                            We are that bridge linking Brands
                         </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
@@ -50,7 +51,7 @@
                         <h1>Creative influencer marketplace to meet your brand's content needs</h1>
                         <h2>
                             Brands need to bridge the gap between themselves and customers
-                            We are that bridge linking Brands and Influencers. Powerful Marketing campaigns, with creative strategy are our strength that you will see. We know exactly what brands want, as we also know very well which one of influencers can do it.
+                            We are that bridge linking Brands
                         </h2>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
@@ -78,49 +79,84 @@
                     if (article.Categories == 3)
                     {
                         <div class="row">
-                            <section id="portfolio" class="portfolio">
+                            <section id="creator" class="portfolio">
                                 <div class="container" data-aos="fade-up">
                                     @Html.Raw(@article.Contents)
                                     <div class="row portfolio-container" data-aos="fade-right" data-aos-delay="200" style="position: relative; height: 855px;">
                                         @foreach (Advertise advertise in ViewBag.ListAdv)
                                         {
-                                        var cat = "";
-                                        @switch (advertise.Categories)
-                                        {
-                                            case 1:
-                                                {
-                                                    cat = "app";
-                                                    break;
-                                                }
-                                            case 2:
-                                                {
-                                                    cat = "card";
-                                                    break;
-                                                }
-                                            case 3:
-                                                {
-                                                    cat = "web";
-                                                    break;
-                                                }
-                                        }
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-@cat">
-                                            <div class="portfolio-wrap">
-                                                <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>@advertise.Title</h4>
-                                                    <p>
-                                                        @cat
-                                                    </p>
-                                                    <div class="portfolio-links">
-                                                        <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
-                                                            <i class="bx bx-plus"></i>
-                                                        </a><a href="portfolio-details.html" title="More Details">
-                                                            <i class="bx bx-link"></i>
-                                                        </a>
+                                            var cat = "";
+                                            @switch (@advertise.Categories)
+                                            {
+                                                case 1:
+                                                    {
+                                                        cat = "ladies";
+                                                        break;
+                                                    }
+                                                case 2:
+                                                    {
+                                                        cat = "health";
+                                                        break;
+                                                    }
+                                                case 3:
+                                                    {
+                                                        cat = "fact";
+                                                        break;
+                                                    }
+                                                case 4:
+                                                    {
+                                                        cat = "successAndMotivation";
+                                                        break;
+                                                    }
+                                                case 5:
+                                                    {
+                                                        cat = "sports";
+                                                        break;
+                                                    }
+                                                case 6:
+                                                    {
+                                                        cat = "artandMusic";
+                                                        break;
+                                                    }
+                                                case 7:
+                                                    {
+                                                        cat = "lifestyle";
+                                                        break;
+                                                    }
+                                                case 8:
+                                                    {
+                                                        cat = "foods";
+                                                        break;
+                                                    }
+                                                case 9:
+                                                    {
+                                                        cat = "funny";
+                                                        break;
+                                                    }
+                                                case 10:
+                                                    {
+                                                        cat = "teaching";
+                                                        break;
+                                                    }
+                                            }
+                                            <div class="col-lg-4 col-md-6 portfolio-item filter-@cat">
+                                                <div class="portfolio-wrap">
+                                                    <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
+                                                    <div class="portfolio-info">
+                                                        <h4>@advertise.Title</h4>
+                                                        <p>
+                                                            @cat
+                                                        </p>
+                                                        <div class="portfolio-links">
+                                                            <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
+                                                                <i class="bx bx-plus"></i>
+                                                            </a><a href="portfolio-details.html" title="More Details">
+                                                                <i class="bx bx-link"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         }
                                     </div>
                                 </div>
@@ -141,3 +177,10 @@
         </div>
     </section><!-- End Frequently Asked Questions Section -->
 </main><!-- End #main -->
+@section Scripts{
+    <script>
+        $(function () {
+            $(".editable").removeClass("editable");
+        });
+    </script>
+}

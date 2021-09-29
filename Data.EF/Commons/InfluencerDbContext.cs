@@ -11,6 +11,8 @@ namespace Data.EF.Common
         public DbSet<UserArticle> userArticles { get; set; }
         public DbSet<SiteSetting> siteSettings { get; set; }
         public DbSet<Advertise> advertises { get; set; }
+        public DbSet<Languages> languages{ get; set; }
+
 
         public InfluencerDbContext(DbContextOptions dbContextOptions): base(dbContextOptions)
         {

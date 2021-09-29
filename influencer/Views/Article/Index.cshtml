@@ -14,33 +14,33 @@
             @if (Model.Any())
             {
 
-                @foreach (var article in Model)
+            @foreach (var article in Model)
                 {
-                    @*<div class="section-title">
-                            <h2>@article.Title</h2>
-                        </div>*@
-                    <div class="row" del-id="@article.Id">
-                        <div class="col-md-10">
-                            <button data-id="@article.Id" data-name="@article.Title" title="Delete @article.Title" class="btn btn-outline-danger delete-article" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i>Delete @article.Title</button>
-                        </div>
-                        <div class="col-md-2">
-                            @if (article.OrderArticle != ViewBag.minOrd)
+            @*<div class="section-title">
+                    <h2>@article.Title</h2>
+                </div>*@
+            <div class="row" del-id="@article.Id">
+                <div class="col-md-10">
+                    <button data-id="@article.Id" data-name="@article.Title" title="Delete @article.Title" class="btn btn-outline-danger delete-article" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i>Delete @article.Title</button>
+                </div>
+                <div class="col-md-2">
+                    @if (article.OrderArticle != ViewBag.minOrd)
                             {
-                                <a class="btn btn-secondary" asp-action="UpOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-up"></i></a>
+                    <a class="btn btn-secondary" asp-action="UpOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-up"></i></a>
                             }
-                            @if (article.OrderArticle != ViewBag.maxOrd)
+                    @if (article.OrderArticle != ViewBag.maxOrd)
                             {
-                                <a class="btn btn-secondary" asp-action="DownOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-down"></i></a>
+                    <a class="btn btn-secondary" asp-action="DownOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-down"></i></a>
                             }
-                        </div>
-                    </div>
-                    <div class="row" art_title="@article.Title" art_id="@article.Id" art_categories="@article.Categories" art_order="@article.OrderArticle">
-                        @Html.Raw(@article.Contents)
-                    </div>
-                    <div class="row" add-id="@article.Id">
-                        <hr />
-                        <a asp-controller="Article" asp-action="WriteArticle" asp-route-order="@article.OrderArticle" class="btn link-success" style="width:100%"><i class="bi-plus-circle"></i>&nbsp;_____________  Add Article _____________</a>
-                    </div>
+                </div>
+            </div>
+            <div class="row" art_title="@article.Title" art_id="@article.Id" art_categories="@article.Categories" art_order="@article.OrderArticle">
+                @Html.Raw(@article.Contents)
+            </div>
+            <div class="row" add-id="@article.Id">
+                <hr />
+                <a asp-controller="Article" asp-action="WriteArticle" asp-route-order="@article.OrderArticle" class="btn link-success" style="width:100%"><i class="bi-plus-circle"></i>&nbsp;_____________  Add Article _____________</a>
+            </div>
                 }
 
             }
@@ -69,6 +69,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 @section Scripts{
     <script src="~/js/ckeditor.js"></script>
@@ -91,7 +92,7 @@
                     var text = $.trim($('[art_id="' + v.id + '"]').html()).replace(/ lang="en" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" contenteditable="true"/g, "");
                     text = text.replace(/ aos-init aos-animate/g, "").replace(/ aos-init/g, "").replace(/ ck-blurred/g, "").replace(/ck-blurred /g, "").replace(/ class="ck-link_selected"/g, "");
                     text = text.replace(/ ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline/g, "");//.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "")
-                    text = text.replace(/ class="image-inline ck-widget" contenteditable="false"/g, "").replace(/ data-cke-filler="true"/g,"");
+                    text = text.replace(/ class="image-inline ck-widget" contenteditable="false"/g, "").replace(/ data-cke-filler="true"/g, "").replace(/ contenteditable="true"/g,"");
                     text = JSON.stringify(text);
                     $.ajax({
                         type: 'post',

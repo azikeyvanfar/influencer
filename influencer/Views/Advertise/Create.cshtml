@@ -33,9 +33,16 @@
                         @*<input asp-for="Categories" class="form-control" />*@
                         @Html.DropDownList("Categories", new List<SelectListItem>
                             {
-                                new SelectListItem{ Text="APP", Value = "1" },
-                                new SelectListItem{ Text="CARD", Value = "2" },
-                                new SelectListItem{ Text="WEB", Value = "3" }
+                                new SelectListItem{ Text="Ladies", Value = "1" },
+                                new SelectListItem{ Text="Health", Value = "2" },
+                                new SelectListItem{ Text="Fact", Value = "3" },
+                                new SelectListItem{ Text="Success And Motivation", Value = "4" },
+                                new SelectListItem{ Text="Sports", Value = "5" },
+                                new SelectListItem{ Text="Art and Music", Value = "6" },
+                                new SelectListItem{ Text="Lifestyle", Value = "7" },
+                                new SelectListItem{ Text="Foods", Value = "8" },
+                                new SelectListItem{ Text="Funny", Value = "9" },
+                                new SelectListItem{ Text="Teaching", Value = "10" }
                             }, new { @class = "form-control" })
                         <span asp-validation-for="Categories" class="text-danger"></span>
                     </div>

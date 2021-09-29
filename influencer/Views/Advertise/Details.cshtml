@@ -13,13 +13,67 @@
                 @Html.DisplayNameFor(model => model.Title)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Title)
+                @*@Html.DisplayFor(model => model.Title)*@
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Categories)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Categories)
+                @*@Html.DisplayFor(model => model.Categories)*@
+                @switch (Model.Categories)
+                {
+                    case 1:
+                        {
+                            <p>Ladies</p>
+                            break;
+                        }
+                    case 2:
+                        {
+                            <p>Health</p>
+
+                            break;
+                        }
+                    case 3:
+                        {
+                            <p>Fact</p>
+                            break;
+                        }
+                    case 4:
+                        {
+                            <p>Success And Motivation</p>
+                            break;
+                        }
+                    case 5:
+                        {
+                            <p>Sports</p>
+                            break;
+                        }
+                    case 6:
+                        {
+                            <p>Art and Music</p>
+                            break;
+                        }
+                    case 7:
+                        {
+                            <p>Lifestyle</p>
+                            break;
+                        }
+                    case 8:
+                        {
+                            <p>Foods</p>
+                            break;
+                        }
+                    case 9:
+                        {
+                            <p>Funny</p>
+                            break;
+                        }
+                    case 10:
+                        {
+                            <p>Teaching</p>
+                            break;
+                        }
+                }
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.CntFollowers)

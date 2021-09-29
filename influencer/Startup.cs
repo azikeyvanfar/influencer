@@ -1,6 +1,7 @@
 using Data.EF;
 using Data.EF.Common;
 using Domain.Contracts;
+using Domain.Entities;
 using Domain.Entities.Context;
 using influencer.Repositories;
 using influencer.Security.Default;
@@ -10,12 +11,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersianTranslation.Identity;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace influencer
 {
@@ -45,7 +51,15 @@ namespace influencer
                     options.ClientId = "597636127689-g50c5hi3q3h8h5dibukijkhv410gbnhp.apps.googleusercontent.com";
                     options.ClientSecret = "W_xZMX7Mz1hwHcgL-J8eST7A";
                 });
-
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
+                    options => { options.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create(typeof(ShareResource));
+                });
+            services.AddLocalization(options=>options.ResourcesPath= "Resources");
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredUniqueChars = 0;
@@ -97,7 +111,8 @@ namespace influencer
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
             services.AddScoped<IUserArticleRepository, UserArticleRepository>();
             services.AddScoped<IAdvertiseRepository, AdvertiseRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>(); 
+            services.AddScoped<ILanguagesRepository, LanguagesRepository>(); 
 
         }
 
@@ -121,6 +136,24 @@ namespace influencer
 
             app.UseAuthentication();
             app.UseAuthorization();
+            var supportedCultures = new List<CultureInfo>()
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("fa-IR"),
+                new CultureInfo("tr-TR")
+            };
+            var options = new RequestLocalizationOptions()
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+                RequestCultureProviders = new List<IRequestCultureProvider>()
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                }
+            };
+            app.UseRequestLocalization(options);
 
             app.UseEndpoints(endpoints =>
             {

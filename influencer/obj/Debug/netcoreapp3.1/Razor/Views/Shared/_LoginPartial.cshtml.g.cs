@@ -34,6 +34,20 @@ using influencer.ViewModels.Account;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\Views\_ViewImports.cshtml"
+using System.Globalization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Mvc.Localization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\Views\Shared\_LoginPartial.cshtml"
 using Microsoft.AspNetCore.Identity;
 
@@ -48,7 +62,7 @@ using Domain.Entities.Context;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2d57e509deedcb51dc06bef80bdbc9f265c46af7", @"/Views/Shared/_LoginPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d49a529210120cf46888b52c977990ca4cf5b7c2", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a1ec4bacb01a5bb612ddd011ccd1444fb9e603cf", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LoginPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("nav-link text-dark"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -96,7 +110,7 @@ using Domain.Entities.Context;
 #line hidden
 #nullable disable
             WriteLiteral("                <li class=\"list-inline-item\">\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af77140", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af77555", async() => {
                 WriteLiteral("Hello ");
 #nullable restore
 #line 12 "C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\Views\Shared\_LoginPartial.cshtml"
@@ -124,7 +138,7 @@ using Domain.Entities.Context;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                </li>\n                <li class=\"list-inline-item\">\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af79110", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af79525", async() => {
                 WriteLiteral("\n                        <button type=\"submit\" class=\"nav-link btn btn-link text-dark\">Logout</button>\n                    ");
             }
             );
@@ -170,7 +184,7 @@ using Domain.Entities.Context;
 #line hidden
 #nullable disable
             WriteLiteral("                <li class=\"list-inline-item\">\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af712471", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d57e509deedcb51dc06bef80bdbc9f265c46af712886", async() => {
                 WriteLiteral("Login");
             }
             );

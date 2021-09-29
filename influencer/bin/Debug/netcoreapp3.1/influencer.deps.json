@@ -300,6 +300,14 @@
         "runtime": {
           "influencer.dll": {}
         },
+        "resources": {
+          "en-US/influencer.resources.dll": {
+            "locale": "en-US"
+          },
+          "fa-IR/influencer.resources.dll": {
+            "locale": "fa-IR"
+          }
+        },
         "compile": {
           "influencer.dll": {}
         }
