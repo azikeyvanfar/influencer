@@ -22,7 +22,6 @@
     <ProjectReference Include="..\Data.EF\Data.EF.csproj" />
     <ProjectReference Include="..\Domain.Contracts\Domain.Contracts.csproj" />
     <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj" />
-    <ProjectReference Include="..\PersianTranslation\PersianTranslation.csproj" />
   </ItemGroup>
 
   <ItemGroup>

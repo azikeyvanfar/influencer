@@ -55,138 +55,86 @@
             <h1 class="logo me-auto"><a href="@Url.Action("Index","Home")">@Localizer["SiteName"]<span>.</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a>-->
-            <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
-                <div class="container">
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li><a class="nav-link scrollto active" href="#services">@Localizer["Services"]</a></li>
-                            <li><a class="nav-link scrollto" href="#creator">@Localizer["Creator"]</a></li>
-                            <li><a class="nav-link scrollto" href="#tabs">@Localizer["WhatWeDo"]</a></li>
-                            <li><a class="nav-link scrollto" href="#pricing">@Localizer["Pricing"]</a></li>
-                            <li><a class="nav-link scrollto" href="#about">@Localizer["About"]</a></li>
-                            <li><a class="nav-link scrollto" href="#faq">@Localizer["FAQ"]</a></li>
-                            <li><a class="nav-link scrollto" href="#team">@Localizer["Team"]</a></li>
-                            <li><a class="nav-link scrollto" href="#contact">@Localizer["Contact"]</a></li>
-                            @*<li class="dropdown">
-                                    <a href="#"><span>@Localizer["WhatWeDo"]</span> <i class="bi bi-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">@Localizer["Strategy"]</a></li>
-                                        <li><a href="#">@Localizer["Data"]</a></li>
-                                        <li><a href="#">@Localizer["Tecnology"]</a></li>
-                                    </ul>
-                                </li><li class="dropdown">
-                                    <a href="#"><span>@Localizer["Resources"]</span> <i class="bi bi-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">@Localizer["Article"]</a></li>
-                                        <li class="dropdown">
-                                            <a href="#"><span>@Localizer["Reports"]</span> <i class="bi bi-chevron-right"></i></a>
-                                            <ul>
-                                                <li><a href="#">@Localizer["UnsocialMedia"]</a></li>
-                                                <li><a href="#">@Localizer["TheAgeOfInfluence"]</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">@Localizer["VerticalPlayBook"]</a></li>
-                                    </ul>
-                                </li>*@
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse flex-column " id="navbarSupportedContent">
+                        @if (User.IsInRole("Blogger"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
+                        {
 
-                        </ul>
+                            <!-- Breadcrumb-->
+                            @*<div class="breadcrumb-dn mr-auto text-white">
+                    <b>@Localizer["BloggerMenu"]</b>
+                </div>*@
+                            <ul class="nav navbar-nav nav-flex-icons ml-auto list-inline" style="display:block">
+                                <li class="list-inline-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Advertise" asp-action="Index">@Localizer["Advertise"]</a>
+                                </li>
+                                @*<li class="list-inline-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+                    </li>*@
+                            </ul>
 
-                        <i class="bi bi-list mobile-nav-toggle"></i>
+                        }
+                        else
+                     if (User.IsInRole("Company"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
+                        {
+                            <div class="breadcrumb-dn mr-auto text-white">
+                                <b>@Localizer["CompanyMenu"]</b>
+                            </div>
+
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <ul class="navbar-nav justify-content-center w-100 px-3">
+                                @*<li class="badge-danger"><h4> @Localizer["AdminMenu"]</h4></li>*@
+                                <li class="nav-item">
+                                    <a class="nav-link waves-effect waves-light" asp-controller="ManageUser" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageUser"]</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link waves-effect waves-light" asp-controller="ManageRole" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageRole"]</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link waves-effect waves-light" asp-controller="Role" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Role"]</span></a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link waves-effect waves-light" asp-controller="SiteSetting" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["SiteSetting"]</span></a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link waves-effect waves-light" asp-controller="Article" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Manage"]</span></a>
+                                </li>
+                                @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") || User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+                        </li>
+                    }*@
+
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav me-auto w-100 justify-content-center px-3">
+                                <li class="nav-item"><a class="nav-link scrollto active" href="#services">@Localizer["Services"]</a></li>
+                                <li class="nav-item"><a class="nav-link scrollto" href="#creator">@Localizer["Creator"]</a></li>
+                                <li class="nav-item"><a class="nav-link scrollto" href="#tabs">@Localizer["WhatWeDo"]</a></li>
+                                <li class="nav-item"><a class="nav-link scrollto" href="#pricing">@Localizer["Pricing"]</a></li>
+                                <li class="nav-item"><a class="nav-link scrollto" href="#faq">@Localizer["FAQ"]</a></li>
+                                <li class="nav-item"><a class="nav-link scrollto" href="#contact">@Localizer["Contact"]</a></li>
+                            </ul>
+                        }
+
                     </div>
+
+                    <partial name="_LoginPartial" />
                 </div>
             </nav><!-- .navbar -->
-            <partial name="_LoginPartial" />
-            @if (User.IsInRole("Blogger"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
-            {
-                <nav class="navbar second-navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
-                    <!-- SideNav slide-out button -->
-                    <div class="float-left">
-                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <!-- Breadcrumb-->
-                    <div class="breadcrumb-dn mr-auto text-white">
-                        <b>@Localizer["BloggerMenu"]</b>
-                    </div>
-                    <ul class="nav navbar-nav nav-flex-icons ml-auto list-inline" style="display:block">
-                        <li class="list-inline-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Advertise" asp-action="Index">@Localizer["Advertise"]</a>
-                        </li>
-                        @*<li class="list-inline-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
-                            </li>*@
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            }
-            @if (User.IsInRole("Company"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
-            {
-                <nav class="navbar second-navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
-                    <!-- SideNav slide-out button -->
-                    <div class="float-left">
-                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <!-- Breadcrumb-->
-                    <div class="breadcrumb-dn mr-auto text-white">
-                        <b>@Localizer["CompanyMenu"]</b>
-                    </div>
-                    @*<ul class="nav navbar-nav nav-flex-icons ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
-                            </li>
-                        </ul>*@
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            }
-            @if (User.IsInRole("Admin"))
-            {
-                <nav class="navbar second-navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
-                    <!-- SideNav slide-out button -->
-                    <div class="float-left">
-                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <!-- Breadcrumb-->
-                    <div class="breadcrumb-dn mr-auto text-white">
-                        <b>@Localizer["AdminMenu"]</b>
-                    </div>
-                    <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" asp-controller="ManageUser" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageUser"]</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" asp-controller="ManageRole" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageRole"]</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" asp-controller="Role" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Role"]</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" asp-controller="SiteSetting" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["SiteSetting"]</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" asp-controller="Article" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Manage"]</span></a>
-                        </li>
-                        @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") || User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
-                                </li>
-                            }*@
-                        @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                                </div>
-                            </li>*@
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            }
-
+            
         </div>
     </header><!-- End Header -->
     <div style="margin-top:102px;">
@@ -205,23 +153,26 @@
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>@Localizer["SiteName"]<span>.</span></h3>
                         <p>
-                            <strong>Address US : </strong>
-                            A108 Adam Street New York, NY 535022 United States
+                            <strong>@Localizer["Address"]:</strong><br />
+                            <ul style="list-style:square">
+                                <li>Turkey : Mersin, Turkey</li>
+                                <li>US : </li>
+                                <li>Canada : </li>
+                                <li>Germany : </li>
+                                <li>Iran  : </li>
+                            </ul>
                             <br />
-                            <strong>Address Canada : </strong>
-                            Canada
-                            <br />
-                            <strong>Address Germany: </strong>
-                            Germany
-                            <br />
-                            <strong>Address Turkey : </strong>
-                            Turkey
-                            <br />
-                            <strong>Address Iran : </strong>
-                            Iran
-                            <br />
-                            <strong>@Localizer["Phone"]:</strong> <br>
-                            <strong>@Localizer["Email"]:</strong> Info@qsip.com<br>
+                            <strong>@Localizer["Phone"]:</strong><br />
+                            <ul style="list-style:square">
+                                <li class="">Turkey Office: +905526102095</li>
+                                <li class="">USA Office: +1 321 200 0090</li>
+                                <li class="">Iran Office: +982144288127</li>
+                            </ul>
+                            <strong>@Localizer["Email"]:</strong><br />
+                            <ul style="list-style:square">
+                                <li>info@qsip.net</li>
+                                <li>contact@qsip.net</li>
+                            </ul>
                         </p>
                     </div>
 
@@ -263,14 +214,14 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>influencer</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>Adsfluencer</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/presento-bootstrap-corporate-template/ -->
-                    Designed by <a href="https://Qsip.com">Quantel</a>
+                    Designed by <a href="https://Qsip.net">Quantel</a>
                 </div>
             </div>
             <div class="social-links text-center text-md-end pt-3 pt-md-0">

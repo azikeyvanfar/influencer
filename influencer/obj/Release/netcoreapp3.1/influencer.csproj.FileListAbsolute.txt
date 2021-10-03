@@ -8,6 +8,8 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.runtimeconfig.dev.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\en-US\influencer.resources.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\fa-IR\influencer.resources.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Antiforgery.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
@@ -420,12 +422,15 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Data.EF.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Contracts.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Entities.dll
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\PersianTranslation.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Data.EF.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Contracts.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Entities.pdb
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\PersianTranslation.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csprojAssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.en-US.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.en-US.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csproj.GenerateResource.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.AssemblyInfoInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.AssemblyInfo.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csproj.CoreCompileInputs.cache
@@ -433,11 +438,19 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.RazorAssemblyInfo.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.RazorAssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\en-US\influencer.resources.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\fa-IR\influencer.resources.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.TagHelpers.input.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.TagHelpers.output.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.RazorCoreGenerate.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Create.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Delete.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Details.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Edit.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Index.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\Index - Copy.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\Index.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\Manage.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\SingleArticle.cshtml.g.cs
@@ -448,6 +461,7 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Employee\Edit.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Home\Languages.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\ManageRole\AddRole.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\ManageRole\EditRole.cshtml.g.cs
@@ -477,19 +491,3 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.genruntimeconfig.cache
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Article\Index - Copy.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Create.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Delete.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Details.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Edit.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Advertise\Index.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\en-US\influencer.resources.dll
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\fa-IR\influencer.resources.dll
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.en-US.resources
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.fa-IR.resources
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.en-US.resources
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.fa-IR.resources
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csproj.GenerateResource.cache
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\en-US\influencer.resources.dll
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\fa-IR\influencer.resources.dll
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Home\Languages.cshtml.g.cs

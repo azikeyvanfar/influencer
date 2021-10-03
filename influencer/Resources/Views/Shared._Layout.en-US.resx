@@ -136,7 +136,7 @@
     <value>Contact Us</value>
   </data>
   <data name="Creator" xml:space="preserve">
-    <value>Creator</value>
+    <value>Creators</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -181,7 +181,7 @@
     <value>Services</value>
   </data>
   <data name="SiteName" xml:space="preserve">
-    <value>Influencer</value>
+    <value>Adsfluencer</value>
   </data>
   <data name="SiteSetting" xml:space="preserve">
     <value>Site Setting</value>
@@ -193,6 +193,6 @@
     <value>Useful Links</value>
   </data>
   <data name="WhatWeDo" xml:space="preserve">
-    <value>WhatWeDo</value>
+    <value>What We Do</value>
   </data>
 </root>

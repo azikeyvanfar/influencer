@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersianTranslation", "PersianTranslation\PersianTranslation.csproj", "{E50D3946-6D23-4C04-B443-E93E521648C1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "influencer", "influencer\influencer.csproj", "{97AD89E2-44E9-4F6E-B8A5-E8F5F9C7FB22}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Contracts", "Domain.Contracts\Domain.Contracts.csproj", "{420E15F4-B0E5-4E07-935C-5189715F7D95}"
@@ -24,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E50D3946-6D23-4C04-B443-E93E521648C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E50D3946-6D23-4C04-B443-E93E521648C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E50D3946-6D23-4C04-B443-E93E521648C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E50D3946-6D23-4C04-B443-E93E521648C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97AD89E2-44E9-4F6E-B8A5-E8F5F9C7FB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97AD89E2-44E9-4F6E-B8A5-E8F5F9C7FB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97AD89E2-44E9-4F6E-B8A5-E8F5F9C7FB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
