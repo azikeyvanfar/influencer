@@ -103,7 +103,7 @@ namespace influencer
             services.AddMemoryCache();
             services.AddHttpContextAccessor();
             services.AddTransient<IUtilitiesRepository, UtilitiesRepository>();
-            services.AddScoped<IMessageSender, MessageSender>();
+            services.AddTransient<IMessageSender, MessageSender>();
             services.AddScoped<IAuthorizationHandler, DynamicRoleHandler>();
             services.AddSingleton<IAuthorizationHandler, ClaimHandler>();
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();

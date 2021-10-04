@@ -59,6 +59,7 @@ namespace influencer.Controllers
                             new { username = user.UserName, token = emailConfirmationToken },
                             Request.Scheme);
                     await _messageSender.SendEmailAsync(model.Email, "Email confirmation", emailMessage);
+                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User", user.UserName+" is Created");
 
                     return RedirectToAction("Index", "Home");
                 }

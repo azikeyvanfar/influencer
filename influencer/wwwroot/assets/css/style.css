@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 0 10px 30px;
+        padding: 10px 10px 10px 10px;
         font-family: "Raleway", sans-serif;
         font-size: 15px;
         font-weight: 600;

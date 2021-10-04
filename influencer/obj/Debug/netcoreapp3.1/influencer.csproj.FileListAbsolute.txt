@@ -433,9 +433,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.csproj.GenerateResource.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.AssemblyInfoInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.AssemblyInfo.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.csproj.CoreCompileInputs.cache
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.RazorAssemblyInfo.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.RazorAssemblyInfo.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\en-US\influencer.resources.dll
@@ -491,3 +488,9 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.genruntimeconfig.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cache

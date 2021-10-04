@@ -9,32 +9,31 @@ namespace Data.EF
     {
         public Task SendEmailAsync(string toEmail, string subject, string message, bool isMessageHtml = false)
         {
-            using (var client = new SmtpClient())
+            using (var Client = new SmtpClient())
             {
-
-                var credentials = new NetworkCredential()
+                var Credential = new NetworkCredential
                 {
-                    UserName = "azi.keyvanfar", // without @gmail.com
-                    Password = "Elegance1_"
+                    //UserName Example : If your email is test@gmail.com yourUserName is test
+                    UserName = "adsfluencermail",
+                    Password = "Adsfluencer_1400"
+
                 };
-
-                client.Credentials = credentials;
-                client.Host = "smtp.gmail.com";
-                client.Port = 587;
-                client.EnableSsl = true;
-
-                using var emailMessage = new MailMessage()
+                Client.Credentials = Credential;
+                Client.Host = "smtp.gmail.com";
+                Client.Port = 587; // or 25  -- 587 -- 465 For Send Email
+                Client.EnableSsl = true;
+                using (var emailMessage = new MailMessage())
                 {
-                    To = { new MailAddress(toEmail) },
-                    From = new MailAddress("azi.keyvanfar@gmail.com"), // with @gmail.com
-                    Subject = subject,
-                    Body = message,
-                    IsBodyHtml = isMessageHtml
-                };
+                    emailMessage.To.Add(new MailAddress(toEmail));
+                    emailMessage.From = new MailAddress("adsfluencermail@gmail.com", subject);
+                    emailMessage.Subject = subject;
+                    emailMessage.IsBodyHtml = true; //contains html tag
+                    emailMessage.Body = message;
 
-                client.Send(emailMessage);
+                    Client.Send(emailMessage);
+                };
+                //await Task.CompletedTask;
             }
-
             return Task.CompletedTask;
         }
     }
