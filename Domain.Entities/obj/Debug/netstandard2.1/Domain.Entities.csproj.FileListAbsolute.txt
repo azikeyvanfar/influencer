@@ -15,4 +15,3 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\n
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.1\Domain.Entities.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.1\Domain.Entities.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.1\Domain.Entities.pdb
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Debug\netstandard2.1\Domain.Entities.csprojAssemblyReference.cache

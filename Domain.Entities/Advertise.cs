@@ -26,7 +26,6 @@ namespace Domain.Entities
         public DateTime DateTime { get; set; }
         [Required]
         public bool AdvConfirm { get; set; }
-        [Required]
-        public int LangId { get; set; }
+       
     }
 }

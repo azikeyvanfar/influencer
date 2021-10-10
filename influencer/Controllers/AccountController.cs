@@ -1,8 +1,10 @@
-﻿using Domain.Contracts;
+﻿using CountryData.Standard;
+using Domain.Contracts;
 using Domain.Entities.Context;
 using influencer.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -28,9 +30,21 @@ namespace influencer.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            ViewBag.countries = GetCountry();
             return View();
         }
-
+        public List<string> GetCountry()
+        {
+            var helper = new CountryHelper();
+            List<string> countries = helper.GetCountries().ToList();
+            return countries;
+        }
+        public List<Regions> GetRegions(string Country)
+        {
+            var helper = new CountryHelper();
+            List<Regions> regions = helper.GetRegionByCountryCode(Country).ToList();
+            return regions;
+        }
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -47,21 +61,34 @@ namespace influencer.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (model.UserCategory == 3)
+                    string userAdd="";
+                    switch(model.UserCategory)
                     {
-                        List<string> requestRoles = new List<string>() { "Admin" };
-                        await _userManager.AddToRolesAsync(user, requestRoles);                        
+                        case 3:
+                            List<string> requestRoles = new List<string>() { "Admin" };
+                            await _userManager.AddToRolesAsync(user, requestRoles);
+                            userAdd = "Admin";
+                        break;
+                        case 2:
+                            userAdd = "Blogger";
+                            break;
+                        case 1:
+                            userAdd = "Company";
+                            break;
+                        default:
+                            userAdd = "Admin";
+                            break;
                     }
                     var emailConfirmationToken =
                         await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var emailMessage =
+                    var emailMessage = "Please Go To Your Email And Confirm It.<br />"+
                         Url.Action("ConfirmEmail", "Account",
                             new { username = user.UserName, token = emailConfirmationToken },
                             Request.Scheme);
-                    await _messageSender.SendEmailAsync(model.Email, "Email confirmation", emailMessage);
-                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User", user.UserName+" is Created");
+                    await _messageSender.SendEmailAsync(model.Email, "The Confirmation Link Was Sent Successfully!", emailMessage);
+                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User "+ userAdd + " Add", user.UserName+" is Created");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", "The confirmation link was sent successfully! /n Please go to your email and confirm it.");
                 }
         
                 foreach (var error in result.Errors)
@@ -162,7 +189,9 @@ namespace influencer.Controllers
             if (user == null) return NotFound();
             var result = await _userManager.ConfirmEmailAsync(user, token);
 
-            return Content(result.Succeeded ? "Email Confirmed" : "Email Not Confirmed");
+            // return Content(result.Succeeded ? "Email Confirmed" : "Email Not Confirmed");
+            Content(result.Succeeded ? "Email Confirmed" : "Email Not Confirmed");
+            return RedirectToAction("Login");
         }
 
         [HttpPost]

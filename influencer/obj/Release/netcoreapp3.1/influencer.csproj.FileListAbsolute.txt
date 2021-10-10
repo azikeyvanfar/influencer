@@ -491,3 +491,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.genruntimeconfig.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\MailKit.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\MimeKit.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\BouncyCastle.Crypto.dll

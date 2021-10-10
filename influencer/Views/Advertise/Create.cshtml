@@ -51,10 +51,12 @@
                     <div class="form-group">
                         <label asp-for="AdvPicture" class="control-label"></label>
                         <div class="custom-file">
-                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile" required>
+                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg, .gif" required>
                             <label class="custom-file-label" for="customFile"></label>
                         </div>
                         <span asp-validation-for="AdvPicture" class="text-danger"></span>
+                        <span class="text-danger">size : 800 * 600</span>
+
                     </div>
                 </div>
                 <div class="col-md-4">

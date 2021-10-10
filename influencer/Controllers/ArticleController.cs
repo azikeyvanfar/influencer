@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,7 +29,8 @@ namespace influencer.Controllers
 
         public IActionResult Index()
         {
-            List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m => m.OrderArticle).ToList();
+            string lang = CultureInfo.CurrentCulture.Name;
+            List<UserArticle> article = _userArticleRepository.FindByCondition(m => m.Language.LanguageTitle == lang).OrderBy(m => m.OrderArticle).ToList();
             List<short> ord = article.Select(m => m.OrderArticle).ToList();
             ViewBag.minOrd = ord.Min();
             ViewBag.maxOrd = ord.Max();

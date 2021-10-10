@@ -25,11 +25,13 @@
     @if (CultureInfo.CurrentCulture.Name == "fa-IR")
     {
         <link href="~/assets/vendor/bootstrap/css/bootstrap.rtl.css" rel="stylesheet">
+        <link href="~/assets/css/style-rtl.css" rel="stylesheet">
 
     }
     else
     {
         <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/assets/css/style.css" rel="stylesheet">
     }
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -38,7 +40,6 @@
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="~/assets/css/style.css" rel="stylesheet">
     <!-- =======================================================
     * Template Name: influencer - v3.3.0
     * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
@@ -55,7 +56,7 @@
             <h1 class="logo me-auto"><a href="@Url.Action("Index","Home")">@Localizer["SiteName"]<span>.</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a>-->
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
                 <div class="container-fluid">
                     <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,18 +156,18 @@
                         <p>
                             <strong>@Localizer["Address"]:</strong><br />
                             <ul style="list-style:square">
-                                <li>Turkey : Mersin, Turkey</li>
-                                <li>US : </li>
-                                <li>Canada : </li>
-                                <li>Germany : </li>
-                                <li>Iran  : </li>
+                                <li>@Localizer["Turkey"] : Mersin, Turkey</li>
+                                <li>@Localizer["USA"] : </li>
+                                <li>@Localizer["Canada"] : </li>
+                                <li>@Localizer["Germany"] : </li>
+                                <li>@Localizer["Iran"]  : </li>
                             </ul>
                             <br />
                             <strong>@Localizer["Phone"]:</strong><br />
                             <ul style="list-style:square">
-                                <li class="">Turkey Office: +905526102095</li>
-                                <li class="">USA Office: +1 321 200 0090</li>
-                                <li class="">Iran Office: +982144288127</li>
+                                <li class="">@Localizer["Turkey Office"]: +905526102095</li>
+                                <li class="">@Localizer["USA Office"]: +1 321 200 0090</li>
+                                <li class="">@Localizer["Iran Office"]: +982144288127</li>
                             </ul>
                             <strong>@Localizer["Email"]:</strong><br />
                             <ul style="list-style:square">
@@ -202,7 +203,7 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>@Localizer["JoinOurNewsletter"]</h4>
                         <form action="" method="post">
-                            <input type="email" name="email" placeholder="Email"><input type="submit" value="Subscribe">
+                            <input type="email" name="email" placeholder="@Localizer["Email"]"><input type="submit" value="@Localizer["Subscribe"]">
                         </form>
                     </div>
 

@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Domain.Entities.Context;
+using influencer.Common;
 using influencer.ViewModels.Advertise;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -107,10 +110,22 @@ namespace influencer.Controllers
                 string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + advertise.AdvPicture.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                
+                IFormFile file = advertise.AdvPicture;
+                var image = Image.FromStream(file.OpenReadStream());
+                var resized = new Bitmap(image, new Size(800, 600));
+                using var imageStream = new MemoryStream();
+                resized.Save(imageStream, ImageFormat.Jpeg);
+                var imageBytes = imageStream.ToArray();
+                using (var stream = new FileStream(filePath , FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {
-                    advertise.AdvPicture.CopyTo(fileStream);
+                    stream.Write(imageBytes, 0, imageBytes.Length);
                 }
+
+                //using (var fileStream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    advertise.AdvPicture.CopyTo(fileStream);
+                //}
             }
             return uniqueFileName;
         }

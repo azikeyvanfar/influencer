@@ -15,7 +15,8 @@ namespace Domain.Entities
         public string Contents { get; set; }
         public Int16 OrderArticle { get; set; }
         [Required]
-        public int LangId { get; set; }
+        public int LanguageId { get; set; }
+        public Languages Language { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateTime

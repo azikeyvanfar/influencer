@@ -3,6 +3,7 @@ using Data.EF.Common;
 using Domain.Contracts;
 using Domain.Entities;
 using Domain.Entities.Context;
+using influencer.Models;
 using influencer.Repositories;
 using influencer.Security.Default;
 using influencer.Security.DynamicRole;
@@ -157,7 +158,7 @@ namespace influencer
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Languages}/{id?}");
             });
         }
 

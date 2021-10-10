@@ -132,6 +132,9 @@
   <data name="BloggerMenu" xml:space="preserve">
     <value>منوی بلاگر</value>
   </data>
+  <data name="Canada" xml:space="preserve">
+    <value>کانادا</value>
+  </data>
   <data name="CompanyMenu" xml:space="preserve">
     <value>منوی شرکت ها</value>
   </data>
@@ -147,8 +150,17 @@
   <data name="FAQ" xml:space="preserve">
     <value>پرسش و پاسخ</value>
   </data>
+  <data name="Germany" xml:space="preserve">
+    <value>آلمان</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>صفحه اصلی</value>
+  </data>
+  <data name="Iran" xml:space="preserve">
+    <value>ایران</value>
+  </data>
+  <data name="Iran Office" xml:space="preserve">
+    <value>دفتر ایران</value>
   </data>
   <data name="JoinOurNewsletter" xml:space="preserve">
     <value>به خبرنامه ما بپیوندید</value>
@@ -189,8 +201,23 @@
   <data name="SiteSetting" xml:space="preserve">
     <value>تنظیمات</value>
   </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>پیوستن</value>
+  </data>
   <data name="Team" xml:space="preserve">
     <value>تیم</value>
+  </data>
+  <data name="Turkey" xml:space="preserve">
+    <value>ترکیه</value>
+  </data>
+  <data name="Turkey Office" xml:space="preserve">
+    <value>دفتر ترکیه</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>امریکا</value>
+  </data>
+  <data name="USA Office" xml:space="preserve">
+    <value>دفتر امریکا</value>
   </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>لینک های مفید</value>

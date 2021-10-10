@@ -6,11 +6,11 @@ namespace influencer.ViewModels.Account
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Required")]
         //, Display(Name = "نام کاربری")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Required")]
         [DataType(DataType.Password)]
         //, Display(Name = "رمز عبور")]
         public string Password { get; set; }

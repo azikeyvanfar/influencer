@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 
 namespace influencer.Controllers
@@ -26,10 +27,12 @@ namespace influencer.Controllers
             _languagesRepository = languagesRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string alertSuccess)
         {
-            List<UserArticle> article = _userArticleRepository.FindAll().OrderBy(m=>m.OrderArticle).ToList();
+            string lang = CultureInfo.CurrentCulture.Name;
+            List<UserArticle> article = _userArticleRepository.FindByCondition(m=>m.Language.LanguageTitle == lang).OrderBy(m=>m.OrderArticle).ToList();
             ViewBag.ListAdv = _advertiseRepository.FindAll().OrderBy(m => m.OrderAdvertise).ToList();
+            ViewBag.alertSuccess = alertSuccess;
             return View(article);
         }
 

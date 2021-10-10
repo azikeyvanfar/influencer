@@ -261,6 +261,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "CountryData.Standard": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[2.15.0, )"
@@ -288,6 +292,10 @@
             "MimeKit": {
               "target": "Package",
               "version": "[2.15.1, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

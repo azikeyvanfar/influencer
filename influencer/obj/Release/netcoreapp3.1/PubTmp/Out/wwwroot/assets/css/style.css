@@ -154,18 +154,18 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-.navbar a, .navbar a:focus {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0 10px 30px;
-  font-family: "Raleway", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #111111;
-  white-space: nowrap;
-  transition: 0.3s;
-}
+    .navbar a:not(.titr), .navbar a:focus {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 10px;
+        font-family: "Raleway", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: #111111;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
 
 .navbar a i, .navbar a:focus i {
   font-size: 12px;
@@ -257,10 +257,10 @@ h1, h2, h3, h4, h5, h6 {
   .mobile-nav-toggle {
     display: block;
   }
-  .navbar ul {
+/*  .navbar ul {
     display: none;
   }
-}
+*/}
 
 .navbar-mobile {
   position: fixed;

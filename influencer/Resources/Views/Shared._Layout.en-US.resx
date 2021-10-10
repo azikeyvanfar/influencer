@@ -129,6 +129,9 @@
   <data name="BloggerMenu" xml:space="preserve">
     <value>Blogger Menu</value>
   </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Canada</value>
+  </data>
   <data name="CompanyMenu" xml:space="preserve">
     <value>Company Menu</value>
   </data>
@@ -144,8 +147,17 @@
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Germany</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="Iran" xml:space="preserve">
+    <value>Iran</value>
+  </data>
+  <data name="Iran Office" xml:space="preserve">
+    <value>Iran Office</value>
   </data>
   <data name="JoinOurNewsletter" xml:space="preserve">
     <value>Join Our Newsletter</value>
@@ -186,8 +198,23 @@
   <data name="SiteSetting" xml:space="preserve">
     <value>Site Setting</value>
   </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Subscribe</value>
+  </data>
   <data name="Team" xml:space="preserve">
     <value>Team</value>
+  </data>
+  <data name="Turkey" xml:space="preserve">
+    <value>Turkey</value>
+  </data>
+  <data name="Turkey Office" xml:space="preserve">
+    <value>Turkey Office</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>USA</value>
+  </data>
+  <data name="USA Office" xml:space="preserve">
+    <value>USA Office</value>
   </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>Useful Links</value>
