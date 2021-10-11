@@ -177,10 +177,10 @@
         </div>
     </section><!-- End Frequently Asked Questions Section -->
 </main><!-- End #main -->
-@if (ViewBag.Message != null)
+@if (ViewBag.alertSuccess != null)
 {
     <script type="text/javascript">
-            window.onload = function () {
+        window.onload = function () {
                 alert("@ViewBag.alertSuccess");
             };
     </script>

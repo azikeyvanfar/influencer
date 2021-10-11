@@ -17,7 +17,7 @@ namespace Domain.Entities.Context
 
         public string InstagramPage { get; set; }
 
-        public int ApproximatePrice { get; set; }
+        public int? ApproximatePrice { get; set; }
 
         public string YourFavourites { get; set; }
 
@@ -31,7 +31,7 @@ namespace Domain.Entities.Context
 
         public string ProductsServices { get; set; }
 
-        public int ApproximateBudget { get; set; }
+        public int? ApproximateBudget { get; set; }
 
         public string CountryOfOrigin { get; set; }
 

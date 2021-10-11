@@ -179,9 +179,14 @@
   <data name="Register" xml:space="preserve">
     <value>ثبت نام</value>
   </data>
-  <data name="RegisterHead" xml:space="preserve">
+  <data name="RegisterHeadBlogger" xml:space="preserve">
     <value>با Adsfluencer همکاری کنید، &lt;br/&gt;
 برای پیوستن به جامعه تأثیرگذار ما ، فرم زیر را ارسال کنید ،&lt;br/&gt;
+در مورد خود به ما بگویید ، ما با شما تماس خواهیم گرفت</value>
+  </data>
+  <data name="RegisterHeadCompany" xml:space="preserve">
+    <value>با Adsfluencer همکاری کنید، &lt;br/&gt;
+برای پیوستن به جامعه مشتریان خلاق ما، فرم زیر را ارسال کنید ،&lt;br/&gt;
 در مورد خود به ما بگویید ، ما با شما تماس خواهیم گرفت</value>
   </data>
   <data name="Required" xml:space="preserve">

@@ -34,7 +34,9 @@ namespace influencer.ViewModels.Advertise
     public class UploadImageViewModel
     {
         [Display(Name = "Picture")]
-        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
+        [DataType(DataType.Upload)]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" })]
+        [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp")]
         public IFormFile AdvPicture { get; set; }
     }
     public class EditImageViewModel : UploadImageViewModel

@@ -5,8 +5,8 @@
 }
 <div class="container">
     <main role="main" class="pb-3">
-        <h3 class="text-center">@Localizer["RegisterHead"]</h3>
         <div class="show frm" id="CompanyForm">
+        <h3 class="text-center">@Localizer["RegisterHeadCompany"]</h3>
             <form asp-controller="Account" asp-action="Register" method="post">
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-row row">
@@ -14,13 +14,13 @@
                         <label class="col-form-label">@Localizer["UserCategory"]</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory1" value="1" autocomplete="off" checked>
-                            <label class="btn btn-outline-danger" for="UserCategory1">Company</label>
+                            <label class="btn btn-outline-danger" for="UserCategory1">@Localizer["Company"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory2" value="2" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory2">Blogger</label>
+                            <label class="btn btn-outline-danger" for="UserCategory2">@Localizer["Blogger"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory3" value="3" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory3">Admin</label>
+                            <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
                         @*@Html.DropDownList("UserCategory", new List<SelectListItem>
                 {
@@ -112,6 +112,7 @@
             </form>
         </div>
         <div class="hide frm" id="BloggerForm">
+            <h3 class="text-center">@Localizer["RegisterHeadBlogger"]</h3>
             <form asp-controller="Account" asp-action="Register" method="post">
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-row row">
@@ -119,13 +120,13 @@
                         <label class="col-form-label">@Localizer["UserCategory"]</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory1" value="1" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory1">Company</label>
+                            <label class="btn btn-outline-danger" for="UserCategory1">@Localizer["Company"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory2" value="2" autocomplete="off" checked>
-                            <label class="btn btn-outline-danger" for="UserCategory2">Blogger</label>
+                            <label class="btn btn-outline-danger" for="UserCategory2">@Localizer["Blogger"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory3" value="3" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory3">Admin</label>
+                            <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
                         @*@Html.DropDownList("UserCategory", new List<SelectListItem>
                             {
@@ -221,8 +222,9 @@
                 <div class="form-row row">
                     <div class="form-group col-md-12 text-center">
                         <label class="col-form-label">@Localizer["YourPicture"]</label>
-                        <input asp-for="YourPicture" class="form-control" type="file" accept=".png, .jpg, .jpeg, .gif" />
+                        <input asp-for="YourPicture" class="form-control" type="file" accept=".png, .jpg, .jpeg, .gif, .bmp" />
                         <span asp-validation-for="YourPicture" class="text-danger"></span>
+                        <span class="text-danger">Size 500*400</span>
                     </div>
                 </div>
                 <div class="form-row row">
@@ -242,13 +244,13 @@
                         <label class="col-form-label">@Localizer["UserCategory"]</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory1" value="1" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory1">Company</label>
+                            <label class="btn btn-outline-danger" for="UserCategory1">@Localizer["Company"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory2" value="2" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="UserCategory2">Blogger</label>
+                            <label class="btn btn-outline-danger" for="UserCategory2">@Localizer["Blogger"]</label>
 
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory3" value="3" autocomplete="off" checked>
-                            <label class="btn btn-outline-danger" for="UserCategory3">Admin</label>
+                            <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
                         @*@Html.DropDownList("UserCategory", new List<SelectListItem>
                             {
@@ -304,6 +306,7 @@
     <script>
         $(function () {
             $('[name="UserCategory"]').click(function () {
+                debugger;
                 switch ($(this).val()) {
                     case "1":
                         $(".frm").removeClass("show").addClass("hide");

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using influencer.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace influencer.ViewModels.Account
 {
-    public class RegisterViewModel
+    public class RegisterViewModel: EditImageViewModel
     {
         [Display(Name = "UserName")]
         [Required(ErrorMessage = "Required")]
@@ -46,18 +47,15 @@ namespace influencer.ViewModels.Account
 
         public string InstagramPage{ get; set; }
         
-        public int ApproximatePrice{ get; set; }
+        public int? ApproximatePrice{ get; set; }
         
         public string YourFavourites{ get; set; }
         
         [MaxLength(11)]
-        public int PhoneNumber{ get; set; }
+        public string PhoneNumber{ get; set; }
         
         public string AnythingElse { get; set; }
-
-        public IFormFile YourPicture { get; set; }
         /**End Blogger*/
-
         /**Start Company*/
         public string CompanyName  { get; set; }
 
@@ -66,16 +64,26 @@ namespace influencer.ViewModels.Account
         //public int PhoneNumber { get; set; }
         public string ProductsServices { get; set; }
 
-        public int ApproximateBudget { get; set; }
+        public int? ApproximateBudget { get; set; }
 
         public string CountryOfOrigin { get; set; }
 
         public string DestinationCountries{ get; set; }
 
        // public string AnythingElse{ get; set; }
-
-        /**Start Company*/
-
-
+         /**Start Company*/
+    }
+    public class UploadImageViewModel
+    {
+        [Display(Name = "Picture")]
+        [DataType(DataType.Upload)]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" })]
+        [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp")]
+        public IFormFile YourPicture { get; set; }
+    }
+    public class EditImageViewModel : UploadImageViewModel
+    {
+        public int Id { get; set; }
+        public string ExistingImage { get; set; }
     }
 }

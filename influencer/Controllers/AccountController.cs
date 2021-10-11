@@ -2,13 +2,20 @@
 using Domain.Contracts;
 using Domain.Entities.Context;
 using influencer.ViewModels.Account;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace influencer.Controllers
 {
@@ -17,13 +24,15 @@ namespace influencer.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IMessageSender _messageSender;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IMessageSender messageSender)
+            SignInManager<ApplicationUser> signInManager, IMessageSender messageSender, IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _messageSender = messageSender;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -55,20 +64,34 @@ namespace influencer.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     City = model.City,
-                    UserCategory = model.UserCategory
+                    UserCategory = model.UserCategory,
+                    Firstname = model.Firstname,
+                    Lastname = model.Lastname,
+                    Country = model.Country,
+                    InstagramPage = model.InstagramPage,
+                    YourFavourites = model.YourFavourites,
+                    AnythingElse = model.AnythingElse,
+                    YourPicture = UploadedFile(model),
+                    CompanyName = model.CompanyName,
+                    Brand = model.Brand,
+                    ProductsServices = model.ProductsServices,
+                    CountryOfOrigin = model.CountryOfOrigin,
+                    DestinationCountries = model.DestinationCountries,
+                    ApproximatePrice = model.ApproximatePrice,
+                    ApproximateBudget = model.ApproximateBudget,
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    string userAdd="";
-                    switch(model.UserCategory)
+                    string userAdd = "";
+                    switch (model.UserCategory)
                     {
                         case 3:
                             List<string> requestRoles = new List<string>() { "Admin" };
                             await _userManager.AddToRolesAsync(user, requestRoles);
                             userAdd = "Admin";
-                        break;
+                            break;
                         case 2:
                             userAdd = "Blogger";
                             break;
@@ -81,16 +104,18 @@ namespace influencer.Controllers
                     }
                     var emailConfirmationToken =
                         await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var emailMessage = "Please Go To Your Email And Confirm It.<br />"+
+                    var emailMessage = "The Confirmation Link Was Sent Successfully!<br/>Please Go To Your Email And Confirm It.<br />" +
                         Url.Action("ConfirmEmail", "Account",
                             new { username = user.UserName, token = emailConfirmationToken },
                             Request.Scheme);
                     await _messageSender.SendEmailAsync(model.Email, "The Confirmation Link Was Sent Successfully!", emailMessage);
-                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User "+ userAdd + " Add", user.UserName+" is Created");
+                    /*Email Manager Site*/
+                    string urlManageUser = user.UserName + " is Created <br/>" + Url.Action("Index","ManageUser");
+                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User " + userAdd + " Add", urlManageUser);
 
-                    return RedirectToAction("Index", "Home", "The confirmation link was sent successfully! /n Please go to your email and confirm it.");
+                    return RedirectToAction("Index", "Home", new { alertSuccess = HttpUtility.UrlDecode("The confirmation link was sent successfully! Please go to your email and confirm it.") });
                 }
-        
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
@@ -130,9 +155,7 @@ namespace influencer.Controllers
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(
-                    model.UserName, model.Password, model.RememberMe, true);
-
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -249,7 +272,21 @@ namespace influencer.Controllers
                         UserName = (userName.Length <= 10 ? userName : userName.Substring(0, 10)),
                         Email = email,
                         EmailConfirmed = true,
-                        City = "Tehran"
+                        City = "Tehran",
+                        Firstname = "",
+                        Lastname = "",
+                        Country = "",
+                        InstagramPage = "",
+                        YourFavourites = "",
+                        AnythingElse = "",
+                        YourPicture = "",
+                        CompanyName = "",
+                        Brand = "",
+                        ProductsServices = "",
+                        CountryOfOrigin = "",
+                        DestinationCountries = "",
+                        ApproximatePrice = 0,
+                        ApproximateBudget = 0,
                     };
 
                     await _userManager.CreateAsync(user);
@@ -265,6 +302,28 @@ namespace influencer.Controllers
             ViewBag.ErrorMessage = $"{externalLoginInfo.LoginProvider} Can not get information from";
             return View();
         }
+        private string UploadedFile(RegisterViewModel register)
+        {
+            string uniqueFileName = null;
 
+            if (register.YourPicture != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads/Account");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + register.YourPicture.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                IFormFile file = register.YourPicture;
+                var image = Image.FromStream(file.OpenReadStream());
+                var resized = new Bitmap(image, new Size(500, 400));
+                using var imageStream = new MemoryStream();
+                resized.Save(imageStream, ImageFormat.Jpeg);
+                var imageBytes = imageStream.ToArray();
+                using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
+                {
+                    stream.Write(imageBytes, 0, imageBytes.Length);
+                }
+            }
+            return uniqueFileName;
+        }
     }
 }

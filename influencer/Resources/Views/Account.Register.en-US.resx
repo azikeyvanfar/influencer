@@ -179,9 +179,14 @@ intend to advertise?</value>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data name="RegisterHead" xml:space="preserve">
+  <data name="RegisterHeadBlogger" xml:space="preserve">
+    <value>Collaborate with Adsfluencer,&lt;br/&gt;
+To join our influencer community, submit the form below,&lt;br/&gt;
+tell us about yourself, and we’ll be in touch</value>
+  </data>
+  <data name="RegisterHeadCompany" xml:space="preserve">
     <value>Collaborate with Adsfluencer ,&lt;br/&gt;
-To join our influencer community, submit the form below, &lt;br/&gt;
+To join our Creative Clients community, submit the form below, &lt;br/&gt;
 tell us about yourself, and we’ll be in touch</value>
   </data>
   <data name="UserCategory" xml:space="preserve">
