@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -25,29 +26,45 @@ namespace influencer.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IMessageSender _messageSender;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHtmlLocalizer<AccountController> _localizer;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IMessageSender messageSender, IWebHostEnvironment webHostEnvironment)
+            SignInManager<ApplicationUser> signInManager, IMessageSender messageSender, IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _messageSender = messageSender;
             _webHostEnvironment = webHostEnvironment;
+            _localizer = localizer;
         }
 
-
+        public async Task<IActionResult> Index()
+        {
+            if (!_signInManager.IsSignedIn(User))
+                return RedirectToAction("Login", "Home",new{ returnUrl = Url.Action("Index")});
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+            return View(user);
+        }
         [HttpGet]
         public IActionResult Register()
         {
             ViewBag.countries = GetCountry();
             return View();
         }
-        public List<string> GetCountry()
+        public IEnumerable<Country> GetCountry()
         {
             var helper = new CountryHelper();
-            List<string> countries = helper.GetCountries().ToList();
+            //List<string> countries = helper.GetCountries().ToList();
+            IEnumerable<Country> countries = helper.GetCountryData();
+            //get list of countries by their Names  
+            //var countries = data.Select(c => c.CountryName).ToList();
+            //foreach (var country in countries)
+            //{
+            //    Console.WriteLine(country);
+            //}
             return countries;
         }
+        [HttpPost]
         public List<Regions> GetRegions(string Country)
         {
             var helper = new CountryHelper();
@@ -104,16 +121,15 @@ namespace influencer.Controllers
                     }
                     var emailConfirmationToken =
                         await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var emailMessage = "The Confirmation Link Was Sent Successfully!<br/>Please Go To Your Email And Confirm It.<br />" +
-                        Url.Action("ConfirmEmail", "Account",
-                            new { username = user.UserName, token = emailConfirmationToken },
-                            Request.Scheme);
-                    await _messageSender.SendEmailAsync(model.Email, "The Confirmation Link Was Sent Successfully!", emailMessage);
+                    var emailMessage = "<b>Adsfluencer.</b><hr/><br/>"+_localizer["Confirm"].Value +"<br/>"+_localizer["YourEmail"].Value + "<br /><a href='" +
+                        Url.Action("ConfirmEmail", "Account",new { username = user.UserName, token = emailConfirmationToken },Request.Scheme)+"'>"+_localizer["ClickThis"].Value + "</a>";
+                    await _messageSender.SendEmailAsync(model.Email, _localizer["Confirm"].Value, emailMessage);
                     /*Email Manager Site*/
-                    string urlManageUser = user.UserName + " is Created <br/>" + Url.Action("Index","ManageUser");
-                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", "New User " + userAdd + " Add", urlManageUser);
+                    string urluser = $"{Request.Scheme}://{Request.Host}" + "/ManageUser/Index";
+                    string urlManageUser = _localizer["UserName"].Value + " = <b>"+user.UserName + "</b> <br/> "+_localizer["Email"].Value + "=<b>"+ user.Email + "</b><br/> "+_localizer["Created"].Value + "<hr/><br/><a href='" + urluser + "'>"+_localizer["ActiveUser"].Value + "</a>";
+                    await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", _localizer["NewUser"].Value + " " + userAdd + " "+_localizer["Add"].Value, urlManageUser);
 
-                    return RedirectToAction("Index", "Home", new { alertSuccess = HttpUtility.UrlDecode("The confirmation link was sent successfully! Please go to your email and confirm it.") });
+                    return RedirectToAction("Index", "Home", new { alertSuccess = HttpUtility.UrlDecode(_localizer["Confirm"].Value + " " + _localizer["GoYourEmail"].Value) });
                 }
 
                 foreach (var error in result.Errors)

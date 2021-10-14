@@ -508,3 +508,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Controllers.AccountController.en-US.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Controllers.AccountController.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs

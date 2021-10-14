@@ -6,7 +6,7 @@
 <div class="container">
     <main role="main" class="pb-3">
         <div class="show frm" id="CompanyForm">
-        <h3 class="text-center">@Localizer["RegisterHeadCompany"]</h3>
+            <h3 class="text-center">@Localizer["RegisterHeadCompany"]</h3>
             <form asp-controller="Account" asp-action="Register" method="post">
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-row row">
@@ -23,11 +23,11 @@
                             <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
                         @*@Html.DropDownList("UserCategory", new List<SelectListItem>
-                {
-                    new SelectListItem{ Text=Localizer["Company"].Value, Value = "1" },
-                    new SelectListItem{ Text=Localizer["Blogger"].Value, Value = "2" },
-                    new SelectListItem{ Text=Localizer["Admin"].Value, Value = "3" }
-                }, new { @class = "form-control alert-danger" })*@
+                            {
+                                new SelectListItem{ Text=Localizer["Company"].Value, Value = "1" },
+                                new SelectListItem{ Text=Localizer["Blogger"].Value, Value = "2" },
+                                new SelectListItem{ Text=Localizer["Admin"].Value, Value = "3" }
+                            }, new { @class = "form-control alert-danger" })*@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["UserName"]</label>
@@ -128,13 +128,7 @@
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory3" value="3" autocomplete="off">
                             <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
-                        @*@Html.DropDownList("UserCategory", new List<SelectListItem>
-                            {
-                                new SelectListItem{ Text=Localizer["Company"].Value, Value = "1" },
-                                new SelectListItem{ Text=Localizer["Blogger"].Value, Value = "2" },
-                                new SelectListItem{ Text=Localizer["Admin"].Value, Value = "3" }
-                            }, new { @class = "form-control alert-danger" })*@
-                    </div>                    
+                    </div>
                 </div>
                 <div class="form-row row">
                     <div class="form-group col-md-6">
@@ -163,7 +157,7 @@
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
-                
+
                 <div class="form-row row">
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["Firstname"]</label>
@@ -179,12 +173,15 @@
                 <div class="form-row row">
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["Country"]</label>
-                        <input asp-for="Country" class="form-control" />
+                        @Html.DropDownList("Country", new SelectList(ViewBag.countries,"CountryShortCode", "CountryName"), new { id = "Country", @class = "form-control" })
                         <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["City"]</label>
-                        <input asp-for="City" class="form-control" />
+                        @*<input asp-for="City" class="form-control" />*@
+                        @Html.DropDownList("City", new SelectList("", "ShortCode", "Name"),
+                        "-- please select a States or Provincese --"
+                        , new { id = "City", @class = "form-control" })
                         <span asp-validation-for="City" class="text-danger"></span>
                     </div>
                 </div>
@@ -252,12 +249,6 @@
                             <input type="radio" class="btn-check" name="UserCategory" id="UserCategory3" value="3" autocomplete="off" checked>
                             <label class="btn btn-outline-danger" for="UserCategory3">@Localizer["Admin"]</label>
                         </div>
-                        @*@Html.DropDownList("UserCategory", new List<SelectListItem>
-                            {
-                                new SelectListItem{ Text=Localizer["Company"].Value, Value = "1" },
-                                new SelectListItem{ Text=Localizer["Blogger"].Value, Value = "2" },
-                                new SelectListItem{ Text=Localizer["Admin"].Value, Value = "3" }
-                            }, new { @class = "form-control alert-danger" })*@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["UserName"]</label>
@@ -321,6 +312,26 @@
                         $("#AdminForm").addClass("show");
                         break;
                 }
+            });
+            $("select#Country").change(function () {
+                var selectedCountry = $("#Country option:selected").val();
+                $.ajax({
+                    url: '@Url.Action("GetRegions")',
+                    data: { Country: selectedCountry },
+                    dataType: "html",
+                    type: "post",
+                    success: function (data) {
+                        $("#City").html('<option value="">-- please select a States or Provincese --</option>');
+                        data = JSON.parse(data);
+                        $.each(data, function (index, value) {
+                            var text1 = '<option value=' + value.shortCode + '>' + value.name + '</option>';
+                            $("#City").append(text1);
+                        });
+                    },
+                    error: function (result) {
+                        alert("error occured");
+                    }
+                });
             });
         });
     </script>

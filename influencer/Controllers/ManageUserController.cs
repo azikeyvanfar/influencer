@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Context;
 using influencer.Repositories;
 using influencer.ViewModels.ManageUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace influencer.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageUserController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

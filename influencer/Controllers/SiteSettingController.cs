@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using influencer.ViewModels.SiteSetting;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace influencer.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SiteSettingController : Controller
     {
         private readonly ISiteSettingRepository _siteSettingRepository;

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace influencer.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageRoleController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
