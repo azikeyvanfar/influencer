@@ -54,14 +54,7 @@ namespace influencer.Controllers
         public IEnumerable<Country> GetCountry()
         {
             var helper = new CountryHelper();
-            //List<string> countries = helper.GetCountries().ToList();
             IEnumerable<Country> countries = helper.GetCountryData();
-            //get list of countries by their Names  
-            //var countries = data.Select(c => c.CountryName).ToList();
-            //foreach (var country in countries)
-            //{
-            //    Console.WriteLine(country);
-            //}
             return countries;
         }
         [HttpPost]

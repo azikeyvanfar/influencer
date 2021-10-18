@@ -113,7 +113,7 @@
         </div>
         <div class="hide frm" id="BloggerForm">
             <h3 class="text-center">@Localizer["RegisterHeadBlogger"]</h3>
-            <form asp-controller="Account" asp-action="Register" method="post">
+            <form asp-controller="Account" asp-action="Register" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-row row">
                     <div class="form-group col-md-12">
@@ -219,7 +219,10 @@
                 <div class="form-row row">
                     <div class="form-group col-md-12 text-center">
                         <label class="col-form-label">@Localizer["YourPicture"]</label>
-                        <input asp-for="YourPicture" class="form-control" type="file" accept=".png, .jpg, .jpeg, .gif, .bmp" />
+                        <div class="custom-file">
+                            <input asp-for="YourPicture" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg, .gif">
+                            <label class="custom-file-label" for="customFile"></label>
+                        </div>
                         <span asp-validation-for="YourPicture" class="text-danger"></span>
                         <span class="text-danger">Size 500*400</span>
                     </div>

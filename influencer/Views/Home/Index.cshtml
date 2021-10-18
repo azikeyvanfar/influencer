@@ -179,11 +179,12 @@
 </main><!-- End #main -->
 @if (ViewBag.alertSuccess != null)
 {
-    <script type="text/javascript">
+<script type="text/javascript">
         window.onload = function () {
-                alert("@ViewBag.alertSuccess");
-            };
-    </script>
+            var notyficationSuccess = decodeURIComponent(getUrlParameter("alertSuccess"));
+            alert(notyficationSuccess);
+        };
+</script>
 }
 @section Scripts{
     <script>

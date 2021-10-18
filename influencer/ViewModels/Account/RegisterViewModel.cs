@@ -78,7 +78,7 @@ namespace influencer.ViewModels.Account
         [Display(Name = "Picture")]
         [DataType(DataType.Upload)]
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" })]
-        [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp")]
+        //[FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp")]
         public IFormFile YourPicture { get; set; }
     }
     public class EditImageViewModel : UploadImageViewModel

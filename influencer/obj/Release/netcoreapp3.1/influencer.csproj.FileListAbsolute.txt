@@ -510,3 +510,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Account.Register.fa-IR.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._LoginPartial.en-US.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._LoginPartial.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Account.Index.en-US.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Account.Index.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
