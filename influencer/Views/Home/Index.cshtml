@@ -190,6 +190,21 @@
     <script>
         $(function () {
             $(".editable").removeClass("editable");
+
+            var timer = setInterval(showDiv, 5000);
+            function showDiv() {
+                if ($("#tabs li .active").parent().next("li").length) {
+                    var tab = $("#tabs li .active").parent().next("li").find("a");
+                    tab[0].click();
+                } else {
+                    $("#tabs li:first a")[0].click();
+                }
+            }
+            $('#tabs .container').hover(function (ev) {
+                clearInterval(timer);
+            }, function (ev) {
+                timer = setInterval(showDiv, 5000);
+            });
         });
     </script>
 }

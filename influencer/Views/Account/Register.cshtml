@@ -294,13 +294,11 @@
         </div>
     </main>
 </div>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script>
         $(function () {
             $('[name="UserCategory"]').click(function () {
-                debugger;
                 switch ($(this).val()) {
                     case "1":
                         $(".frm").removeClass("show").addClass("hide");

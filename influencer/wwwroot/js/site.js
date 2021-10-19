@@ -12,7 +12,7 @@
         if ($(this).attr("href") == pathname) {
             $(this).addClass("active");
         }
-    })
+    });
 });
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
