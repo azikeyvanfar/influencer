@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
     var j = Json.Serialize(Model);
     var CurrentCulture = "en-US";
-    @switch(CultureInfo.CurrentCulture.Name)
+    @switch (CultureInfo.CurrentCulture.Name)
     {
         case "fa-IR":
             CurrentCulture = "fa-IR";
@@ -164,7 +164,39 @@
                         }
                     });
             });
-        });
 
+            var fileupload = $("#Imgtabs-1,#Imgtabs-2,#Imgtabs-3,#Imgtabs-4");
+            var image = $("#ImgTab1,#ImgTab2,#ImgTab3,#ImgTab4");
+            image.click(function () {
+                $(this).next('[type="file"]').click();
+            });
+            fileupload.change(function () {
+                var inputFile = $(this);
+                var thisFile = this.files[0];
+                if (this.files && thisFile) {
+                    var formData = new FormData();
+                    formData.append("picture", thisFile);
+                    formData.append("number", inputFile.attr("id").match(/\d+/)[0]);
+                    $.ajax({
+                        url: '@Url.Action("UploadedFile","Article")',
+                        data: formData,
+                        type: 'post',
+                        success: function (str) {
+                            inputFile.prev().attr('src', "../Uploads/Tabs/" + str + "?" + new Date().getTime());
+                            setTimeout(inputFile.prev().attr('src', "../Uploads/Tabs/" + str),1000);
+                        },
+                        processData: false,
+                        contentType: false
+                    });
+                }
+                //if (this.files && this.files[0]) {
+                //    var reader = new FileReader();
+                //    reader.onload = function (e) {
+                //        inputFile.prev().attr('src', e.target.result);
+                //    };
+                //    reader.readAsDataURL(this.files[0]);
+                //}
+            });
+        });
     </script>
 }

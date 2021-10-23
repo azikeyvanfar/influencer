@@ -2,12 +2,17 @@
 using Domain.Entities;
 using Domain.Entities.Context;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,10 +23,12 @@ namespace influencer.Controllers
     {
         private readonly IUserArticleRepository _userArticleRepository;
         private readonly UserManager<ApplicationUser> _userManager;
-        public ArticleController(IUserArticleRepository userArticleRepository, UserManager<ApplicationUser> userManager)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ArticleController(IUserArticleRepository userArticleRepository, UserManager<ApplicationUser> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _userArticleRepository = userArticleRepository;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment;
         }
         /************************************************************************************/
         ////Display all articles
@@ -140,7 +147,31 @@ namespace influencer.Controllers
             await _userArticleRepository.Update(article1);
             return RedirectToAction(nameof(Index));
         }
-        //[HttpPost]
+        [HttpPost]
+        public string UploadedFile(IFormFile picture,int number)
+        {
+            string uniqueFileName = null;
+
+            if (picture != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads/Tabs");
+                uniqueFileName = "tabs-" + number+".jpg";
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                IFormFile file = picture;
+                var image = Image.FromStream(file.OpenReadStream());
+                var resized = new Bitmap(image, new Size(800, 600));
+                using var imageStream = new MemoryStream();
+                resized.Save(imageStream, ImageFormat.Jpeg);
+                var imageBytes = imageStream.ToArray();
+                using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
+                {
+                    stream.Write(imageBytes, 0, imageBytes.Length);
+                }
+            }
+            return uniqueFileName;
+        }
+       
         //public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor,
         //   string langCode)
         //{

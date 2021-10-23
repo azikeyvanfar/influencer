@@ -353,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
 
     #hero:before, #hero2:before, #hero3:before {
         content: "";
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.9);
         position: absolute;
         bottom: 0;
         top: 0;
@@ -366,6 +366,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 48px;
         font-weight: 700;
         color: #fff;
+        text-shadow:2px 2px 5px #000;
     }
 
     #hero h2, #hero2 h2, #hero3 h2 {

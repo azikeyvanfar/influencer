@@ -47,28 +47,32 @@
         <div class="row" data-aos="fade-up">
             @foreach (var item in Model)
             {
-                <div class="col-md-4 text-center">
-                    <a asp-action="ChangeLanguage" asp-route-culture="@item.LanguageTitle" class="btn btn-info btn-lg" style="background-color:white;opacity:0.6">
-                        @switch (@item.LanguageTitle)
+            <div class="col-md-4 text-center">
+                <a asp-action="ChangeLanguage" asp-route-culture="@item.LanguageTitle" class="btn btn-danger btn-lg" style="background-color:rgba(255,255,255,0.5);color:#333">
+                    @switch (@item.LanguageTitle)
                         {
                             case "tr-TR":
-                                <span>Turkish / Türkçe</span>
+                    <span>Turkish / Türkçe</span>
                                 break;
                             case "en-US":
-                                <span>English</span>
+                    <span>English</span>
                                 break;
                             case "fa-IR":
-                                <span>Persian  / فارسی</span>
+                    <span>Persian  / فارسی</span>
                                 break;
                         }
-                    </a>
-                </div>
+                </a>
+            </div>
             }
         </div>
-
-    </div>
-    <div id="footer_land" style=" position: fixed; bottom: 0px; background: #1b1b1b; color: #ffffff; width: 100%; font-size: 25px;text-align:center">
-        Adsfluencer - The bridge between influencers and brands
+        <div class="row">
+            <div class="col-md-6 col-sm-12"></div>
+            <div class="col-md-6 col-sm-12" style="position:absolute;bottom:15%;right:1%;background-color:rgba(255,255,255,0.3);border-radius:5px;">
+                <p style="font-size: 38px">Adsfluencer</p>
+                <hr style="width:25%;border:2px solid #e03a3c;opacity:1" />
+                <p style="font-size: 34px">The bridge between influencers and brands</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

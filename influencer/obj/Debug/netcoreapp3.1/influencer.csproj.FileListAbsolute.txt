@@ -513,3 +513,12 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Account.Index.en-US.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Account.Index.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Debug\netcoreapp3.1\tr-TR\influencer.resources.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Account.Index.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Account.Login.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Account.Register.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Home.Index.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Shared._LoginPartial.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\tr-TR\influencer.resources.dll
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Models.ShareResource.tr-TR.resources

@@ -16,11 +16,11 @@
                 @Html.DisplayFor(model => model.UserName)
             </dd>
             @*<dt class="col-sm-2">
-                @_localized["PasswordHash"]
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PasswordHash)
-            </dd>*@
+                    @_localized["PasswordHash"]
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PasswordHash)
+                </dd>*@
             <dt class="col-sm-2">
                 @_localized["UserCategory"]:
             </dt>
@@ -75,7 +75,8 @@
             <dd class="col-sm-10">
                 @if (Model.YourPicture != "")
                 {
-                    <img src="~/Uploads/Account/" width="200" asp-append-version="true" />
+                    <img src="~/Uploads/Account/" id="imgYourPicture" width="200" asp-append-version="true" style="cursor:pointer" />
+                    <input type="file" id="YourPicture" name="YourPicture" style="display: none" />
                 }
             </dd>
         </dl>
@@ -85,3 +86,14 @@
         </div>
     </main>
 </div>
+@section Scripts{
+<script>
+    $(function () {
+        var fileupload = $("#YourPicture");
+        var image = $("#imgYourPicture");
+        //image.click(function () {
+        //    fileupload.click();
+        //});
+    });
+</script>
+}
