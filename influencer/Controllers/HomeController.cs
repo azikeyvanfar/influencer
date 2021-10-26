@@ -20,12 +20,14 @@ namespace influencer.Controllers
         private readonly IUserArticleRepository _userArticleRepository;
         private readonly IAdvertiseRepository _advertiseRepository;
         private readonly ILanguagesRepository _languagesRepository;
-        public HomeController(ILogger<HomeController> logger, IUserArticleRepository userArticleRepository, IAdvertiseRepository advertiseRepository, ILanguagesRepository languagesRepository)
+        private readonly ITeamRepository _TeamRepository;
+        public HomeController(ILogger<HomeController> logger, IUserArticleRepository userArticleRepository, IAdvertiseRepository advertiseRepository, ILanguagesRepository languagesRepository, ITeamRepository TeamRepository)
         {
             _logger = logger;
             _userArticleRepository = userArticleRepository;
             _advertiseRepository = advertiseRepository;
             _languagesRepository = languagesRepository;
+            _TeamRepository = TeamRepository;
         }
 
         public IActionResult Index(string alertSuccess)
@@ -33,6 +35,7 @@ namespace influencer.Controllers
             string lang = CultureInfo.CurrentCulture.Name;
             List<UserArticle> article = _userArticleRepository.FindByCondition(m=>m.Language.LanguageTitle == lang).OrderBy(m=>m.OrderArticle).ToList();
             ViewBag.ListAdv = _advertiseRepository.FindAll().OrderBy(m => m.OrderAdvertise).ToList();
+            ViewBag.ListTeam = _TeamRepository.FindByCondition(m => m.Language.LanguageTitle == lang).OrderBy(m => m.OrderTeam).ToList();
             ViewBag.alertSuccess = alertSuccess;
             return View(article);
         }

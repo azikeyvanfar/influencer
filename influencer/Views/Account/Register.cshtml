@@ -173,7 +173,7 @@
                 <div class="form-row row">
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["Country"]</label>
-                        @Html.DropDownList("Country", new SelectList(ViewBag.countries,"CountryShortCode", "CountryName"), new { id = "Country", @class = "form-control" })
+                        @Html.DropDownList("Country", new SelectList(ViewBag.countries, "CountryShortCode", "CountryName"), new { id = "Country", @class = "form-control" })
                         <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
@@ -220,8 +220,8 @@
                     <div class="form-group col-md-12 text-center">
                         <label class="col-form-label">@Localizer["YourPicture"]</label>
                         <div class="custom-file">
-                            <input asp-for="YourPicture" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg, .gif">
-                            <label class="custom-file-label" for="customFile"></label>
+                            <input asp-for="YourPicture" class="custom-file-input hide" id="YourPicture" accept=".png, .jpg, .jpeg, .gif">
+                            <img src="~/assets/img/PicDefault.png" id="ImgYourPicture" width="200" style="border:1px solid #666;border-radius:10px"/>
                         </div>
                         <span asp-validation-for="YourPicture" class="text-danger"></span>
                         <span class="text-danger">Size 500*400</span>
@@ -333,6 +333,21 @@
                         alert("error occured");
                     }
                 });
+            });
+            var fileupload = $("#YourPicture");
+            var image = $("#ImgYourPicture");
+            image.click(function () {
+                fileupload.click();
+            });
+            fileupload.change(function () {
+                var inputFile = $(this);
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        image.attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
             });
         });
     </script>

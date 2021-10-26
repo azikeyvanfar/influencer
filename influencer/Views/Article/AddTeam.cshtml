@@ -1,0 +1,122 @@
+﻿@model influencer.ViewModels.Team.TeamViewModel
+
+@{
+    ViewData["Title"] = "Add Team";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+        <h1>Add Team</h1>
+        <hr />
+        <form asp-action="AddTeam" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="HeadName" class="control-label"></label>
+                        <input asp-for="HeadName" class="form-control" required/>
+                        <span asp-validation-for="HeadName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TeamPicture" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="TeamPicture" class="custom-file-input hide" id="customFile" accept=".png, .jpg, .jpeg, .gif" required>
+                            <img id="TeamPictureImg" src="~/Uploads/Team/PicDefault.png"/>
+                            <label class="custom-file-label" for="customFile"></label>
+                        </div>
+                        <span asp-validation-for="TeamPicture" class="text-danger"></span>
+                        <span class="text-danger">size : 600 * 600</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="OrderTeam" class="control-label"></label>
+                        <input asp-for="OrderTeam" class="form-control" />
+                        <span asp-validation-for="OrderTeam" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Twitter" class="control-label"></label>
+                        <input asp-for="Twitter" class="form-control" />
+                        <span asp-validation-for="Twitter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Facebook" class="control-label"></label>
+                        <input asp-for="Facebook" class="form-control" />
+                        <span asp-validation-for="Facebook" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Instagram" class="control-label"></label>
+                        <input asp-for="Instagram" class="form-control" />
+                        <span asp-validation-for="Instagram" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Linkedin" class="control-label"></label>
+                        <input asp-for="Linkedin" class="form-control" />
+                        <span asp-validation-for="Linkedin" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+@section Scripts {
+    <script>
+        $(function () {
+            var teamUpload = $("#TeamPicture");
+            var teamimage = $("#TeamPictureImg");
+            teamimage.click(function () {
+                teamUpload.click();
+            });
+            teamUpload.change(function () {
+                var inputFile = $(this);
+                var thisFile = this.files[0];
+                if (this.files && thisFile) {
+                    var formData = new FormData();
+                    formData.append("TeamPicture", thisFile);
+                    //formData.append("number", inputFile.attr("id").match(/\d+/)[0]);
+                   // formData.append("number", Max(team));
+                    $.ajax({
+                        url: '@Url.Action("UploadedFile","Article")',
+                        data: formData,
+                        type: 'post',
+                        success: function (str) {
+                            inputFile.prev().attr('src', "../Uploads/Team/" + str + "?" + new Date().getTime());
+                            setTimeout(inputFile.prev().attr('src', "../Uploads/Team/" + str), 1000);
+                        },
+                        processData: false,
+                        contentType: false
+                    });
+                }
+            });
+        });
+    </script>
+}

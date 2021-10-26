@@ -1,6 +1,7 @@
 ﻿using CountryData.Standard;
 using Domain.Contracts;
 using Domain.Entities.Context;
+using influencer.Common;
 using influencer.ViewModels.Account;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -323,9 +324,9 @@ namespace influencer.Controllers
 
                 IFormFile file = register.YourPicture;
                 var image = Image.FromStream(file.OpenReadStream());
-                var resized = new Bitmap(image, new Size(500, 400));
+                image = FixedSizeImage.FixedSize(image, 500, 400);
                 using var imageStream = new MemoryStream();
-                resized.Save(imageStream, ImageFormat.Jpeg);
+                image.Save(imageStream, ImageFormat.Jpeg);
                 var imageBytes = imageStream.ToArray();
                 using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {

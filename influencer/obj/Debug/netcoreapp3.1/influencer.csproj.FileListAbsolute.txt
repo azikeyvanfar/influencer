@@ -447,7 +447,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Advertise\Details.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Advertise\Edit.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Advertise\Index.cshtml.g.cs
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index - Copy.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\Manage.cshtml.g.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\SingleArticle.cshtml.g.cs
@@ -522,3 +521,8 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Shared._LoginPartial.tr-TR.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\tr-TR\influencer.resources.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Models.ShareResource.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Article\AddTeam.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Team\Create.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Team\Delete.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Team\Edit.cshtml.g.cs
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\Razor\Views\Team\Index.cshtml.g.cs

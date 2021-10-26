@@ -12,7 +12,7 @@ namespace Domain.Entities
         [MaxLength(100)]
         public string LanguageTitle { get; set; }
 
-
         public List<UserArticle> userArticles { get; set; }
+        public List<Team> teams { get; set; }
     }
 }

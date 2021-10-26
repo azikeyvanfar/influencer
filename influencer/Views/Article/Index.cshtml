@@ -104,8 +104,8 @@
                     text = text.replace(/ ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline/g, "");//.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "")
                     text = text.replace(/ class="image-inline ck-widget" contenteditable="false"/g, "").replace(/ data-cke-filler="true"/g, "").replace(/ contenteditable="true"/g, "");
                     if ('@CurrentCulture' == "fa-IR") {
-                        text = text.replace(/ lang="en"/g, / lang="fa"/);
-                        text = text.replace(/ dir="ltr"/g, / dir="rtl"/);
+                        text = text.replace(/ lang="en"/g, ' lang="fa"');
+                        text = text.replace(/ dir="ltr"/g, ' dir="rtl"');
                     }
                     text = JSON.stringify(text);
                     $.ajax({

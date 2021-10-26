@@ -129,6 +129,9 @@
   <data name="HomePage" xml:space="preserve">
     <value>Ana Sayfa</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>daha fazla</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Sonraki</value>
   </data>

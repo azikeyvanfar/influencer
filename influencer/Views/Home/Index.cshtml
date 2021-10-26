@@ -14,7 +14,7 @@
     <div class="carousel-inner">
         <section id="hero" class="align-items-center carousel-item active">
 
-            <div class="container padtop-60" data-aos="zoom-out" data-aos-delay="100">
+            <div class="container" data-aos="zoom-out" data-aos-delay="100">
                 <div class="row">
                     <div class="col-xl-7">
                         <h1>@Localizer["TitleSlide"]</h1>
@@ -22,7 +22,7 @@
                             @Localizer["DesciptionSlide1"]
                             @Localizer["DesciptionSlide2"]
                         </h2>
-                        <a href="#about" class="btn-get-started scrollto" style="margin-right:100px">@Localizer["GetStarted"]</a>
+                        <a href="#about" class="btn-get-started scrollto">@Localizer["GetStarted"]</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         </section>
         <section id="hero2" class="carousel-item">
 
-            <div class="container padtop-60" data-aos="fade-right" data-aos-delay="200">
+            <div class="container" data-aos="fade-right" data-aos-delay="200">
                 <div class="row">
                     <div class="col-xl-7">
                         <h1>@Localizer["TitleSlide"]</h1>
@@ -38,14 +38,14 @@
                             @Localizer["DesciptionSlide1"]
                             @Localizer["DesciptionSlide2"]
                         </h2>
-                        <a href="#about" class="btn-get-started scrollto" style="margin-right:100px">@Localizer["GetStarted"]</a>
+                        <a href="#about" class="btn-get-started scrollto">@Localizer["GetStarted"]</a>
                     </div>
                 </div>
             </div>
 
         </section>
         <section id="hero3" class="align-items-center carousel-item">
-            <div class="container padtop-60" data-aos="fade-right" data-aos-delay="200">
+            <div class="container" data-aos="fade-right" data-aos-delay="200">
                 <div class="row">
                     <div class="col-xl-7">
                         <h1>@Localizer["TitleSlide"]</h1>
@@ -53,7 +53,7 @@
                             @Localizer["DesciptionSlide1"]
                             @Localizer["DesciptionSlide2"]
                         </h2>
-                        <a href="#about" class="btn-get-started scrollto" style="margin-right:100px">@Localizer["GetStarted"]</a>
+                        <a href="#about" class="btn-get-started scrollto">@Localizer["GetStarted"]</a>
                     </div>
                 </div>
             </div>
@@ -164,6 +164,48 @@
                         </div>
                     }
                     else
+                    if (article.Categories == 10)
+                    {
+                        int i = 100;
+                        bool more = false;
+                        <section id="team" class="team section-bg">
+                            <div class="container" data-aos="fade-up">
+                                @Html.Raw(@article.Contents)
+                                <div class="row">
+                                    @foreach (Team team in ViewBag.ListTeam)
+                                    {
+                                        if (i == 500)
+                                        {
+                                            more = true;
+                                            continue;
+                                        }
+                                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                                            <div class="member" data-aos="fade-right" data-aos-delay="@i">
+                                                <div class="member-img">
+                                                    <img src="~/Uploads/Team/@team.TeamPicture" class="img-fluid" alt="">
+                                                    <span class="social">
+                                                        <a href="@team.Twitter"><i class="bi bi-twitter"></i></a>
+                                                        <a href="@team.Facebook"><i class="bi bi-facebook"></i></a>
+                                                        <a href="@team.Instagram"><i class="bi bi-instagram"></i></a>
+                                                        <a href="@team.Linkedin"><i class="bi bi-linkedin"></i></a>
+                                                    </span>
+                                                </div>
+                                                <div class="member-info editable" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" lang="en">
+                                                    <h4>@team.HeadName</h4><p>@team.Description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        i = i + 100;                                        
+                                    }        
+                                    @if (more)
+                                    {
+                                        <span><a href="@Url.Action("ShowAll","Team")">@Localizer["more"]</a></span>
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                    }
+                    else
                     {
                         @*<div class="section-title">
                                 <h2>@article.Title</h2>
@@ -179,12 +221,12 @@
 </main><!-- End #main -->
 @if (ViewBag.alertSuccess != null)
 {
-<script type="text/javascript">
+    <script type="text/javascript">
         window.onload = function () {
             var notyficationSuccess = decodeURIComponent(getUrlParameter("alertSuccess"));
             alert(notyficationSuccess);
         };
-</script>
+    </script>
 }
 @section Scripts{
     <script>

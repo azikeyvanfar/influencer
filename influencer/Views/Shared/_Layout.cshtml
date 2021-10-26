@@ -68,20 +68,20 @@
 
                             <!-- Breadcrumb-->
                             @*<div class="breadcrumb-dn mr-auto text-white">
-                    <b>@Localizer["BloggerMenu"]</b>
-                </div>*@
+                                    <b>@Localizer["BloggerMenu"]</b>
+                                </div>*@
                             <ul class="nav navbar-nav nav-flex-icons ml-auto list-inline" style="display:block">
                                 <li class="list-inline-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Advertise" asp-action="Index">@Localizer["Advertise"]</a>
-                                </li>
+                                </li>                                
                                 @*<li class="list-inline-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
-                    </li>*@
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+                                    </li>*@
                             </ul>
 
                         }
                         else
-                     if (User.IsInRole("Company"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
+                    if (User.IsInRole("Company"))//((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
                         {
                             <div class="breadcrumb-dn mr-auto text-white">
                                 <b>@Localizer["CompanyMenu"]</b>
@@ -90,33 +90,36 @@
                         }
                         else if (User.IsInRole("Admin"))
                         {
-                            <ul class="navbar-nav justify-content-center w-100 px-3">
-                                @*<li class="badge-danger"><h4> @Localizer["AdminMenu"]</h4></li>*@
-                                <li class="nav-item">
-                                    <a class="nav-link waves-effect waves-light" asp-controller="ManageUser" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageUser"]</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link waves-effect waves-light" asp-controller="ManageRole" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageRole"]</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link waves-effect waves-light" asp-controller="Role" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Role"]</span></a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link waves-effect waves-light" asp-controller="SiteSetting" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["SiteSetting"]</span></a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link waves-effect waves-light" asp-controller="Article" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Manage"]</span></a>
-                                </li>
-                                @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") || User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
-                    {
+                    <ul class="navbar-nav justify-content-center w-100 px-3">
+                        @*<li class="badge-danger"><h4> @Localizer["AdminMenu"]</h4></li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+                            <a class="nav-link waves-effect waves-light" asp-controller="ManageUser" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageUser"]</span></a>
                         </li>
-                    }*@
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" asp-controller="ManageRole" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["ManageRole"]</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" asp-controller="Role" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Role"]</span></a>
+                        </li>
 
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" asp-controller="SiteSetting" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["SiteSetting"]</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" asp-controller="Article" asp-action="Index"><span class="clearfix d-none d-sm-inline-block">@Localizer["Manage"]</span></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">@Localizer["Team"]</a>
+                        </li>
+                        @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") || User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee Management</a>
+            </li>
+        }*@
+
+                    </ul>
                         }
                         else
                         {
@@ -135,7 +138,7 @@
                     <partial name="_LoginPartial" />
                 </div>
             </nav><!-- .navbar -->
-            
+
         </div>
     </header><!-- End Header -->
     <div style="margin-top:102px;">

@@ -113,19 +113,14 @@ namespace influencer.Controllers
                 
                 IFormFile file = advertise.AdvPicture;
                 var image = Image.FromStream(file.OpenReadStream());
-                var resized = new Bitmap(image, new Size(800, 600));
+                image = FixedSizeImage.FixedSize(image, 800, 600);
                 using var imageStream = new MemoryStream();
-                resized.Save(imageStream, ImageFormat.Jpeg);
+                image.Save(imageStream, ImageFormat.Jpeg);
                 var imageBytes = imageStream.ToArray();
                 using (var stream = new FileStream(filePath , FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {
                     stream.Write(imageBytes, 0, imageBytes.Length);
                 }
-
-                //using (var fileStream = new FileStream(filePath, FileMode.Create))
-                //{
-                //    advertise.AdvPicture.CopyTo(fileStream);
-                //}
             }
             return uniqueFileName;
         }

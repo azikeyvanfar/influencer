@@ -309,6 +309,9 @@
           },
           "fa-IR/influencer.resources.dll": {
             "locale": "fa-IR"
+          },
+          "tr-TR/influencer.resources.dll": {
+            "locale": "tr-TR"
           }
         },
         "compile": {

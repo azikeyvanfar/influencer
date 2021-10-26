@@ -1,6 +1,8 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Domain.Entities.Context;
+using influencer.Common;
+using influencer.ViewModels.Team;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -160,9 +162,9 @@ namespace influencer.Controllers
 
                 IFormFile file = picture;
                 var image = Image.FromStream(file.OpenReadStream());
-                var resized = new Bitmap(image, new Size(800, 600));
+                image = FixedSizeImage.FixedSize(image, 800, 600);
                 using var imageStream = new MemoryStream();
-                resized.Save(imageStream, ImageFormat.Jpeg);
+                image.Save(imageStream, ImageFormat.Jpeg);
                 var imageBytes = imageStream.ToArray();
                 using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {
@@ -171,7 +173,7 @@ namespace influencer.Controllers
             }
             return uniqueFileName;
         }
-       
+        
         //public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor,
         //   string langCode)
         //{

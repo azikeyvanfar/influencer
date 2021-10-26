@@ -129,6 +129,9 @@
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>more</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>

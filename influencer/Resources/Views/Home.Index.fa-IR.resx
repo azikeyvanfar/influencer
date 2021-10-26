@@ -118,16 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DesciptionSlide1" xml:space="preserve">
-    <value>برندها باید فاصله بین خود و مشتریان را پر کنند</value>
+    <value>برندها همواره بفکر کم کردن فاصله خود و مشتریان هستند،</value>
   </data>
   <data name="DesciptionSlide2" xml:space="preserve">
-    <value>ما آن پل ارتباطی برندها هستیم</value>
+    <value>ما همان پل ارتباطی هستیم</value>
   </data>
   <data name="GetStarted" xml:space="preserve">
     <value>شروع</value>
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>صفحه ی اصلی</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>بیشتر</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>بعدی</value>
@@ -136,6 +139,6 @@
     <value>قبلی</value>
   </data>
   <data name="TitleSlide" xml:space="preserve">
-    <value>بازار تأثیرگذار خلاق برای برآوردن نیازهای محتوای نام تجاری شما</value>
+    <value>بازاری خلاق جهت برآوری نیازهای برند شما توسط اینفلوئنسرها و بلاگرها</value>
   </data>
 </root>
