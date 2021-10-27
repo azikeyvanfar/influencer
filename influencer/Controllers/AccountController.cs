@@ -44,6 +44,13 @@ namespace influencer.Controllers
             if (!_signInManager.IsSignedIn(User))
                 return RedirectToAction("Login", "Home",new{ returnUrl = Url.Action("Index")});
             ApplicationUser user = await _userManager.GetUserAsync(User);
+            if (user.Country != "")
+            {
+                var helper = new CountryHelper();
+                var country = helper.GetCountry(user.Country).FirstOrDefault();
+                user.Country = country.CountryName;
+                user.City = country.Regions.Where(m=>m.ShortCode == user.City).Select(m => m.Name).FirstOrDefault();
+            }
             return View(user);
         }
         [HttpGet]

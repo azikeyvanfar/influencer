@@ -36,6 +36,7 @@ namespace Domain.Entities.Context
         public string CountryOfOrigin { get; set; }
 
         public string DestinationCountries { get; set; }
+        public bool Status { get; set; }
 
     }
 }

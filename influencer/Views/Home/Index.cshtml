@@ -76,6 +76,7 @@
             {
                 @foreach (var article in Model)
                 {
+                    /*Blogger*/
                     if (article.Categories == 3)
                     {
                         <div class="row">
@@ -141,17 +142,28 @@
                                             }
                                             <div class="col-lg-4 col-md-6 portfolio-item filter-@cat">
                                                 <div class="portfolio-wrap">
-                                                    <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
+                                                    <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
+                                                        <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
+                                                    </a>
                                                     <div class="portfolio-info">
                                                         <h4>@advertise.Title</h4>
                                                         <p>
                                                             @cat
                                                         </p>
                                                         <div class="portfolio-links">
-                                                            <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
-                                                                <i class="bx bx-plus"></i>
-                                                            </a><a href="portfolio-details.html" title="More Details">
-                                                                <i class="bx bx-link"></i>
+                                                            @*<a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
+                                                                    <i class="bx bx-plus"></i>
+                                                                </a>*@
+                                                            <a href="https://www.instagram.com/" target="_blank" title="Blogger Instagram">
+                                                                <i class="bx bxl-instagram"></i>
+                                                            </a>
+                                                            <a href="#" title="Viewers Count">
+                                                                <span style="font-size:12px">@advertise.CntViewers</span>
+                                                                <i class="bx bx-show"></i>
+                                                            </a>
+                                                            <a href="#" title="Follower Count">
+                                                                <span style="font-size:12px">@advertise.CntFollowers</span>
+                                                                <i class="bx bxs-show"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -164,7 +176,7 @@
                         </div>
                     }
                     else
-                    if (article.Categories == 10)
+                    if (article.Categories == 10)/*team*/
                     {
                         int i = 100;
                         bool more = false;
@@ -195,8 +207,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        i = i + 100;                                        
-                                    }        
+                                        i = i + 100;
+                                    }
                                     @if (more)
                                     {
                                         <span><a href="@Url.Action("ShowAll","Team")">@Localizer["more"]</a></span>

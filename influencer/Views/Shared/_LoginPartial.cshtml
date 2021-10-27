@@ -11,7 +11,7 @@
         @if (SignInManager.IsSignedIn(User))
         {
             <li class="list-inline-item">
-                <a class="nav-link text-dark" asp-controller="Account" asp-action="Index" title="Manage">@Localizer["Hello"] @User.Identity.Name!</a>
+                <a class="nav-link text-dark" asp-controller="Account" asp-action="Index" title="Profile">@Localizer["Hello"] @User.Identity.Name!</a>
             </li>
             <li class="list-inline-item">
                 <form class="form-inline" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

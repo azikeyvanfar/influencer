@@ -21,17 +21,22 @@ namespace influencer.ViewModels.Account
         public string Email { get; set; }
 
         [Display(Name = "Password")]
+        [StringLength(255, ErrorMessage = "Must be between 6 and 255 characters", MinimumLength = 6)]
+        //[RegularExpression(@".*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$", ErrorMessage = "Error message")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$", ErrorMessage = "Error message")]
         [Required(ErrorMessage = "Required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "ConfirmPassword")]
+        [StringLength(255, ErrorMessage = "Must be between 6 and 255 characters", MinimumLength = 6)]
         [Required(ErrorMessage = "Required")]
         [Compare(nameof(Password))]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "City")]
+        [Required(ErrorMessage = "Required")]
         public string City { get; set; }
 
         [Display(Name = "UserCategory")]

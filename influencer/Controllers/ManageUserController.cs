@@ -90,8 +90,10 @@ namespace influencer.Controllers
                 .Select(u => u.RoleName)
                 .ToList();
             var result = await _userManager.AddToRolesAsync(user, requestRoles);
+            user.Status = true;
+            var resultStatus = await _userManager.UpdateAsync(user);
 
-            if (result.Succeeded) return RedirectToAction("index");
+            if (result.Succeeded && resultStatus.Succeeded) return RedirectToAction("index");
 
             foreach (var error in result.Errors)
             {

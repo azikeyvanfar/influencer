@@ -8,78 +8,104 @@
     <main role="main" class="pb-3">
         <h1>@ViewData["Title"]</h1>
         <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @_localized["UserName"]:
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.UserName)
-            </dd>
-            @*<dt class="col-sm-2">
-                    @_localized["PasswordHash"]
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.PasswordHash)
-                </dd>*@
-            <dt class="col-sm-2">
-                @_localized["UserCategory"]:
-            </dt>
-            <dd class="col-sm-10">
-                @switch (Model.UserCategory)
-                {
-                    case 1:
-                        {
-                            @_localized["Company"]
-                            break;
-                        }
-                    case 2:
-                        {
-                            @_localized["Blogger"]
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @_localized["UserName"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
 
-                            break;
-                        }
-                    case 3:
+                    <dt class="col-sm-4">
+                        @_localized["UserCategory"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @switch (Model.UserCategory)
                         {
-                            @_localized["Admin"]
-                            break;
+                            case 1:
+                                {
+                                    @_localized["Company"]
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    @_localized["Blogger"]
+
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    @_localized["Admin"]
+                                    break;
+                                }
                         }
-                }
-            </dd>
-            <dt class="col-sm-2">
-                @_localized["Email"]:
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt class="col-sm-2">
-                @_localized["PhoneNumber"]:
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PhoneNumber)
-            </dd>
-            <dt class="col-sm-2">
-                @_localized["Country"]:
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-            <dt class="col-sm-2">
-                @_localized["City"]:
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.City)
-            </dd>
-            <dt class="col-sm-2">
-                @_localized["YourPicture"]:
-            </dt>
-            <dd class="col-sm-10">
-                @if (Model.YourPicture != "")
-                {
-                    <img src="~/Uploads/Account/@Model.YourPicture" id="imgYourPicture" width="200" asp-append-version="true" style="cursor:pointer" />
-                    <input type="file" id="YourPicture" name="YourPicture" style="display: none" />
-                }
-            </dd>
-        </dl>
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["Email"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["Country"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Country)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["City"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.City)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["Status"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Status)
+                        {
+                            <span class="link-success">@_localized["Active"]</span>
+                        }
+                        else
+                        {
+                            <span class="link-danger">@_localized["Disactive"]</span>
+                        }
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["EmailConfirmed"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.EmailConfirmed)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @_localized["PhoneNumber"]:
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @_localized["YourPicture"]:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @if (Model.YourPicture != "")
+                        {
+                            <img src="~/Uploads/Account/@Model.YourPicture" id="imgYourPicture" width="80%" asp-append-version="true" style="cursor:pointer" />
+                            <input type="file" id="YourPicture" name="YourPicture" style="display: none" />
+                        }
+                        else
+                        {
+                            <img src="~/assets/img/PicDefault.png" width="200" />
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
         <div>
             @*<a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
             <a class="btn btn-secondary" asp-action="Index" asp-controller="Home">@_localized["Back"]</a>
@@ -87,13 +113,13 @@
     </main>
 </div>
 @section Scripts{
-<script>
-    $(function () {
-        var fileupload = $("#YourPicture");
-        var image = $("#imgYourPicture");
-        //image.click(function () {
-        //    fileupload.click();
-        //});
-    });
-</script>
+    <script>
+        $(function () {
+            var fileupload = $("#YourPicture");
+            var image = $("#imgYourPicture");
+            //image.click(function () {
+            //    fileupload.click();
+            //});
+        });
+    </script>
 }
