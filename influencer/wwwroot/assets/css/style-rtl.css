@@ -5,27 +5,6 @@
 * License: https://bootstrapmade.com/license/
 */
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-body {
-  font-family: "Calibri",Tahoma;
-  color: #444444;
-}
-
-a {
-  color: #e03a3c;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #e76668;
-  text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Calibri",Tahoma;
-}
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -370,7 +349,7 @@ h1, h2, h3, h4, h5, h6 {
 }
     #hero:before, #hero2:before, #hero3:before {
         content: "";
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.6);
         position: absolute;
         bottom: 0;
         top: 0;
@@ -677,9 +656,9 @@ section {
     }
 
 .counts .count-box span {
-  font-size: 36px;
+  font-size: 24px;
   display: block;
-  font-weight: 700;
+  font-weight: 600;
   color: #111111;
 }
 
@@ -2200,67 +2179,6 @@ div.login-logout-tab a.nav-link {
     z-index: 200;
 }
 
-/* Absolute Center Spinner */
-.loading {
-    position: fixed;
-    z-index: 999;
-    height: 2em;
-    width: 2em;
-    overflow: show;
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-    /* Transparent Overlay */
-    .loading:before {
-        content: '';
-        display: block;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0, .8));
-        background: -webkit-radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0,.8));
-    }
-
-    /* :not(:required) hides these rules from IE9 and below */
-    .loading:not(:required) {
-        /* hide "loading..." text */
-        font: 0/0 a;
-        color: transparent;
-        text-shadow: none;
-        background-color: transparent;
-        border: 0;
-    }
-
-        .loading:not(:required):after {
-            content: '';
-            display: block;
-            font-size: 10px;
-            width: 1em;
-            height: 1em;
-            margin-top: -0.5em;
-            -webkit-animation: spinner 150ms infinite linear;
-            -moz-animation: spinner 150ms infinite linear;
-            -ms-animation: spinner 150ms infinite linear;
-            -o-animation: spinner 150ms infinite linear;
-            animation: spinner 150ms infinite linear;
-            border-radius: 0.5em;
-            -webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
-            box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
-        }
-
-.hide {
-    display: none !important;
-}
-
-.show {
-    display: block !important;
-}
 #navbar .active::after {
     content: '';
     position: absolute;

@@ -345,31 +345,31 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
     width: 100%;
     height: 100vh;
-    background: url("../img/hero-bg.jpg") top center no-repeat;
+    background: url("../img/hero-bg.jpg") bottom center no-repeat;
     background-size: 100%;
     position: relative;
-    padding-top: 82px;
+    padding-top: 182px;
 }
 #hero2 {
     width: 100%;
     height: 100vh;
-    background: url("../img/bg2.jpg") top center no-repeat;
+    background: url("../img/bg2.jpg") bottom center no-repeat;
     background-size: 100%;
     position: relative;
-    padding-top: 82px;
+    padding-top: 182px;
 }
 
 #hero3 {
     width: 100%;
     height: 100vh;
-    background: url("../img/bg3.jpg") top center no-repeat;
-    background-size:  100%;
+    background: url("../img/bg3.jpg") bottom center no-repeat;
+    background-size: 100%;
     position: relative;
-    padding-top: 82px;
+    padding-top: 182px;
 }
     #hero:before, #hero2:before, #hero3:before {
         content: "";
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.9);
         position: absolute;
         bottom: 0;
         top: 0;
@@ -428,7 +428,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-height: 500px) {
     #hero, #hero2, #hero3{
-        height: 55vh;
+        height: 100vh;
     }
 }
 

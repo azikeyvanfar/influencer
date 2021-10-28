@@ -29,21 +29,21 @@
                     @*<div class="section-title">
                             <h2>@article.Title</h2>
                         </div>*@
-                    <div class="row" del-id="@article.Id">
-                        <div class="col-md-10">
-                            <button data-id="@article.Id" data-name="@article.Title" title="Delete @article.Title" class="btn btn-outline-danger delete-article" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i>Delete @article.Title</button>
-                        </div>
-                        <div class="col-md-2">
-                            @if (article.OrderArticle != ViewBag.minOrd)
-                            {
-                                <a class="btn btn-secondary" asp-action="UpOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-up"></i></a>
-                            }
-                            @if (article.OrderArticle != ViewBag.maxOrd)
-                            {
-                                <a class="btn btn-secondary" asp-action="DownOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-down"></i></a>
-                            }
-                        </div>
-                    </div>
+                    @* <div class="row" del-id="@article.Id">
+                              <div class="col-md-10">
+                                    <button data-id="@article.Id" data-name="@article.Title" title="Delete @article.Title" class="btn btn-outline-danger delete-article" data-bs-toggle="modal" data-bs-target="#DelModal"><i class="bi-trash"></i>Delete @article.Title</button>
+                                </div>
+                                <div class="col-md-2">
+                                    @if (article.OrderArticle != ViewBag.minOrd)
+                                    {
+                                        <a class="btn btn-secondary" asp-action="UpOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-up"></i></a>
+                                    }
+                                    @if (article.OrderArticle != ViewBag.maxOrd)
+                                    {
+                                        <a class="btn btn-secondary" asp-action="DownOrder" asp-route-id="@article.Id"><i class="bx bx-chevron-down"></i></a>
+                                    }
+                                </div>
+                        </div>*@
                     <div class="row" art_title="@article.Title" art_id="@article.Id" art_categories="@article.Categories" art_order="@article.OrderArticle">
                         @Html.Raw(@article.Contents)
                     </div>
@@ -134,7 +134,7 @@
             });
 
             /**set data to dialog**/
-            $(document).on("click", ".delete-article", function () {
+            @*$(document).on("click", ".delete-article", function () {
                 var myArticleId = $(this).data('id');
                 $(".modal-body #articleId").val(myArticleId);
                 var myArticleName = $(this).data('name');
@@ -163,7 +163,7 @@
                             }
                         }
                     });
-            });
+            });*@
 
             var fileupload = $("#Imgtabs-1,#Imgtabs-2,#Imgtabs-3,#Imgtabs-4");
             var image = $("#ImgTab1,#ImgTab2,#ImgTab3,#ImgTab4");

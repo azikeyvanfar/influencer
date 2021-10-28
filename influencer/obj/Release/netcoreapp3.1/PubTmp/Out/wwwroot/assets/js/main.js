@@ -230,6 +230,7 @@
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
+ 
 
   /**
    * Portfolio details slider
@@ -289,7 +290,8 @@
     })
   });
     // SideNav Button Initialization
-    $(".button-collapse").sideNav();
+    if ($(".button-collapse").length > 0)
+        $(".button-collapse").sideNav();
     // SideNav Scrollbar Initialization
     var sideNavScrollbar = document.querySelector('.custom-scrollbar');
     Ps.initialize(sideNavScrollbar);

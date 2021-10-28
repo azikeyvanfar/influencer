@@ -13,6 +13,7 @@
             $(this).addClass("active");
         }
     });
+    $("form:not(.php-email-form)").find("input").first().focus();
 });
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
