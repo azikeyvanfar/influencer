@@ -267,13 +267,13 @@
     },
     breakpoints: {
       320: {
-        slidesPerView: 1,
-        spaceBetween: 20
+        slidesPerView: 2,
+        spaceBetween: 10
       },
 
       1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
+        slidesPerView: 4,
+        spaceBetween: 15
       }
     }
   });
@@ -290,10 +290,10 @@
     })
   });
     // SideNav Button Initialization
-    if ($(".button-collapse").length > 0)
-        $(".button-collapse").sideNav();
-    // SideNav Scrollbar Initialization
-    var sideNavScrollbar = document.querySelector('.custom-scrollbar');
-    Ps.initialize(sideNavScrollbar);
+    //if ($(".button-collapse").length > 0)
+    //    $(".button-collapse").sideNav();
+    //// SideNav Scrollbar Initialization
+    //var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+    //Ps.initialize(sideNavScrollbar);
    
 })()

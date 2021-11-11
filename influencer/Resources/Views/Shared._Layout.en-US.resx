@@ -124,7 +124,7 @@
     <value>Admin Menu</value>
   </data>
   <data name="Advertise" xml:space="preserve">
-    <value>Advertise</value>
+    <value>Manage</value>
   </data>
   <data name="BloggerMenu" xml:space="preserve">
     <value>Blogger Menu</value>
@@ -163,7 +163,7 @@
     <value>Join Our Newsletter</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Manage</value>
+    <value>Manage Blogger</value>
   </data>
   <data name="ManageRole" xml:space="preserve">
     <value>Manage Role</value>

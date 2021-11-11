@@ -7,107 +7,115 @@
     <main role="main" class="pb-3">
         <h1>Create Advertis</h1>
         <hr />
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-4">
-                    @Html.AntiForgeryToken()
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Title" class="control-label"></label>
-                        <input asp-for="Title" class="form-control" required/>
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label asp-for="Contents" class="control-label"></label>
-                        <textarea asp-for="Contents" class="form-control" rows="2"></textarea>
-                        <span asp-validation-for="Contents" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="Categories" class="control-label"></label>
-                        @*<input asp-for="Categories" class="form-control" />*@
-                        @Html.DropDownList("Categories", new List<SelectListItem>
-                            {
-                                new SelectListItem{ Text="Ladies", Value = "1" },
-                                new SelectListItem{ Text="Health", Value = "2" },
-                                new SelectListItem{ Text="Fact", Value = "3" },
-                                new SelectListItem{ Text="Success And Motivation", Value = "4" },
-                                new SelectListItem{ Text="Sports", Value = "5" },
-                                new SelectListItem{ Text="Art and Music", Value = "6" },
-                                new SelectListItem{ Text="Lifestyle", Value = "7" },
-                                new SelectListItem{ Text="Foods", Value = "8" },
-                                new SelectListItem{ Text="Funny", Value = "9" },
-                                new SelectListItem{ Text="Teaching", Value = "10" }
-                            }, new { @class = "form-control" })
-                        <span asp-validation-for="Categories" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="AdvPicture" class="control-label"></label>
-                        <div class="custom-file">
-                            <input asp-for="AdvPicture" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg, .gif" required>
-                            <label class="custom-file-label" for="customFile"></label>
+        @if (ViewBag.RowsAdv == null)
+        {
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" required />
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
-                        <span asp-validation-for="AdvPicture" class="text-danger"></span>
-                        <span class="text-danger">size : 800 * 600</span>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="Contents" class="control-label"></label>
+                            <textarea asp-for="Contents" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Contents" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Categories" class="control-label"></label>
+                            @*<input asp-for="Categories" class="form-control" />*@
+                            @Html.DropDownList("Categories", new List<SelectListItem>
+                                {
+                                    new SelectListItem{ Text="Ladies", Value = "1" },
+                                    new SelectListItem{ Text="Health", Value = "2" },
+                                    new SelectListItem{ Text="Fact", Value = "3" },
+                                    new SelectListItem{ Text="Success And Motivation", Value = "4" },
+                                    new SelectListItem{ Text="Sports", Value = "5" },
+                                    new SelectListItem{ Text="Art and Music", Value = "6" },
+                                    new SelectListItem{ Text="Lifestyle", Value = "7" },
+                                    new SelectListItem{ Text="Foods", Value = "8" },
+                                    new SelectListItem{ Text="Funny", Value = "9" },
+                                    new SelectListItem{ Text="Teaching", Value = "10" }
+                                }, new { @class = "form-control" })
+                            <span asp-validation-for="Categories" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="AdvPicture" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="AdvPicture" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg, .gif" required>
+                                <label class="custom-file-label" for="customFile"></label>
+                            </div>
+                            <span asp-validation-for="AdvPicture" class="text-danger"></span>
+                            <span class="text-danger">size : 800 * 600</span>
 
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="OrderAdvertise" class="control-label"></label>
+                            <input asp-for="OrderAdvertise" class="form-control" />
+                            <span asp-validation-for="OrderAdvertise" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="OrderAdvertise" class="control-label"></label>
-                        <input asp-for="OrderAdvertise" class="form-control" />
-                        <span asp-validation-for="OrderAdvertise" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="CntFollowers" class="control-label"></label>
+                            <input asp-for="CntFollowers" class="form-control" />
+                            <span asp-validation-for="CntFollowers" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="CntFollowers" class="control-label"></label>
-                        <input asp-for="CntFollowers" class="form-control" />
-                        <span asp-validation-for="CntFollowers" class="text-danger"></span>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="CntViewers" class="control-label"></label>
+                            <input asp-for="CntViewers" class="form-control" />
+                            <span asp-validation-for="CntViewers" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="CntViewers" class="control-label"></label>
-                        <input asp-for="CntViewers" class="form-control" />
-                        <span asp-validation-for="CntViewers" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="Fame" class="control-label"></label>
-                        @*<input asp-for="Fame" class="form-control" />*@
-                        @Html.DropDownList("Fame", new List<SelectListItem>
-                            {
-                                new SelectListItem{ Text="⭐", Value = "1" },
-                                new SelectListItem{ Text="⭐⭐", Value = "2" },
-                                new SelectListItem{ Text="⭐⭐⭐", Value = "3" },
-                                new SelectListItem{ Text="⭐⭐⭐⭐", Value = "4" },
-                                new SelectListItem{ Text="⭐⭐⭐⭐⭐", Value = "5" }
-                            }, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Fame" class="control-label"></label>
+                            @*<input asp-for="Fame" class="form-control" />*@
+                            @Html.DropDownList("Fame", new List<SelectListItem>
+                                {
+                                    new SelectListItem{ Text="⭐", Value = "1" },
+                                    new SelectListItem{ Text="⭐⭐", Value = "2" },
+                                    new SelectListItem{ Text="⭐⭐⭐", Value = "3" },
+                                    new SelectListItem{ Text="⭐⭐⭐⭐", Value = "4" },
+                                    new SelectListItem{ Text="⭐⭐⭐⭐⭐", Value = "5" }
+                                }, new { @class = "form-control" })
 
-                        <span asp-validation-for="Fame" class="text-danger"></span>
+                            <span asp-validation-for="Fame" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-danger" />
-                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-danger" />
+                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        }
+        else
+        {
+            <h5 class="text-danger">One Advertise You Can Create!</h5>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        }
     </main>
 </div>
 @section Scripts {

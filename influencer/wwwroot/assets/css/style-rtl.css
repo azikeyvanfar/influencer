@@ -5,6 +5,14 @@
 * License: https://bootstrapmade.com/license/
 */
 
+body {
+    font-family: "Calibri",Tahoma;
+    color: #444444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Calibri",Tahoma;
+}
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -46,41 +54,6 @@
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
-}
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-#header {
-  background: #fff;
-  transition: all 0.5s;
-  z-index: 997;
-  padding: 20px 0;
-}
-
-#header.header-scrolled {
-  padding: 12px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-    #header .logo {
-        font-size: 30px;
-        margin: 0;
-        padding: 0;
-        font-weight: 600;
-        font-family: "Calibri",Tahoma;
-    }
-
-#header .logo a {
-  color: #111111;
-}
-
-#header .logo a span {
-  color: #e03a3c;
-}
-
-#header .logo img {
-  max-height: 40px;
 }
 
 /*--------------------------------------------------------------
@@ -347,6 +320,7 @@
     position: relative;
     padding-top: 182px;
 }
+
     #hero:before, #hero2:before, #hero3:before {
         content: "";
         background: rgba(0, 0, 0, 0.6);
@@ -362,6 +336,7 @@
         font-size: 36px;
         font-weight: 700;
         color: #fff;
+        text-shadow: 2px 2px 5px #000;
     }
 
     #hero h2, #hero2 h2, #hero3 h2 {
@@ -371,7 +346,7 @@
     }
 
     #hero .btn-get-started, #hero2 .btn-get-started, #hero3 .btn-get-started {
-        font-family: "Calibri",Tahoma;
+        font-family: "Raleway", sans-serif;
         font-weight: 500;
         font-size: 16px;
         letter-spacing: 1px;
@@ -380,16 +355,15 @@
         border-radius: 4px;
         transition: 0.5s;
         margin-top: 30px;
-        margin-right : 20px;
         color: #fff;
         background: #e03a3c;
         border: 2px solid #e03a3c;
     }
 
-    #hero .btn-get-started:hover, #hero2 .btn-get-started:hover, #hero3 .btn-get-started:hover {
-        background: transparent;
-        border-color: #fff;
-    }
+        #hero .btn-get-started:hover, #hero2 .btn-get-started:hover, #hero3 .btn-get-started:hover {
+            background: transparent;
+            border-color: #fff;
+        }
 
 @media (max-width: 768px) {
     #hero, #hero2, #hero3 {
@@ -397,17 +371,19 @@
         height: 35vh;
         padding-top: 20px;
     }
-    #hero h1, #hero2 h1, #hero3 h1 {
-        font-size: 24px;
-    }
-    #hero h2, #hero2 h2, #hero3 h2 {
-        font-size: 14px;
-        line-height: 24px;
-    }
+
+        #hero h1, #hero2 h1, #hero3 h1 {
+            font-size: 24px;
+        }
+
+        #hero h2, #hero2 h2, #hero3 h2 {
+            font-size: 14px;
+            line-height: 24px;
+        }
 }
 
 @media (max-height: 500px) {
-    #hero, #hero2, #hero3{
+    #hero, #hero2, #hero3 {
         height: 100vh;
     }
 }
@@ -629,7 +605,8 @@ section {
 }
 
 .counts .count-box {
-  padding: 30px 30px 25px 30px;
+  padding-top : 30px;
+  padding-bottom : 30px;
   width: 100%;
   position: relative;
   text-align: center;
@@ -642,7 +619,7 @@ section {
         width: 54px;
         height: 54px;
         top: -27px;
-        right: 50%;
+        left: 50%;
         transform: translateX(-50%);
         font-size: 24px;
         background: #fff;
@@ -1163,8 +1140,8 @@ section {
 
 .faq .faq-list li {
   border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+ /* margin-bottom: 20px;*/
+  padding-bottom: 15px;
 }
 
 .faq .faq-list a {
@@ -2095,16 +2072,6 @@ section {
   text-decoration: none;
 }
 
-/***/
-.padtop-100{
-    padding-top:100px;
-}
-.padtop-60 {
-    padding-top: 60px;
-}
-
-
-
 /*for Tab control*/
 div.login-logout-tab div.card.header {
     padding: 0px 0px 12px 0px;
@@ -2123,54 +2090,12 @@ div.login-logout-tab a.nav-link {
     color: #495057;
     text-align: center;
 }
-.btn-block{
-    width:100%;
-    display:block;
-}
+
 .no-gutters > .col, .no-gutters > [class*=col-]{
     margin-left:0px;
     margin-right:0px;
 }
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgba(0, 0, 0, 0.1);
-    background-clip:border-box;
-}
-.login-card {
-    border: 0px;
-    /* border-radius: 27px;*/
-    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
-    overflow: hidden;
-    margin: 93px 90px 10px 90px;
-}
-.navbar.second-navbar {
-    margin-top: 60px;
-    background: #c1c1c1 !important;
-    transition: all .5s ease-in-out;
-}
 
-    .navbar.second-navbar.top-nav-collapse {
-        margin-top: 45px;
-    }
-
-.save-all {
-    position: fixed;
-    opacity: 1;
-    right: 15px;
-    top : 110px;
-    z-index: 996;
-    background: #e03a3c;
-    color:#ffffff;
-    width: 70px;
-    padding:5px;
-    height: 40px;
-    border-radius: 4px;
-    transition: all 0.4s;
-}
 .delete-article {
     float: right;
     position: relative;

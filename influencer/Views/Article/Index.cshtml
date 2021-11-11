@@ -182,12 +182,16 @@
                         data: formData,
                         type: 'post',
                         success: function (str) {
-                            inputFile.prev().attr('src', "../Uploads/Tabs/" + str + "?" + new Date().getTime());
-                            setTimeout(inputFile.prev().attr('src', "../Uploads/Tabs/" + str),1000);
+                           console.log(str);
+                            inputFile.prev().attr('src', "../Uploads/Tabs/" + str);//+ "?" + new Date().getTime());
                         },
                         processData: false,
                         contentType: false
-                    });
+                    })
+                    //    .done(function (str) {
+                    //    console.log(str);
+                    //    setTimeout(inputFile.prev().attr('src', "../Uploads/Tabs/" + str),20000);
+                    //});
                 }
                 //if (this.files && this.files[0]) {
                 //    var reader = new FileReader();

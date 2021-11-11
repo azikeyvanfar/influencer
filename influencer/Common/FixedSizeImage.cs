@@ -47,7 +47,7 @@ namespace influencer.Common
                              imgPhoto.VerticalResolution);
 
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
-            grPhoto.Clear(Color.Transparent);
+            grPhoto.Clear(Color.White);
             grPhoto.InterpolationMode =
                     InterpolationMode.HighQualityBicubic;
 

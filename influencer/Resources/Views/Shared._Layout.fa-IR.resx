@@ -124,7 +124,7 @@
     <value>منوی ادمین</value>
   </data>
   <data name="Advertise" xml:space="preserve">
-    <value>تبلیغات</value>
+    <value>مدیریت</value>
   </data>
   <data name="Article" xml:space="preserve">
     <value>مقاله</value>
@@ -166,7 +166,7 @@
     <value>به خبرنامه ما بپیوندید</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>مدیریت</value>
+    <value>مدیریت بلاگر</value>
   </data>
   <data name="ManageRole" xml:space="preserve">
     <value>مدیریت نقش</value>

@@ -1,3 +1,178 @@
-﻿.select2{
+﻿/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+a {
+    color: #e03a3c;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #e76668;
+        text-decoration: none;
+    }
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.select2{
     min-width:100% !important;
+}
+
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+    /* Transparent Overlay */
+    .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0, .8));
+        background: -webkit-radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0,.8));
+    }
+
+    /* :not(:required) hides these rules from IE9 and below */
+    .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+
+        .loading:not(:required):after {
+            content: '';
+            display: block;
+            font-size: 10px;
+            width: 1em;
+            height: 1em;
+            margin-top: -0.5em;
+            -webkit-animation: spinner 150ms infinite linear;
+            -moz-animation: spinner 150ms infinite linear;
+            -ms-animation: spinner 150ms infinite linear;
+            -o-animation: spinner 150ms infinite linear;
+            animation: spinner 150ms infinite linear;
+            border-radius: 0.5em;
+            -webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+            box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+        }
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+    background: #fff;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 20px 0;
+}
+
+    #header.header-scrolled {
+        padding: 12px 0;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #header .logo {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+    }
+
+        #header .logo a {
+            color: #111111;
+        }
+
+            #header .logo a span {
+                color: #e03a3c;
+            }
+
+        #header .logo img {
+            max-height: 40px;
+        }
+
+/***/
+.padtop-100 {
+    padding-top: 100px;
+}
+
+.padtop-60 {
+    padding-top: 60px;
+}
+.save-all {
+    position: fixed;
+    opacity: 1;
+    right: 15px;
+    top: 110px;
+    z-index: 996;
+    background: #e03a3c;
+    color: #ffffff;
+    width: 70px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-clip: border-box;
+}
+
+.login-card {
+    border: 0px;
+    /* border-radius: 27px;*/
+    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
+    overflow: hidden;
+    margin: 93px 90px 10px 90px;
+}
+
+.navbar.second-navbar {
+    margin-top: 60px;
+    background: #c1c1c1 !important;
+    transition: all .5s ease-in-out;
+}
+
+    .navbar.second-navbar.top-nav-collapse {
+        margin-top: 45px;
+    }
+.btn-block {
+    width: 100%;
+    display: block;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+    bottom :-5px !important;
+}
+.swiper-pagination-bullet{
+    background :#fff !important;
+}
+:root {
+    --swiper-theme-color:#e03a3c !important;
+}
+.contact .php-email-form [type="checkbox"] {
+    margin: 10px 3px 7px 27px;
 }

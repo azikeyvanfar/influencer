@@ -2,6 +2,10 @@
 using Domain.Contracts;
 using Domain.Entities;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.EF
 {
@@ -16,9 +20,9 @@ namespace Data.EF
             _ctx = ctx;
         }
 
-        //public async Task<List<Employee>> CustomersAsync()
-        //{
-        //    return await _ctx.employees.ToListAsync();
-        //}
+        public IEnumerable<AdvertiseDo> SelectAllWithInsta()
+        {
+            return _ctx.advertisesDo.FromSqlRaw("select A.*,U.InstagramPage from dbo.Advertises A left outer join dbo.AspNetUsers U on U.Id = A.UserId Order By OrderAdvertise").ToList();
+        }
     }
 }

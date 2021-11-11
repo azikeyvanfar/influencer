@@ -124,7 +124,7 @@
     <value>Yönetici Menüsü</value>
   </data>
   <data name="Advertise" xml:space="preserve">
-    <value>reklam</value>
+    <value>Üstesinden gelmek</value>
   </data>
   <data name="BloggerMenu" xml:space="preserve">
     <value>Blogger Menüsü</value>
@@ -163,7 +163,7 @@
     <value>Bültenimize Katılın</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Üstesinden gelmek</value>
+    <value>Blogger'ı Yönet</value>
   </data>
   <data name="ManageRole" xml:space="preserve">
     <value>Rolü Yönet</value>

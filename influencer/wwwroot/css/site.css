@@ -1,11 +1,6 @@
 ﻿/*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
-    font-family: "Open Sans", sans-serif;
-    color: #444444;
-}
-
 a {
     color: #e03a3c;
     text-decoration: none;
@@ -16,9 +11,6 @@ a {
         text-decoration: none;
     }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway", sans-serif;
-}
 .hide {
     display: none !important;
 }
@@ -84,3 +76,103 @@ h1, h2, h3, h4, h5, h6 {
             -webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
             box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
         }
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+    background: #fff;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 20px 0;
+}
+
+    #header.header-scrolled {
+        padding: 12px 0;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #header .logo {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+    }
+
+        #header .logo a {
+            color: #111111;
+        }
+
+            #header .logo a span {
+                color: #e03a3c;
+            }
+
+        #header .logo img {
+            max-height: 40px;
+        }
+
+/***/
+.padtop-100 {
+    padding-top: 100px;
+}
+
+.padtop-60 {
+    padding-top: 60px;
+}
+.save-all {
+    position: fixed;
+    opacity: 1;
+    right: 15px;
+    top: 110px;
+    z-index: 996;
+    background: #e03a3c;
+    color: #ffffff;
+    width: 70px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-clip: border-box;
+}
+
+.login-card {
+    border: 0px;
+    /* border-radius: 27px;*/
+    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
+    overflow: hidden;
+    margin: 93px 90px 10px 90px;
+}
+
+.navbar.second-navbar {
+    margin-top: 60px;
+    background: #c1c1c1 !important;
+    transition: all .5s ease-in-out;
+}
+
+    .navbar.second-navbar.top-nav-collapse {
+        margin-top: 45px;
+    }
+.btn-block {
+    width: 100%;
+    display: block;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+    bottom :-5px !important;
+}
+.swiper-pagination-bullet{
+    background :#fff !important;
+}
+:root {
+    --swiper-theme-color:#e03a3c !important;
+}
+.contact .php-email-form [type="checkbox"] {
+    margin: 10px 3px 7px 27px;
+}

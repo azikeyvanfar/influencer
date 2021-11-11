@@ -34,7 +34,7 @@ namespace influencer.Controllers
         {
             string lang = CultureInfo.CurrentCulture.Name;
             List<UserArticle> article = _userArticleRepository.FindByCondition(m=>m.Language.LanguageTitle == lang).OrderBy(m=>m.OrderArticle).ToList();
-            ViewBag.ListAdv = _advertiseRepository.FindAll().OrderBy(m => m.OrderAdvertise).ToList();
+            ViewBag.ListAdv = _advertiseRepository.SelectAllWithInsta();
             ViewBag.ListTeam = _TeamRepository.FindByCondition(m => m.Language.LanguageTitle == lang).OrderBy(m => m.OrderTeam).ToList();
             ViewBag.alertSuccess = alertSuccess;
             return View(article);

@@ -157,7 +157,7 @@ namespace influencer.Controllers
             if (picture != null)
             {
                 string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads/Tabs");
-                uniqueFileName = "tabs-" + number+".jpg";
+                uniqueFileName = "tabs-" + number+"-"+picture.FileName+".jpg";
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 IFormFile file = picture;

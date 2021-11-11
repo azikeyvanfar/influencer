@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace influencer.Controllers
 {
-    [Authorize(Roles = "Blogger")]
+    [Authorize(Roles = "Blogger,Admin")]
     public class AdvertiseController : Controller
     {
         private readonly IAdvertiseRepository _advertiseRepository;
@@ -40,9 +40,17 @@ namespace influencer.Controllers
         {
             try
             {
-                string loggedInUserId = _userManager.GetUserId(User);
-                List<Advertise> Advertise = _advertiseRepository.FindByCondition(m => m.UserId == loggedInUserId).OrderBy(m => m.OrderAdvertise).ToList();
-                return View(Advertise);
+                if (User.IsInRole("Admin"))
+                {
+                    List<Advertise> Advertise = _advertiseRepository.FindAll().OrderBy(m => m.OrderAdvertise).ToList();
+                    return View(Advertise);
+                }
+                else
+                {
+                    string loggedInUserId = _userManager.GetUserId(User);
+                    List<Advertise> Advertise = _advertiseRepository.FindByCondition(m => m.UserId == loggedInUserId).OrderBy(m => m.OrderAdvertise).ToList();
+                    return View(Advertise);
+                }
             }
             catch (Exception e)
             {
@@ -70,6 +78,7 @@ namespace influencer.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.RowsAdv = _advertiseRepository.FindByCondition(m => m.UserId == _userManager.GetUserId(User)).FirstOrDefault();
             return View();
         }
 
@@ -110,14 +119,14 @@ namespace influencer.Controllers
                 string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + advertise.AdvPicture.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                
+
                 IFormFile file = advertise.AdvPicture;
                 var image = Image.FromStream(file.OpenReadStream());
                 image = FixedSizeImage.FixedSize(image, 800, 600);
                 using var imageStream = new MemoryStream();
                 image.Save(imageStream, ImageFormat.Jpeg);
                 var imageBytes = imageStream.ToArray();
-                using (var stream = new FileStream(filePath , FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
+                using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Write, 4096))
                 {
                     stream.Write(imageBytes, 0, imageBytes.Length);
                 }
@@ -147,7 +156,7 @@ namespace influencer.Controllers
                 OrderAdvertise = advertise.OrderAdvertise,
                 ExistingImage = advertise.AdvPicture
             };
-            
+
             if (advertise == null)
             {
                 return NotFound();
@@ -170,7 +179,7 @@ namespace influencer.Controllers
 
             if (ModelState.IsValid)
             {
-                var adv = await _advertiseRepository.FindByCondition(m=>m.Id == advertise.Id).FirstOrDefaultAsync();
+                var adv = await _advertiseRepository.FindByCondition(m => m.Id == advertise.Id).FirstOrDefaultAsync();
                 adv.Title = advertise.Title;
                 adv.Contents = advertise.Contents;
                 adv.Categories = advertise.Categories;
@@ -202,10 +211,10 @@ namespace influencer.Controllers
             Advertise DelAdv = await _advertiseRepository.Delete(advertise);
             //if (DelAdv.Equals==null)
             //{
-                if (System.IO.File.Exists(CurrentImage))
-                {
-                    System.IO.File.Delete(CurrentImage);
-                }
+            if (System.IO.File.Exists(CurrentImage))
+            {
+                System.IO.File.Delete(CurrentImage);
+            }
             //}
             return Json(true);
         }
@@ -213,6 +222,19 @@ namespace influencer.Controllers
         private bool advertiseExists(Guid id)
         {
             return _advertiseRepository.FindByCondition(e => e.Id == id).Any();
+        }
+        [AllowAnonymous]
+        public IActionResult AllAdvertise()
+        {
+            try
+            {
+                List<AdvertiseDo> Advertise = _advertiseRepository.SelectAllWithInsta().ToList();
+                return View(Advertise);
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
         }
     }
 }

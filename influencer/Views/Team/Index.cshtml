@@ -36,9 +36,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Twitter)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.OrderTeam)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.TeamPicture)
                     </th>
@@ -69,10 +69,10 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Twitter)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.OrderTeam)
-                            </td>
-                            <td>
+                            </td>*@
+                            <td align="center">
                                 <a href="#" class="pop">
                                     <img src="~/Uploads/Team/@item.TeamPicture" class="rounded-circle" height="40" width="40" asp-append-version="true" />
                                 </a>
