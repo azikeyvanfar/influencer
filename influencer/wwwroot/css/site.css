@@ -173,6 +173,3 @@ a {
 :root {
     --swiper-theme-color:#e03a3c !important;
 }
-.contact .php-email-form [type="checkbox"] {
-    margin: 10px 3px 7px 27px;
-}

@@ -29,9 +29,7 @@
                             <span class="text-danger">*</span>
                             @Html.DropDownList("Categories", new List<SelectListItem>
                                {
-                                   new SelectListItem{ Text="Strategy", Value = "1" },
-                                   new SelectListItem{ Text="Technology", Value = "2" },
-                                   new SelectListItem{ Text="Test", Value = "3" }
+                                   new SelectListItem{ Text="test", Value = "1" }                                   
                                }, new { @class = "form-control" })
                             <span asp-validation-for="Categories" class="text-danger"></span>
                         </div>

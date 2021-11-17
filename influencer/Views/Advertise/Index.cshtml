@@ -27,7 +27,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CntViewers)
                     </th>
-                    <th>
+                    <th title="Just gold and silver members"  data-bs-toggle="tooltip">
                         @Html.DisplayNameFor(model => model.Fame)
                     </th>
                     <th>
@@ -57,7 +57,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.CntViewers)
                             </td>
-                            <td>
+                            <td title="Just gold and silver members" data-bs-toggle="tooltip">
                                 @switch (@item.Fame)
                                 {
                                     case 1:

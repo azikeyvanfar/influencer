@@ -392,14 +392,14 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 40px 0;
+  padding: 20px 0;
   overflow: hidden;
   position: relative;
 }
 
 .section-title {
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   position: relative;
 }
 
@@ -428,7 +428,7 @@ section {
 }
 
 .section-bg {
-  padding: 120px 0;
+  padding: 100px 0;
   color: #fff;
 }
 
@@ -601,7 +601,7 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-  padding-top: 80px;
+  padding-top: 30px;
 }
 
 .counts .count-box {
@@ -1046,7 +1046,7 @@ section {
 # Pricing
 --------------------------------------------------------------*/
 .pricing .box {
-  padding: 20px;
+  padding: 17px;
   background: #2b2b2b;
   text-align: center;
   border-radius: 8px;
@@ -2115,4 +2115,7 @@ div.login-logout-tab a.nav-link {
     background: #e03a3c;
     bottom: 0;
     left: 10px;
+}
+.contact .php-email-form [type="checkbox"] {
+    margin: 10px 3px 7px 27px;
 }

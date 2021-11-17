@@ -63,6 +63,11 @@ namespace influencer
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredUniqueChars = 0;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireNonAlphanumeric = false;
+                    //options.Password.RequireLowercase = false;
+                    //options.Password.RequireUppercase = false;
+                    //options.Password.RequireDigit = false;
 
                     options.User.RequireUniqueEmail = true;
                     options.User.AllowedUserNameCharacters =

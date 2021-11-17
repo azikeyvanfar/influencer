@@ -1046,7 +1046,7 @@ section {
 # Pricing
 --------------------------------------------------------------*/
 .pricing .box {
-  padding: 20px;
+  padding: 17px;
   background: #2b2b2b;
   text-align: center;
   border-radius: 8px;
@@ -2116,4 +2116,7 @@ div.login-logout-tab a.nav-link {
 }
 [type="tel"], [type="url"], [type="email"], [type="number"]{
     direction :rtl !important;
+}
+.contact .php-email-form [type="checkbox"] {
+    margin: 10px 27px 7px 3px;
 }

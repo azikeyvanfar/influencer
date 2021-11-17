@@ -208,7 +208,8 @@
                             <option value="10">Teaching</option>
                         </select>
                         <span asp-validation-for="YourFavourites" class="text-danger"></span>
-                    </div>
+                        <input type="hidden" name="YourFavourites" id="YourFavourites" />
+                   </div>
                     <div class="form-group col-md-6">
                         <label class="col-form-label">@Localizer["PhoneNumber"]</label>
                         <input asp-for="PhoneNumber" class="form-control" />
@@ -359,6 +360,8 @@
             });
             $('.js-example-basic-multiple').select2({
                 width: 'resolve' // need to override the changed default
+            }).change(function () {
+                $("#YourFavourites").val($(this).val().toString());
             });
         });
     </script>

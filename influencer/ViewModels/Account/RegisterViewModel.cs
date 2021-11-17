@@ -21,9 +21,10 @@ namespace influencer.ViewModels.Account
         public string Email { get; set; }
 
         [Display(Name = "Password")]
-        [StringLength(255, ErrorMessage = "Must be between 6 and 255 characters", MinimumLength = 6)]
-        //[RegularExpression(@".*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$", ErrorMessage = "Error message")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$", ErrorMessage = "Error message")]
+        [StringLength(15, ErrorMessage = "Must be between 6 and 15 characters", MinimumLength = 6)]
+       // [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?_&]{6,}$", ErrorMessage = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")]
+        //[RegularExpression(@".*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$", ErrorMessage = "Use a combination of uppercase and lowercase letters and numbers")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$", ErrorMessage = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")]
         [Required(ErrorMessage = "Required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
@@ -36,7 +37,7 @@ namespace influencer.ViewModels.Account
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "City")]
-        [Required(ErrorMessage = "Required")]
+        //[Required(ErrorMessage = "Required")]
         public string City { get; set; }
 
         [Display(Name = "UserCategory")]

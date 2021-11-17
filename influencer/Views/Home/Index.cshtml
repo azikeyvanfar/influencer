@@ -4,6 +4,37 @@
 @{
     ViewData["Title"] = Localizer["HomePage"];
 }
+<style>
+    #pricing #ImpressionBasedTbl tr td, #pricing #ImpressionBasedTbl tr th, #pricing #StoryBasedTbl tr td, #pricing #StoryBasedTbl tr th {
+        padding-top: 22px;
+        padding-bottom: 15px;
+    }
+
+    #pricing #TimeBasedTbl tr td {
+        padding-bottom: 6px;
+    }
+
+    #pricing table tr th {
+        padding-bottom: 10px;
+        padding-top: 20px;
+    }
+
+    #pricing table {
+        width: 100%;
+    }
+
+    .Costkilo {
+        text-align: center;
+        width: 80px;
+        background: #2b2b2b;
+        border: 0px;
+        border-bottom: 1px solid #fff;
+        color: #fff
+    }
+    .size-18 {
+        font-size:18px;
+    }
+</style>
 <!-- ======= Hero Section ======= -->
 <div id="carouselExampleCaptions" class="carousel" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -158,8 +189,8 @@
                                                             </p>
                                                             <div class="portfolio-links">
                                                                 @*<a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
-                                    <i class="bx bx-plus"></i>
-                                </a>*@
+                                                                        <i class="bx bx-plus"></i>
+                                                                    </a>*@
                                                                 <a href="@insta" target="_blank" data-bs-toggle="tooltip" title="Blogger Instagram">
                                                                     <i class="bx bxl-instagram"></i>
                                                                 </a>
@@ -178,7 +209,7 @@
                                             }
                                         }
                                     </div>
-                                    @if(cnt >= 13)
+                                    @if (cnt >= 13)
                                     {
                                         <div class="btn btn-outline-danger">
                                             <a asp-action="AllAdvertise" asp-controller="Advertise">more</a>
@@ -187,6 +218,178 @@
                                 </div>
                             </section>
                         </div>
+                    }
+                    else
+                    if (article.Categories == 6)/*Pricing*/
+                    {
+                        <section id="pricing" class="pricing section-bg">
+                            <div class="container" data-aos="fade-up">
+                                <div class="section-title" dir="ltr" role="textbox">
+                                    <h2>PRICING</h2>
+                                    <p><br></p>
+                                    <p>Each case is unique and there are no identical growth plans for any of our prospects. The minimal project starts from $100 per day and can go as high as $1milion per month or anything in between based on your budget, goals, industry and many other components.</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6" data-aos="fade-left">
+                                        <div class="box" data-aos-delay="100" dir="ltr" role="textbox">
+                                            <a data-bs-toggle="collapse" class="collapsed btn btn-outline-danger" data-bs-target="#StoryBased" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                                <span align="center"><b>@Localizer["StoryBased"]</b></span>
+                                                <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
+                                            </a>
+                                            <div id="StoryBased" class="collapse" data-bs-parent=".faq-list" style="">
+                                                @Localizer["StoryBasedDes"]                                                
+                                            </div>
+                                            <table id="StoryBasedTbl">
+                                                <tr>
+                                                    <th>Number of views</th>
+                                                    <th>Cost</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">100k</td>
+                                                    <td>30 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">200k</td>
+                                                    <td>60 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">300k</td>
+                                                    <td>90 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="number" name="StoryBasedKilo" id="StoryBasedKilo" class="Costkilo"/>K</td>
+                                                    <td><div id="StoryBasedCost"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><a href="#" class="btn btn-danger">Send Request</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 mt-4 mt-md-0" data-aos="fade-left">
+                                        <div class="box featured" data-aos-delay="200" dir="ltr" role="textbox">
+                                            <a data-bs-toggle="collapse" class="collapsed btn btn-outline-secound" data-bs-target="#TimeBased" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                                <span align="center"><b>@Localizer["TimeBased"]</b></span>
+                                                <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
+                                            </a>
+                                            <div id="TimeBased" class="collapse" data-bs-parent=".faq-list">
+                                                @Localizer["TimeBasedDes"]
+                                            </div>
+                                            <table id="TimeBasedTbl">
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <th>Pages</th>
+                                                    <th>Post</th>
+                                                    <th>Story</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ladies</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="LadiesPost" name="LadiesPost" data-val="true" value="true"/></td>
+                                                    <td><input type="checkbox" id="LadiesStory" name="LadiesStory" data-val="true" value="true"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Health</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="HealthPost" name="HealthPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="HealthStory" name="HealthStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fact</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="FactPost" name="FactPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="FactStory" name="FactStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Success</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="SuccessPost" name="SuccessPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="SuccessStory" name="SuccessStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sports</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="SportsPost" name="SportsPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="SportsStory" name="SportsStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Art and Music</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="ArtPost" name="ArtPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="ArtStory" name="ArtStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lifestyle</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="LifestylePost" name="LifestylePost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="LifestyleStory" name="LifestyleStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Foods</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="FoodsPost" name="FoodsPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="FoodsStory" name="FoodsStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Funny</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="FunnyPost" name="FunnyPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="FunnyStory" name="FunnyStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Teaching</td>
+                                                    <td>10 pages</td>
+                                                    <td><input type="checkbox" id="TeachingPost" name="TeachingPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="TeachingStory" name="TeachingStory" data-val="true" value="true" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn btn-secondary">Culculate</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-left">
+                                        <div class="box" data-aos-delay="300" dir="ltr" role="textbox">
+                                            <a data-bs-toggle="collapse" class="collapsed btn btn-outline-danger"  style="padding:7px !important" data-bs-target="#ImpressionBased" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                                <span align="center"><b>@Localizer["ImpressionBased"]</b></span>
+                                                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                                            </a>
+                                            <div id="ImpressionBased" class="collapse" data-bs-parent=".faq-list" style="">
+                                                @Localizer["ImpressionBasedDes"]
+                                            </div>
+                                            <table id="ImpressionBasedTbl">
+                                                <tr>
+                                                    <th>Number of views</th>
+                                                    <th>Cost</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">100k</td>
+                                                    <td>25 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">200k</td>
+                                                    <td>40 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="size-18">300k</td>
+                                                    <td>65 $</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="number" name="ImpressionBasedKilo" id="ImpressionBasedKilo" class="Costkilo"/>K</td>
+                                                    <td><div id="ImpressionBasedCost"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><a href="#" class="btn btn-danger">Send Request</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     }
                     else
                     if (article.Categories == 10)/*team*/
@@ -211,7 +414,7 @@
                                                                 <a href="@team.Linkedin"><i class="bi bi-linkedin"></i></a>
                                                             </span>
                                                         </div>
-                                                        <div class="member-info editable" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" lang="en">
+                                                        <div class="member-info" dir="ltr" role="textbox">
                                                             <h4>@team.HeadName</h4><p>@team.Description</p>
                                                         </div>
                                                     </div>
@@ -226,10 +429,133 @@
                         </section>
                     }
                     else
+                    if (article.Categories == 11)/*Contact*/
                     {
-                        @*<div class="section-title">
-                                <h2>@article.Title</h2>
-                            </div>*@
+                        <section id="contact" class="contact">
+                            <div class="container" data-aos="fade-up">
+                                <div class="section-title" dir="ltr" role="textbox">
+                                    <h2>@Localizer["ContactUS"]</h2>
+                                    <p><br></p>
+                                </div>
+                                <div class="row" data-aos="fade-left" data-aos-delay="100">
+                                    <div class="col-lg-6">
+                                        <ul class="faq-list accordion" data-aos="fade-up">
+                                            <li>
+                                                <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                                    <p align="center">@Localizer["YouCreator"]?</p>
+                                                    <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
+                                                </a>
+                                                <div id="faq1" class="collapse" data-bs-parent=".faq-list" style="">
+                                                    <span dir="ltr" role="textbox">
+                                                        <p>@Localizer["ContentCreator"]?</p>
+                                                        <p>@Localizer["NeedTraining"]?</p>
+                                                        <p>@Localizer["ProfessionalBlogger"]?</p>
+                                                        <p>@Localizer["HowToWork"]?</p>
+                                                        <p>@Localizer["InstagramPage"]?</p>
+                                                        <p>@Localizer["HelpAdsfluencer"]?</p>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <p align="center">@Localizer["EXPERTSNOW"]</p>
+                                        <br />
+                                        <form action="Consultation" method="post" role="form" class="php-email-form">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="*@Localizer["Name"]" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="*@Localizer["Email"]" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea id="Favorite" name="Favorite" class="form-control" rows="7" placeholder="@Localizer["WhatFav"]?" required=""></textarea>
+                                            </div>
+                                            <div class="my-3">
+                                                <div class="loading" style="display: block;">@Localizer["Loading"]</div>
+                                                <div class="error-message"></div>
+                                                <div class="sent-message">@Localizer["SentMessage"]</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" style="margin-bottom: 12px;">@Localizer["Consultation"]</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="faq-list accordion" data-aos="fade-up">
+                                            <li>
+                                                <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq2" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                                    <p align="center">@Localizer["Brand"]?</p>
+                                                    <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
+                                                </a>
+                                                <div id="faq2" class="collapse" data-bs-parent=".faq-list" style="">
+                                                    <span dir="ltr" role="textbox">
+                                                        <p>@Localizer["Advertise"]?</p>
+                                                        <p>@Localizer["BrandOwner"]?</p>
+                                                        <p>@Localizer["BrandManager"]?</p>
+                                                        <p>@Localizer["Startup"]?</p>
+                                                        <p>@Localizer["SmallBusiness"]?</p>
+                                                        <p>@Localizer["ReadyToMakeExplosion"]</p>
+                                                        <p>@Localizer["WithAdsfluencer"]?</p>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <p align="center">@Localizer["GETINTOUCH"]!</p>
+                                        <br />
+                                        <form action="Contact" method="post" role="form" class="php-email-form">
+                                            <p>@Localizer["WhichSocialMedia"]?</p>
+                                            <div class="row">
+                                                <div class="col form-group">
+                                                    <input type="checkbox" name="Instagram" id="Instagram" data-val="true" value="true" checked>@Localizer["Instagram"]
+                                                    <input type="checkbox" name="YouTube" id="YouTube" data-bs-toggle="tooltip" data-val="true" value="true" title="@Localizer["Soon!"]" disabled>@Localizer["YouTube"]
+                                                    <input type="checkbox" name="facebook" id="facebook" data-bs-toggle="tooltip" data-val="true" value="true" title="@Localizer["Soon!"]" disabled>@Localizer["facebook"]
+                                                    <input type="checkbox" name="TikTok" id="TikTok" data-bs-toggle="tooltip" data-val="true" value="true" title="@Localizer["Soon!"]" disabled>@Localizer["TikTok"]
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col form-group">
+                                                    <label>@Localizer["Budget"]</label>
+                                                    <select name="TestMarket" class="form-control" id="TestMarket">
+                                                        <option value="1">@Localizer["BrandAwareness"]</option>
+                                                        <option value="2"> @Localizer["CustomerAcquisition"]</option>
+                                                        <option value="3">@Localizer["AppInstalls"]</option>
+                                                        <option value="4">@Localizer["IntroduceStartUp"]</option>
+                                                        <option value="5">@Localizer["TestAdsfluencer"]</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label>@Localizer["Market"]</label>
+                                                    <input type="text" class="form-control" name="Budget" id="Budget" placeholder="10k $ - 20k $">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col form-group">
+                                                    <input type="text" name="Company" class="form-control" id="Company" placeholder="*@Localizer["Company"]" required="">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <input type="text" class="form-control" name="YourName" id="YourName" placeholder="*@Localizer["YourName"]" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" name="email" placeholder="*@Localizer["Email"]" required="">
+                                                <div>@Localizer["UseCompanyEmail"]</div>
+                                            </div>
+                                            <div class="my-3">
+                                                <div class="loading" style="display: block;">@Localizer["Loading"]</div>
+                                                <div class="error-message"></div>
+                                                <div class="sent-message">@Localizer["SentMessage"]!</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit">@Localizer["Contact"]</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    }
+                    else
+                    {
+                        @*<div class="section-title"><h2>@article.Title</h2></div>*@
                         <div class="row">
                             @Html.Raw(@article.Contents)
                         </div>
@@ -271,7 +597,16 @@
             $(".portfolio-wrap .portfolio-info").click(function () {
                 console.log($(this).parents(".portfolio-wrap").find("a.portfolio-lightbox"))
                 $(this).parents(".portfolio-wrap").find("a.portfolio-lightbox img").click()
-            })
+            });
+
+            $("#StoryBasedKilo").change(function () {
+                var cost = ($(this).val() / 10) * 3 + "$";
+                $("#StoryBasedCost").html(cost);
+            });
+            $("#ImpressionBasedKilo").change(function () {
+                var cost = (($(this).val() / 10) * 2)+ 5 + "$";
+                $("#ImpressionBasedCost").html(cost);
+            });
         });
     </script>
 }
