@@ -392,14 +392,14 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 40px 0;
+  padding: 20px 0;
   overflow: hidden;
   position: relative;
 }
 
 .section-title {
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   position: relative;
 }
 
@@ -428,7 +428,7 @@ section {
 }
 
 .section-bg {
-  padding: 120px 0;
+  padding: 100px 0;
   color: #fff;
 }
 
@@ -601,7 +601,7 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-  padding-top: 80px;
+  padding-top: 30px;
 }
 
 .counts .count-box {
