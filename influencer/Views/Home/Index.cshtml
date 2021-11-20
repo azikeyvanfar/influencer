@@ -108,7 +108,7 @@
                 @foreach (var article in Model)
                 {
                     /*Blogger*/
-                    if (article.Categories == 3)
+                    @if (article.Categories == 3)
                     {
                         var cnt = 0;
                         <div class="row">
@@ -224,11 +224,7 @@
                     {
                         <section id="pricing" class="pricing section-bg">
                             <div class="container" data-aos="fade-up">
-                                <div class="section-title" dir="ltr" role="textbox">
-                                    <h2>PRICING</h2>
-                                    <p><br></p>
-                                    <p>Each case is unique and there are no identical growth plans for any of our prospects. The minimal project starts from $100 per day and can go as high as $1milion per month or anything in between based on your budget, goals, industry and many other components.</p>
-                                </div>
+                                @Html.Raw(@article.Contents)
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6" data-aos="fade-left">
                                         <div class="box" data-aos-delay="100" dir="ltr" role="textbox">
@@ -237,12 +233,12 @@
                                                 <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
                                             </a>
                                             <div id="StoryBased" class="collapse" data-bs-parent=".faq-list" style="">
-                                                @Localizer["StoryBasedDes"]                                                
+                                                @Localizer["StoryBasedDes"]
                                             </div>
                                             <table id="StoryBasedTbl">
                                                 <tr>
-                                                    <th>Number of views</th>
-                                                    <th>Cost</th>
+                                                    <th>@Localizer["Numberofviews"]</th>
+                                                    <th>@Localizer["Cost"]</th>
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">100k</td>
@@ -257,11 +253,11 @@
                                                     <td>90 $</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="number" name="StoryBasedKilo" id="StoryBasedKilo" class="Costkilo"/>K</td>
+                                                    <td><input type="number" name="StoryBasedKilo" id="StoryBasedKilo" class="Costkilo" />K</td>
                                                     <td><div id="StoryBasedCost"></div></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><a href="#" class="btn btn-danger">Send Request</a></td>
+                                                    <td colspan="2"><a href="#" class="btn btn-danger">@Localizer["SendRequest"]</a></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -283,77 +279,75 @@
                                                     <th>@Localizer["Story"]</th>
                                                 </tr>
                                                 <tr>
-                                                    <td>Ladies</td>
-                                                    <td>10 @Localizer["Pages"]</td>
-                                                    <td><input type="checkbox" id="LadiesPost" name="LadiesPost" data-val="true" value="true"/></td>
-                                                    <td><input type="checkbox" id="LadiesStory" name="LadiesStory" data-val="true" value="true"/></td>
+                                                    <td>@Localizer["ladies"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
+                                                    <td><input type="checkbox" id="LadiesPost" name="LadiesPost" data-val="true" value="true" /></td>
+                                                    <td><input type="checkbox" id="LadiesStory" name="LadiesStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Health</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["health"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="HealthPost" name="HealthPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="HealthStory" name="HealthStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Fact</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["fact"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="FactPost" name="FactPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="FactStory" name="FactStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Success</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["successAndMotivation"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="SuccessPost" name="SuccessPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="SuccessStory" name="SuccessStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Sports</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["sports"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="SportsPost" name="SportsPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="SportsStory" name="SportsStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Art and Music</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["artandMusic"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="ArtPost" name="ArtPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="ArtStory" name="ArtStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Lifestyle</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["lifestyle"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="LifestylePost" name="LifestylePost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="LifestyleStory" name="LifestyleStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Foods</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["foods"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="FoodsPost" name="FoodsPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="FoodsStory" name="FoodsStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Funny</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["funny"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="FunnyPost" name="FunnyPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="FunnyStory" name="FunnyStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Teaching</td>
-                                                    <td>10 @Localizer["Pages"]</td>
+                                                    <td>@Localizer["teaching"].Value</td>
+                                                    <td>10 @Localizer["Page"]</td>
                                                     <td><input type="checkbox" id="TeachingPost" name="TeachingPost" data-val="true" value="true" /></td>
                                                     <td><input type="checkbox" id="TeachingStory" name="TeachingStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="btn btn-secondary">Culculate</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td class="bg-secondary text-white rounded" colspan="2">@Localizer["Culculate"]</td>
+                                                    <td colspan="2" align="center"><div id="CulculateDisplay" style="width:70%;text-align:center;border-bottom:solid 1px #fff">  </div></td>
                                                 </tr>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-left">
                                         <div class="box" data-aos-delay="300" dir="ltr" role="textbox">
-                                            <a data-bs-toggle="collapse" class="collapsed btn btn-outline-danger"  style="padding:7px !important" data-bs-target="#ImpressionBased" dir="ltr" role="textbox" aria-expanded="false" lang="en">
+                                            <a data-bs-toggle="collapse" class="collapsed btn btn-outline-danger" style="padding:7px !important" data-bs-target="#ImpressionBased" dir="ltr" role="textbox" aria-expanded="false" lang="en">
                                                 <span align="center"><b>@Localizer["ImpressionBased"]</b></span>
                                                 <i class="bi bi-chevron-down" aria-hidden="true"></i>
                                             </a>
@@ -378,7 +372,7 @@
                                                     <td>65 $</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="number" name="ImpressionBasedKilo" id="ImpressionBasedKilo" class="Costkilo"/>K</td>
+                                                    <td><input type="number" name="ImpressionBasedKilo" id="ImpressionBasedKilo" class="Costkilo" />K</td>
                                                     <td><div id="ImpressionBasedCost"></div></td>
                                                 </tr>
                                                 <tr>
@@ -442,7 +436,7 @@
                                         <ul class="faq-list accordion" data-aos="fade-up">
                                             <li>
                                                 <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1" dir="ltr" role="textbox" aria-expanded="false" lang="en">
-                                                    <p align="center">@Localizer["YouCreator"]?</p>
+                                                    <p align="center">@Localizer["YouCreator"]</p>
                                                     <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
                                                 </a>
                                                 <div id="faq1" class="collapse" data-bs-parent=".faq-list" style="">
@@ -467,7 +461,7 @@
                                                 <input type="email" class="form-control" name="email" id="email" placeholder="*@Localizer["Email"]" required="">
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="Favorite" name="Favorite" class="form-control" rows="7" placeholder="@Localizer["WhatFav"]?" required=""></textarea>
+                                                <textarea id="Favorite" name="Favorite" class="form-control" rows="7" placeholder="@Localizer["WhatFav"]" required=""></textarea>
                                             </div>
                                             <div class="my-3">
                                                 <div class="loading" style="display: block;">@Localizer["Loading"]</div>
@@ -483,7 +477,7 @@
                                         <ul class="faq-list accordion" data-aos="fade-up">
                                             <li>
                                                 <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq2" dir="ltr" role="textbox" aria-expanded="false" lang="en">
-                                                    <p align="center">@Localizer["Brand"]?</p>
+                                                    <p align="center">@Localizer["Brand"]</p>
                                                     <i class="bi bi-chevron-down p-2" aria-hidden="true"></i>
                                                 </a>
                                                 <div id="faq2" class="collapse" data-bs-parent=".faq-list" style="">
@@ -502,7 +496,7 @@
                                         <p align="center">@Localizer["GETINTOUCH"]!</p>
                                         <br />
                                         <form action="Contact" method="post" role="form" class="php-email-form">
-                                            <p>@Localizer["WhichSocialMedia"]?</p>
+                                            <p>@Localizer["WhichSocialMedia"]</p>
                                             <div class="row">
                                                 <div class="col form-group">
                                                     <input type="checkbox" name="Instagram" id="Instagram" data-val="true" value="true" checked>@Localizer["Instagram"]
@@ -606,6 +600,26 @@
             $("#ImpressionBasedKilo").change(function () {
                 var cost = (($(this).val() / 10) * 2)+ 5 + "$";
                 $("#ImpressionBasedCost").html(cost);
+            });
+
+            var Cost = 0;
+            $("[name$=Post]").click(function () {
+                if ($(this).prop("checked")) {
+                    Cost = Cost + 100;
+                    $("#CulculateDisplay").html(Cost);
+                } else {
+                    Cost = Cost - 100;
+                    $("#CulculateDisplay").html(Cost);
+                }
+            });
+            $("[name$=Story]").click(function () {
+                if ($(this).prop("checked")) {
+                    Cost = Cost + 20;
+                    $("#CulculateDisplay").html(Cost);
+                } else {
+                    Cost = Cost - 20;
+                    $("#CulculateDisplay").html(Cost);
+                }
             });
         });
     </script>

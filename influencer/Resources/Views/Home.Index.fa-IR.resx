@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Advertise" xml:space="preserve">
-    <value>قراره تبلیغ کنی</value>
+    <value>قراره تبلیغ کنی؟</value>
   </data>
   <data name="AppInstalls" xml:space="preserve">
     <value>نصب برنامه</value>
+  </data>
+  <data name="artandMusic" xml:space="preserve">
+    <value>هنر و موسيقي</value>
   </data>
   <data name="Brand" xml:space="preserve">
     <value>آیا شما یک برند هستید؟</value>
@@ -141,6 +144,9 @@
   <data name="Category" xml:space="preserve">
     <value>دسته بندی</value>
   </data>
+  <data name="Company" xml:space="preserve">
+    <value>شرکت</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>پیام شما ارسال شد!</value>
   </data>
@@ -158,6 +164,9 @@
   </data>
   <data name="Cost" xml:space="preserve">
     <value>هزینه</value>
+  </data>
+  <data name="Culculate" xml:space="preserve">
+    <value>محاسبه</value>
   </data>
   <data name="CustomerAcquisition" xml:space="preserve">
     <value>جذب مشتری</value>
@@ -180,8 +189,17 @@
   <data name="EXPERTSNOW" xml:space="preserve">
     <value>اکنون با یکی از کارشناسان اینستاگرام ما صحبت کنید</value>
   </data>
+  <data name="fact" xml:space="preserve">
+    <value>حقيقت</value>
+  </data>
   <data name="Favorite" xml:space="preserve">
     <value>مورد علاقه</value>
+  </data>
+  <data name="foods" xml:space="preserve">
+    <value>خوراکي ها</value>
+  </data>
+  <data name="funny" xml:space="preserve">
+    <value>خنده دار</value>
   </data>
   <data name="GETINTOUCH" xml:space="preserve">
     <value>امروز با ما در تماس باش</value>
@@ -191,6 +209,9 @@
   </data>
   <data name="GetStarted1" xml:space="preserve">
     <value>شروع کنید</value>
+  </data>
+  <data name="health" xml:space="preserve">
+    <value>سلامتي</value>
   </data>
   <data name="HelpAdsfluencer" xml:space="preserve">
     <value>آیا برای کمک به Adsfluencer برای ایجاد انفجار در اینستاگرام آماده هستید؟</value>
@@ -219,6 +240,12 @@
   <data name="IntroduceStartUp" xml:space="preserve">
     <value>استارت آپ را معرفی کنید</value>
   </data>
+  <data name="ladies" xml:space="preserve">
+    <value>خانم ها</value>
+  </data>
+  <data name="lifestyle" xml:space="preserve">
+    <value>سبک زندگي</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>بارگذاری</value>
   </data>
@@ -242,6 +269,12 @@
   </data>
   <data name="Next1" xml:space="preserve">
     <value>بعدی</value>
+  </data>
+  <data name="Numberofviews" xml:space="preserve">
+    <value>تعداد بازدیدکنندگان</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>صفحه</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>صفحات</value>
@@ -276,8 +309,11 @@
   <data name="Soon" xml:space="preserve">
     <value>به زودی</value>
   </data>
+  <data name="sports" xml:space="preserve">
+    <value>ورزش ها</value>
+  </data>
   <data name="Startup" xml:space="preserve">
-    <value>استارت آپ دارید</value>
+    <value>استارت آپ دارید؟</value>
   </data>
   <data name="Story" xml:space="preserve">
     <value>داستان</value>
@@ -287,6 +323,12 @@
   </data>
   <data name="StoryBasedDes" xml:space="preserve">
     <value>در این حالت، برندها یا خدمات توسط اینفلوئنسرهای معروف که تعداد فالوورهای زیادی دارند، تبلیغ می شوند. و مبنای محاسبه بر اساس تعداد دفعات مشاهده آگهی در استوری است.</value>
+  </data>
+  <data name="successAndMotivation" xml:space="preserve">
+    <value>موفقيت</value>
+  </data>
+  <data name="teaching" xml:space="preserve">
+    <value>آموزش</value>
   </data>
   <data name="TestAdsfluencer" xml:space="preserve">
     <value>Adsfluencer را تست کنید</value>
@@ -317,5 +359,8 @@
   </data>
   <data name="YouCreator" xml:space="preserve">
     <value>آیا شما خالق هستید؟</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>نام</value>
   </data>
 </root>

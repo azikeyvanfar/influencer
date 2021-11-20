@@ -82,7 +82,14 @@
 
 </div>
 @section Scripts{
-    <script src="~/js/ckeditor.js"></script>
+    @if (CurrentCulture == "fa-IR")
+    {
+        <script src="~/js/ckeditor-rtl.js"></script>
+    }
+    else
+    {
+        <script src="~/js/ckeditor.js"></script>
+    }
     <script>
         let allEditors = document.querySelectorAll('.editable');
         for (let i = 0; i < allEditors.length; ++i) {
@@ -91,7 +98,8 @@
                 .catch(error => {
                     console.error(error);
                 }).editorConfig = function (config) {
-                config.enterMode = CKEDITOR.ENTER_BR;
+                    config.enterMode = CKEDITOR.ENTER_BR;
+                    config.contentsLangDirection = 'rtl';
             };
         }
 

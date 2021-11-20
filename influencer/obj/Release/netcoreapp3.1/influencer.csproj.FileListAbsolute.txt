@@ -1,7 +1,6 @@
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\appsettings.Development.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\appsettings.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\appsettings.Staging.json
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.exe
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.deps.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\influencer.runtimeconfig.json
@@ -425,7 +424,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Data.EF.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Contracts.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\bin\Release\netcoreapp3.1\Domain.Entities.pdb
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csprojAssemblyReference.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.en-US.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Home.Index.fa-IR.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Views.Shared._Layout.en-US.resources
@@ -486,7 +484,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Views.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csproj.CopyComplete
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\staticwebassets\influencer.StaticWebAssets.Manifest.cache
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\staticwebassets\influencer.StaticWebAssets.xml
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.genruntimeconfig.cache
@@ -530,3 +527,5 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netc
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Controllers.HomeController.en-US.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Controllers.HomeController.fa-IR.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.Resources.Controllers.HomeController.tr-TR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.csproj.AssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Release\netcoreapp3.1\influencer.GeneratedMSBuildEditorConfig.editorconfig

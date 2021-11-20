@@ -1,9 +1,10 @@
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.1\Domain.Entities.deps.json
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.1\Domain.Entities.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\bin\Release\netstandard2.1\Domain.Entities.pdb
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.csprojAssemblyReference.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.AssemblyInfoInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.AssemblyInfo.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.csproj.CoreCompileInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.pdb
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.csproj.AssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Domain.Entities\obj\Release\netstandard2.1\Domain.Entities.GeneratedMSBuildEditorConfig.editorconfig
