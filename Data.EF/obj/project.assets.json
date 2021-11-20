@@ -8290,6 +8290,7 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "projectReferences": {
             "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj": {
               "projectPath": "C:\\Users\\azadeh\\Source\\Repos\\azikeyvanfar\\influencer\\Domain.Contracts\\Domain.Contracts.csproj"
@@ -8308,6 +8309,7 @@
     },
     "frameworks": {
       "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -8343,7 +8345,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

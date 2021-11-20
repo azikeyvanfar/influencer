@@ -19,10 +19,11 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\bin\Debug\netstanda
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\bin\Debug\netstandard2.1\Domain.Entities.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\bin\Debug\netstandard2.1\Domain.Contracts.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\bin\Debug\netstandard2.1\Domain.Entities.pdb
-C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.csprojAssemblyReference.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.AssemblyInfoInputs.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.AssemblyInfo.cs
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.csproj.CopyComplete
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.dll
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.pdb
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.csproj.CoreCompileInputs.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.csproj.AssemblyReference.cache
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\Data.EF\obj\Debug\netstandard2.1\Data.EF.GeneratedMSBuildEditorConfig.editorconfig

@@ -124,19 +124,22 @@
     <value>App Installs</value>
   </data>
   <data name="Brand" xml:space="preserve">
-    <value>Are you a brand</value>
+    <value>Are you a brand?</value>
   </data>
   <data name="BrandAwareness" xml:space="preserve">
     <value>Brand Awareness</value>
   </data>
   <data name="BrandManager" xml:space="preserve">
-    <value>Are you brand manager</value>
+    <value>Are you brand manager?</value>
   </data>
   <data name="BrandOwner" xml:space="preserve">
-    <value>Are you brand owner</value>
+    <value>Are you brand owner?</value>
   </data>
   <data name="Budget" xml:space="preserve">
     <value>What is your primery goal?</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Your message has been sent!</value>
@@ -151,7 +154,10 @@
     <value>Contact US</value>
   </data>
   <data name="ContentCreator" xml:space="preserve">
-    <value>Are you a content creator</value>
+    <value>Are you a content creator?</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
   </data>
   <data name="CustomerAcquisition" xml:space="preserve">
     <value>Customer Acquisition</value>
@@ -178,13 +184,13 @@
     <value>Get Started</value>
   </data>
   <data name="HelpAdsfluencer" xml:space="preserve">
-    <value>Are you ready to help Adsfluencer to make some explosion on Instagram</value>
+    <value>Are you ready to help Adsfluencer to make some explosion on Instagram?</value>
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
   </data>
   <data name="HowToWork" xml:space="preserve">
-    <value>Do you have any questions about how to work with</value>
+    <value>Do you have any questions about how to work with?</value>
   </data>
   <data name="ImpressionBased" xml:space="preserve">
     <value>Impression-based Ads</value>
@@ -196,7 +202,7 @@
     <value>Instagram</value>
   </data>
   <data name="InstagramPage" xml:space="preserve">
-    <value>Do you need an admin for your Instagram page</value>
+    <value>Do you need an admin for your Instagram page?</value>
   </data>
   <data name="IntroduceStartUp" xml:space="preserve">
     <value>Introduce StartUp</value>
@@ -214,19 +220,31 @@
     <value>Name</value>
   </data>
   <data name="NeedTraining" xml:space="preserve">
-    <value>Are you a beginner and need training</value>
+    <value>Are you a beginner and need training?</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
+  </data>
+  <data name="Numberofviews" xml:space="preserve">
+    <value>Number of views</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
   <data name="ProfessionalBlogger" xml:space="preserve">
-    <value>Are you a professional blogger</value>
+    <value>Are you a professional blogger?</value>
   </data>
   <data name="ReadyToMakeExplosion" xml:space="preserve">
-    <value>Are you ready to make some explosion on Instagram</value>
+    <value>Are you ready to make some explosion on Instagram?</value>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>Send Request</value>
   </data>
   <data name="SentMessage" xml:space="preserve">
     <value>Your message has been sent. Thank you!</value>
@@ -242,6 +260,9 @@
   </data>
   <data name="Startup" xml:space="preserve">
     <value>Have you a startup</value>
+  </data>
+  <data name="Story" xml:space="preserve">
+    <value>Story</value>
   </data>
   <data name="StoryBased" xml:space="preserve">
     <value>Story-Based Ads</value>
@@ -265,15 +286,15 @@
     <value>Please use a company email address</value>
   </data>
   <data name="WhatFav" xml:space="preserve">
-    <value>What are you favorite topics</value>
+    <value>What are you favorite topics?</value>
   </data>
   <data name="WhichSocialMedia" xml:space="preserve">
-    <value>Which social media are you interested in</value>
+    <value>Which social media are you interested in?</value>
   </data>
   <data name="WithAdsfluencer" xml:space="preserve">
     <value>with Adsfluencer</value>
   </data>
   <data name="YouCreator" xml:space="preserve">
-    <value>Are you a creator</value>
+    <value>Are you a creator?</value>
   </data>
 </root>
