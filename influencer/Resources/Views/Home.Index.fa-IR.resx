@@ -120,6 +120,9 @@
   <data name="Advertise" xml:space="preserve">
     <value>قراره تبلیغ کنی؟</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>همه</value>
+  </data>
   <data name="AppInstalls" xml:space="preserve">
     <value>نصب برنامه</value>
   </data>

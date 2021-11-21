@@ -31,8 +31,9 @@
         border-bottom: 1px solid #fff;
         color: #fff
     }
+
     .size-18 {
-        font-size:18px;
+        font-size: 18px;
     }
 </style>
 <!-- ======= Hero Section ======= -->
@@ -115,6 +116,25 @@
                             <section id="creator" class="portfolio">
                                 <div class="container" data-aos="fade-up">
                                     @Html.Raw(@article.Contents)
+
+                                    <div class="row" data-aos="fade-right" data-aos-delay="100">
+                                        <div class="col-lg-12 d-flex justify-content-center">
+                                            <ul id="portfolio-flters">
+                                                <li data-filter="*" class="filter-active">@Localizer["All"]</li>
+                                                <li data-filter=".filter-ladies">@Localizer["ladies"]</li>
+                                                <li data-filter=".filter-health">@Localizer["health"]</li>
+                                                <li data-filter=".filter-fact"> @Localizer["fact"]</li>
+                                                <li data-filter=".filter-successAndMotivation">@Localizer["successAndMotivation"]</li>
+                                                <li data-filter=".filter-sports">@Localizer["sports"]</li>
+                                                <li data-filter=".filter-artandMusic">@Localizer["artandMusic"]</li>
+                                                <li data-filter=".filter-lifestyle">@Localizer["lifestyle"]</li>
+                                                <li data-filter=".filter-foods">@Localizer["foods"]</li>
+                                                <li data-filter=".filter-funny">@Localizer["funny"]</li>
+                                                <li data-filter=".filter-teaching">@Localizer["teaching"]</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                     <div class="row portfolio-container" data-aos="fade-right" data-aos-delay="200" style="position: relative; height: 855px;">
                                         @foreach (AdvertiseDo advertise in ViewBag.ListAdv)
                                         {
@@ -123,62 +143,72 @@
                                             {
                                                 var insta = (advertise.InstagramPage == "") ? "http://www.instagram.com" : advertise.InstagramPage;
                                                 var cat = "";
+                                                var catName = "";
                                                 @switch (@advertise.Categories)
                                                 {
                                                     case 1:
                                                         {
                                                             cat = Localizer["ladies"].Value;
+                                                            catName = "ladies";
                                                             break;
                                                         }
                                                     case 2:
                                                         {
                                                             cat = Localizer["health"].Value;
+                                                            catName = "health";
                                                             break;
                                                         }
                                                     case 3:
                                                         {
                                                             cat = Localizer["fact"].Value;
+                                                            catName = "fact";
                                                             break;
                                                         }
                                                     case 4:
                                                         {
                                                             cat = Localizer["successAndMotivation"].Value;
+                                                            catName = "successAndMotivation";
                                                             break;
                                                         }
                                                     case 5:
                                                         {
                                                             cat = Localizer["sports"].Value;
+                                                            catName = "sports";
                                                             break;
                                                         }
                                                     case 6:
                                                         {
                                                             cat = Localizer["artandMusic"].Value;
+                                                            catName = "artandMusic";
                                                             break;
                                                         }
                                                     case 7:
                                                         {
                                                             cat = Localizer["lifestyle"].Value;
+                                                            catName = "lifestyle";
                                                             break;
                                                         }
                                                     case 8:
                                                         {
                                                             cat = Localizer["foods"].Value;
+                                                            catName = "foods";
                                                             break;
                                                         }
                                                     case 9:
                                                         {
                                                             cat = Localizer["funny"].Value;
+                                                            catName = "funny";
                                                             break;
                                                         }
                                                     case 10:
                                                         {
                                                             cat = Localizer["teaching"].Value;
+                                                            catName = "teaching";
                                                             break;
                                                         }
                                                 }
-                                                <div class="col-lg-3 col-md-4 portfolio-item filter-@cat">
+                                                <div class="col-lg-3 col-md-4 portfolio-item filter-@catName">
                                                     <div class="portfolio-wrap">
-                                                        @**@
                                                         <a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
                                                             <img src="~/Uploads/@advertise.AdvPicture" class="img-fluid" alt="">
                                                         </a>
@@ -189,8 +219,8 @@
                                                             </p>
                                                             <div class="portfolio-links">
                                                                 @*<a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
-                                                                        <i class="bx bx-plus"></i>
-                                                                    </a>*@
+                                        <i class="bx bx-plus"></i>
+                                    </a>*@
                                                                 <a href="@insta" target="_blank" data-bs-toggle="tooltip" title="Blogger Instagram">
                                                                     <i class="bx bxl-instagram"></i>
                                                                 </a>
@@ -212,7 +242,7 @@
                                     @if (cnt >= 13)
                                     {
                                         <div class="btn btn-outline-danger">
-                                            <a asp-action="AllAdvertise" asp-controller="Advertise">more</a>
+                                            <a asp-action="AllAdvertise" asp-controller="Advertise">@Localizer["more"]</a>
                                         </div>
                                     }
                                 </div>
@@ -220,7 +250,7 @@
                         </div>
                     }
                     else
-                    if (article.Categories == 6)/*Pricing*/
+                   if (article.Categories == 6)/*Pricing*/
                     {
                         <section id="pricing" class="pricing section-bg">
                             <div class="container" data-aos="fade-up">
@@ -386,7 +416,7 @@
                         </section>
                     }
                     else
-                    if (article.Categories == 10)/*team*/
+                   if (article.Categories == 10)/*team*/
                     {
                         int i = 100;
                         <section id="team" class="team section-bg">
@@ -423,7 +453,7 @@
                         </section>
                     }
                     else
-                    if (article.Categories == 11)/*Contact*/
+                   if (article.Categories == 11)/*Contact*/
                     {
                         <section id="contact" class="contact">
                             <div class="container" data-aos="fade-up">
@@ -589,7 +619,6 @@
             });
 
             $(".portfolio-wrap .portfolio-info").click(function () {
-                console.log($(this).parents(".portfolio-wrap").find("a.portfolio-lightbox"))
                 $(this).parents(".portfolio-wrap").find("a.portfolio-lightbox img").click()
             });
 
@@ -598,7 +627,7 @@
                 $("#StoryBasedCost").html(cost);
             });
             $("#ImpressionBasedKilo").change(function () {
-                var cost = (($(this).val() / 10) * 2)+ 5 + "$";
+                var cost = (($(this).val() / 10) * 2) + 5 + "$";
                 $("#ImpressionBasedCost").html(cost);
             });
 

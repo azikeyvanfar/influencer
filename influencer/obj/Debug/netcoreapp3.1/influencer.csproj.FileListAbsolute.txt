@@ -529,3 +529,6 @@ C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcor
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Controllers.HomeController.tr-TR.resources
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.csproj.AssemblyReference.cache
 C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Advertise.AllAdvertise.en-US.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Advertise.AllAdvertise.fa-IR.resources
+C:\Users\azadeh\Source\Repos\azikeyvanfar\influencer\influencer\obj\Debug\netcoreapp3.1\influencer.Resources.Views.Advertise.AllAdvertise.tr-TR.resources

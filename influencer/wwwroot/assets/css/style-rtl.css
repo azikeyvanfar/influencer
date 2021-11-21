@@ -822,7 +822,7 @@ section {
     overflow: hidden;
     z-index: 1;
     background: rgba(17, 17, 17, 0.6);
-    max-height: 240px;
+    height: 187px;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -899,7 +899,8 @@ section {
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
-  opacity: 1;
+  opacity: 0.5;
+  background : #000;
 }
 
 /*--------------------------------------------------------------
