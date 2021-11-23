@@ -291,6 +291,18 @@
   <data name="Previous1" xml:space="preserve">
     <value>قبلی</value>
   </data>
+  <data name="PriceDes1" xml:space="preserve">
+    <value>هیچ برنامه رشد یکسانی برای هیچ یک از مشتریان بالقوه ما وجود ندارد، بنابراین هر مورد منحصر به فرد است</value>
+  </data>
+  <data name="PriceDes2" xml:space="preserve">
+    <value>از 25 دلار در روز تا 100000 دلار در ماه</value>
+  </data>
+  <data name="PriceDes3" xml:space="preserve">
+    <value>یا هر چیز دیگری بر اساس بودجه، اهداف، صنعت و بسیاری از اجزای دیگر شما.</value>
+  </data>
+  <data name="PRICING" xml:space="preserve">
+    <value>تعرفه ها</value>
+  </data>
   <data name="ProfessionalBlogger" xml:space="preserve">
     <value>آیا شما یک وبلاگ نویس حرفه ای هستید؟</value>
   </data>
@@ -347,6 +359,9 @@
   </data>
   <data name="TitleSlide1" xml:space="preserve">
     <value>در Adsfluencer</value>
+  </data>
+  <data name="UnitMoney" xml:space="preserve">
+    <value>تومان</value>
   </data>
   <data name="UseCompanyEmail" xml:space="preserve">
     <value>لطفا از آدرس ایمیل شرکت استفاده کنید</value>

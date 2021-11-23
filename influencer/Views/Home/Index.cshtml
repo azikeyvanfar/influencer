@@ -219,8 +219,8 @@
                                                             </p>
                                                             <div class="portfolio-links">
                                                                 @*<a href="~/Uploads/@advertise.AdvPicture" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@advertise.Title">
-                                        <i class="bx bx-plus"></i>
-                                    </a>*@
+                                                                        <i class="bx bx-plus"></i>
+                                                                    </a>*@
                                                                 <a href="@insta" target="_blank" data-bs-toggle="tooltip" title="Blogger Instagram">
                                                                     <i class="bx bxl-instagram"></i>
                                                                 </a>
@@ -250,11 +250,18 @@
                         </div>
                     }
                     else
-                   if (article.Categories == 6)/*Pricing*/
+                 if (article.Categories == 6)/*Pricing*/
                     {
                         <section id="pricing" class="pricing section-bg">
                             <div class="container" data-aos="fade-up">
-                                @Html.Raw(@article.Contents)
+                                <div class="section-title editable" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" lang="en">
+                                    <h2>@Localizer["PRICING"]</h2>
+                                    <p style="line-height:40px">
+                                        @Localizer["PriceDes1"]<br>
+                                        <a href="https://qsip.net/Article/Index" class="btn btn-outline-danger"> @Localizer["PriceDes2"]</a>
+                                        ⁠⁠⁠⁠⁠⁠⁠<br> @Localizer["PriceDes3"]
+                                    </p>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6" data-aos="fade-left">
                                         <div class="box" data-aos-delay="100" dir="ltr" role="textbox">
@@ -272,22 +279,22 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">100k</td>
-                                                    <td>30 $</td>
+                                                    <td>30 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">200k</td>
-                                                    <td>60 $</td>
+                                                    <td>60 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">300k</td>
-                                                    <td>90 $</td>
+                                                    <td>90 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="number" name="StoryBasedKilo" id="StoryBasedKilo" class="Costkilo" />K</td>
                                                     <td><div id="StoryBasedCost"></div></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><a href="#" class="btn btn-danger">@Localizer["SendRequest"]</a></td>
+                                                    <td colspan="2"><a href="#" id="StoryBasedBtn" class="btn btn-danger SendRequest" data-bs-toggle="modal" data-bs-target="#SendRequestEmail">@Localizer["SendRequest"]</a></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -369,8 +376,9 @@
                                                     <td><input type="checkbox" id="TeachingStory" name="TeachingStory" data-val="true" value="true" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="bg-secondary text-white rounded" colspan="2">@Localizer["Culculate"]</td>
-                                                    <td colspan="2" align="center"><div id="CulculateDisplay" style="width:70%;text-align:center;border-bottom:solid 1px #fff">  </div></td>
+                                                    <td class="bg-secondary"><a href="#" class="text-white rounded SendRequest" id="TimeBasedBtn" data-bs-toggle="modal" data-bs-target="#SendRequestEmail">@Localizer["SendRequest"]</a></td>
+                                                    <td></td>
+                                                    <td colspan="2" align="center"><div id="CulculateDisplay" style="width:70%;float:left;text-align:center;border-bottom:solid 1px #fff"></div>@Localizer["UnitMoney"]</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -391,22 +399,22 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">100k</td>
-                                                    <td>25 $</td>
+                                                    <td>25 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">200k</td>
-                                                    <td>40 $</td>
+                                                    <td>40 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="size-18">300k</td>
-                                                    <td>65 $</td>
+                                                    <td>65 @Localizer["UnitMoney"]</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="number" name="ImpressionBasedKilo" id="ImpressionBasedKilo" class="Costkilo" />K</td>
                                                     <td><div id="ImpressionBasedCost"></div></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><a href="#" class="btn btn-danger">@Localizer["SendRequest"]</a></td>
+                                                    <td colspan="2"><a href="#" class="btn btn-danger SendRequest" id="ImpressionBasedBtn" data-bs-toggle="modal" data-bs-target="#SendRequestEmail">@Localizer["SendRequest"]</a></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -414,9 +422,48 @@
                                 </div>
                             </div>
                         </section>
+                        <!-- The Modal -->
+                        <div class="modal" id="SendRequestEmail">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Type your email to send request</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form asp-action="SendEmail" method="post">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Email</label>
+                                                        <input type="email" id="Email" name="Email" class="form-control" required />
+                                                        <span validation-for="Email" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" style="padding-top:24px">
+                                                    <button type="submit" class="btn btn-danger">Send</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <!--<div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                        </div>
+
                     }
                     else
-                   if (article.Categories == 10)/*team*/
+                 if (article.Categories == 10)/*team*/
                     {
                         int i = 100;
                         <section id="team" class="team section-bg">
@@ -453,7 +500,7 @@
                         </section>
                     }
                     else
-                   if (article.Categories == 11)/*Contact*/
+                 if (article.Categories == 11)/*Contact*/
                     {
                         <section id="contact" class="contact">
                             <div class="container" data-aos="fade-up">
@@ -548,7 +595,7 @@
                                                 </div>
                                                 <div class="col form-group">
                                                     <label>@Localizer["Market"]</label>
-                                                    <input type="text" class="form-control" name="Budget" id="Budget" placeholder="10k $ - 20k $">
+                                                    <input type="text" class="form-control" name="Budget" id="Budget" placeholder="10k @Localizer["UnitMoney"] - 20k @Localizer["UnitMoney"]">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -623,11 +670,11 @@
             });
 
             $("#StoryBasedKilo").change(function () {
-                var cost = ($(this).val() / 10) * 3 + "$";
+                var cost = ($(this).val() / 10) * 3 + '@Localizer["UnitMoney"]';
                 $("#StoryBasedCost").html(cost);
             });
             $("#ImpressionBasedKilo").change(function () {
-                var cost = (($(this).val() / 10) * 2) + 5 + "$";
+                var cost = (($(this).val() / 10) * 2) + 5 + '@Localizer["UnitMoney"]';
                 $("#ImpressionBasedCost").html(cost);
             });
 
@@ -643,10 +690,10 @@
             });
             $("[name$=Story]").click(function () {
                 if ($(this).prop("checked")) {
-                    Cost = Cost + 20;
+                    Cost = Cost + 120;
                     $("#CulculateDisplay").html(Cost);
                 } else {
-                    Cost = Cost - 20;
+                    Cost = Cost - 120;
                     $("#CulculateDisplay").html(Cost);
                 }
             });

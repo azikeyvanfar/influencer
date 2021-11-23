@@ -291,6 +291,18 @@
   <data name="Previous1" xml:space="preserve">
     <value>Öncesi</value>
   </data>
+  <data name="PriceDes1" xml:space="preserve">
+    <value>Beklentilerimizin hiçbiri için özdeş bir büyüme planı yok, bu nedenle her vaka benzersiz</value>
+  </data>
+  <data name="PriceDes2" xml:space="preserve">
+    <value>günde 25 $'dan ayda 100.000 $'a kadar</value>
+  </data>
+  <data name="PriceDes3" xml:space="preserve">
+    <value>veya bütçenize, hedeflerinize, sektörünüze ve diğer birçok bileşene bağlı olarak aradaki herhangi bir şey.</value>
+  </data>
+  <data name="PRICING" xml:space="preserve">
+    <value>FİYATLANDIRMA</value>
+  </data>
   <data name="ProfessionalBlogger" xml:space="preserve">
     <value>profesyonel bir blogcu musun?</value>
   </data>
@@ -347,6 +359,9 @@
   </data>
   <data name="TitleSlide1" xml:space="preserve">
     <value>Adsfluencer'da</value>
+  </data>
+  <data name="UnitMoney" xml:space="preserve">
+    <value>lira</value>
   </data>
   <data name="UseCompanyEmail" xml:space="preserve">
     <value>Lütfen bir şirket e-posta adresi kullanın</value>

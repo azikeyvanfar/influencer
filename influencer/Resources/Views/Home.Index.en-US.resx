@@ -267,6 +267,18 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
+  <data name="PriceDes1" xml:space="preserve">
+    <value>There are no identical growth plans for any of our prospects so each case is unique</value>
+  </data>
+  <data name="PriceDes2" xml:space="preserve">
+    <value>from 25 $ per day to 100,000 $ per month</value>
+  </data>
+  <data name="PriceDes3" xml:space="preserve">
+    <value>or anything in between based on your budget, goals, industry and many other components.</value>
+  </data>
+  <data name="PRICING" xml:space="preserve">
+    <value>PRICING</value>
+  </data>
   <data name="ProfessionalBlogger" xml:space="preserve">
     <value>Are you a professional blogger?</value>
   </data>
@@ -320,6 +332,9 @@
   </data>
   <data name="TitleSlide" xml:space="preserve">
     <value>In Adsfluencer</value>
+  </data>
+  <data name="UnitMoney" xml:space="preserve">
+    <value>$</value>
   </data>
   <data name="UseCompanyEmail" xml:space="preserve">
     <value>Please use a company email address</value>

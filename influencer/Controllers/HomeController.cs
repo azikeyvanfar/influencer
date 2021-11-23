@@ -108,5 +108,12 @@ namespace influencer.Controllers
             await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", _localizer["Contact"].Value + " with " + contact.YourName + " ( " + contact.Email + " ) ", urlManageUser);
             return "OK";
         }
+        [HttpPost]
+        public async Task<string> SendEmail(string type,string Email, int Cost)
+        {
+            string urlManageUser = "Title = <b>" + _localizer[type].Value + "</b><br/> " + _localizer["Email"].Value + " = <b>" + Email + "</b><br/> " + _localizer["Cost"].Value + " = " + Cost;
+            await _messageSender.SendEmailAsync("adsfluencermail@gmail.com", _localizer["type"].Value + " ( " + Email + " ) ", urlManageUser);
+            return "OK";
+        }
     }
 }
